@@ -1,0 +1,4 @@
+Carthage/Build/
+**/xcuserdata/
+**/*.xcodeproj/project.xcworkspace/
+.idea/
