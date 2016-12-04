@@ -65,4 +65,10 @@ extension RangeType where Bound == String.Index {
         return resultLowerBound..<resultUpperBound
     }
 
+    func sameRange(in view: String.UnicodeScalarView) -> Range<String.UnicodeScalarView.Index> {
+        let resultLowerBound = lowerBound.samePosition(in: view)
+        let resultUpperBound = upperBound.samePosition(in: view)
+        return resultLowerBound..<resultUpperBound
+    }
+
 }
