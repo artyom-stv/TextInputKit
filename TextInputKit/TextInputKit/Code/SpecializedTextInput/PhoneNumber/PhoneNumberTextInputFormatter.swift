@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PhoneNumberTextInputFormatter : TextInputFormatter {
+final class PhoneNumberTextInputFormatter : TextInputFormatter {
 
     init(_ options: PhoneNumberTextInputOptions) {
         self.options = options
@@ -16,10 +16,9 @@ class PhoneNumberTextInputFormatter : TextInputFormatter {
 
     override func validate(
         editing originalString: String,
-        at editedRange: Range<String.Index>,
         withSelection originalSelectedRange: Range<String.Index>,
-        resulting editedString: String,
-        withSelection resultingSelectedRange: Range<String.Index>) -> TextInputValidationResult {
+        replacing replacementString: String,
+        at editedRange: Range<String.Index>) -> TextInputValidationResult {
 
         // TODO: Implement.
         return .accepted

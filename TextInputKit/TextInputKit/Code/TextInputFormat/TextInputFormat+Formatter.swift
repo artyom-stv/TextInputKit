@@ -77,11 +77,11 @@ private final class FormatterAdapter<Value> : Formatter {
         originalSelectedRange editedNSRange: NSRange,
         errorDescription errorDescriptionPtr: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
 
-        let editedString = partialStringPtr.pointee as String
-
         let editedRange = editedNSRange.toRange()!
             .sameRange(in: originalString.utf16)
             .sameRange(in: originalString)
+
+        let editedString = partialStringPtr.pointee as String
 
         let resultingSelectedRange: Range<String.Index> = {
             if let proposedSelectedNSRangePtr = proposedSelectedNSRangePtr {
@@ -92,12 +92,20 @@ private final class FormatterAdapter<Value> : Formatter {
             return editedString.endIndex..<editedString.endIndex
         }()
 
+        precondition(resultingSelectedRange.isEmpty,
+                     "The proposed selected range after editing text should be empty (a blinking cursor).")
+        precondition(originalString.substring(to: editedRange.lowerBound) == editedString.substring(to: editedRange.lowerBound),
+                     "The strings before and after editing should have common prefix.")
+        precondition(originalString.substring(from: editedRange.upperBound) == editedString.substring(from: resultingSelectedRange.lowerBound),
+                     "The strings before and after editing should have common suffix.")
+
+        let replacementString: String = editedString.substring(with: editedRange.lowerBound..<resultingSelectedRange.lowerBound)
+
         let validationResult = format.formatter.validate(
             editing: originalString,
-            at: editedRange,
             withSelection: editedRange,
-            resulting: editedString,
-            withSelection: resultingSelectedRange)
+            replacing: replacementString,
+            at: editedRange)
 
         switch validationResult {
         case .accepted:
@@ -110,7 +118,7 @@ private final class FormatterAdapter<Value> : Formatter {
                 .sameIntRange(in: newEditedString.utf16))
 
             return false
-            
+
         case .rejected:
             return false
         }

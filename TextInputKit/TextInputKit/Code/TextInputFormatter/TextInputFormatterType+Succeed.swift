@@ -31,20 +31,24 @@ private final class Succeed : TextInputFormatter {
 
     override func validate(
         editing originalString: String,
-        at editedRange: Range<String.Index>,
         withSelection originalSelectedRange: Range<String.Index>,
-        resulting editedString: String,
-        withSelection resultingSelectedRange: Range<String.Index>) -> TextInputValidationResult {
+        replacing replacementString: String,
+        at editedRange: Range<String.Index>) -> TextInputValidationResult {
 
         let sourceValidationResult = sourceFormatter.validate(
             editing: originalString,
-            at: editedRange,
             withSelection:  originalSelectedRange,
-            resulting: editedString,
-            withSelection: resultingSelectedRange)
+            replacing: replacementString,
+            at: editedRange)
 
         switch sourceValidationResult {
         case .accepted:
+            let editedString = originalString.replacingCharacters(in: editedRange, with: replacementString)
+            let resultingSelectedRange: Range<String.Index> = {
+                let index = editedString.index(editedRange.lowerBound, offsetBy: replacementString.characters.count)
+                return index..<index
+            }()
+
             return successiveFormatter.validate(
                 editingResult: editedString,
                 withSelection: resultingSelectedRange)

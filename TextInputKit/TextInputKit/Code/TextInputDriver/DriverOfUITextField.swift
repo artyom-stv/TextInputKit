@@ -78,19 +78,16 @@ private final class TextFieldDelegate<Value> : NSObject, UITextFieldDelegate {
             .sameRange(in: originalString.utf16)
             .sameRange(in: originalString)
 
-        let editedString = originalString.replacingCharacters(in: editedRange, with: replacementString)
-
-        let resultingSelectedRange = editedRange.upperBound..<editedRange.upperBound
-
         let validationResult = format.formatter.validate(
             editing: originalString,
-            at: editedRange,
             withSelection: originalSelectedRange,
-            resulting: editedString,
-            withSelection: resultingSelectedRange)
+            replacing: replacementString,
+            at: editedRange)
 
         switch validationResult {
         case .accepted:
+            let editedString = originalString.replacingCharacters(in: editedRange, with: replacementString)
+
             setValue(for: editedString)
 
             return true

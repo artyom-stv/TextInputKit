@@ -21,12 +21,11 @@ public enum TextInputValidationResult {
 public protocol TextInputFormatterType : class {
 
     /// Usage:
-    /// formatter.validate(editing: oldText, at: editedRange, withSelection: oldSelectedRange, resulting: newText)
+    /// formatter.validate(editing: text, withSelection: selectedRange, replacing: replacementString, at: editedRange)
     func validate(
         editing originalString: String,
-        at editedRange: Range<String.Index>,
         withSelection originalSelectedRange: Range<String.Index>,
-        resulting editedString: String,
-        withSelection resultingSelectedRange: Range<String.Index>) -> TextInputValidationResult
+        replacing replacementString: String,
+        at editedRange: Range<String.Index>) -> TextInputValidationResult
 
 }

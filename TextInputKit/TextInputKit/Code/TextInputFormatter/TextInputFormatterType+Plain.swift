@@ -20,10 +20,9 @@ private final class PlainTextInputFormatter : TextInputFormatter {
 
     override func validate(
         editing originalString: String,
-        at editedRange: Range<String.Index>,
         withSelection originalSelectedRange: Range<String.Index>,
-        resulting editedString: String,
-        withSelection resultingSelectedRange: Range<String.Index>) -> TextInputValidationResult {
+        replacing replacementString: String,
+        at editedRange: Range<String.Index>) -> TextInputValidationResult {
 
         return .accepted
     }
