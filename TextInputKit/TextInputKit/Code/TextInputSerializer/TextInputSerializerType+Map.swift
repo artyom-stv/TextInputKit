@@ -17,12 +17,12 @@ public extension TextInputSerializerType {
         direct directTransform: @escaping MapDirectTransform<Result>,
         reverse reverseTransform: @escaping MapReverseTransform<Result>) -> TextInputSerializer<Result> {
 
-        return MapTextInputSerializer(source: self, direct: directTransform, reverse: reverseTransform)
+        return Map(source: self, direct: directTransform, reverse: reverseTransform)
     }
 
 }
 
-private final class MapTextInputSerializer<SourceSerializer: TextInputSerializerType, Result> : TextInputSerializer<Result> {
+private final class Map<SourceSerializer: TextInputSerializerType, Result> : TextInputSerializer<Result> {
 
     typealias MapDirectTransform = (SourceSerializer.Value) throws -> Result
     typealias MapReverseTransform = (Result) -> SourceSerializer.Value
