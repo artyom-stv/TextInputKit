@@ -82,7 +82,34 @@
 		7CE691B21DEAC38D003F32D2 /* TextInputFormat+TransformValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691B01DEAC38D003F32D2 /* TextInputFormat+TransformValue.swift */; };
 		7CE691B41DEAC595003F32D2 /* PhoneNumberTextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691B31DEAC595003F32D2 /* PhoneNumberTextInputFormatter.swift */; };
 		7CE691B51DEAC595003F32D2 /* PhoneNumberTextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691B31DEAC595003F32D2 /* PhoneNumberTextInputFormatter.swift */; };
+		7CE691D01DEC0B17003F32D2 /* TextInputKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2BD0441DE2C40800A7A6C0 /* TextInputKit.framework */; };
+		7CE691DF1DEC0E1F003F32D2 /* TextInputKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2BD0371DE2C3A900A7A6C0 /* TextInputKit.framework */; };
+		7CE691E61DEC0E37003F32D2 /* MutableBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691C51DEAD08D003F32D2 /* MutableBoxTests.swift */; };
+		7CE691E81DEC0E37003F32D2 /* MutableBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691C51DEAD08D003F32D2 /* MutableBoxTests.swift */; };
+		7CE691EA1DEC6BCA003F32D2 /* TextInputFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691E91DEC6BCA003F32D2 /* TextInputFormatterTests.swift */; };
+		7CE691EB1DEC6BCA003F32D2 /* TextInputFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691E91DEC6BCA003F32D2 /* TextInputFormatterTests.swift */; };
+		7CE691F01DEC6F30003F32D2 /* XCTestCase+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691EF1DEC6F30003F32D2 /* XCTestCase+Tests.swift */; };
+		7CE691F11DEC6F30003F32D2 /* XCTestCase+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691EF1DEC6F30003F32D2 /* XCTestCase+Tests.swift */; };
+		7CE692161DF4468B003F32D2 /* TextInputValidationResult+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE692081DF1E85C003F32D2 /* TextInputValidationResult+Equatable.swift */; };
+		7CE692171DF4468C003F32D2 /* TextInputValidationResult+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE692081DF1E85C003F32D2 /* TextInputValidationResult+Equatable.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7CE691D11DEC0B17003F32D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C7AEB471DDFD128004861BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C2BD0431DE2C40800A7A6C0;
+			remoteInfo = "TextInputKit-macOS";
+		};
+		7CE691E01DEC0E1F003F32D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7C7AEB471DDFD128004861BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C2BD0361DE2C3A900A7A6C0;
+			remoteInfo = "TextInputKit-iOS";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7C2BD0371DE2C3A900A7A6C0 /* TextInputKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TextInputKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +155,13 @@
 		7CE691AD1DE9EEBC003F32D2 /* TextInputAccessoryFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputAccessoryFormatter.swift; sourceTree = "<group>"; };
 		7CE691B01DEAC38D003F32D2 /* TextInputFormat+TransformValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextInputFormat+TransformValue.swift"; sourceTree = "<group>"; };
 		7CE691B31DEAC595003F32D2 /* PhoneNumberTextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberTextInputFormatter.swift; sourceTree = "<group>"; };
+		7CE691BE1DEACFF7003F32D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CE691C51DEAD08D003F32D2 /* MutableBoxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutableBoxTests.swift; sourceTree = "<group>"; };
+		7CE691CB1DEC0B17003F32D2 /* Tests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CE691DA1DEC0E1F003F32D2 /* Tests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CE691E91DEC6BCA003F32D2 /* TextInputFormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputFormatterTests.swift; sourceTree = "<group>"; };
+		7CE691EF1DEC6F30003F32D2 /* XCTestCase+Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Tests.swift"; sourceTree = "<group>"; };
+		7CE692081DF1E85C003F32D2 /* TextInputValidationResult+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextInputValidationResult+Equatable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +176,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CE691C81DEC0B17003F32D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CE691D01DEC0B17003F32D2 /* TextInputKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CE691D71DEC0E1F003F32D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CE691DF1DEC0E1F003F32D2 /* TextInputKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				7C7AEB521DDFD128004861BD /* TextInputKit */,
+				7CE691BB1DEACFF7003F32D2 /* Tests */,
 				7C7AEB511DDFD128004861BD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -177,6 +228,8 @@
 			children = (
 				7C2BD0371DE2C3A900A7A6C0 /* TextInputKit.framework */,
 				7C2BD0441DE2C40800A7A6C0 /* TextInputKit.framework */,
+				7CE691CB1DEC0B17003F32D2 /* Tests-macOS.xctest */,
+				7CE691DA1DEC0E1F003F32D2 /* Tests-iOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,6 +291,7 @@
 				7CE691431DE81500003F32D2 /* TextInputFormatterType+Map.swift */,
 				7CE691441DE81500003F32D2 /* TextInputFormatterType+Plain.swift */,
 				7CE691451DE81500003F32D2 /* TextInputFormatterType+Succeed.swift */,
+				7CE692081DF1E85C003F32D2 /* TextInputValidationResult+Equatable.swift */,
 			);
 			path = TextInputFormatter;
 			sourceTree = "<group>";
@@ -292,6 +346,17 @@
 				7CE691911DE8162F003F32D2 /* TextInputFormats+PhoneNumber.swift */,
 			);
 			path = PhoneNumber;
+			sourceTree = "<group>";
+		};
+		7CE691BB1DEACFF7003F32D2 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				7CE691BE1DEACFF7003F32D2 /* Info.plist */,
+				7CE691C51DEAD08D003F32D2 /* MutableBoxTests.swift */,
+				7CE691E91DEC6BCA003F32D2 /* TextInputFormatterTests.swift */,
+				7CE691EF1DEC6F30003F32D2 /* XCTestCase+Tests.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,12 +415,49 @@
 			productReference = 7C2BD0441DE2C40800A7A6C0 /* TextInputKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		7CE691CA1DEC0B17003F32D2 /* Tests-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CE691D31DEC0B17003F32D2 /* Build configuration list for PBXNativeTarget "Tests-macOS" */;
+			buildPhases = (
+				7CE691C71DEC0B17003F32D2 /* Sources */,
+				7CE691C81DEC0B17003F32D2 /* Frameworks */,
+				7CE691C91DEC0B17003F32D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7CE691D21DEC0B17003F32D2 /* PBXTargetDependency */,
+			);
+			name = "Tests-macOS";
+			productName = "Tests-macOS";
+			productReference = 7CE691CB1DEC0B17003F32D2 /* Tests-macOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7CE691D91DEC0E1F003F32D2 /* Tests-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CE691E21DEC0E1F003F32D2 /* Build configuration list for PBXNativeTarget "Tests-iOS" */;
+			buildPhases = (
+				7CE691D61DEC0E1F003F32D2 /* Sources */,
+				7CE691D71DEC0E1F003F32D2 /* Frameworks */,
+				7CE691D81DEC0E1F003F32D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7CE691E11DEC0E1F003F32D2 /* PBXTargetDependency */,
+			);
+			name = "Tests-iOS";
+			productName = "Tests-iOS";
+			productReference = 7CE691DA1DEC0E1F003F32D2 /* Tests-iOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		7C7AEB471DDFD128004861BD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Artem Starosvetskiy";
 				TargetAttributes = {
@@ -367,6 +469,14 @@
 					7C2BD0431DE2C40800A7A6C0 = {
 						CreatedOnToolsVersion = 8.1;
 						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
+					};
+					7CE691CA1DEC0B17003F32D2 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
+					7CE691D91DEC0E1F003F32D2 = {
+						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -385,6 +495,8 @@
 			targets = (
 				7C2BD0361DE2C3A900A7A6C0 /* TextInputKit-iOS */,
 				7C2BD0431DE2C40800A7A6C0 /* TextInputKit-macOS */,
+				7CE691D91DEC0E1F003F32D2 /* Tests-iOS */,
+				7CE691CA1DEC0B17003F32D2 /* Tests-macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -398,6 +510,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7C2BD0421DE2C40800A7A6C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CE691C91DEC0B17003F32D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CE691D81DEC0E1F003F32D2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -439,6 +565,7 @@
 				7CE691671DE81500003F32D2 /* TextInputFormat+From.swift in Sources */,
 				7CE6919B1DE8173C003F32D2 /* TextInputFormats.swift in Sources */,
 				7CE691B11DEAC38D003F32D2 /* TextInputFormat+TransformValue.swift in Sources */,
+				7CE692171DF4468C003F32D2 /* TextInputValidationResult+Equatable.swift in Sources */,
 				7CE6915D1DE81500003F32D2 /* TextInputDriver.swift in Sources */,
 				7CE691A81DE8AD92003F32D2 /* BankCardNumberTextInputFormatter.swift in Sources */,
 				7CE691AE1DE9EEBC003F32D2 /* TextInputAccessoryFormatter.swift in Sources */,
@@ -474,6 +601,7 @@
 				7CE691641DE81500003F32D2 /* TextInputFormat+Filter.swift in Sources */,
 				7CE691801DE81500003F32D2 /* TextInputSerializer.swift in Sources */,
 				7CE691931DE8162F003F32D2 /* TextInputFormats+PhoneNumber.swift in Sources */,
+				7CE692161DF4468B003F32D2 /* TextInputValidationResult+Equatable.swift in Sources */,
 				7CE691721DE81500003F32D2 /* TextInputFormatterType+Filter.swift in Sources */,
 				7CE691621DE81500003F32D2 /* TextInputFormat+Bind.swift in Sources */,
 				7CE691821DE81500003F32D2 /* TextInputSerializerType+Formatter.swift in Sources */,
@@ -496,7 +624,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7CE691C71DEC0B17003F32D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CE691E81DEC0E37003F32D2 /* MutableBoxTests.swift in Sources */,
+				7CE691EB1DEC6BCA003F32D2 /* TextInputFormatterTests.swift in Sources */,
+				7CE691F11DEC6F30003F32D2 /* XCTestCase+Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CE691D61DEC0E1F003F32D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CE691E61DEC0E37003F32D2 /* MutableBoxTests.swift in Sources */,
+				7CE691EA1DEC6BCA003F32D2 /* TextInputFormatterTests.swift in Sources */,
+				7CE691F01DEC6F30003F32D2 /* XCTestCase+Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7CE691D21DEC0B17003F32D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7C2BD0431DE2C40800A7A6C0 /* TextInputKit-macOS */;
+			targetProxy = 7CE691D11DEC0B17003F32D2 /* PBXContainerItemProxy */;
+		};
+		7CE691E11DEC0E1F003F32D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7C2BD0361DE2C3A900A7A6C0 /* TextInputKit-iOS */;
+			targetProxy = 7CE691E01DEC0E1F003F32D2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7C2BD03D1DE2C3A900A7A6C0 /* Debug */ = {
@@ -686,6 +847,58 @@
 			};
 			name = Release;
 		};
+		7CE691D41DEC0B17003F32D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "text-formatter.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		7CE691D51DEC0B17003F32D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "text-formatter.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		7CE691E31DEC0E1F003F32D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "text-formatter.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		7CE691E41DEC0E1F003F32D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "text-formatter.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -712,6 +925,24 @@
 			buildConfigurations = (
 				7C7AEB561DDFD128004861BD /* Debug */,
 				7C7AEB571DDFD128004861BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CE691D31DEC0B17003F32D2 /* Build configuration list for PBXNativeTarget "Tests-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CE691D41DEC0B17003F32D2 /* Debug */,
+				7CE691D51DEC0B17003F32D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CE691E21DEC0E1F003F32D2 /* Build configuration list for PBXNativeTarget "Tests-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CE691E31DEC0E1F003F32D2 /* Debug */,
+				7CE691E41DEC0E1F003F32D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
