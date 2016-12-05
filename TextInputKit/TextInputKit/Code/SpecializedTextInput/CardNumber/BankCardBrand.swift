@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum BankCardBrand {
+enum BankCardBrand : Int {
 
     case uatp
 

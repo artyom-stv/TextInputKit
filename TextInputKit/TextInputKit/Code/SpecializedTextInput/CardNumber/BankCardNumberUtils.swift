@@ -18,12 +18,10 @@ struct BankCardNumberUtils {
 
         let maxCardNumberLength: Int
 
-        static func info(_ range: CountableClosedRange<Int>, _ cardBrand: BankCardBrand, _ maxCardNumberLength: Int) -> IinRangeInfo {
-            return self.init(
-                range: range,
-                cardBrand: cardBrand,
-                maxCardNumberLength: maxCardNumberLength
-            )
+        fileprivate init(_ range: CountableClosedRange<Int>, _ cardBrand: BankCardBrand, _ maxCardNumberLength: Int) {
+            self.range = range
+            self.cardBrand = cardBrand
+            self.maxCardNumberLength = maxCardNumberLength
         }
 
     }
@@ -218,39 +216,39 @@ struct BankCardNumberUtils {
 
     // TODO: Fill the missing ranges (if they are allocated).
     private static let iinRangesInfo: [IinRangeInfo] = [
-        .info(100000...199999, .uatp,       15),
-//        .info(200000...222099, ., 16),
-        .info(222100...272099, .masterCard, 16),
-//        .info(272100...299999, ., 16),
-        .info(300000...305999, .dinersClub, 14),
-//        .info(306000...308999, ., 16),
-        .info(309000...309999, .dinersClub, 14),
-//        .info(310000...339999, ., 16),
-        .info(340000...349999, .amex,       15),
-//        .info(350000...352799, ., 16),
-        .info(352800...358999, .jcb,        16),
-//        .info(359000...359999, ., 16),
-        .info(360000...369999, .dinersClub, 14),
-        .info(370000...379999, .amex,       15),
-        .info(380000...399999, .dinersClub, 14),
-        .info(400000...499999, .visa,       16),
-        .info(500000...509999, .maestro,    16),
-        .info(510000...559999, .masterCard, 16),
-        .info(560000...599999, .maestro,    16),
-//        .info(600000...601099, ., 16),
-        .info(601100...601199, .discover,   16),
-//        .info(601200...609999, ., 16),
-        .info(610000...619999, .maestro,    16),
-        .info(620000...629999, .unionPay,   16), // 19?
-        .info(630000...639999, .maestro,    16),
-//        .info(640000...643999, ., 16),
-        .info(644000...659999, .discover,   16),
-        .info(660000...699999, .maestro,    16),
-//        .info(700000...799999, ., 16),
-//        .info(800000...879999, ., 16),
-        .info(880000...889999, .unionPay,   16),
-//        .info(890000...899999, ., 16),
-//        .info(900000...999999, ., 16),
+        .init(100000...199999, .uatp,       15),
+//        .init(200000...222099, ., 16),
+        .init(222100...272099, .masterCard, 16),
+//        .init(272100...299999, ., 16),
+        .init(300000...305999, .dinersClub, 14),
+//        .init(306000...308999, ., 16),
+        .init(309000...309999, .dinersClub, 14),
+//        .init(310000...339999, ., 16),
+        .init(340000...349999, .amex,       15),
+//        .init(350000...352799, ., 16),
+        .init(352800...358999, .jcb,        16),
+//        .init(359000...359999, ., 16),
+        .init(360000...369999, .dinersClub, 14),
+        .init(370000...379999, .amex,       15),
+        .init(380000...399999, .dinersClub, 14),
+        .init(400000...499999, .visa,       16),
+        .init(500000...509999, .maestro,    16),
+        .init(510000...559999, .masterCard, 16),
+        .init(560000...599999, .maestro,    16),
+//        .init(600000...601099, ., 16),
+        .init(601100...601199, .discover,   16),
+//        .init(601200...609999, ., 16),
+        .init(610000...619999, .maestro,    16),
+        .init(620000...629999, .unionPay,   16), // 19?
+        .init(630000...639999, .maestro,    16),
+//        .init(640000...643999, ., 16),
+        .init(644000...659999, .discover,   16),
+        .init(660000...699999, .maestro,    16),
+//        .init(700000...799999, ., 16),
+//        .init(800000...879999, ., 16),
+        .init(880000...889999, .unionPay,   16),
+//        .init(890000...899999, ., 16),
+//        .init(900000...999999, ., 16),
     ]
 
     private static let cardNumberWhitespaces = CharacterSet(charactersIn: " ")

@@ -76,6 +76,12 @@ class BankCardNumberTextInputFormatterTests: XCTestCase {
         textInput.expect("3782 822463 1000", "", "")
         textInput.insert("5")
         textInput.expect("3782 822463 10005", "", "")
+    }
+
+    func testThatPressingBackspaceIsFormattedCorrectly() {
+        let textInput = textInputSimulator()
+        textInput.insert("378282246310005")
+        textInput.expect("3782 822463 10005", "", "")
 
         textInput.backspace()
         textInput.expect("3782 822463 1000", "", "")
