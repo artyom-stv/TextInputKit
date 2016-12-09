@@ -1,3 +1,5 @@
 language: objective-c
 osx_image: xcode8.2
 xcode_workspace: TextInputKit.xcworkspace
+script:
+  - export
