@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7CE691CA1DEC0B17003F32D2"
+               BuildableName = "Tests-macOS.xctest"
+               BlueprintName = "Tests-macOS"
+               ReferencedContainer = "container:TextInputKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7C2BD0431DE2C40800A7A6C0"
+            BuildableName = "TextInputKit.framework"
+            BlueprintName = "TextInputKit-macOS"
+            ReferencedContainer = "container:TextInputKit.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
