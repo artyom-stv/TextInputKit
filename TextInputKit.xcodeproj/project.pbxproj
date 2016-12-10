@@ -10,6 +10,15 @@
 		7C0578B81DFC4FC10071DA47 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578B71DFC4FC10071DA47 /* StringUtils.swift */; };
 		7C0578BB1DFC50B00071DA47 /* BankCardNumber+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578B91DFC50B00071DA47 /* BankCardNumber+Equatable.swift */; };
 		7C0578BC1DFC50B00071DA47 /* BankCardNumber+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BA1DFC50B00071DA47 /* BankCardNumber+Hashable.swift */; };
+		7C0578C31DFC52220071DA47 /* BankCardNumberTestDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BD1DFC52150071DA47 /* BankCardNumberTestDataSet.swift */; };
+		7C0578C41DFC52220071DA47 /* BankCardNumberTestDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BD1DFC52150071DA47 /* BankCardNumberTestDataSet.swift */; };
+		7C0578C51DFC52270071DA47 /* BankCardNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BE1DFC52150071DA47 /* BankCardNumberTests.swift */; };
+		7C0578C61DFC52270071DA47 /* BankCardNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BE1DFC52150071DA47 /* BankCardNumberTests.swift */; };
+		7C0578C71DFC522C0071DA47 /* BankCardNumberTextInputSerializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BF1DFC52150071DA47 /* BankCardNumberTextInputSerializerTests.swift */; };
+		7C0578C81DFC522C0071DA47 /* BankCardNumberTextInputSerializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BF1DFC52150071DA47 /* BankCardNumberTextInputSerializerTests.swift */; };
+		7C0578C91DFC52340071DA47 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578B71DFC4FC10071DA47 /* StringUtils.swift */; };
+		7C0578CA1DFC52390071DA47 /* BankCardNumber+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578B91DFC50B00071DA47 /* BankCardNumber+Equatable.swift */; };
+		7C0578CB1DFC523C0071DA47 /* BankCardNumber+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BA1DFC50B00071DA47 /* BankCardNumber+Hashable.swift */; };
 		7CE691511DE81500003F32D2 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6912E1DE81500003F32D2 /* MutableBox.swift */; };
 		7CE691521DE81500003F32D2 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6912E1DE81500003F32D2 /* MutableBox.swift */; };
 		7CE691531DE81500003F32D2 /* Range+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691301DE81500003F32D2 /* Range+TextInputKit.swift */; };
@@ -130,6 +139,9 @@
 		7C0578B71DFC4FC10071DA47 /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		7C0578B91DFC50B00071DA47 /* BankCardNumber+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BankCardNumber+Equatable.swift"; sourceTree = "<group>"; };
 		7C0578BA1DFC50B00071DA47 /* BankCardNumber+Hashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BankCardNumber+Hashable.swift"; sourceTree = "<group>"; };
+		7C0578BD1DFC52150071DA47 /* BankCardNumberTestDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardNumberTestDataSet.swift; sourceTree = "<group>"; };
+		7C0578BE1DFC52150071DA47 /* BankCardNumberTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardNumberTests.swift; sourceTree = "<group>"; };
+		7C0578BF1DFC52150071DA47 /* BankCardNumberTextInputSerializerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardNumberTextInputSerializerTests.swift; sourceTree = "<group>"; };
 		7C2BD0371DE2C3A900A7A6C0 /* TextInputKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TextInputKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2BD0441DE2C40800A7A6C0 /* TextInputKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TextInputKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2BD04C1DE2C44C00A7A6C0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -382,7 +394,10 @@
 		7CE691BB1DEACFF7003F32D2 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				7C0578BD1DFC52150071DA47 /* BankCardNumberTestDataSet.swift */,
+				7C0578BE1DFC52150071DA47 /* BankCardNumberTests.swift */,
 				7CE692201DF44794003F32D2 /* BankCardNumberTextInputFormatterTests.swift */,
+				7C0578BF1DFC52150071DA47 /* BankCardNumberTextInputSerializerTests.swift */,
 				7CE691BE1DEACFF7003F32D2 /* Info.plist */,
 				7CE691C51DEAD08D003F32D2 /* MutableBoxTests.swift */,
 				7CE691E91DEC6BCA003F32D2 /* TextInputFormatterTests.swift */,
@@ -650,6 +665,7 @@
 				7CE691681DE81500003F32D2 /* TextInputFormat+From.swift in Sources */,
 				7CE6915E1DE81500003F32D2 /* TextInputDriver.swift in Sources */,
 				7CE691521DE81500003F32D2 /* MutableBox.swift in Sources */,
+				7C0578CB1DFC523C0071DA47 /* BankCardNumber+Hashable.swift in Sources */,
 				7CE6917A1DE81500003F32D2 /* TextInputFormatterType.swift in Sources */,
 				7CE691AC1DE9E2A3003F32D2 /* TextInputAccessoryFormatterType.swift in Sources */,
 				7CE691B21DEAC38D003F32D2 /* TextInputFormat+TransformValue.swift in Sources */,
@@ -658,9 +674,11 @@
 				7CE692261DF4484E003F32D2 /* BankCardNumberTextInputFormatter.swift in Sources */,
 				7CE691581DE81500003F32D2 /* DriverOfNSTextField.swift in Sources */,
 				7CE691701DE81500003F32D2 /* TextInputFormatter.swift in Sources */,
+				7C0578C91DFC52340071DA47 /* StringUtils.swift in Sources */,
 				7CE691991DE8167B003F32D2 /* BankCardNumberTextInputOptions.swift in Sources */,
 				7CE691AF1DE9EEBC003F32D2 /* TextInputAccessoryFormatter.swift in Sources */,
 				7CE691961DE8165F003F32D2 /* PhoneNumberTextInputOptions.swift in Sources */,
+				7C0578CA1DFC52390071DA47 /* BankCardNumber+Equatable.swift in Sources */,
 				7CE6915A1DE81500003F32D2 /* DriverOfNSTextFieldCell.swift in Sources */,
 				7CE6916E1DE81500003F32D2 /* TextInputFormat.swift in Sources */,
 				7CE6922E1DF44A56003F32D2 /* BankCardBrand.swift in Sources */,
@@ -672,10 +690,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C0578C81DFC522C0071DA47 /* BankCardNumberTextInputSerializerTests.swift in Sources */,
 				7CE692281DF44862003F32D2 /* TextInputSimulator.swift in Sources */,
 				7CE691E81DEC0E37003F32D2 /* MutableBoxTests.swift in Sources */,
 				7CE6922A1DF44868003F32D2 /* BankCardNumberTextInputFormatterTests.swift in Sources */,
+				7C0578C41DFC52220071DA47 /* BankCardNumberTestDataSet.swift in Sources */,
 				7CE691EB1DEC6BCA003F32D2 /* TextInputFormatterTests.swift in Sources */,
+				7C0578C61DFC52270071DA47 /* BankCardNumberTests.swift in Sources */,
 				7CE691F11DEC6F30003F32D2 /* XCTestCase+Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -684,10 +705,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C0578C71DFC522C0071DA47 /* BankCardNumberTextInputSerializerTests.swift in Sources */,
 				7CE692271DF44862003F32D2 /* TextInputSimulator.swift in Sources */,
 				7CE691E61DEC0E37003F32D2 /* MutableBoxTests.swift in Sources */,
 				7CE692291DF44867003F32D2 /* BankCardNumberTextInputFormatterTests.swift in Sources */,
+				7C0578C31DFC52220071DA47 /* BankCardNumberTestDataSet.swift in Sources */,
 				7CE691EA1DEC6BCA003F32D2 /* TextInputFormatterTests.swift in Sources */,
+				7C0578C51DFC52270071DA47 /* BankCardNumberTests.swift in Sources */,
 				7CE691F01DEC6F30003F32D2 /* XCTestCase+Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

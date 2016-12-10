@@ -94,6 +94,10 @@ extension TextInputSimulator {
         select(startIndex..<endIndex)
     }
 
+    func selectAll() {
+        select(text.startIndex..<text.endIndex)
+    }
+
 }
 
 extension TextInputSimulator {

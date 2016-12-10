@@ -9,43 +9,31 @@
 import XCTest
 @testable import TextInputKit
 
-private func textInputSimulator() -> TextInputSimulator {
-    return TextInputSimulator(BankCardNumberTextInputFormatter(.options()))
-}
-
 class BankCardNumberTextInputFormatterTests: XCTestCase {
 
-    func testThatUatpCardIsFormattedCorrectly() {
-        let textInput = textInputSimulator()
+    let textInput = TextInputSimulator(BankCardNumberTextInputFormatter(.options()))
 
+    func testThatUatpCardIsFormattedCorrectly() {
         textInput.insert("122000000000003")
         textInput.expect("1220 00000 000003", "", "")
     }
 
     func testThatAmexCardIsFormattedCorrectly() {
-        let textInput = textInputSimulator()
-
         textInput.insert("378282246310005")
         textInput.expect("3782 822463 10005", "", "")
     }
 
     func testThatVisaCardIsFormattedCorrectly() {
-        let textInput = textInputSimulator()
-
         textInput.insert("4111111111111111")
         textInput.expect("4111 1111 1111 1111", "", "")
     }
 
     func testThatMasterCardCardIsFormattedCorrectly() {
-        let textInput = textInputSimulator()
-
         textInput.insert("5454545454545454")
         textInput.expect("5454 5454 5454 5454", "", "")
     }
 
     func testThatTypingIsFormattedCorrectly() {
-        let textInput = textInputSimulator()
-
         textInput.insert("3")
         textInput.expect("3", "", "")
         textInput.insert("7")
@@ -79,7 +67,6 @@ class BankCardNumberTextInputFormatterTests: XCTestCase {
     }
 
     func testThatPressingBackspaceIsFormattedCorrectly() {
-        let textInput = textInputSimulator()
         textInput.insert("378282246310005")
         textInput.expect("3782 822463 10005", "", "")
 
@@ -117,7 +104,7 @@ class BankCardNumberTextInputFormatterTests: XCTestCase {
 
     func testThatChangesWithSelectionAreFormattedCorrectly() {
         func test(_ actions: (TextInputSimulator) -> ()) {
-            let textInput = textInputSimulator()
+            textInput.selectAll()
             textInput.insert("378282246310005")
             textInput.expect("3782 822463 10005", "", "")
 
@@ -168,8 +155,6 @@ class BankCardNumberTextInputFormatterTests: XCTestCase {
     }
 
     func testThatVisaIsReformattedToAmexAfterInsertingFirstDigit() {
-        let textInput = textInputSimulator()
-
         textInput.insert("41111111111111")
         textInput.expect("4111 1111 1111 11", "", "")
 
