@@ -6,8 +6,6 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
-import Foundation
-
 public struct BankCardNumberTextInputOptions {
 
     public static func options() -> BankCardNumberTextInputOptions {

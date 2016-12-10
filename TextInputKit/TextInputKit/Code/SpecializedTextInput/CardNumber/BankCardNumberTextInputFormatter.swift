@@ -6,8 +6,6 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
-import Foundation
-
 final class BankCardNumberTextInputFormatter : TextInputFormatter {
 
     init(_ options: BankCardNumberTextInputOptions) {
@@ -103,16 +101,18 @@ private extension BankCardNumberTextInputFormatter {
     }
 
     func cardNumberResult(from digitsResult: DigitsValidationResult) -> CardNumberValidationResult {
-        let resultingDigitsStringViewLength = digitsResult.stringView.count
+        // Length of ASCII string is similar in `characters` and in `unicodeScalars`.
+        let resultingDigitsStringLength = digitsResult.stringView.count
+
         let iinRange = Utils.iinRange(
             fromDigitsString: String(digitsResult.stringView),
-            withLength: resultingDigitsStringViewLength)
+            withLength: resultingDigitsStringLength)
         let iinRangeInfo = Utils.info(forIinRange: iinRange)
         let sortedSpacesPositions = Utils.sortedSpacesPositions(for: iinRangeInfo?.cardBrand)
 
         let (cardNumberStringView, cardNumberCursorIndex) = Utils.cardNumberStringViewAndIndex(
             fromDigits: digitsResult.stringView,
-            withLength: resultingDigitsStringViewLength,
+            withLength: resultingDigitsStringLength,
             index: digitsResult.cursorIndex,
             sortedSpacesPositions: sortedSpacesPositions)
 
