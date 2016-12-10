@@ -19,6 +19,8 @@
 		7C0578C91DFC52340071DA47 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578B71DFC4FC10071DA47 /* StringUtils.swift */; };
 		7C0578CA1DFC52390071DA47 /* BankCardNumber+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578B91DFC50B00071DA47 /* BankCardNumber+Equatable.swift */; };
 		7C0578CB1DFC523C0071DA47 /* BankCardNumber+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BA1DFC50B00071DA47 /* BankCardNumber+Hashable.swift */; };
+		7C0578CF1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578CE1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift */; };
+		7C0578D01DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578CE1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift */; };
 		7CE691511DE81500003F32D2 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6912E1DE81500003F32D2 /* MutableBox.swift */; };
 		7CE691521DE81500003F32D2 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6912E1DE81500003F32D2 /* MutableBox.swift */; };
 		7CE691531DE81500003F32D2 /* Range+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691301DE81500003F32D2 /* Range+TextInputKit.swift */; };
@@ -142,6 +144,7 @@
 		7C0578BD1DFC52150071DA47 /* BankCardNumberTestDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardNumberTestDataSet.swift; sourceTree = "<group>"; };
 		7C0578BE1DFC52150071DA47 /* BankCardNumberTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardNumberTests.swift; sourceTree = "<group>"; };
 		7C0578BF1DFC52150071DA47 /* BankCardNumberTextInputSerializerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardNumberTextInputSerializerTests.swift; sourceTree = "<group>"; };
+		7C0578CE1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextInputValidationResult+OptimizeChanges.swift"; sourceTree = "<group>"; };
 		7C2BD0371DE2C3A900A7A6C0 /* TextInputKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TextInputKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2BD0441DE2C40800A7A6C0 /* TextInputKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TextInputKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2BD04C1DE2C44C00A7A6C0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -330,6 +333,7 @@
 				7CE691441DE81500003F32D2 /* TextInputFormatterType+Plain.swift */,
 				7CE691451DE81500003F32D2 /* TextInputFormatterType+Succeed.swift */,
 				7CE692081DF1E85C003F32D2 /* TextInputValidationResult+Equatable.swift */,
+				7C0578CE1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift */,
 			);
 			path = TextInputFormatter;
 			sourceTree = "<group>";
@@ -593,6 +597,7 @@
 				7CE6916B1DE81500003F32D2 /* TextInputFormats+Plain.swift in Sources */,
 				7CE691731DE81500003F32D2 /* TextInputFormatterType+Map.swift in Sources */,
 				7CE691691DE81500003F32D2 /* TextInputFormat+Map.swift in Sources */,
+				7C0578CF1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift in Sources */,
 				7CE691871DE81500003F32D2 /* UITextField+TextInputKit.swift in Sources */,
 				7C0578B81DFC4FC10071DA47 /* StringUtils.swift in Sources */,
 				7CE691A41DE89D5A003F32D2 /* PhoneNumber.swift in Sources */,
@@ -642,6 +647,7 @@
 				7CE6916C1DE81500003F32D2 /* TextInputFormats+Plain.swift in Sources */,
 				7CE691A21DE89695003F32D2 /* TextInputSerializerType+Map.swift in Sources */,
 				7CE691741DE81500003F32D2 /* TextInputFormatterType+Map.swift in Sources */,
+				7C0578D01DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift in Sources */,
 				7CE6919F1DE89178003F32D2 /* BankCardNumber.swift in Sources */,
 				7CE6916A1DE81500003F32D2 /* TextInputFormat+Map.swift in Sources */,
 				7CE691901DE81625003F32D2 /* TextInputFormats+BankCardNumber.swift in Sources */,

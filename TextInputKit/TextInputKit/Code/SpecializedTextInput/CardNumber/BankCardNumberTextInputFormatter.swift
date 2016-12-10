@@ -32,11 +32,15 @@ final class BankCardNumberTextInputFormatter : TextInputFormatter {
         let digitsResult = self.digitsResult(from: digitsInput)
         let result = self.cardNumberResult(from: digitsResult)
 
-        return {
-            let cardNumber = String(result.stringView)
-            let cursorIndex = result.cursorIndex.samePosition(in: cardNumber)!
-            return .changed(cardNumber, selectedRange: cursorIndex..<cursorIndex)
-            }()
+        let resultingString = String(result.stringView)
+        let resultingCursorIndex = result.cursorIndex.samePosition(in: resultingString)!
+
+        return .optimalValidationResult(
+            forEditing: originalString,
+            replacing: replacementString,
+            at: editedRange,
+            resulting: resultingString,
+            withSelection: resultingCursorIndex..<resultingCursorIndex)
     }
 
     private let options: BankCardNumberTextInputOptions
