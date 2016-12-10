@@ -10,30 +10,20 @@ import Foundation
 
 struct BankCardNumberUtils {
 
-    struct IinRangeInfo {
+    private init() {}
 
-        let range: CountableClosedRange<Int>
+}
 
-        let cardBrand: BankCardBrand
-
-        let maxCardNumberLength: Int
-
-        fileprivate init(_ range: CountableClosedRange<Int>, _ cardBrand: BankCardBrand, _ maxCardNumberLength: Int) {
-            self.range = range
-            self.cardBrand = cardBrand
-            self.maxCardNumberLength = maxCardNumberLength
-        }
-
-    }
+extension BankCardNumberUtils {
 
     static func cardNumberDigitsStringView(
         from stringView: String.UnicodeScalarView
         ) -> String.UnicodeScalarView? {
 
-        return self.stringView(
+        return StringUtils.stringView(
             from: stringView,
             preservingCharacters: CharacterSet.decimalDigits,
-            ignoringCharacters: CharacterSet.whitespaces)
+            ignoringCharacters: cardNumberWhitespaces)
     }
 
     static func cardNumberDigitsStringViewAndRange(
@@ -41,88 +31,43 @@ struct BankCardNumberUtils {
         range: Range<String.UnicodeScalarIndex>
         ) -> (String.UnicodeScalarView, Range<String.UnicodeScalarIndex>)? {
 
-        return self.stringViewAndRange(
+        return StringUtils.stringViewAndRange(
             from: stringView,
             range: range,
             preservingCharacters: CharacterSet.decimalDigits,
-            ignoringCharacters: CharacterSet.whitespaces)
+            ignoringCharacters: cardNumberWhitespaces)
     }
 
-    static func stringView(
-        from stringView: String.UnicodeScalarView,
-        preservingCharacters: CharacterSet,
-        ignoringCharacters: CharacterSet
-        ) -> String.UnicodeScalarView? {
+    private static let cardNumberWhitespaces = CharacterSet(charactersIn: " ")
 
-        do {
-            var resultStringView = "".unicodeScalars
-            try scan(stringView,
-                preservingCharacters: preservingCharacters,
-                ignoringCharacters: ignoringCharacters,
-                appending: &resultStringView)
+}
 
-            return resultStringView
-        }
-        catch {
-            return nil
-        }
-    }
+extension BankCardNumberUtils {
 
-    static func stringViewAndRange(
-        from originalStringView: String.UnicodeScalarView,
-        range originalRange: Range<String.UnicodeScalarIndex>,
-        preservingCharacters: CharacterSet,
-        ignoringCharacters: CharacterSet
-        ) -> (String.UnicodeScalarView, Range<String.UnicodeScalarIndex>)? {
+    static func cardNumberStringView(
+        fromDigits digitsStringView: String.UnicodeScalarView,
+        withLength digitsStringViewLength: Int,
+        sortedSpacesPositions: [Int]) -> String.UnicodeScalarView {
 
-        precondition((originalRange.lowerBound == originalStringView.endIndex) || originalStringView.indices.contains(originalRange.lowerBound))
-        precondition((originalRange.upperBound == originalStringView.endIndex) || originalStringView.indices.contains(originalRange.upperBound))
+        precondition(String(digitsStringView).rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil)
+        precondition(digitsStringView.count == digitsStringViewLength)
+        precondition(sortedSpacesPositions.sorted() == sortedSpacesPositions)
 
-        var resultStringView = "".unicodeScalars
+        var cardNumberStringView = "".unicodeScalars
+        cardNumberStringView.reserveCapacity(digitsStringViewLength + sortedSpacesPositions.count)
 
-        do {
-            if originalRange.lowerBound != originalStringView.startIndex {
-                let leftSubstringView = (originalRange.lowerBound == originalStringView.endIndex)
-                    ? originalStringView
-                    : originalStringView.prefix(upTo: originalRange.lowerBound)
-                try scan(
-                    leftSubstringView,
-                    preservingCharacters: preservingCharacters,
-                    ignoringCharacters: ignoringCharacters,
-                    appending: &resultStringView)
+        var spacesPositionsIterator = sortedSpacesPositions.makeIterator()
+        var nextSpacePosition = spacesPositionsIterator.next()
+        for (position, character) in digitsStringView.enumerated() {
+            if let spacePosition = nextSpacePosition, spacePosition == position {
+                cardNumberStringView.append(UnicodeScalar(" "))
+                nextSpacePosition = spacesPositionsIterator.next()
             }
 
-            let resultRangeLowerBound = resultStringView.endIndex
-
-            if !originalRange.isEmpty {
-                let middleSubstringView = (originalRange.lowerBound == originalStringView.startIndex) && (originalRange.upperBound == originalStringView.endIndex)
-                    ? originalStringView
-                    : originalStringView[originalRange]
-                try scan(
-                    middleSubstringView,
-                    preservingCharacters: preservingCharacters,
-                    ignoringCharacters: ignoringCharacters,
-                    appending: &resultStringView)
-            }
-
-            let resultRangeUpperBound = resultStringView.endIndex
-
-            if originalRange.upperBound != originalStringView.endIndex {
-                let rightSubstringView = (originalRange.upperBound == originalStringView.startIndex)
-                    ? originalStringView
-                    : originalStringView.suffix(from: originalRange.upperBound)
-                try scan(
-                    rightSubstringView,
-                    preservingCharacters: preservingCharacters,
-                    ignoringCharacters: ignoringCharacters,
-                    appending: &resultStringView)
-            }
-
-            return (resultStringView, resultRangeLowerBound..<resultRangeUpperBound)
+            cardNumberStringView.append(character)
         }
-        catch {
-            return nil
-        }
+
+        return cardNumberStringView
     }
 
     static func cardNumberStringViewAndIndex(
@@ -161,8 +106,28 @@ struct BankCardNumberUtils {
         if digitsStringViewIndex == digitsStringView.endIndex {
             resultingIndex = cardNumberStringView.endIndex
         }
-
+        
         return (cardNumberStringView, resultingIndex)
+    }
+
+}
+
+extension BankCardNumberUtils {
+
+    struct IinRangeInfo {
+
+        let range: CountableClosedRange<Int>
+
+        let cardBrand: BankCardBrand
+
+        let maxCardNumberLength: Int
+
+        fileprivate init(_ range: CountableClosedRange<Int>, _ cardBrand: BankCardBrand, _ maxCardNumberLength: Int) {
+            self.range = range
+            self.cardBrand = cardBrand
+            self.maxCardNumberLength = maxCardNumberLength
+        }
+        
     }
 
     static func iinRange(
@@ -198,19 +163,6 @@ struct BankCardNumberUtils {
             return nil
         }
         return iinRangesInfo[index]
-    }
-
-    static func sortedSpacesPositions(for cardBrand: BankCardBrand?) -> [Int] {
-        switch cardBrand {
-        case .some(.uatp):
-            return [4, 9]
-
-        case .some(.amex):
-            return [4, 10]
-
-        default:
-            return [4, 8, 12]
-        }
     }
 
     private static let iinLength = 6
@@ -252,30 +204,20 @@ struct BankCardNumberUtils {
 //        .init(900000...999999, ., 16),
     ]
 
-    private static let cardNumberWhitespaces = CharacterSet(charactersIn: " ")
+}
 
-    private init() {}
+extension BankCardNumberUtils {
 
-    private enum ScanError : Error {
+    static func sortedSpacesPositions(for cardBrand: BankCardBrand?) -> [Int] {
+        switch cardBrand {
+        case .some(.uatp):
+            return [4, 9]
 
-        case unexpectedCharacter
+        case .some(.amex):
+            return [4, 10]
 
-    }
-
-    private static func scan(
-        _ stringView: String.UnicodeScalarView,
-        preservingCharacters: CharacterSet,
-        ignoringCharacters: CharacterSet,
-        appending resultStringView: inout String.UnicodeScalarView) throws {
-
-        let scanner = Scanner(string: String(stringView))
-        scanner.charactersToBeSkipped = ignoringCharacters
-        while !scanner.isAtEnd {
-            var partialNSString: NSString?
-            if !scanner.scanCharacters(from: preservingCharacters, into: &partialNSString) {
-                throw ScanError.unexpectedCharacter
-            }
-            resultStringView.append(contentsOf: (partialNSString! as String).unicodeScalars)
+        default:
+            return [4, 8, 12]
         }
     }
 

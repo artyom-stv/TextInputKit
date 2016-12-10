@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C0578B81DFC4FC10071DA47 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578B71DFC4FC10071DA47 /* StringUtils.swift */; };
 		7CE691511DE81500003F32D2 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6912E1DE81500003F32D2 /* MutableBox.swift */; };
 		7CE691521DE81500003F32D2 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6912E1DE81500003F32D2 /* MutableBox.swift */; };
 		7CE691531DE81500003F32D2 /* Range+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691301DE81500003F32D2 /* Range+TextInputKit.swift */; };
@@ -124,6 +125,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C0578B71DFC4FC10071DA47 /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		7C2BD0371DE2C3A900A7A6C0 /* TextInputKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TextInputKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2BD0441DE2C40800A7A6C0 /* TextInputKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TextInputKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2BD04C1DE2C44C00A7A6C0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 		7CE6918B1DE815FD003F32D2 /* SpecializedTextInput */ = {
 			isa = PBXGroup;
 			children = (
+				7C0578B71DFC4FC10071DA47 /* StringUtils.swift */,
 				7CE6918C1DE815FD003F32D2 /* CardNumber */,
 				7CE6918D1DE815FD003F32D2 /* PhoneNumber */,
 			);
@@ -569,6 +572,7 @@
 				7CE691731DE81500003F32D2 /* TextInputFormatterType+Map.swift in Sources */,
 				7CE691691DE81500003F32D2 /* TextInputFormat+Map.swift in Sources */,
 				7CE691871DE81500003F32D2 /* UITextField+TextInputKit.swift in Sources */,
+				7C0578B81DFC4FC10071DA47 /* StringUtils.swift in Sources */,
 				7CE691A41DE89D5A003F32D2 /* PhoneNumber.swift in Sources */,
 				7CE691751DE81500003F32D2 /* TextInputFormatterType+Plain.swift in Sources */,
 				7CE691771DE81500003F32D2 /* TextInputFormatterType+Succeed.swift in Sources */,
