@@ -45,7 +45,10 @@ private final class Succeed : TextInputFormatter {
         case .accepted:
             let editedString = originalString.replacingCharacters(in: editedRange, with: replacementString)
             let resultingSelectedRange: Range<String.Index> = {
-                let index = editedString.index(editedRange.lowerBound, offsetBy: replacementString.characters.count)
+                var index = (editedRange.lowerBound == originalString.startIndex)
+                    ? editedString.startIndex
+                    : editedString.index(after: originalString.index(before: editedRange.lowerBound))
+                index = editedString.index(index, offsetBy: replacementString.characters.count)
                 return index..<index
             }()
 

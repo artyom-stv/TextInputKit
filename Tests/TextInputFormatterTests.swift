@@ -143,10 +143,7 @@ extension TextInputFormatterTests {
             let originalSelectedRange = originalString.startIndex..<originalString.endIndex
 
             let editedString = originalString.replacingCharacters(in: editedRange, with: replacementString)
-            let resultingSelectedRange: Range<String.Index> = {
-                let index = editedString.index(editedRange.lowerBound, offsetBy: replacementString.characters.count)
-                return index..<index
-            }()
+            let resultingSelectedRange = editedString.endIndex..<editedString.endIndex
 
             expectedMapString = editedString
             expectedMapSelectedRange = resultingSelectedRange
