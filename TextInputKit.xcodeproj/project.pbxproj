@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7C0578B81DFC4FC10071DA47 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578B71DFC4FC10071DA47 /* StringUtils.swift */; };
+		7C0578BB1DFC50B00071DA47 /* BankCardNumber+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578B91DFC50B00071DA47 /* BankCardNumber+Equatable.swift */; };
+		7C0578BC1DFC50B00071DA47 /* BankCardNumber+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BA1DFC50B00071DA47 /* BankCardNumber+Hashable.swift */; };
 		7CE691511DE81500003F32D2 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6912E1DE81500003F32D2 /* MutableBox.swift */; };
 		7CE691521DE81500003F32D2 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6912E1DE81500003F32D2 /* MutableBox.swift */; };
 		7CE691531DE81500003F32D2 /* Range+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691301DE81500003F32D2 /* Range+TextInputKit.swift */; };
@@ -126,6 +128,8 @@
 
 /* Begin PBXFileReference section */
 		7C0578B71DFC4FC10071DA47 /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
+		7C0578B91DFC50B00071DA47 /* BankCardNumber+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BankCardNumber+Equatable.swift"; sourceTree = "<group>"; };
+		7C0578BA1DFC50B00071DA47 /* BankCardNumber+Hashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BankCardNumber+Hashable.swift"; sourceTree = "<group>"; };
 		7C2BD0371DE2C3A900A7A6C0 /* TextInputKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TextInputKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2BD0441DE2C40800A7A6C0 /* TextInputKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TextInputKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2BD04C1DE2C44C00A7A6C0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -354,6 +358,8 @@
 			children = (
 				7CE6922B1DF44A56003F32D2 /* BankCardBrand.swift */,
 				7CE6919D1DE89178003F32D2 /* BankCardNumber.swift */,
+				7C0578B91DFC50B00071DA47 /* BankCardNumber+Equatable.swift */,
+				7C0578BA1DFC50B00071DA47 /* BankCardNumber+Hashable.swift */,
 				7CE692241DF4484E003F32D2 /* BankCardNumberTextInputFormatter.swift */,
 				7CE691971DE8167B003F32D2 /* BankCardNumberTextInputOptions.swift */,
 				7CE6922C1DF44A56003F32D2 /* BankCardNumberUtils.swift */,
@@ -564,6 +570,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C0578BC1DFC50B00071DA47 /* BankCardNumber+Hashable.swift in Sources */,
 				7CE691921DE8162F003F32D2 /* TextInputFormats+PhoneNumber.swift in Sources */,
 				7CE692351DF44A62003F32D2 /* String+TextInputKit.swift in Sources */,
 				7CE691951DE8165F003F32D2 /* PhoneNumberTextInputOptions.swift in Sources */,
@@ -591,6 +598,7 @@
 				7CE691711DE81500003F32D2 /* TextInputFormatterType+Filter.swift in Sources */,
 				7CE691B41DEAC595003F32D2 /* PhoneNumberTextInputFormatter.swift in Sources */,
 				7CE691981DE8167B003F32D2 /* BankCardNumberTextInputOptions.swift in Sources */,
+				7C0578BB1DFC50B00071DA47 /* BankCardNumber+Equatable.swift in Sources */,
 				7CE691611DE81500003F32D2 /* TextInputFormat+Bind.swift in Sources */,
 				7CE691811DE81500003F32D2 /* TextInputSerializerType+Formatter.swift in Sources */,
 				7CE6915B1DE81500003F32D2 /* DriverOfUITextField.swift in Sources */,

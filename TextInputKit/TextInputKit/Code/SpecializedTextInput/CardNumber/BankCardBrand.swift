@@ -6,9 +6,7 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
-import Foundation
-
-enum BankCardBrand : Int {
+public enum BankCardBrand : Int {
 
     case uatp
 
