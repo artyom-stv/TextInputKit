@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7C0578B81DFC4FC10071DA47 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578B71DFC4FC10071DA47 /* StringUtils.swift */; };
-		7C0578BB1DFC50B00071DA47 /* BankCardNumber+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578B91DFC50B00071DA47 /* BankCardNumber+Equatable.swift */; };
 		7C0578BC1DFC50B00071DA47 /* BankCardNumber+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BA1DFC50B00071DA47 /* BankCardNumber+Hashable.swift */; };
 		7C0578C31DFC52220071DA47 /* BankCardNumberTestDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BD1DFC52150071DA47 /* BankCardNumberTestDataSet.swift */; };
 		7C0578C41DFC52220071DA47 /* BankCardNumberTestDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BD1DFC52150071DA47 /* BankCardNumberTestDataSet.swift */; };
@@ -17,7 +16,6 @@
 		7C0578C71DFC522C0071DA47 /* BankCardNumberTextInputSerializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BF1DFC52150071DA47 /* BankCardNumberTextInputSerializerTests.swift */; };
 		7C0578C81DFC522C0071DA47 /* BankCardNumberTextInputSerializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BF1DFC52150071DA47 /* BankCardNumberTextInputSerializerTests.swift */; };
 		7C0578C91DFC52340071DA47 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578B71DFC4FC10071DA47 /* StringUtils.swift */; };
-		7C0578CA1DFC52390071DA47 /* BankCardNumber+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578B91DFC50B00071DA47 /* BankCardNumber+Equatable.swift */; };
 		7C0578CB1DFC523C0071DA47 /* BankCardNumber+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BA1DFC50B00071DA47 /* BankCardNumber+Hashable.swift */; };
 		7C0578CF1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578CE1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift */; };
 		7C0578D01DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578CE1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift */; };
@@ -139,7 +137,6 @@
 
 /* Begin PBXFileReference section */
 		7C0578B71DFC4FC10071DA47 /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
-		7C0578B91DFC50B00071DA47 /* BankCardNumber+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BankCardNumber+Equatable.swift"; sourceTree = "<group>"; };
 		7C0578BA1DFC50B00071DA47 /* BankCardNumber+Hashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BankCardNumber+Hashable.swift"; sourceTree = "<group>"; };
 		7C0578BD1DFC52150071DA47 /* BankCardNumberTestDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardNumberTestDataSet.swift; sourceTree = "<group>"; };
 		7C0578BE1DFC52150071DA47 /* BankCardNumberTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardNumberTests.swift; sourceTree = "<group>"; };
@@ -374,7 +371,6 @@
 			children = (
 				7CE6922B1DF44A56003F32D2 /* BankCardBrand.swift */,
 				7CE6919D1DE89178003F32D2 /* BankCardNumber.swift */,
-				7C0578B91DFC50B00071DA47 /* BankCardNumber+Equatable.swift */,
 				7C0578BA1DFC50B00071DA47 /* BankCardNumber+Hashable.swift */,
 				7CE692241DF4484E003F32D2 /* BankCardNumberTextInputFormatter.swift */,
 				7CE691971DE8167B003F32D2 /* BankCardNumberTextInputOptions.swift */,
@@ -618,7 +614,6 @@
 				7CE691711DE81500003F32D2 /* TextInputFormatterType+Filter.swift in Sources */,
 				7CE691B41DEAC595003F32D2 /* PhoneNumberTextInputFormatter.swift in Sources */,
 				7CE691981DE8167B003F32D2 /* BankCardNumberTextInputOptions.swift in Sources */,
-				7C0578BB1DFC50B00071DA47 /* BankCardNumber+Equatable.swift in Sources */,
 				7CE691611DE81500003F32D2 /* TextInputFormat+Bind.swift in Sources */,
 				7CE691811DE81500003F32D2 /* TextInputSerializerType+Formatter.swift in Sources */,
 				7CE6915B1DE81500003F32D2 /* DriverOfUITextField.swift in Sources */,
@@ -684,7 +679,6 @@
 				7CE691991DE8167B003F32D2 /* BankCardNumberTextInputOptions.swift in Sources */,
 				7CE691AF1DE9EEBC003F32D2 /* TextInputAccessoryFormatter.swift in Sources */,
 				7CE691961DE8165F003F32D2 /* PhoneNumberTextInputOptions.swift in Sources */,
-				7C0578CA1DFC52390071DA47 /* BankCardNumber+Equatable.swift in Sources */,
 				7CE6915A1DE81500003F32D2 /* DriverOfNSTextFieldCell.swift in Sources */,
 				7CE6916E1DE81500003F32D2 /* TextInputFormat.swift in Sources */,
 				7CE6922E1DF44A56003F32D2 /* BankCardBrand.swift in Sources */,
