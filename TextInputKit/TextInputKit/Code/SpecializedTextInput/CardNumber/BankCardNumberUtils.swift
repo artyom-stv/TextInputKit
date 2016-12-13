@@ -51,6 +51,8 @@ extension BankCardNumberUtils {
         withLength digitsStringViewLength: Int,
         sortedSpacesPositions: [Int]) -> String.UnicodeScalarView {
 
+        // TODO: Optimize implementation.
+
         precondition(String(digitsStringView).rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil)
         precondition(digitsStringView.count == digitsStringViewLength)
         precondition(sortedSpacesPositions.sorted() == sortedSpacesPositions)
@@ -132,6 +134,17 @@ extension BankCardNumberUtils {
         
     }
 
+    /// Determines a range of IINs which may correspond to a partial of full bank card number.
+    ///
+    /// - Parameters:
+    ///   - digitsString: A string of digits representing a bank card number.
+    ///   - digitsStringLength: Length of `digitsString`. Passed here for an optimization purpose (not to recalculate the length several times).
+    /// - Returns:
+    ///   Range of IINs which may correspond to a partial of full bank card number represented by a string of digits.
+    ///   In a special case when `digitsStringLength` is greater or equal to 6, the returned range contains only one IIN.
+    ///
+    /// - SeeAlso:
+    ///   [Issuer identification number (IIN)](https://en.wikipedia.org/wiki/Payment_card_number#Issuer_identification_number_.28IIN.29)
     static func iinRange(
         fromDigitsString digitsString: String,
         withLength digitsStringLength: Int) -> Range<Int> {
@@ -169,8 +182,8 @@ extension BankCardNumberUtils {
 
     private static let iinLength = 6
 
-    // TODO: Fill the missing ranges (if they are allocated).
     private static let iinRangesInfo: [IinRangeInfo] = [
+        // TODO: Fill the missing ranges (if they are allocated).
         .init(100000...199999, .uatp,       15),
 //        .init(200000...222099, ., 16),
         .init(222100...272099, .masterCard, 16),
