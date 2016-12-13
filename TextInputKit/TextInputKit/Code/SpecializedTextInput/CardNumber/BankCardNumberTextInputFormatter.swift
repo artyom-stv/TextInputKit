@@ -24,23 +24,26 @@ final class BankCardNumberTextInputFormatter : TextInputFormatter {
             replacementStringView: replacementString.unicodeScalars,
             editedRange: editedRange.sameRange(in: originalString.unicodeScalars))
 
-        guard let digitsInput = self.digitsInput(from: originalInput) else {
-            // `replacementString` has invalid characters.
+        do {
+            let digitsInput = try self.digitsInput(from: originalInput)
+
+            let digitsResult = self.digitsResult(from: digitsInput)
+
+            let result = try self.cardNumberResult(from: digitsResult)
+
+            let resultingString = String(result.stringView)
+            let resultingCursorIndex = result.cursorIndex.samePosition(in: resultingString)!
+
+            return .optimalValidationResult(
+                forEditing: originalString,
+                replacing: replacementString,
+                at: editedRange,
+                resulting: resultingString,
+                withSelection: resultingCursorIndex..<resultingCursorIndex)
+        }
+        catch {
             return .rejected
         }
-
-        let digitsResult = self.digitsResult(from: digitsInput)
-        let result = self.cardNumberResult(from: digitsResult)
-
-        let resultingString = String(result.stringView)
-        let resultingCursorIndex = result.cursorIndex.samePosition(in: resultingString)!
-
-        return .optimalValidationResult(
-            forEditing: originalString,
-            replacing: replacementString,
-            at: editedRange,
-            resulting: resultingString,
-            withSelection: resultingCursorIndex..<resultingCursorIndex)
     }
 
     private let options: BankCardNumberTextInputOptions
@@ -48,6 +51,14 @@ final class BankCardNumberTextInputFormatter : TextInputFormatter {
 }
 
 private extension BankCardNumberTextInputFormatter {
+
+    enum ValidationError : Error {
+
+        case invalidCharactersInReplacementString
+
+        case maxLengthExceeded
+
+    }
 
     struct OriginalValidationInput {
         let stringView: String.UnicodeScalarView
@@ -72,15 +83,14 @@ private extension BankCardNumberTextInputFormatter {
         let cursorIndex: String.UnicodeScalarIndex
     }
 
-    func digitsInput(from originalInput: OriginalValidationInput) -> DigitsValidationInput? {
+    func digitsInput(from originalInput: OriginalValidationInput) throws -> DigitsValidationInput {
         guard let (digitsStringView, digitsEditedRange) = Utils.cardNumberDigitsStringViewAndRange(from: originalInput.stringView, range: originalInput.editedRange)
             else {
                 fatalError("Invalid characters in a string provided to the bank card number formatter. Possible reason: text was modified directly in the text field binded to the bank card number formatter.")
         }
 
         guard let digitsReplacementStringView = Utils.cardNumberDigitsStringView(from: originalInput.replacementStringView) else {
-            // `originalInput.replacementStringView` has invalid characters.
-            return nil
+            throw ValidationError.invalidCharactersInReplacementString
         }
 
         let adjustedDigitsEditedRange = self.adjustedDigitsEditedRange(
@@ -104,9 +114,13 @@ private extension BankCardNumberTextInputFormatter {
             cursorIndex: editedRangeInResultingDigitsStringView.upperBound)
     }
 
-    func cardNumberResult(from digitsResult: DigitsValidationResult) -> CardNumberValidationResult {
+    func cardNumberResult(from digitsResult: DigitsValidationResult) throws -> CardNumberValidationResult {
         // Length of ASCII string is similar in `characters` and in `unicodeScalars`.
         let resultingDigitsStringLength = digitsResult.stringView.count
+
+        if resultingDigitsStringLength > Utils.maxCardNumberDigitsStringLength {
+            throw ValidationError.maxLengthExceeded
+        }
 
         let iinRange = Utils.iinRange(
             fromDigitsString: String(digitsResult.stringView),
@@ -134,22 +148,28 @@ private extension BankCardNumberTextInputFormatter {
         digitsEditedRange: Range<String.UnicodeScalarIndex>
         ) -> Range<String.UnicodeScalarIndex> {
 
-        if originalInput.selectedRange.isEmpty && !originalInput.editedRange.isEmpty {
-            // User pressed 'backspace' or 'delete' key with empty selection.
+        let wasPressedBackspaceOrDeleteWithEmptySelection = originalInput.selectedRange.isEmpty && !originalInput.editedRange.isEmpty
+        if wasPressedBackspaceOrDeleteWithEmptySelection {
             precondition(originalInput.stringView.distance(from: originalInput.editedRange.lowerBound, to: originalInput.editedRange.upperBound) == 1,
                          "Edited range can be non-empty while selected range is empty only when user presses 'backspace' or 'delete' key.")
 
-            if originalInput.stringView[originalInput.editedRange.lowerBound] == " " {
-                // User pressed 1) 'backspace' key after 'space' character; or 2) 'delete' key before 'space' character.
-                if originalInput.selectedRange.lowerBound == originalInput.editedRange.upperBound {
+            let isDeletingSpaceCharacter = digitsEditedRange.isEmpty
+            if isDeletingSpaceCharacter {
+                precondition(originalInput.stringView[originalInput.editedRange.lowerBound] == " ",
+                             "When user pressed 'Backspace' or 'Delete', edited range in digits string can be empty only if edited character in original string is a 'Space' character.")
+
+                let wasPressedBackspace = originalInput.selectedRange.lowerBound == originalInput.editedRange.upperBound
+                if wasPressedBackspace {
                     // Backspace
-                    if digitsEditedRange.lowerBound != digitsStringView.startIndex {
+                    let canExpandEditedRange = digitsEditedRange.lowerBound != digitsStringView.startIndex
+                    if canExpandEditedRange {
                         return digitsStringView.index(before: digitsEditedRange.lowerBound) ..< digitsEditedRange.upperBound
                     }
                 }
                 else {
                     // Delete
-                    if digitsEditedRange.upperBound != digitsStringView.endIndex {
+                    let canExpandEditedRange = digitsEditedRange.upperBound != digitsStringView.endIndex
+                    if canExpandEditedRange {
                         return digitsEditedRange.lowerBound ..< digitsStringView.index(after: digitsEditedRange.upperBound)
                     }
                 }

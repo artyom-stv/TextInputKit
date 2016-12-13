@@ -10,6 +10,8 @@ import Foundation
 
 struct BankCardNumberUtils {
 
+    static let maxCardNumberDigitsStringLength = 19
+
     private init() {}
 
 }
