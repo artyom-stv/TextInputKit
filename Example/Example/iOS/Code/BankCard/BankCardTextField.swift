@@ -1,0 +1,61 @@
+//
+//  BankCardTextField.swift
+//  Example
+//
+//  Created by Artem Starosvetskiy on 15/12/2016.
+//  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
+//
+
+import UIKit
+
+final class BankCardTextField : UITextField {
+
+    // MARK: - Override NSObject
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        layer.borderColor = type(of: self).borderColor.cgColor
+        layer.cornerRadius = type(of: self).cornerRadius
+    }
+
+    // MARK: - Override UIView
+
+    override func willMove(toWindow newWindow: UIWindow?) {
+        super.willMove(toWindow: newWindow)
+
+        if let window = newWindow {
+            layer.borderWidth = type(of: self).borderWidth / window.screen.scale
+        }
+    }
+
+    override var intrinsicContentSize: CGSize {
+        var size = super.intrinsicContentSize
+        size.width += type(of: self).inset.width
+        size.height += type(of: self).inset.height
+        return size
+    }
+
+    // MARK: - Override UITextField
+
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.insetBy(
+            dx: type(of: self).inset.width,
+            dy: type(of: self).inset.height)
+    }
+
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.insetBy(
+            dx: type(of: self).inset.width,
+            dy: type(of: self).inset.height)
+    }
+
+    // MARK: - Constants
+
+    private static let borderWidth: CGFloat = 1.0
+    private static let borderColor = UIColor(white: CGFloat(0.0), alpha: CGFloat(0.2))
+    private static let cornerRadius: CGFloat = 3.0
+
+    private static let inset: CGSize = CGSize(width: CGFloat(8.0), height: CGFloat(3.0))
+    
+}
