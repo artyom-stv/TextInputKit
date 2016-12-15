@@ -27,18 +27,6 @@
 		7C3FE44E1E032E9C0094CE4D /* BankCardHolderNameUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4471E032E9C0094CE4D /* BankCardHolderNameUtils.swift */; };
 		7C3FE44F1E032E9C0094CE4D /* TextInputFormats+BankCardHolderName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4481E032E9C0094CE4D /* TextInputFormats+BankCardHolderName.swift */; };
 		7C3FE4501E032E9C0094CE4D /* TextInputFormats+BankCardHolderName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4481E032E9C0094CE4D /* TextInputFormats+BankCardHolderName.swift */; };
-		7C3FE4581E0331410094CE4D /* BankCardExpiryDateTextInputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4521E0331410094CE4D /* BankCardExpiryDateTextInputError.swift */; };
-		7C3FE4591E0331410094CE4D /* BankCardExpiryDateTextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4531E0331410094CE4D /* BankCardExpiryDateTextInputFormatter.swift */; };
-		7C3FE45A1E0331410094CE4D /* BankCardExpiryDateTextInputOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4541E0331410094CE4D /* BankCardExpiryDateTextInputOptions.swift */; };
-		7C3FE45B1E0331410094CE4D /* BankCardExpiryDateTextInputSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4551E0331410094CE4D /* BankCardExpiryDateTextInputSerializer.swift */; };
-		7C3FE45C1E0331410094CE4D /* BankCardExpiryDateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4561E0331410094CE4D /* BankCardExpiryDateUtils.swift */; };
-		7C3FE45D1E0331410094CE4D /* TextInputFormats+BankCardExpiryDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4571E0331410094CE4D /* TextInputFormats+BankCardExpiryDate.swift */; };
-		7C3FE45E1E0331990094CE4D /* BankCardExpiryDateTextInputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4521E0331410094CE4D /* BankCardExpiryDateTextInputError.swift */; };
-		7C3FE45F1E0331990094CE4D /* BankCardExpiryDateTextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4531E0331410094CE4D /* BankCardExpiryDateTextInputFormatter.swift */; };
-		7C3FE4601E0331990094CE4D /* BankCardExpiryDateTextInputOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4541E0331410094CE4D /* BankCardExpiryDateTextInputOptions.swift */; };
-		7C3FE4611E0331990094CE4D /* BankCardExpiryDateTextInputSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4551E0331410094CE4D /* BankCardExpiryDateTextInputSerializer.swift */; };
-		7C3FE4621E0331990094CE4D /* BankCardExpiryDateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4561E0331410094CE4D /* BankCardExpiryDateUtils.swift */; };
-		7C3FE4631E0331990094CE4D /* TextInputFormats+BankCardExpiryDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4571E0331410094CE4D /* TextInputFormats+BankCardExpiryDate.swift */; };
 		7CE691511DE81500003F32D2 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6912E1DE81500003F32D2 /* MutableBox.swift */; };
 		7CE691521DE81500003F32D2 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6912E1DE81500003F32D2 /* MutableBox.swift */; };
 		7CE691531DE81500003F32D2 /* Range+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691301DE81500003F32D2 /* Range+TextInputKit.swift */; };
@@ -169,12 +157,6 @@
 		7C3FE4461E032E9C0094CE4D /* BankCardHolderNameTextInputOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardHolderNameTextInputOptions.swift; sourceTree = "<group>"; };
 		7C3FE4471E032E9C0094CE4D /* BankCardHolderNameUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardHolderNameUtils.swift; sourceTree = "<group>"; };
 		7C3FE4481E032E9C0094CE4D /* TextInputFormats+BankCardHolderName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextInputFormats+BankCardHolderName.swift"; sourceTree = "<group>"; };
-		7C3FE4521E0331410094CE4D /* BankCardExpiryDateTextInputError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardExpiryDateTextInputError.swift; sourceTree = "<group>"; };
-		7C3FE4531E0331410094CE4D /* BankCardExpiryDateTextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardExpiryDateTextInputFormatter.swift; sourceTree = "<group>"; };
-		7C3FE4541E0331410094CE4D /* BankCardExpiryDateTextInputOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardExpiryDateTextInputOptions.swift; sourceTree = "<group>"; };
-		7C3FE4551E0331410094CE4D /* BankCardExpiryDateTextInputSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardExpiryDateTextInputSerializer.swift; sourceTree = "<group>"; };
-		7C3FE4561E0331410094CE4D /* BankCardExpiryDateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardExpiryDateUtils.swift; sourceTree = "<group>"; };
-		7C3FE4571E0331410094CE4D /* TextInputFormats+BankCardExpiryDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextInputFormats+BankCardExpiryDate.swift"; sourceTree = "<group>"; };
 		7CE6912E1DE81500003F32D2 /* MutableBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutableBox.swift; sourceTree = "<group>"; };
 		7CE691301DE81500003F32D2 /* Range+TextInputKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Range+TextInputKit.swift"; sourceTree = "<group>"; };
 		7CE691331DE81500003F32D2 /* DriverOfNSTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverOfNSTextField.swift; sourceTree = "<group>"; };
@@ -289,17 +271,6 @@
 				7C3FE4481E032E9C0094CE4D /* TextInputFormats+BankCardHolderName.swift */,
 			);
 			path = BankCardHolderName;
-		7C3FE4511E0331410094CE4D /* BankCardExpiryDate */ = {
-			isa = PBXGroup;
-			children = (
-				7C3FE4521E0331410094CE4D /* BankCardExpiryDateTextInputError.swift */,
-				7C3FE4531E0331410094CE4D /* BankCardExpiryDateTextInputFormatter.swift */,
-				7C3FE4541E0331410094CE4D /* BankCardExpiryDateTextInputOptions.swift */,
-				7C3FE4551E0331410094CE4D /* BankCardExpiryDateTextInputSerializer.swift */,
-				7C3FE4561E0331410094CE4D /* BankCardExpiryDateUtils.swift */,
-				7C3FE4571E0331410094CE4D /* TextInputFormats+BankCardExpiryDate.swift */,
-			);
-			path = BankCardExpiryDate;
 			sourceTree = "<group>";
 		};
 		7C7AEB461DDFD128004861BD = {
@@ -413,7 +384,6 @@
 			children = (
 				7C0578B71DFC4FC10071DA47 /* StringUtils.swift */,
 				7C3FE4441E032E9C0094CE4D /* BankCardHolderName */,
-				7C3FE4511E0331410094CE4D /* BankCardExpiryDate */,
 				7CE6918C1DE815FD003F32D2 /* CardNumber */,
 				7CE6918D1DE815FD003F32D2 /* PhoneNumber */,
 			);
@@ -642,13 +612,11 @@
 				7C0578BC1DFC50B00071DA47 /* BankCardNumber+Hashable.swift in Sources */,
 				7CE691921DE8162F003F32D2 /* TextInputFormats+PhoneNumber.swift in Sources */,
 				7CE692351DF44A62003F32D2 /* String+TextInputKit.swift in Sources */,
-				7C3FE4591E0331410094CE4D /* BankCardExpiryDateTextInputFormatter.swift in Sources */,
 				7CE691951DE8165F003F32D2 /* PhoneNumberTextInputOptions.swift in Sources */,
 				7CE691651DE81500003F32D2 /* TextInputFormat+Formatter.swift in Sources */,
 				7CE6916B1DE81500003F32D2 /* TextInputFormats+Plain.swift in Sources */,
 				7CE691731DE81500003F32D2 /* TextInputFormatterType+Map.swift in Sources */,
 				7CE691691DE81500003F32D2 /* TextInputFormat+Map.swift in Sources */,
-				7C3FE45C1E0331410094CE4D /* BankCardExpiryDateUtils.swift in Sources */,
 				7C0578CF1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift in Sources */,
 				7C3FE44B1E032E9C0094CE4D /* BankCardHolderNameTextInputOptions.swift in Sources */,
 				7CE691871DE81500003F32D2 /* UITextField+TextInputKit.swift in Sources */,
@@ -660,13 +628,9 @@
 				7CE692331DF44A62003F32D2 /* CountableClosedRange+TextInputKit.swift in Sources */,
 				7CE6917D1DE81500003F32D2 /* TextInputSerializer+Identical.swift in Sources */,
 				7CE692251DF4484E003F32D2 /* BankCardNumberTextInputFormatter.swift in Sources */,
-				7C3FE4581E0331410094CE4D /* BankCardExpiryDateTextInputError.swift in Sources */,
-				7C3FE45A1E0331410094CE4D /* BankCardExpiryDateTextInputOptions.swift in Sources */,
 				7CE691891DE81500003F32D2 /* UITextInput+TextInputKit.swift in Sources */,
 				7CE6918F1DE81625003F32D2 /* TextInputFormats+BankCardNumber.swift in Sources */,
-				7C3FE45B1E0331410094CE4D /* BankCardExpiryDateTextInputSerializer.swift in Sources */,
 				7CE691531DE81500003F32D2 /* Range+TextInputKit.swift in Sources */,
-				7C3FE45D1E0331410094CE4D /* TextInputFormats+BankCardExpiryDate.swift in Sources */,
 				7CE6919E1DE89178003F32D2 /* BankCardNumber.swift in Sources */,
 				7CE6917B1DE81500003F32D2 /* TextInputKit.swift in Sources */,
 				7CE691631DE81500003F32D2 /* TextInputFormat+Filter.swift in Sources */,
@@ -709,9 +673,7 @@
 				7C0578D01DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift in Sources */,
 				7CE6919F1DE89178003F32D2 /* BankCardNumber.swift in Sources */,
 				7CE6916A1DE81500003F32D2 /* TextInputFormat+Map.swift in Sources */,
-				7C3FE4631E0331990094CE4D /* TextInputFormats+BankCardExpiryDate.swift in Sources */,
 				7CE691901DE81625003F32D2 /* TextInputFormats+BankCardNumber.swift in Sources */,
-				7C3FE45F1E0331990094CE4D /* BankCardExpiryDateTextInputFormatter.swift in Sources */,
 				7CE692341DF44A62003F32D2 /* CountableClosedRange+TextInputKit.swift in Sources */,
 				7CE691761DE81500003F32D2 /* TextInputFormatterType+Plain.swift in Sources */,
 				7CE691781DE81500003F32D2 /* TextInputFormatterType+Succeed.swift in Sources */,
@@ -723,12 +685,10 @@
 				7CE691B51DEAC595003F32D2 /* PhoneNumberTextInputFormatter.swift in Sources */,
 				7CE691641DE81500003F32D2 /* TextInputFormat+Filter.swift in Sources */,
 				7CE692361DF44A62003F32D2 /* String+TextInputKit.swift in Sources */,
-				7C3FE45E1E0331990094CE4D /* BankCardExpiryDateTextInputError.swift in Sources */,
 				7CE691801DE81500003F32D2 /* TextInputSerializer.swift in Sources */,
 				7CE691931DE8162F003F32D2 /* TextInputFormats+PhoneNumber.swift in Sources */,
 				7CE692161DF4468B003F32D2 /* TextInputValidationResult+Equatable.swift in Sources */,
 				7CE691721DE81500003F32D2 /* TextInputFormatterType+Filter.swift in Sources */,
-				7C3FE4601E0331990094CE4D /* BankCardExpiryDateTextInputOptions.swift in Sources */,
 				7CE691621DE81500003F32D2 /* TextInputFormat+Bind.swift in Sources */,
 				7CE691821DE81500003F32D2 /* TextInputSerializerType+Formatter.swift in Sources */,
 				7CE691681DE81500003F32D2 /* TextInputFormat+From.swift in Sources */,
@@ -740,8 +700,6 @@
 				7C3FE44E1E032E9C0094CE4D /* BankCardHolderNameUtils.swift in Sources */,
 				7CE691AC1DE9E2A3003F32D2 /* TextInputAccessoryFormatterType.swift in Sources */,
 				7CE691B21DEAC38D003F32D2 /* TextInputFormat+TransformValue.swift in Sources */,
-				7C3FE4611E0331990094CE4D /* BankCardExpiryDateTextInputSerializer.swift in Sources */,
-				7C3FE4621E0331990094CE4D /* BankCardExpiryDateUtils.swift in Sources */,
 				7CE692301DF44A56003F32D2 /* BankCardNumberUtils.swift in Sources */,
 				7CE691861DE81500003F32D2 /* TextInputSerializerType.swift in Sources */,
 				7CE692261DF4484E003F32D2 /* BankCardNumberTextInputFormatter.swift in Sources */,
