@@ -6,21 +6,17 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
-import Foundation
-
 public extension TextInputFormats {
 
-    static func bankCardNumber(_ options: BankCardNumberTextInputOptions) -> TextInputFormat<BankCardNumber> {
-        // TODO: Remove when phone number text input formatting is supported.
-        print("TextInputFormats.\(#function) isn't supported yet.")
-
+    /// Creates a `TextInputFormat` with `BankCardNumber` value type.
+    /// The created `TextInputFormat` implements formatting of bank card number text input and convertion of text input to `BankCardNumber` struct.
+    ///
+    /// - Parameter options: The text input options.
+    /// - Returns: Text input format for bank card numbers
+    static func bankCardNumber(_ options: BankCardNumberTextInputOptions = .options()) -> TextInputFormat<BankCardNumber> {
         let serializer = TextInputSerializer.identical.map(
-            direct: {
-                return BankCardNumber(formattedString: $0, number: $0)
-        },
-            reverse: {
-                return $0.formattedString
-        })
+            direct: { BankCardNumber(formattedString: $0) },
+            reverse: { $0.formattedString })
 
         let formatter = BankCardNumberTextInputFormatter(options)
 
