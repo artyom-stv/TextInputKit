@@ -8,30 +8,16 @@
 
 import Foundation
 
-#if os(macOS)
-import Cocoa
-#else
-import UIKit
-#endif
+public protocol TextInputFormatBindable {
+
+    func bind<Value>(format: TextInputFormat<Value>) -> TextInputBinding<Value>
+
+}
 
 public extension TextInputFormat {
 
-    #if os(macOS)
-
-    func bind(to textField: NSTextField) -> TextInputBinding<Value> {
-        return BindingForNSTextField<Value>(self, textField)
+    func bind<TextInput: TextInputFormatBindable>(to textInput: TextInput) -> TextInputBinding<Value> {
+        return textInput.bind(format: self)
     }
-
-    func bind(to cell: NSTextFieldCell) -> TextInputBinding<Value> {
-        return BindingForNSTextFieldCell<Value>(self, cell)
-    }
-
-    #else
-
-    func bind(to textField: UITextField) -> TextInputBinding<Value> {
-        return BindingForUITextField<Value>(self, textField)
-    }
-
-    #endif
 
 }

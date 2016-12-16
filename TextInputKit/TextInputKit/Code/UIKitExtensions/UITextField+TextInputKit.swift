@@ -36,3 +36,11 @@ extension UITextField {
     }
 
 }
+
+extension UITextField : TextInputFormatBindable {
+
+    public func bind<Value>(format: TextInputFormat<Value>) -> TextInputBinding<Value> {
+        return BindingForUITextField<Value>(format, self)
+    }
+
+}
