@@ -10,6 +10,15 @@ import Foundation
 
 extension TextInputFormat {
 
+    /// Creates a `Formatter` with the object type `FormatterObjectValue<Value>`.
+    ///
+    /// The `FormatterObjectValue<Value>` is used to wrap a `Value` if present, or a string if no value is deserizlied from that string.
+    /// The reason to use a `FormatterObjectValue<Value>` wrapper is the following `Formatter` and `NSTextField` behavior:
+    /// - If we return `false` from the `getObjectValue(_:for:errorDescription:)` method then the `""` value is set to the text field.
+    /// - If we set the `objectPtr` to `nil` and return `true` from the `getObjectValue(_:for:errorDescription:)` method then the text in the text input is reset.
+    /// Both variants conflict with the desired behavior of the corresponding `TextInputBinding`. So, we have to set the `objectPtr` to a non-nil value and return `true` from the `getObjectValue(_:for:errorDescription:)` method, even when there is no `Value` representing the text in the text input.
+    ///
+    /// - Returns: The created `Formatter`.
     public func toFormatter() -> Formatter {
         return FormatterAdapter(self)
     }
@@ -33,10 +42,16 @@ private final class FormatterAdapter<Value> : Formatter {
             return nil
         }
 
-        guard let value = object as? Value else {
-            fatalError("Unexpected type of an object passed to Formatter.string(for:) (expected: \(String(describing: Value.self)), actual: \(String(describing: type(of: object))))")
+        guard let objectValue = object as? FormatterObjectValue<Value> else {
+            fatalError("Unexpected type of an object passed to Formatter.string(for:) (expected: \(String(describing: FormatterObjectValue<Value>.self)), actual: \(String(describing: type(of: object))))")
         }
-        return format.serializer.string(for: value)
+
+        switch objectValue {
+        case .value(let value):
+            return format.serializer.string(for: value)
+        case .string(let string):
+            return string
+        }
     }
 
     override func getObjectValue(
@@ -44,22 +59,24 @@ private final class FormatterAdapter<Value> : Formatter {
         for string: String,
         errorDescription errorDescriptionPtr: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
 
+        let objectValue: FormatterObjectValue<Value>
         do {
             let value = try format.serializer.value(for: string)
-
-            if let objectPtr = objectPtr {
-                objectPtr.pointee = value as AnyObject
-            }
-
-            return true
+            objectValue = .value(value)
         }
         catch let error {
+            objectValue = .string(string)
+
             if let error = error as? CustomStringConvertible, let errorDescriptionPtr = errorDescriptionPtr {
                 errorDescriptionPtr.pointee = error.description as NSString
             }
-
-            return false
         }
+
+        if let objectPtr = objectPtr {
+            objectPtr.pointee = objectValue as AnyObject
+        }
+
+        return true
     }
 
     override func isPartialStringValid(

@@ -18,18 +18,18 @@ public extension TextInputFormat {
 
     #if os(macOS)
 
-    func bind(to textField: NSTextField) -> TextInputDriver<Value> {
-        return DriverOfNSTextField<Value>(self, textField)
+    func bind(to textField: NSTextField) -> TextInputBinding<Value> {
+        return BindingForNSTextField<Value>(self, textField)
     }
 
-    func bind(to cell: NSTextFieldCell) -> TextInputDriver<Value> {
-        return DriverOfNSTextFieldCell<Value>(self, cell)
+    func bind(to cell: NSTextFieldCell) -> TextInputBinding<Value> {
+        return BindingForNSTextFieldCell<Value>(self, cell)
     }
 
     #else
 
-    func bind(to textField: UITextField) -> TextInputDriver<Value> {
-        return DriverOfUITextField<Value>(self, textField)
+    func bind(to textField: UITextField) -> TextInputBinding<Value> {
+        return BindingForUITextField<Value>(self, textField)
     }
 
     #endif

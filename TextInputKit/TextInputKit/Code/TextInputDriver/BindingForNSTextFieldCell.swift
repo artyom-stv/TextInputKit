@@ -1,5 +1,5 @@
 //
-//  DriverOfNSTextFieldCell.swift
+//  BindingForNSTextFieldCell.swift
 //  TextInputKit
 //
 //  Created by Artem Starosvetskiy on 24/11/2016.
@@ -9,20 +9,23 @@
 import Foundation
 import Cocoa
 
-final class DriverOfNSTextFieldCell<Value> : TextInputDriver<Value> {
+final class BindingForNSTextFieldCell<Value> : TextInputBinding<Value> {
 
     public override var value: Value? {
         get {
             guard let representedObject = boundCell?.representedObject else {
                 return nil
             }
-            guard let value = representedObject as? Value else {
-                fatalError("Unexpected NSTextFieldCell.representedObject type (expected: \(String(describing: Value.self)), actual: \(String(describing: type(of: representedObject))))")
+            guard let objectValue = representedObject as? FormatterObjectValue<Value> else {
+                fatalError("Unexpected NSTextFieldCell.representedObject type (expected: \(String(describing: FormatterObjectValue<Value>.self)), actual: \(String(describing: type(of: representedObject))))")
+            }
+            guard case let .value(value) = objectValue else {
+                return nil
             }
             return value
         }
         set {
-            boundCell?.representedObject = newValue as Any
+            boundCell?.representedObject = FormatterObjectValue.value(newValue)
         }
     }
 
@@ -34,6 +37,7 @@ final class DriverOfNSTextFieldCell<Value> : TextInputDriver<Value> {
 
         super.init(format)
 
+        cell.objectValue = nil
         cell.formatter = format.toFormatter()
     }
 

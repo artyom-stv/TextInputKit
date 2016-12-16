@@ -1,5 +1,5 @@
 //
-//  TextInputDriverType.swift
+//  TextInputBindingType.swift
 //  TextInputKit
 //
 //  Created by Artem Starosvetskiy on 24/11/2016.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol TextInputDriverType : class {
+public protocol TextInputBindingType : class {
 
     associatedtype Value
 
