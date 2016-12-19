@@ -38,7 +38,11 @@ final class BindingForNSTextFieldCell<Value> : TextInputBinding<Value> {
         super.init(format)
 
         cell.objectValue = nil
-        cell.formatter = format.toFormatter()
+        cell.formatter = {
+            var options = FormatterOptions.options()
+            options.tracksCurrentEditorSelection = true
+            return format.toFormatter(options)
+        }()
     }
 
     public override func unbind() {

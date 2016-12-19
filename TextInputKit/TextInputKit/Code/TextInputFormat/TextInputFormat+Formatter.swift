@@ -6,7 +6,19 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
-import Foundation
+import AppKit
+
+public struct FormatterOptions {
+
+    #if os(macOS)
+    var tracksCurrentEditorSelection: Bool = false
+    #endif
+
+    static func options() -> FormatterOptions {
+        return .init()
+    }
+
+}
 
 extension TextInputFormat {
 
@@ -19,16 +31,17 @@ extension TextInputFormat {
     /// Both variants conflict with the desired behavior of the corresponding `TextInputBinding`. So, we have to set the `objectPtr` to a non-nil value and return `true` from the `getObjectValue(_:for:errorDescription:)` method, even when there is no `Value` representing the text in the text input.
     ///
     /// - Returns: The created `Formatter`.
-    public func toFormatter() -> Formatter {
-        return FormatterAdapter(self)
+    public func toFormatter(_ options: FormatterOptions = .options()) -> Formatter {
+        return FormatterAdapter(self, options)
     }
 
 }
 
 private final class FormatterAdapter<Value> : Formatter {
 
-    init(_ format: TextInputFormat<Value>) {
+    init(_ format: TextInputFormat<Value>, _ options: FormatterOptions) {
         self.format = format
+        self.options = options
 
         super.init()
     }
@@ -84,7 +97,7 @@ private final class FormatterAdapter<Value> : Formatter {
         newEditingString newStringPtr: AutoreleasingUnsafeMutablePointer<NSString?>?,
         errorDescription errorDescriptionPtr: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
 
-        fatalError("\(#function) has not been implemented")
+        fatalError("\(#function) isn't implemented. It is not supported by a `Formatter` created by `TextInputFormat`.")
     }
 
     override func isPartialStringValid(
@@ -97,6 +110,17 @@ private final class FormatterAdapter<Value> : Formatter {
         let editedRange = editedNSRange.toRange()!
             .sameRange(in: originalString.utf16)
             .sameRange(in: originalString)
+
+        let originalSelectedRange: Range<String.Index> = {
+            #if os(macOS)
+            if options.tracksCurrentEditorSelection {
+                if let editor = NSApplication.shared().keyWindow?.textInputKit_currentEditor {
+                    return editor.textInputKit_selectedRange!
+                }
+            }
+            #endif
+            return editedRange
+        }()
 
         let editedString = partialStringPtr.pointee as String
 
@@ -120,7 +144,7 @@ private final class FormatterAdapter<Value> : Formatter {
 
         let validationResult = format.formatter.validate(
             editing: originalString,
-            withSelection: editedRange,
+            withSelection: originalSelectedRange,
             replacing: replacementString,
             at: editedRange)
 
@@ -142,5 +166,7 @@ private final class FormatterAdapter<Value> : Formatter {
     }
 
     private let format: TextInputFormat<Value>
+
+    private let options: FormatterOptions
 
 }
