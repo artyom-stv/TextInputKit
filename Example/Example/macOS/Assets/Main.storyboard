@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -672,7 +675,7 @@
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
-                        <segue destination="NNh-Ea-PDR" kind="relationship" relationship="window.shadowedContentViewController" id="MxS-ki-LsH"/>
+                        <segue destination="83R-AN-PPl" kind="relationship" relationship="window.shadowedContentViewController" id="eBm-n9-3qI"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -692,39 +695,294 @@
             </objects>
             <point key="canvasLocation" x="75" y="652"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="hIz-AP-VOD">
+        <!--Bank Card View Controller-->
+        <scene sceneID="8Ou-HM-2gu">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Example_macOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <viewController id="83R-AN-PPl" customClass="BankCardViewController" customModule="Example_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Mpl-8R-a5j">
+                        <rect key="frame" x="0.0" y="0.0" width="313.5" height="362"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r7a-Hj-F2s">
-                                <rect key="frame" x="192" y="188" width="96" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="MYd-7I-426">
-                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="z0f-eX-Lxj"/>
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ugK-Ke-vcg">
-                                <rect key="frame" x="192" y="124" width="96" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="xuC-yu-lwo">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cHi-YE-5Fb">
+                                <rect key="frame" x="0.0" y="0.0" width="313.5" height="362"/>
+                                <subviews>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="X5s-4p-umM">
+                                        <rect key="frame" x="0.0" y="25" width="313.5" height="337"/>
+                                        <subviews>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Sdi-7c-OyQ" userLabel="Cards View">
+                                                <rect key="frame" x="12" y="60" width="289.5" height="265"/>
+                                                <subviews>
+                                                    <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="Hn8-MQ-ToW" userLabel="Card Back Box" customClass="BankCardBox" customModule="Example_macOS" customModuleProvider="target">
+                                                        <rect key="frame" x="16" y="0.0" width="273.5" height="173"/>
+                                                        <view key="contentView" id="0ek-s7-fV8">
+                                                            <rect key="frame" x="1" y="1" width="271.5" height="171"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="b7j-c4-8tR">
+                                                                    <rect key="frame" x="24" y="16" width="223.5" height="90.5"/>
+                                                                    <subviews>
+                                                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="OW4-I9-Ebt" userLabel="Security Code Form">
+                                                                            <rect key="frame" x="134" y="25.5" width="89" height="41"/>
+                                                                            <subviews>
+                                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iyF-Oc-8uG">
+                                                                                    <rect key="frame" x="6" y="25" width="85" height="16"/>
+                                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Security Code" id="Pm8-47-4h9">
+                                                                                        <font key="font" metaFont="cellTitle"/>
+                                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                    </textFieldCell>
+                                                                                </textField>
+                                                                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ky6-n7-K8g" customClass="BankCardTextField" customModule="Example_macOS" customModuleProvider="target">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="89" height="23"/>
+                                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" placeholderString="000" drawsBackground="YES" id="oQP-s7-ruU">
+                                                                                        <font key="font" size="15" name="Menlo-Regular"/>
+                                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                    </textFieldCell>
+                                                                                </textField>
+                                                                            </subviews>
+                                                                            <constraints>
+                                                                                <constraint firstItem="Ky6-n7-K8g" firstAttribute="leading" secondItem="OW4-I9-Ebt" secondAttribute="leading" id="0oh-Ec-RXe"/>
+                                                                                <constraint firstItem="iyF-Oc-8uG" firstAttribute="leading" secondItem="OW4-I9-Ebt" secondAttribute="leading" constant="8" id="6XC-g9-3g3"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="iyF-Oc-8uG" secondAttribute="trailing" id="8fM-xF-ePp"/>
+                                                                                <constraint firstItem="iyF-Oc-8uG" firstAttribute="top" secondItem="OW4-I9-Ebt" secondAttribute="top" id="QBQ-yS-V6z"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="Ky6-n7-K8g" secondAttribute="trailing" id="X1S-KV-mld"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="Ky6-n7-K8g" secondAttribute="bottom" id="bnm-sb-xvu"/>
+                                                                                <constraint firstItem="Ky6-n7-K8g" firstAttribute="top" secondItem="iyF-Oc-8uG" secondAttribute="bottom" constant="2" id="f5S-Vi-fro"/>
+                                                                            </constraints>
+                                                                        </customView>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="trailing" secondItem="OW4-I9-Ebt" secondAttribute="trailing" id="0BX-eM-bdN"/>
+                                                                        <constraint firstItem="OW4-I9-Ebt" firstAttribute="top" secondItem="b7j-c4-8tR" secondAttribute="top" constant="24" id="Gju-2d-3Pe"/>
+                                                                    </constraints>
+                                                                </customView>
+                                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="xmS-wT-1wF">
+                                                                    <rect key="frame" x="0.0" y="106.5" width="271.5" height="43"/>
+                                                                </customView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="b7j-c4-8tR" secondAttribute="bottom" constant="16" id="9NB-lQ-pqp"/>
+                                                                <constraint firstItem="xmS-wT-1wF" firstAttribute="centerY" secondItem="0ek-s7-fV8" secondAttribute="centerY" multiplier="0.5" id="GUP-aG-mst"/>
+                                                                <constraint firstItem="xmS-wT-1wF" firstAttribute="height" secondItem="0ek-s7-fV8" secondAttribute="height" multiplier="0.25" id="LYk-XO-hF1"/>
+                                                                <constraint firstAttribute="trailing" secondItem="xmS-wT-1wF" secondAttribute="trailing" id="McM-dm-dbq"/>
+                                                                <constraint firstItem="b7j-c4-8tR" firstAttribute="top" secondItem="xmS-wT-1wF" secondAttribute="bottom" id="Nt7-tz-2ZC"/>
+                                                                <constraint firstItem="xmS-wT-1wF" firstAttribute="leading" secondItem="0ek-s7-fV8" secondAttribute="leading" id="TWe-Y7-uPb"/>
+                                                                <constraint firstItem="b7j-c4-8tR" firstAttribute="leading" secondItem="0ek-s7-fV8" secondAttribute="leading" constant="24" id="tNR-nf-jm7"/>
+                                                                <constraint firstAttribute="trailing" secondItem="b7j-c4-8tR" secondAttribute="trailing" constant="24" id="zyI-Az-Org"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="Hn8-MQ-ToW" secondAttribute="height" multiplier="8560:5398" id="SdK-aY-swO"/>
+                                                        </constraints>
+                                                        <color key="fillColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </box>
+                                                    <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="5DO-7u-2dj" userLabel="Card Front Box" customClass="BankCardBox" customModule="Example_macOS" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="91.5" width="273.5" height="173"/>
+                                                        <view key="contentView" id="Z3c-a1-HDL">
+                                                            <rect key="frame" x="1" y="1" width="271.5" height="171"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E0W-5Y-hTn">
+                                                                    <rect key="frame" x="24" y="16" width="224" height="139"/>
+                                                                    <subviews>
+                                                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="SKH-Ls-ijf" userLabel="Card Number Form">
+                                                                            <rect key="frame" x="0.0" y="98" width="224" height="41"/>
+                                                                            <subviews>
+                                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c8k-8f-ko6">
+                                                                                    <rect key="frame" x="6" y="25" width="220" height="16"/>
+                                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Card Number" id="nIZ-XE-93m">
+                                                                                        <font key="font" metaFont="cellTitle"/>
+                                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                    </textFieldCell>
+                                                                                </textField>
+                                                                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lO7-YA-9fz" customClass="BankCardTextField" customModule="Example_macOS" customModuleProvider="target">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="224" height="23"/>
+                                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" placeholderString="0000 0000 0000 0000" drawsBackground="YES" id="H3s-1f-d8e">
+                                                                                        <font key="font" size="15" name="Menlo-Regular"/>
+                                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                    </textFieldCell>
+                                                                                </textField>
+                                                                            </subviews>
+                                                                            <constraints>
+                                                                                <constraint firstItem="c8k-8f-ko6" firstAttribute="leading" secondItem="SKH-Ls-ijf" secondAttribute="leading" constant="8" id="0IX-MN-1g1"/>
+                                                                                <constraint firstItem="lO7-YA-9fz" firstAttribute="leading" secondItem="SKH-Ls-ijf" secondAttribute="leading" id="79z-3L-Urq"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="c8k-8f-ko6" secondAttribute="trailing" id="ABu-ZQ-mHo"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="lO7-YA-9fz" secondAttribute="bottom" id="XES-Bg-fbT"/>
+                                                                                <constraint firstItem="c8k-8f-ko6" firstAttribute="top" secondItem="SKH-Ls-ijf" secondAttribute="top" id="bdW-lX-Ou3"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="lO7-YA-9fz" secondAttribute="trailing" id="eXr-bF-oNY"/>
+                                                                                <constraint firstItem="lO7-YA-9fz" firstAttribute="top" secondItem="c8k-8f-ko6" secondAttribute="bottom" constant="2" id="kuY-Vu-HyF"/>
+                                                                            </constraints>
+                                                                        </customView>
+                                                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="3cX-g9-OyZ" userLabel="Valid Through Form">
+                                                                            <rect key="frame" x="0.0" y="49" width="224" height="41"/>
+                                                                            <subviews>
+                                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oMb-gw-Aie">
+                                                                                    <rect key="frame" x="6" y="25" width="220" height="16"/>
+                                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Valid Through" id="rhK-XZ-wh4">
+                                                                                        <font key="font" metaFont="cellTitle"/>
+                                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                    </textFieldCell>
+                                                                                </textField>
+                                                                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="geB-ep-aKl" customClass="BankCardTextField" customModule="Example_macOS" customModuleProvider="target">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="224" height="23"/>
+                                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" placeholderString="MM/YY" drawsBackground="YES" id="Mtm-fO-29j">
+                                                                                        <font key="font" size="15" name="Menlo-Regular"/>
+                                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                    </textFieldCell>
+                                                                                </textField>
+                                                                            </subviews>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="bottom" secondItem="geB-ep-aKl" secondAttribute="bottom" id="L7C-Q7-m0Z"/>
+                                                                                <constraint firstItem="oMb-gw-Aie" firstAttribute="top" secondItem="3cX-g9-OyZ" secondAttribute="top" id="MVk-Ql-JkE"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="geB-ep-aKl" secondAttribute="trailing" id="PQH-nF-vkr"/>
+                                                                                <constraint firstItem="oMb-gw-Aie" firstAttribute="leading" secondItem="3cX-g9-OyZ" secondAttribute="leading" constant="8" id="csZ-CJ-4FZ"/>
+                                                                                <constraint firstItem="geB-ep-aKl" firstAttribute="leading" secondItem="3cX-g9-OyZ" secondAttribute="leading" id="dlL-uK-JV0"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="oMb-gw-Aie" secondAttribute="trailing" id="ksG-pT-Khl"/>
+                                                                                <constraint firstItem="geB-ep-aKl" firstAttribute="top" secondItem="oMb-gw-Aie" secondAttribute="bottom" constant="2" id="pft-yd-RnZ"/>
+                                                                            </constraints>
+                                                                        </customView>
+                                                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="2bA-v8-B3D" userLabel="Card Holder Name Form">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="224" height="41"/>
+                                                                            <subviews>
+                                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UZX-qw-nzS">
+                                                                                    <rect key="frame" x="6" y="25" width="220" height="16"/>
+                                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Card Holder Name" placeholderString="" id="8xr-Px-XSz">
+                                                                                        <font key="font" metaFont="cellTitle"/>
+                                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                    </textFieldCell>
+                                                                                </textField>
+                                                                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pOW-rl-0Ip" customClass="BankCardTextField" customModule="Example_macOS" customModuleProvider="target">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="224" height="23"/>
+                                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" placeholderString="CARD HOLDER" drawsBackground="YES" id="b4S-9C-lO6">
+                                                                                        <font key="font" size="15" name="Menlo-Regular"/>
+                                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                    </textFieldCell>
+                                                                                </textField>
+                                                                            </subviews>
+                                                                            <constraints>
+                                                                                <constraint firstItem="pOW-rl-0Ip" firstAttribute="leading" secondItem="2bA-v8-B3D" secondAttribute="leading" id="AHp-RY-uwD"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="UZX-qw-nzS" secondAttribute="trailing" id="Oud-69-THe"/>
+                                                                                <constraint firstItem="UZX-qw-nzS" firstAttribute="leading" secondItem="2bA-v8-B3D" secondAttribute="leading" constant="8" id="Thy-30-bLd"/>
+                                                                                <constraint firstItem="UZX-qw-nzS" firstAttribute="top" secondItem="2bA-v8-B3D" secondAttribute="top" id="cAs-Xy-0B2"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="pOW-rl-0Ip" secondAttribute="trailing" id="hff-S5-liH"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="pOW-rl-0Ip" secondAttribute="bottom" id="o4x-zy-lUT"/>
+                                                                                <constraint firstItem="pOW-rl-0Ip" firstAttribute="top" secondItem="UZX-qw-nzS" secondAttribute="bottom" constant="2" id="qUN-bM-IDe"/>
+                                                                            </constraints>
+                                                                        </customView>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstItem="SKH-Ls-ijf" firstAttribute="width" secondItem="E0W-5Y-hTn" secondAttribute="width" id="DlO-CK-Npf"/>
+                                                                        <constraint firstItem="2bA-v8-B3D" firstAttribute="width" secondItem="E0W-5Y-hTn" secondAttribute="width" id="dbw-fw-cKs"/>
+                                                                        <constraint firstItem="3cX-g9-OyZ" firstAttribute="width" secondItem="E0W-5Y-hTn" secondAttribute="width" id="st7-j8-LQb"/>
+                                                                    </constraints>
+                                                                    <visibilityPriorities>
+                                                                        <integer value="1000"/>
+                                                                        <integer value="1000"/>
+                                                                        <integer value="1000"/>
+                                                                    </visibilityPriorities>
+                                                                    <customSpacing>
+                                                                        <real value="3.4028234663852886e+38"/>
+                                                                        <real value="3.4028234663852886e+38"/>
+                                                                        <real value="3.4028234663852886e+38"/>
+                                                                    </customSpacing>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="E0W-5Y-hTn" secondAttribute="trailing" constant="24" id="0gV-vB-YXI"/>
+                                                                <constraint firstItem="E0W-5Y-hTn" firstAttribute="leading" secondItem="Z3c-a1-HDL" secondAttribute="leading" constant="24" id="4wP-R9-C8l"/>
+                                                                <constraint firstItem="E0W-5Y-hTn" firstAttribute="top" secondItem="Z3c-a1-HDL" secondAttribute="top" constant="16" id="J8w-jY-T5Y"/>
+                                                                <constraint firstAttribute="bottom" secondItem="E0W-5Y-hTn" secondAttribute="bottom" constant="16" id="ZV3-oU-rsu"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="5DO-7u-2dj" secondAttribute="height" multiplier="8560:5398" id="0JE-PR-7fo"/>
+                                                        </constraints>
+                                                        <color key="fillColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </box>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="5DO-7u-2dj" firstAttribute="leading" secondItem="Sdi-7c-OyQ" secondAttribute="leading" id="2fL-oc-scp"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Hn8-MQ-ToW" secondAttribute="trailing" id="P6Z-8o-Mae"/>
+                                                    <constraint firstItem="OW4-I9-Ebt" firstAttribute="top" secondItem="5DO-7u-2dj" secondAttribute="bottom" constant="8" id="P84-l8-rmN"/>
+                                                    <constraint firstItem="5DO-7u-2dj" firstAttribute="width" secondItem="Hn8-MQ-ToW" secondAttribute="width" id="ZPO-wa-uKF"/>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="gIN-us-YpG"/>
+                                                    <constraint firstItem="5DO-7u-2dj" firstAttribute="top" secondItem="Sdi-7c-OyQ" secondAttribute="top" id="hac-ne-CaB"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Hn8-MQ-ToW" secondAttribute="bottom" id="jP2-MM-T5L"/>
+                                                    <constraint firstItem="Hn8-MQ-ToW" firstAttribute="trailing" secondItem="5DO-7u-2dj" secondAttribute="trailing" constant="16" id="nPD-WM-0ah"/>
+                                                </constraints>
+                                            </customView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Sdi-7c-OyQ" firstAttribute="width" secondItem="X5s-4p-umM" secondAttribute="width" priority="750" constant="-24" id="6hy-3A-tQ3"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Sdi-7c-OyQ" secondAttribute="bottom" constant="12" id="HYT-wJ-shW"/>
+                                            <constraint firstItem="Sdi-7c-OyQ" firstAttribute="centerX" secondItem="X5s-4p-umM" secondAttribute="centerX" id="Tl6-qq-oQ8"/>
+                                            <constraint firstItem="Sdi-7c-OyQ" firstAttribute="top" secondItem="X5s-4p-umM" secondAttribute="top" constant="12" id="VMi-fU-YkC"/>
+                                        </constraints>
+                                    </customView>
+                                    <customView verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5xi-YA-0nm">
+                                        <rect key="frame" x="0.0" y="0.0" width="313.5" height="17"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Se6-z7-DDh">
+                                                <rect key="frame" x="-2" y="0.0" width="317.5" height="17"/>
+                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Label" id="ZCh-fA-URC">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="zp3-0b-GS0">
+                                                <rect key="frame" x="0.0" y="14" width="313.5" height="5"/>
+                                            </box>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="zp3-0b-GS0" firstAttribute="leading" secondItem="5xi-YA-0nm" secondAttribute="leading" id="Fmf-9U-IrQ"/>
+                                            <constraint firstItem="Se6-z7-DDh" firstAttribute="leading" secondItem="5xi-YA-0nm" secondAttribute="leading" id="NTW-zB-19l"/>
+                                            <constraint firstAttribute="trailing" secondItem="Se6-z7-DDh" secondAttribute="trailing" id="S1A-8C-PuG"/>
+                                            <constraint firstAttribute="bottom" secondItem="Se6-z7-DDh" secondAttribute="bottom" id="Uf3-vE-0tY"/>
+                                            <constraint firstItem="zp3-0b-GS0" firstAttribute="top" secondItem="5xi-YA-0nm" secondAttribute="top" id="WlG-pX-ELr"/>
+                                            <constraint firstItem="Se6-z7-DDh" firstAttribute="top" secondItem="5xi-YA-0nm" secondAttribute="top" id="cvR-e0-CRW"/>
+                                            <constraint firstAttribute="trailing" secondItem="zp3-0b-GS0" secondAttribute="trailing" id="laz-iN-LP2"/>
+                                        </constraints>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="5xi-YA-0nm" firstAttribute="width" secondItem="cHi-YE-5Fb" secondAttribute="width" id="gjw-jD-w1t"/>
+                                    <constraint firstItem="X5s-4p-umM" firstAttribute="width" secondItem="cHi-YE-5Fb" secondAttribute="width" id="xwm-Ay-K3B"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="cHi-YE-5Fb" firstAttribute="leading" secondItem="Mpl-8R-a5j" secondAttribute="leading" id="8dn-0K-Q88"/>
+                            <constraint firstAttribute="trailing" secondItem="cHi-YE-5Fb" secondAttribute="trailing" id="ZGq-dP-DKd"/>
+                            <constraint firstItem="cHi-YE-5Fb" firstAttribute="top" secondItem="Mpl-8R-a5j" secondAttribute="top" id="iA5-DY-HgC"/>
+                            <constraint firstAttribute="bottom" secondItem="cHi-YE-5Fb" secondAttribute="bottom" id="rbQ-M5-bv9"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cardExpiryDateTextField" destination="geB-ep-aKl" id="vRO-JS-05W"/>
+                        <outlet property="cardHolderNameTextField" destination="pOW-rl-0Ip" id="1L1-ck-oW0"/>
+                        <outlet property="cardNumberTextField" destination="lO7-YA-9fz" id="26S-Re-nqb"/>
+                        <outlet property="cardSecurityCodeTextField" destination="Ky6-n7-K8g" id="dDC-SE-wHB"/>
+                    </connections>
                 </viewController>
-                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="AvT-4V-7tF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="677" y="99"/>
+            <point key="canvasLocation" x="677" y="266"/>
         </scene>
         <!--Test Formatter View Controller-->
         <scene sceneID="eQH-Bl-a70">
@@ -813,7 +1071,7 @@
                 </viewController>
                 <customObject id="tbK-Dz-r6z" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="662" y="457"/>
+            <point key="canvasLocation" x="635" y="652"/>
         </scene>
     </scenes>
 </document>

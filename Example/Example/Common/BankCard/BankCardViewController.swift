@@ -6,18 +6,23 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
-import UIKit
+#if os(macOS)
+    import Cocoa
+#else
+    import UIKit
+#endif
+
 import TextInputKit
 
-final class BankCardViewController : UIViewController {
+final class BankCardViewController : ViewController {
 
-    @IBOutlet var cardNumberTextField: UITextField!
+    @IBOutlet var cardNumberTextField: TextField!
 
-    @IBOutlet var cardExpiryDateTextField: UITextField!
+    @IBOutlet var cardExpiryDateTextField: TextField!
 
-    @IBOutlet var cardHolderNameTextField: UITextField!
+    @IBOutlet var cardHolderNameTextField: TextField!
 
-    @IBOutlet var cardSecurityCodeTextField: UITextField!
+    @IBOutlet var cardSecurityCodeTextField: TextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
