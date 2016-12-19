@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -93,7 +92,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RSu-YD-ghL">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3u-RJ-avC">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3u-RJ-avC" userLabel="Cards View">
                                                 <rect key="frame" x="12.5" y="12" width="296" height="270"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="32k-ci-4rp" userLabel="Card Back View" customClass="BankCardView" customModule="Example_iOS" customModuleProvider="target">
@@ -107,16 +106,16 @@
                                                                 <rect key="frame" x="24" y="66.5" width="231.5" height="94"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uU4-Vh-iBX" userLabel="Security Code Form">
-                                                                        <rect key="frame" x="144.5" y="24" width="86.5" height="36.5"/>
+                                                                        <rect key="frame" x="142.5" y="24" width="88.5" height="36.5"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xv8-2Y-9c5">
-                                                                                <rect key="frame" x="8" y="0.0" width="78.5" height="14.5"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xv8-2Y-9c5">
+                                                                                <rect key="frame" x="8" y="0.0" width="80.5" height="14.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="000" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KWT-kn-fHk" customClass="BankCardTextField" customModule="Example_iOS" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="16.5" width="86.5" height="20"/>
+                                                                                <rect key="frame" x="0.0" y="16.5" width="88.5" height="20"/>
                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
@@ -198,7 +197,7 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="MM / YY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FUG-aP-bvI" customClass="BankCardTextField" customModule="Example_iOS" customModuleProvider="target">
+                                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="MM/YY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FUG-aP-bvI" customClass="BankCardTextField" customModule="Example_iOS" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="16.5" width="231.5" height="18"/>
                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <nil key="textColor"/>
@@ -231,7 +230,7 @@
                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 <nil key="textColor"/>
                                                                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
-                                                                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
+                                                                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet"/>
                                                                             </textField>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -289,6 +288,7 @@
                                             <constraint firstItem="g3u-RJ-avC" firstAttribute="top" secondItem="RSu-YD-ghL" secondAttribute="top" constant="12" id="Cz7-jm-VEh"/>
                                             <constraint firstItem="g3u-RJ-avC" firstAttribute="width" secondItem="RSu-YD-ghL" secondAttribute="width" priority="750" constant="-24" id="cc4-AE-4xx"/>
                                             <constraint firstItem="g3u-RJ-avC" firstAttribute="centerX" secondItem="RSu-YD-ghL" secondAttribute="centerX" id="fiI-Lh-wNL"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="g3u-RJ-avC" secondAttribute="bottom" constant="12" id="knp-65-3XU"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qMl-Vx-4Mn">
