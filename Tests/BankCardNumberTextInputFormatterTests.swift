@@ -238,4 +238,96 @@ class BankCardNumberTextInputFormatterTests: XCTestCase {
         }
     }
 
+    func testThatSpaceCanBeAppended() {
+        textInput.insert("3782")
+        textInput.expect("3782", "", "")
+        textInput.insert(" ")
+        textInput.expect("3782 ", "", "")
+
+        textInput.insert("822463")
+        textInput.expect("3782 822463", "", "")
+        textInput.insert(" ")
+        textInput.expect("3782 822463 ", "", "")
+    }
+
+    func testThatSpaceCanNotBeAppendedWhenItIsNotNeeded() {
+        textInput.insert(" ")
+        textInput.expect("", "", "")
+
+        textInput.insert("3")
+        textInput.expect("3", "", "")
+        textInput.insert(" ")
+        textInput.expect("3", "", "")
+
+        textInput.insert("78")
+        textInput.expect("378", "", "")
+        textInput.insert(" ")
+        textInput.expect("378", "", "")
+
+        textInput.insert("28")
+        textInput.expect("3782 8", "", "")
+        textInput.insert(" ")
+        textInput.expect("3782 8", "", "")
+
+        textInput.insert("2246")
+        textInput.expect("3782 82246", "", "")
+        textInput.insert(" ")
+        textInput.expect("3782 82246", "", "")
+
+        textInput.insert("31")
+        textInput.expect("3782 822463 1", "", "")
+        textInput.insert(" ")
+        textInput.expect("3782 822463 1", "", "")
+
+        textInput.insert("000")
+        textInput.expect("3782 822463 1000", "", "")
+        textInput.insert(" ")
+        textInput.expect("3782 822463 1000", "", "")
+
+        textInput.insert("5")
+        textInput.expect("3782 822463 10005", "", "")
+        textInput.insert(" ")
+        textInput.expect("3782 822463 10005", "", "")
+    }
+
+    func testThatInsertingASpaceCanMoveCursor() {
+        textInput.insert("3782 822463 10005")
+        textInput.expect("3782 822463 10005", "", "")
+
+        textInput.select(4..<4)
+        textInput.expect("3782", "", " 822463 10005")
+        textInput.insert(" ")
+        textInput.expect("3782 ", "", "822463 10005")
+
+        textInput.select(11..<11)
+        textInput.expect("3782 822463", "", " 10005")
+        textInput.insert(" ")
+        textInput.expect("3782 822463 ", "", "10005")
+    }
+
+    func testThatSpaceCanNotBeInsertedWhenItIsNotNeeded() {
+        textInput.insert("3782 822463 10005")
+        textInput.expect("3782 822463 10005", "", "")
+
+        textInput.select(0..<0)
+        textInput.expect("", "", "3782 822463 10005")
+        textInput.insert(" ")
+        textInput.expect("", "", "3782 822463 10005")
+
+        textInput.select(3..<3)
+        textInput.expect("378", "", "2 822463 10005")
+        textInput.insert(" ")
+        textInput.expect("378", "", "2 822463 10005")
+
+        textInput.select(6..<6)
+        textInput.expect("3782 8", "", "22463 10005")
+        textInput.insert(" ")
+        textInput.expect("3782 8", "", "22463 10005")
+
+        textInput.select(16..<16)
+        textInput.expect("3782 822463 1000", "", "5")
+        textInput.insert(" ")
+        textInput.expect("3782 822463 1000", "", "5")
+    }
+
 }
