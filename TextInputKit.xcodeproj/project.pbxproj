@@ -273,8 +273,8 @@
 		7C7AEB521DDFD128004861BD /* TextInputKit */ = {
 			isa = PBXGroup;
 			children = (
-				7C2BD04E1DE2C46500A7A6C0 /* Code */,
 				7C2BD04C1DE2C44C00A7A6C0 /* Info.plist */,
+				7C2BD04E1DE2C46500A7A6C0 /* Code */,
 			);
 			name = TextInputKit;
 			path = TextInputKit/TextInputKit;
@@ -742,7 +742,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/TextInputKit/TextInputKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "text-formatter.TextInputKit-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "text-formatter.TextInputKit";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -759,7 +759,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/TextInputKit/TextInputKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "text-formatter.TextInputKit-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "text-formatter.TextInputKit";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -778,7 +778,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/TextInputKit/TextInputKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "text-formatter.TextInputKit-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "text-formatter.TextInputKit";
 				PRODUCT_MODULE_NAME = "$(PROJECT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = macosx;
@@ -798,7 +798,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/TextInputKit/TextInputKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "text-formatter.TextInputKit-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "text-formatter.TextInputKit";
 				PRODUCT_MODULE_NAME = "$(PROJECT_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = macosx;
