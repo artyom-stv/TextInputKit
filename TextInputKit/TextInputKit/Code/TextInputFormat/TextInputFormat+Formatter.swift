@@ -13,7 +13,7 @@ extension TextInputFormat {
     /// Creates a `Formatter` with the object type `FormatterObjectValue<Value>`.
     ///
     /// The `FormatterObjectValue<Value>` is used to wrap a `Value` if present, or a string if no value is deserizlied from that string.
-    /// The reason to use a `FormatterObjectValue<Value>` wrapper is the following `Formatter` and `NSTextField` behavior:
+    /// The reason to use a `FormatterObjectValue<Value>` wrapper is the following `Formatter` and `NSTextField` standard behavior:
     /// - If we return `false` from the `getObjectValue(_:for:errorDescription:)` method then the `""` value is set to the text field.
     /// - If we set the `objectPtr` to `nil` and return `true` from the `getObjectValue(_:for:errorDescription:)` method then the text in the text input is reset.
     /// Both variants conflict with the desired behavior of the corresponding `TextInputBinding`. So, we have to set the `objectPtr` to a non-nil value and return `true` from the `getObjectValue(_:for:errorDescription:)` method, even when there is no `Value` representing the text in the text input.
