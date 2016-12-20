@@ -126,13 +126,11 @@ final class BankCardHolderNameTextInputFormatterTests : XCTestCase {
         }
     }
 
-    func testThatDiacriticsIsRemovedFromLetters() {
+    func testThatDiacriticsIsNotAccepted() {
         let lettersWithDiacritics    = "ÁÀÂÄǍĂĀÃÅǺĆĊĈČĎÉÈĖÊËĚĔĒÍÌİÎÏǏĬĪĨŃN̈ŇÑÓÒÔÖǑŎŌÕŐáàâäǎăāãåǻćċĉčéèėêëěĕēíìiîïǐĭīĩńn̈ňñóòôöǒŏōõő"
-        let lettersWithoutDiacritics = "AAAAAAAAAACCCCDEEEEEEEEIIIIIIIIINNNNOOOOOOOOOaaaaaaaaaacccceeeeeeeeiiiiiiiiinnnnooooooooo"
-        for (letterWithDiacritics, letterWithoutDiacritics) in zip(lettersWithDiacritics.characters, lettersWithoutDiacritics.characters) {
-            textInput.selectAll()
+        for letterWithDiacritics in lettersWithDiacritics.characters {
             textInput.insert(String(letterWithDiacritics))
-            textInput.expect(String(letterWithoutDiacritics).uppercased(), "", "")
+            textInput.expect("", "", "")
         }
     }
 
