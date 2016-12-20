@@ -1,5 +1,5 @@
 //
-//  DriverOfUITextField.swift
+//  BindingForUITextField.swift
 //  TextInputKit
 //
 //  Created by Artem Starosvetskiy on 24/11/2016.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-final class DriverOfUITextField<Value> : TextInputDriver<Value> {
+final class BindingForUITextField<Value> : TextInputBinding<Value> {
 
     public override var value: Value? {
         get {
@@ -39,6 +39,7 @@ final class DriverOfUITextField<Value> : TextInputDriver<Value> {
 
         super.init(format)
 
+        textField.text = nil
         textField.delegate = textFieldDelegate
     }
 

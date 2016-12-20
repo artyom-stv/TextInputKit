@@ -16,25 +16,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        _ = TextInputFormats.plain
-        _ = TextInputFormats.bankCardNumber(.options())
-        _ = TextInputFormats.phoneNumber(.options())
-
         let maxLength = 6
 
-        let driver = TextInputFormats.plain
+        textInputBinding = TextInputFormats.plain
             .filter(by: CharacterSet.decimalDigits)
             .filter(constrainingCharactersCount: maxLength)
-//            .transformValue<Int>(direct: { Int($0) }, reverse: { String(describing: $0) })
             .bind(to: textField)
-        textFieldDriver = driver
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    private var textFieldDriver: TextInputDriver<String>!
+    private var textInputBinding: TextInputBinding<String>!
 
 }
