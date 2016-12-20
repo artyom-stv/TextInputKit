@@ -15,6 +15,19 @@ import AppKit
 public struct FormatterOptions {
 
     #if os(macOS)
+    /// On macOS, the `tracksCurrentEditorSelection` option enables a better text input formatting quality for a `Formatter`
+    /// being binded to an `NSTextField` or an `NSTextFieldCell`.
+    /// (the same quality as it is provided by `TextInputFormat.bind(to:)` on iOS by default).
+    ///
+    /// On iOS and tvOS, a `Formatter` isn't used to format text input in a `UITextField`.
+    /// On macOS, to format textinput in an `NSTextField` or an `NSTextFieldCell`, a `Formatter` is created.
+    /// `Formatter` API doesn't allow us to distinguish deleting a selected character from pressing "Backspace"/"Delete" key
+    /// without any selection. For example, it doesn't allow to distinguish the following cases for "1234 5678":
+    /// - pressing a "Backspace" key when the cursor is standing before the character "5";
+    /// - pressing a "Backspace" key when the character " " is selected.
+    ///
+    /// If the `tracksCurrentEditorSelection` option is `true`, then a `Formatter` created by `TextInputFormat.toFormatter(_:)`
+    /// finds the current editor (an instance of `NSTextView`) and extracts the `selectedRange` from it.
     var tracksCurrentEditorSelection: Bool = false
     #endif
 
