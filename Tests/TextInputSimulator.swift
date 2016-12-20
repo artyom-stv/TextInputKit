@@ -108,13 +108,15 @@ extension TextInputSimulator {
     }
 
     func expect(_ textBeforeSelection: String, _ selectedText: String, _ textAfterSelection: String) {
-        var text = textBeforeSelection
-        let selectionStartIndex = text.endIndex
-        text.append(selectedText)
-        let selectionEndIndex = text.endIndex
-        text.append(textAfterSelection)
+        let text = "\(textBeforeSelection)\(selectedText)\(textAfterSelection)"
+        let selectionLowerBound = text.index(
+            text.startIndex,
+            offsetBy: textBeforeSelection.characters.count)
+        let selectionUpperBound = text.index(
+            text.startIndex,
+            offsetBy: textBeforeSelection.characters.count + selectedText.characters.count)
 
-        expect(text: text, selectedRange: selectionStartIndex..<selectionEndIndex)
+        expect(text: text, selectedRange: selectionLowerBound..<selectionUpperBound)
     }
 
 }
