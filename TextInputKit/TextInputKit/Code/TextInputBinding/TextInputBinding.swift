@@ -1,5 +1,5 @@
 //
-//  TextInputDriver.swift
+//  TextInputBinding.swift
 //  TextInputKit
 //
 //  Created by Artem Starosvetskiy on 24/11/2016.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class TextInputDriver<Value> : TextInputDriverType {
+public class TextInputBinding<Value> : TextInputBindingType {
 
     public let format: TextInputFormat<Value>
 
