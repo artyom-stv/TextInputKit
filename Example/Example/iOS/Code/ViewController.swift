@@ -16,10 +16,10 @@ class TestFormatterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        textFieldDriver = TextInputFormats.plain
+        textInputBinding = TextInputFormats.plain
             .bind(to: textField)
     }
 
-    private var textFieldDriver: TextInputDriver<String>!
+    private var textInputBinding: TextInputBinding<String>!
 
 }

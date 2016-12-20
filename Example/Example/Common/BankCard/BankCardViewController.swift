@@ -31,13 +31,13 @@ final class BankCardViewController : ViewController {
         bindTextInputChangesHandler()
     }
 
-    fileprivate var cardNumberTextInputBinding: TextInputDriver<BankCardNumber>!
+    fileprivate var cardNumberTextInputBinding: TextInputBinding<BankCardNumber>!
 
-    fileprivate var cardExpiryDateTextInputBinding: TextInputDriver<DateComponents>!
+    fileprivate var cardExpiryDateTextInputBinding: TextInputBinding<DateComponents>!
 
-    fileprivate var cardHolderNameTextInputBinding: TextInputDriver<String>!
+    fileprivate var cardHolderNameTextInputBinding: TextInputBinding<String>!
 
-    fileprivate var cardSecurityCodeTextInputBinding: TextInputDriver<String>!
+    fileprivate var cardSecurityCodeTextInputBinding: TextInputBinding<String>!
 
 }
 
