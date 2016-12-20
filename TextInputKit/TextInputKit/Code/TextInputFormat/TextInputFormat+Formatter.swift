@@ -6,7 +6,11 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
+import Foundation
+
+#if os(macOS)
 import AppKit
+#endif
 
 public struct FormatterOptions {
 
