@@ -12,9 +12,6 @@ final class BankCardHolderNameTextInputFormatter : TextInputFormatter {
 
     init(_ options: BankCardHolderNameTextInputOptions) {
         self.options = options
-        self.deniedCharacters = CharacterSet(charactersIn: UnicodeScalar("A")...UnicodeScalar("Z"))
-            .union(allowedNonLetterCharacters)
-            .inverted
     }
 
     override func validate(
@@ -24,20 +21,29 @@ final class BankCardHolderNameTextInputFormatter : TextInputFormatter {
         at editedRange: Range<String.Index>) -> TextInputValidationResult {
 
         do {
-            let adjustedReplacementStringView = try self.adjustedReplacementString(from: replacementString).unicodeScalars
+            let adjustedReplacementString = try self.adjustedReplacementString(from: replacementString)
 
-            let originalStringView = originalString.unicodeScalars
-            let editedRangeInStringView = editedRange.sameRange(in: originalStringView)
+            let input = ValidationInput(
+                stringView: originalString.unicodeScalars,
+                selectedRange: originalSelectedRange.sameRange(in: originalString.unicodeScalars),
+                replacementStringView: adjustedReplacementString.unicodeScalars,
+                editedRange: editedRange.sameRange(in: originalString.unicodeScalars))
 
-            let (resultingStringView, editedRangeInResultingStringView) = {
-                originalStringView.replacingSubrangeAndReturningNewSubrange(editedRangeInStringView, with: adjustedReplacementStringView)
+            var result: ValidationResult = {
+                let (resultingStringView, editedRangeInResultingStringView) = {
+                    input.stringView.replacingSubrangeAndReturningNewSubrange(input.editedRange, with: input.replacementStringView)
+                }()
+                return ValidationResult(
+                    stringView: resultingStringView,
+                    cursorIndex: editedRangeInResultingStringView.upperBound)
             }()
 
-            try validatePunctuation(in: resultingStringView, afterEditing: editedRangeInResultingStringView)
-            try validateLength(of: resultingStringView)
+            result = filteringPunctuation(in: result)
 
-            let resultingString = String(resultingStringView)
-            let resultingCursorIndex = editedRangeInResultingStringView.upperBound.samePosition(in: resultingString)!
+            try validateLength(of: result.stringView)
+
+            let resultingString = String(result.stringView)
+            let resultingCursorIndex = result.cursorIndex.samePosition(in: resultingString)!
 
             return .optimalValidationResult(
                 forEditing: originalString,
@@ -53,10 +59,6 @@ final class BankCardHolderNameTextInputFormatter : TextInputFormatter {
         }
     }
 
-    fileprivate let allowedNonLetterCharacters = CharacterSet(charactersIn: "-. ")
-
-    fileprivate let deniedCharacters: CharacterSet
-
     fileprivate let options: BankCardHolderNameTextInputOptions
 
 }
@@ -67,51 +69,44 @@ private extension BankCardHolderNameTextInputFormatter {
 
         case invalidCharactersInReplacementString
 
-        case invalidPunctuation
-
         case maxLengthExceeded
         
     }
 
+    struct ValidationInput {
+        let stringView: String.UnicodeScalarView
+        let selectedRange: Range<String.UnicodeScalarIndex>
+        let replacementStringView:String.UnicodeScalarView
+        let editedRange: Range<String.UnicodeScalarIndex>
+    }
+
+    struct ValidationResult {
+        let stringView: String.UnicodeScalarView
+        let cursorIndex: String.UnicodeScalarIndex
+    }
+
     func adjustedReplacementString(from replacementString: String) throws -> String {
         let adjustedReplacementString = replacementString
-            .folding(options: [.diacriticInsensitive, .widthInsensitive], locale: nil)
+            .folding(options: [.widthInsensitive], locale: nil)
             .uppercased(with: nil)
 
-        if adjustedReplacementString.rangeOfCharacter(from: deniedCharacters) != nil {
+        if adjustedReplacementString.rangeOfCharacter(from: Utils.deniedCharacters) != nil {
             throw ValidationError.invalidCharactersInReplacementString
         }
 
         return adjustedReplacementString
     }
 
-    func validatePunctuation(
-        in stringView: String.UnicodeScalarView,
-        afterEditing editedRange: Range<String.UnicodeScalarIndex>) throws {
+    func filteringPunctuation(
+        in originalValidationResult: ValidationResult) -> ValidationResult {
 
-        var windowRange: Range<String.UnicodeScalarIndex> = {
-            let lowerBound = editedRange.lowerBound == stringView.startIndex
-                ? editedRange.lowerBound
-                : stringView.index(before: editedRange.lowerBound)
-            let upperBound = editedRange.upperBound == stringView.endIndex
-                ? editedRange.upperBound
-                : stringView.index(after: editedRange.upperBound)
-            return lowerBound..<upperBound
+        let (resultingStringView, resultingCursorIndex) = {
+            Utils.stringViewAndIndexAfterFilteringPunctuation(
+                in: originalValidationResult.stringView,
+                withIndex: originalValidationResult.cursorIndex)
         }()
 
-        while let nonLetterCharacterIndex = stringView[windowRange].index(where: { allowedNonLetterCharacters.contains($0) }) {
-            let nextCharacterIndex = stringView.index(after: nonLetterCharacterIndex)
-
-            if nextCharacterIndex == windowRange.upperBound {
-                break
-            }
-
-            if allowedNonLetterCharacters.contains(stringView[nextCharacterIndex]) {
-                throw ValidationError.invalidPunctuation
-            }
-
-            windowRange = stringView.index(after: nextCharacterIndex) ..< windowRange.upperBound
-        }
+        return ValidationResult(stringView: resultingStringView, cursorIndex: resultingCursorIndex)
     }
 
     func validateLength(
@@ -121,5 +116,7 @@ private extension BankCardHolderNameTextInputFormatter {
             throw ValidationError.maxLengthExceeded
         }
     }
+
+    private typealias Utils = BankCardHolderNameUtils
 
 }
