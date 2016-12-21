@@ -17,8 +17,8 @@ public extension TextInputValidationResult {
         withSelection resultingSelectedRange: Range<String.Index>) -> TextInputValidationResult {
 
         let shouldReject: Bool = {
-            return (originalString == resultingString)
-                && (originalSelectedRange == resultingSelectedRange)
+            return (originalSelectedRange == resultingSelectedRange)
+                && (originalString == resultingString)
         }()
 
         if shouldReject {
