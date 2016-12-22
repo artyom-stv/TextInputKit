@@ -11,7 +11,7 @@ import XCTest
 
 final class BankCardExpiryDateTextInputFormatterTests : XCTestCase {
 
-    let textInputFormatter = BankCardNumberTextInputFormatter(.options())
+    let textInputFormatter = BankCardExpiryDateTextInputFormatter(.options())
 
     var textInput: TextInputSimulator!
 
@@ -122,6 +122,7 @@ final class BankCardExpiryDateTextInputFormatterTests : XCTestCase {
             "4"
         ]
         for year in yearCases {
+            textInput.selectAll()
             textInput.insert("12/\(year)")
             textInput.expect("12/\(year)", "", "")
 
@@ -145,10 +146,11 @@ final class BankCardExpiryDateTextInputFormatterTests : XCTestCase {
             "1"
         ]
         for month in monthCases {
+            textInput.selectAll()
             textInput.insert("\(month)/34")
             textInput.expect("\(month)/34", "", "")
 
-            var i = month.characters.count
+            var i = month.characters.count + 1
             textInput.select(i..<i)
             textInput.insert("0")
             textInput.expect("\(month)/", "", "34")
@@ -192,35 +194,14 @@ final class BankCardExpiryDateTextInputFormatterTests : XCTestCase {
 
         textInput.select(2..<3)
         textInput.insert("0")
-        textInput.expect("12/", "", "")
+        textInput.expect("12", "/", "")
 
+        textInput.select(3..<3)
         textInput.insert("3")
         textInput.expect("12/3", "", "")
         textInput.select(2..<3)
         textInput.insert("0")
-        textInput.expect("12/", "", "3")
-    }
-
-    func testThatEditingSelectedSlashAndMonthIsFormattedCorrectly() {
-        textInput.insert("12/34")
-        textInput.expect("12/34", "", "")
-
-        textInput.select(1..<3)
-        textInput.insert("5")
-        textInput.expect("15", "", "/34")
-
-        textInput.select(1..<4)
-        textInput.insert("6")
-        textInput.expect("16", "", "/34")
-    }
-
-    func testThatEditingSelectedSlashAndYearIsFormattedCorrectly() {
-        textInput.insert("12/34")
-        textInput.expect("12/34", "", "")
-
-        textInput.select(2..<4)
-        textInput.insert("5")
-        textInput.expect("12/5", "", "4")
+        textInput.expect("12", "/", "3")
     }
 
 }
