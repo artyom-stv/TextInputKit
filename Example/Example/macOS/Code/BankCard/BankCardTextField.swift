@@ -16,9 +16,9 @@ final class BankCardTextField : NSTextField {
         super.awakeFromNib()
 
         self.wantsLayer = true
-        layer!.borderColor = type(of: self).borderColor.cgColor
-        layer!.cornerRadius = type(of: self).cornerRadius
-        layer!.borderWidth = type(of: self).borderWidth
+        layer!.borderColor = Style.borderColor.cgColor
+        layer!.cornerRadius = Style.cornerRadius
+        layer!.borderWidth = Style.borderWidth
     }
 
     // MARK: - Override NSView
@@ -36,12 +36,12 @@ final class BankCardTextField : NSTextField {
         return BankCardTextFieldCell.self
     }
 
-    // MARK: - Constants
+    // MARK: - Private Types
+
+    private typealias Style = BankCardTextFieldStyle
+
+    // MARK: - Private Constants
 
     static let inset: CGSize = CGSize(width: CGFloat(8.0), height: CGFloat(3.0))
-
-    private static let borderWidth: CGFloat = 1.0
-    private static let borderColor = NSColor(white: CGFloat(0.0), alpha: CGFloat(0.2))
-    private static let cornerRadius: CGFloat = 3.0
 
 }

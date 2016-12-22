@@ -15,8 +15,8 @@ final class BankCardTextField : UITextField {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        layer.borderColor = type(of: self).borderColor.cgColor
-        layer.cornerRadius = type(of: self).cornerRadius
+        layer.borderColor = Style.borderColor.cgColor
+        layer.cornerRadius = Style.cornerRadius
     }
 
     // MARK: - Override UIView
@@ -25,7 +25,7 @@ final class BankCardTextField : UITextField {
         super.willMove(toWindow: newWindow)
 
         if let window = newWindow {
-            layer.borderWidth = type(of: self).borderWidth / window.screen.scale
+            layer.borderWidth = Style.borderWidth / window.screen.scale
         }
     }
 
@@ -50,11 +50,11 @@ final class BankCardTextField : UITextField {
             dy: type(of: self).inset.height)
     }
 
-    // MARK: - Constants
+    // MARK: - Private Types
 
-    private static let borderWidth: CGFloat = 1.0
-    private static let borderColor = UIColor(white: CGFloat(0.0), alpha: CGFloat(0.2))
-    private static let cornerRadius: CGFloat = 3.0
+    private typealias Style = BankCardTextFieldStyle
+
+    // MARK: - Private Constants
 
     private static let inset: CGSize = CGSize(width: CGFloat(8.0), height: CGFloat(3.0))
     

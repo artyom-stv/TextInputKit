@@ -13,9 +13,11 @@
 #endif
 
 #if os(macOS)
+    typealias Color = NSColor
     typealias ViewController = NSViewController
     typealias TextField = NSTextField
 #else
+    typealias Color = UIColor
     typealias ViewController = UIViewController
     typealias TextField = UITextField
 #endif
