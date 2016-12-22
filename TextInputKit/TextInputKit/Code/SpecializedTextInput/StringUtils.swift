@@ -12,6 +12,8 @@ struct StringUtils {
 
     private init() {}
 
+    static let slashCharacters = CharacterSet(charactersIn: "/／")
+
 }
 
 extension StringUtils {
