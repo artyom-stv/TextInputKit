@@ -15,7 +15,7 @@ public extension TextInputFormats {
     ///
     /// - Parameter options: The text input options.
     /// - Returns: Text input format for bank expiry date.
-    static func bankCardExpiryDate(_ options: BankCardExpiryDateTextInputOptions = .options()) -> TextInputFormat<DateComponents> {
+    static func bankCardExpiryDate(_ options: BankCardExpiryDateTextInputOptions = .options()) -> TextInputFormat<BankCardExpiryDate> {
         let serializer = BankCardExpiryDateTextInputSerializer(options)
         let formatter = BankCardExpiryDateTextInputFormatter(options)
 

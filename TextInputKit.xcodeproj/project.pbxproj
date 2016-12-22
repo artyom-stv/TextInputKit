@@ -37,6 +37,8 @@
 		7C3FE4A21E045B250094CE4D /* FormatterObjectValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4A01E0456C20094CE4D /* FormatterObjectValue.swift */; };
 		7C7250361E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7250351E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift */; };
 		7C7250371E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7250351E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift */; };
+		7C7250521E0C706100F916ED /* BankCardExpiryDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7250511E0C706100F916ED /* BankCardExpiryDate.swift */; };
+		7C7250531E0C706100F916ED /* BankCardExpiryDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7250511E0C706100F916ED /* BankCardExpiryDate.swift */; };
 		7CE691511DE81500003F32D2 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6912E1DE81500003F32D2 /* MutableBox.swift */; };
 		7CE691521DE81500003F32D2 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6912E1DE81500003F32D2 /* MutableBox.swift */; };
 		7CE691531DE81500003F32D2 /* Range+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691301DE81500003F32D2 /* Range+TextInputKit.swift */; };
@@ -173,6 +175,7 @@
 		7C3FE4571E0331410094CE4D /* TextInputFormats+BankCardExpiryDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextInputFormats+BankCardExpiryDate.swift"; sourceTree = "<group>"; };
 		7C3FE4A01E0456C20094CE4D /* FormatterObjectValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterObjectValue.swift; sourceTree = "<group>"; };
 		7C7250351E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardExpiryDateTextInputFormatterTests.swift; sourceTree = "<group>"; };
+		7C7250511E0C706100F916ED /* BankCardExpiryDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardExpiryDate.swift; sourceTree = "<group>"; };
 		7CE6912E1DE81500003F32D2 /* MutableBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutableBox.swift; sourceTree = "<group>"; };
 		7CE691301DE81500003F32D2 /* Range+TextInputKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Range+TextInputKit.swift"; sourceTree = "<group>"; };
 		7CE691331DE81500003F32D2 /* BindingForNSTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingForNSTextField.swift; sourceTree = "<group>"; };
@@ -291,6 +294,7 @@
 		7C3FE4511E0331410094CE4D /* BankCardExpiryDate */ = {
 			isa = PBXGroup;
 			children = (
+				7C7250511E0C706100F916ED /* BankCardExpiryDate.swift */,
 				7C3FE4521E0331410094CE4D /* BankCardExpiryDateTextInputError.swift */,
 				7C3FE4531E0331410094CE4D /* BankCardExpiryDateTextInputFormatter.swift */,
 				7C3FE4541E0331410094CE4D /* BankCardExpiryDateTextInputOptions.swift */,
@@ -648,6 +652,7 @@
 				7CE691951DE8165F003F32D2 /* PhoneNumberTextInputOptions.swift in Sources */,
 				7CE691651DE81500003F32D2 /* TextInputFormat+Formatter.swift in Sources */,
 				7CE6916B1DE81500003F32D2 /* TextInputFormats+Plain.swift in Sources */,
+				7C7250521E0C706100F916ED /* BankCardExpiryDate.swift in Sources */,
 				7CE691731DE81500003F32D2 /* TextInputFormatterType+Map.swift in Sources */,
 				7CE691691DE81500003F32D2 /* TextInputFormat+Map.swift in Sources */,
 				7C3FE45C1E0331410094CE4D /* BankCardExpiryDateUtils.swift in Sources */,
@@ -701,6 +706,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CE691661DE81500003F32D2 /* TextInputFormat+Formatter.swift in Sources */,
+				7C7250531E0C706100F916ED /* BankCardExpiryDate.swift in Sources */,
 				7C19F1FE1E048CBF00D2A68F /* NSTextField+TextInputKit.swift in Sources */,
 				7CE6916C1DE81500003F32D2 /* TextInputFormats+Plain.swift in Sources */,
 				7CE691A21DE89695003F32D2 /* TextInputSerializerType+Map.swift in Sources */,
