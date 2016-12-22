@@ -46,7 +46,7 @@ final class BankCardNumberTextInputFormatter : TextInputFormatter {
         }
     }
 
-    private let options: BankCardNumberTextInputOptions
+    fileprivate let options: BankCardNumberTextInputOptions
 
 }
 
@@ -118,7 +118,7 @@ private extension BankCardNumberTextInputFormatter {
         // Length of ASCII string is similar in `characters` and in `unicodeScalars`.
         let resultingDigitsStringLength = digitsResult.stringView.count
 
-        if resultingDigitsStringLength > Utils.maxCardNumberDigitsStringLength {
+        if resultingDigitsStringLength > options.maxLength {
             throw ValidationError.maxLengthExceeded
         }
 

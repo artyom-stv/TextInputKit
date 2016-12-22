@@ -8,6 +8,35 @@
 
 import Foundation
 
+#if os(macOS)
+import AppKit
+#endif
+
+public struct FormatterOptions {
+
+    #if os(macOS)
+    /// On macOS, the `tracksCurrentEditorSelection` option enables a better text input formatting quality for a `Formatter`
+    /// being binded to an `NSTextField` or an `NSTextFieldCell`.
+    /// (the same quality as it is provided by `TextInputFormat.bind(to:)` on iOS by default).
+    ///
+    /// On iOS and tvOS, a `Formatter` isn't used to format text input in a `UITextField`.
+    /// On macOS, to format textinput in an `NSTextField` or an `NSTextFieldCell`, a `Formatter` is created.
+    /// `Formatter` API doesn't allow us to distinguish deleting a selected character from pressing "Backspace"/"Delete" key
+    /// without any selection. For example, it doesn't allow to distinguish the following cases for "1234 5678":
+    /// - pressing a "Backspace" key when the cursor is standing before the character "5";
+    /// - pressing a "Backspace" key when the character " " is selected.
+    ///
+    /// If the `tracksCurrentEditorSelection` option is `true`, then a `Formatter` created by `TextInputFormat.toFormatter(_:)`
+    /// finds the current editor (an instance of `NSTextView`) and extracts the `selectedRange` from it.
+    var tracksCurrentEditorSelection: Bool = false
+    #endif
+
+    static func options() -> FormatterOptions {
+        return .init()
+    }
+
+}
+
 extension TextInputFormat {
 
     /// Creates a `Formatter` with the object type `FormatterObjectValue<Value>`.
@@ -19,16 +48,17 @@ extension TextInputFormat {
     /// Both variants conflict with the desired behavior of the corresponding `TextInputBinding`. So, we have to set the `objectPtr` to a non-nil value and return `true` from the `getObjectValue(_:for:errorDescription:)` method, even when there is no `Value` representing the text in the text input.
     ///
     /// - Returns: The created `Formatter`.
-    public func toFormatter() -> Formatter {
-        return FormatterAdapter(self)
+    public func toFormatter(_ options: FormatterOptions = .options()) -> Formatter {
+        return FormatterAdapter(self, options)
     }
 
 }
 
 private final class FormatterAdapter<Value> : Formatter {
 
-    init(_ format: TextInputFormat<Value>) {
+    init(_ format: TextInputFormat<Value>, _ options: FormatterOptions) {
         self.format = format
+        self.options = options
 
         super.init()
     }
@@ -84,7 +114,7 @@ private final class FormatterAdapter<Value> : Formatter {
         newEditingString newStringPtr: AutoreleasingUnsafeMutablePointer<NSString?>?,
         errorDescription errorDescriptionPtr: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
 
-        fatalError("\(#function) has not been implemented")
+        fatalError("\(#function) isn't implemented. It is not supported by a `Formatter` created by `TextInputFormat`.")
     }
 
     override func isPartialStringValid(
@@ -97,6 +127,17 @@ private final class FormatterAdapter<Value> : Formatter {
         let editedRange = editedNSRange.toRange()!
             .sameRange(in: originalString.utf16)
             .sameRange(in: originalString)
+
+        let originalSelectedRange: Range<String.Index> = {
+            #if os(macOS)
+            if options.tracksCurrentEditorSelection {
+                if let editor = NSApplication.shared().keyWindow?.textInputKit_currentEditor {
+                    return editor.textInputKit_selectedRange!
+                }
+            }
+            #endif
+            return editedRange
+        }()
 
         let editedString = partialStringPtr.pointee as String
 
@@ -120,7 +161,7 @@ private final class FormatterAdapter<Value> : Formatter {
 
         let validationResult = format.formatter.validate(
             editing: originalString,
-            withSelection: editedRange,
+            withSelection: originalSelectedRange,
             replacing: replacementString,
             at: editedRange)
 
@@ -142,5 +183,7 @@ private final class FormatterAdapter<Value> : Formatter {
     }
 
     private let format: TextInputFormat<Value>
+
+    private let options: FormatterOptions
 
 }
