@@ -23,8 +23,6 @@
 		7C19F2001E048CC800D2A68F /* NSTextFieldCell+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C19F1FF1E048CC800D2A68F /* NSTextFieldCell+TextInputKit.swift */; };
 		7C32AA331E07B70B004669A8 /* NSText+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C32AA321E07B70B004669A8 /* NSText+TextInputKit.swift */; };
 		7C32AA3D1E0822E7004669A8 /* NSWindow+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C32AA3C1E0822E7004669A8 /* NSWindow+TextInputKit.swift */; };
-		7C3FE4A11E0456C20094CE4D /* FormatterObjectValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4A01E0456C20094CE4D /* FormatterObjectValue.swift */; };
-		7C3FE4A21E045B250094CE4D /* FormatterObjectValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4A01E0456C20094CE4D /* FormatterObjectValue.swift */; };
 		7C3FE4581E0331410094CE4D /* BankCardExpiryDateTextInputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4521E0331410094CE4D /* BankCardExpiryDateTextInputError.swift */; };
 		7C3FE4591E0331410094CE4D /* BankCardExpiryDateTextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4531E0331410094CE4D /* BankCardExpiryDateTextInputFormatter.swift */; };
 		7C3FE45A1E0331410094CE4D /* BankCardExpiryDateTextInputOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4541E0331410094CE4D /* BankCardExpiryDateTextInputOptions.swift */; };
@@ -37,6 +35,10 @@
 		7C3FE4611E0331990094CE4D /* BankCardExpiryDateTextInputSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4551E0331410094CE4D /* BankCardExpiryDateTextInputSerializer.swift */; };
 		7C3FE4621E0331990094CE4D /* BankCardExpiryDateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4561E0331410094CE4D /* BankCardExpiryDateUtils.swift */; };
 		7C3FE4631E0331990094CE4D /* TextInputFormats+BankCardExpiryDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4571E0331410094CE4D /* TextInputFormats+BankCardExpiryDate.swift */; };
+		7C3FE4A11E0456C20094CE4D /* FormatterObjectValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4A01E0456C20094CE4D /* FormatterObjectValue.swift */; };
+		7C3FE4A21E045B250094CE4D /* FormatterObjectValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4A01E0456C20094CE4D /* FormatterObjectValue.swift */; };
+		7C50F91E1E0FFA3900D3AF09 /* libPhoneNumbermacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C50F91D1E0FFA3900D3AF09 /* libPhoneNumbermacOS.framework */; };
+		7C72505C1E0EB8AA00F916ED /* libPhoneNumberiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C72505B1E0EB8AA00F916ED /* libPhoneNumberiOS.framework */; };
 		7CE691511DE81500003F32D2 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6912E1DE81500003F32D2 /* MutableBox.swift */; };
 		7CE691521DE81500003F32D2 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6912E1DE81500003F32D2 /* MutableBox.swift */; };
 		7CE691531DE81500003F32D2 /* Range+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691301DE81500003F32D2 /* Range+TextInputKit.swift */; };
@@ -167,13 +169,15 @@
 		7C2BD04C1DE2C44C00A7A6C0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C32AA321E07B70B004669A8 /* NSText+TextInputKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSText+TextInputKit.swift"; sourceTree = "<group>"; };
 		7C32AA3C1E0822E7004669A8 /* NSWindow+TextInputKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSWindow+TextInputKit.swift"; sourceTree = "<group>"; };
-		7C3FE4A01E0456C20094CE4D /* FormatterObjectValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterObjectValue.swift; sourceTree = "<group>"; };
 		7C3FE4521E0331410094CE4D /* BankCardExpiryDateTextInputError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardExpiryDateTextInputError.swift; sourceTree = "<group>"; };
 		7C3FE4531E0331410094CE4D /* BankCardExpiryDateTextInputFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardExpiryDateTextInputFormatter.swift; sourceTree = "<group>"; };
 		7C3FE4541E0331410094CE4D /* BankCardExpiryDateTextInputOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardExpiryDateTextInputOptions.swift; sourceTree = "<group>"; };
 		7C3FE4551E0331410094CE4D /* BankCardExpiryDateTextInputSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardExpiryDateTextInputSerializer.swift; sourceTree = "<group>"; };
 		7C3FE4561E0331410094CE4D /* BankCardExpiryDateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardExpiryDateUtils.swift; sourceTree = "<group>"; };
 		7C3FE4571E0331410094CE4D /* TextInputFormats+BankCardExpiryDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextInputFormats+BankCardExpiryDate.swift"; sourceTree = "<group>"; };
+		7C3FE4A01E0456C20094CE4D /* FormatterObjectValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterObjectValue.swift; sourceTree = "<group>"; };
+		7C50F91D1E0FFA3900D3AF09 /* libPhoneNumbermacOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libPhoneNumbermacOS.framework; path = Carthage/Build/Mac/libPhoneNumbermacOS.framework; sourceTree = "<group>"; };
+		7C72505B1E0EB8AA00F916ED /* libPhoneNumberiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libPhoneNumberiOS.framework; path = Carthage/Build/iOS/libPhoneNumberiOS.framework; sourceTree = "<group>"; };
 		7CE6912E1DE81500003F32D2 /* MutableBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutableBox.swift; sourceTree = "<group>"; };
 		7CE691301DE81500003F32D2 /* Range+TextInputKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Range+TextInputKit.swift"; sourceTree = "<group>"; };
 		7CE691331DE81500003F32D2 /* BindingForNSTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingForNSTextField.swift; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C72505C1E0EB8AA00F916ED /* libPhoneNumberiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +246,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C50F91E1E0FFA3900D3AF09 /* libPhoneNumbermacOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,12 +310,22 @@
 			path = BankCardExpiryDate;
 			sourceTree = "<group>";
 		};
+		7C72505A1E0EB8A900F916ED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7C50F91D1E0FFA3900D3AF09 /* libPhoneNumbermacOS.framework */,
+				7C72505B1E0EB8AA00F916ED /* libPhoneNumberiOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7C7AEB461DDFD128004861BD = {
 			isa = PBXGroup;
 			children = (
 				7C7AEB521DDFD128004861BD /* TextInputKit */,
 				7CE691BB1DEACFF7003F32D2 /* Tests */,
 				7C7AEB511DDFD128004861BD /* Products */,
+				7C72505A1E0EB8A900F916ED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -814,6 +830,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/TextInputKit/TextInputKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -831,6 +851,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/TextInputKit/TextInputKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -849,6 +873,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "$(SRCROOT)/TextInputKit/TextInputKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -869,6 +897,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "$(SRCROOT)/TextInputKit/TextInputKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
