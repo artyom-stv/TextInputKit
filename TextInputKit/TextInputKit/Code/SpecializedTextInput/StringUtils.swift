@@ -12,6 +12,22 @@ struct StringUtils {
 
     private init() {}
 
+    static let slashCharacters = CharacterSet(charactersIn: "/／")
+
+}
+
+extension StringUtils {
+
+    static func isSpace(_ unicodeScalar: UnicodeScalar) -> Bool {
+        let fullwidthSpace = UnicodeScalar("\u{3000}")
+        return (unicodeScalar == UnicodeScalar(" "))
+            || (unicodeScalar == fullwidthSpace)
+    }
+
+    static func isDigit(_ unicodeScalar: UnicodeScalar) -> Bool {
+        return CharacterSet.decimalDigits.contains(unicodeScalar)
+    }
+
 }
 
 extension StringUtils {

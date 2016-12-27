@@ -89,8 +89,12 @@ class TextInputSimulator {
 extension TextInputSimulator {
 
     func select(_ range: Range<Int>) {
-        let startIndex = text.index(text.startIndex, offsetBy: range.lowerBound)
-        let endIndex = text.index(startIndex, offsetBy: range.upperBound - range.lowerBound)
+        guard
+            let startIndex = text.index(text.startIndex, offsetBy: range.lowerBound, limitedBy: text.endIndex),
+            let endIndex = text.index(startIndex, offsetBy: range.upperBound - range.lowerBound, limitedBy: text.endIndex)
+            else {
+                Swift.fatalError("The provided `range` is out of the `text` indices bounds.")
+        }
         select(startIndex..<endIndex)
     }
 
