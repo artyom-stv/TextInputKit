@@ -8,24 +8,36 @@
 
 import Foundation
 
-final class BankCardExpiryDateTextInputSerializer : TextInputSerializer<DateComponents> {
+final class BankCardExpiryDateTextInputSerializer : TextInputSerializer<BankCardExpiryDate> {
 
     init(_ options: BankCardExpiryDateTextInputOptions) {
         self.options = options
     }
 
-
-    override func string(for value: DateComponents) -> String {
-        return "\(value.month) / \(value.year)"
+    override func string(for value: BankCardExpiryDate) -> String {
+        let lastTwoDigitsOfYear = value.year % 100
+        return "\(value.month) / \(lastTwoDigitsOfYear)"
     }
 
-    override func value(for string: String) throws -> DateComponents {
-        let components = string.components(separatedBy: "/")
-        guard components.count == 2, let month = Int(components[0]), let year = Int(components[1]) else {
+    override func value(for string: String) throws -> BankCardExpiryDate {
+        let components = string.components(separatedBy: StringUtils.slashCharacters)
+
+        guard components.count == 2 else {
+            fatalError()
+        }
+
+        let monthComponent = components[0]
+        let yearComponent = components[1]
+
+        guard (1...2).contains(monthComponent.unicodeScalars.count), yearComponent.unicodeScalars.count == 2 else {
             throw BankCardExpiryDateTextInputError.incompleteTextInput
         }
 
-        return DateComponents(year: year, month: month)
+        guard let month = Int(monthComponent), let lastTwoDigitsOfYear = Int(yearComponent) else {
+            fatalError()
+        }
+
+        return try BankCardExpiryDate(month: month, lastTwoDigitsOfYear: lastTwoDigitsOfYear)
     }
 
     private let options: BankCardExpiryDateTextInputOptions
