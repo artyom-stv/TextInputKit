@@ -11,20 +11,20 @@ import Foundation
 extension String.UnicodeScalarView {
 
     public func replacingSubrangeAndReturningNewSubrange(
-        _ bounds: Range<String.UnicodeScalarView.Index>,
-        with newElements: String.UnicodeScalarView
+        _ range: Range<String.UnicodeScalarView.Index>,
+        with replacementStringView: String.UnicodeScalarView
         ) -> (String.UnicodeScalarView, Range<String.UnicodeScalarView.Index>)
     {
         var newView = self
-        newView.replaceSubrange(bounds, with: newElements)
+        newView.replaceSubrange(range, with: replacementStringView)
 
-        let newBoundsLowerBound = (bounds.lowerBound == self.startIndex)
+        let newLowerBound = (range.lowerBound == self.startIndex)
             ? newView.startIndex
-            : newView.index(after: self.index(before: bounds.lowerBound))
+            : newView.index(after: self.index(before: range.lowerBound))
 
-        let newBounds = newBoundsLowerBound ..< newView.index(newBoundsLowerBound, offsetBy: newElements.count)
+        let newRange = newLowerBound ..< newView.index(newLowerBound, offsetBy: replacementStringView.count)
 
-        return (newView, newBounds)
+        return (newView, newRange)
     }
 
 }

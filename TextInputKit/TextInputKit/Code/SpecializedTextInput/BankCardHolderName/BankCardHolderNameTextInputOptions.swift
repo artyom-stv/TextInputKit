@@ -7,14 +7,22 @@
 //
 
 /// Options for text input of bank card numbers.
-///
-/// - Note:
-///   Currently, there are no properties in `BankCardHolderNameTextInputOptions` struct.
-///   It is left for future text input customizations not breaking the API.
 public struct BankCardHolderNameTextInputOptions {
 
-    public static func options() -> BankCardHolderNameTextInputOptions {
-        return self.init()
+    let maxLength: Int
+
+    /// Creates a `BankCardHolderNameTextInputOptions` for `TextInputFormats.bankCardHolderName(_:)`.
+    ///
+    /// - Parameters:
+    ///   - maxLength: The maximum length of a bank card holder name.
+    /// - Returns: The created `BankCardHolderNameTextInputOptions`.
+    public static func options(
+        maxLength: Int = 26
+        ) -> BankCardHolderNameTextInputOptions {
+
+        return self.init(
+            maxLength: maxLength
+        )
     }
 
 }

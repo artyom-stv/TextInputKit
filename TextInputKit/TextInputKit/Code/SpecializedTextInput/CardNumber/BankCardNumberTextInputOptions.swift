@@ -7,14 +7,28 @@
 //
 
 /// Options for text input of bank card numbers.
-///
-/// - note:
-///   Currently, there are no properties in `BankCardNumberTextInputOptions` struct.
-///   It is left for future text input customizations not breaking the API.
 public struct BankCardNumberTextInputOptions {
 
-    public static func options() -> BankCardNumberTextInputOptions {
-        return self.init()
+    /// Creates a `BankCardNumberTextInputOptions`.
+    ///
+    /// - Parameters:
+    ///   - maxLength: The maximum number of digits in a bank card number.
+    /// - Returns: The created `BankCardNumberTextInputOptions`.
+    public static func options(
+        maxLength: Int = 19
+        ) -> BankCardNumberTextInputOptions {
+
+        let maxLengthAllowedRange = 12...19
+
+        guard maxLengthAllowedRange.contains(maxLength) else {
+            fatalError("The provided value (\(maxLength)) of `maxLength` argument is out of the allowed bounds (\(maxLengthAllowedRange.lowerBound)...\(maxLengthAllowedRange.upperBound)).")
+        }
+
+        return self.init(
+            maxLength: maxLength
+        )
     }
+
+    let maxLength: Int
 
 }

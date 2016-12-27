@@ -33,7 +33,7 @@ final class BankCardViewController : ViewController {
 
     fileprivate var cardNumberTextInputBinding: TextInputBinding<BankCardNumber>!
 
-    fileprivate var cardExpiryDateTextInputBinding: TextInputBinding<DateComponents>!
+    fileprivate var cardExpiryDateTextInputBinding: TextInputBinding<BankCardExpiryDate>!
 
     fileprivate var cardHolderNameTextInputBinding: TextInputBinding<String>!
 
@@ -54,7 +54,7 @@ private extension BankCardViewController {
         return TextInputFormats.bankCardNumber()
     }
 
-    private var cardExpiryDateTextInputFormat: TextInputFormat<DateComponents> {
+    private var cardExpiryDateTextInputFormat: TextInputFormat<BankCardExpiryDate> {
         return TextInputFormats.bankCardExpiryDate()
     }
 
