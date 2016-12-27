@@ -49,6 +49,7 @@ final class BankCardHolderNameTextInputFormatter : TextInputFormatter {
                 forEditing: originalString,
                 replacing: replacementString,
                 at: editedRange,
+                withSelection: originalSelectedRange,
                 resulting: resultingString,
                 withSelection: resultingCursorIndex..<resultingCursorIndex)
         }
