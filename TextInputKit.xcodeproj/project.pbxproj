@@ -46,6 +46,10 @@
 		7C50F93F1E12A7DC00D3AF09 /* BankCardExpiryDateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50F9321E12A7DC00D3AF09 /* BankCardExpiryDateUtils.swift */; };
 		7C50F9401E12A7DC00D3AF09 /* TextInputFormats+BankCardExpiryDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50F9331E12A7DC00D3AF09 /* TextInputFormats+BankCardExpiryDate.swift */; };
 		7C50F9411E12A7DC00D3AF09 /* TextInputFormats+BankCardExpiryDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50F9331E12A7DC00D3AF09 /* TextInputFormats+BankCardExpiryDate.swift */; };
+		7C50F9481E1BD73F00D3AF09 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C50F9471E1BD73F00D3AF09 /* Nimble.framework */; };
+		7C50F94A1E1BD74900D3AF09 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C50F9491E1BD74900D3AF09 /* Nimble.framework */; };
+		7C50F94F1E1BD92500D3AF09 /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7C50F9471E1BD73F00D3AF09 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7C50F9501E1BD92B00D3AF09 /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7C50F9491E1BD74900D3AF09 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7C7250361E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7250351E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift */; };
 		7C7250371E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7250351E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift */; };
 		7C7250461E09B33D00F916ED /* FormatterObjectValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7250451E09B33D00F916ED /* FormatterObjectValue.swift */; };
@@ -166,6 +170,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7C50F94B1E1BD8E900D3AF09 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7C50F94F1E1BD92500D3AF09 /* Nimble.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C50F94D1E1BD91000D3AF09 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7C50F9501E1BD92B00D3AF09 /* Nimble.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		7C0578B71DFC4FC10071DA47 /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		7C0578BA1DFC50B00071DA47 /* BankCardNumber+Hashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BankCardNumber+Hashable.swift"; sourceTree = "<group>"; };
@@ -192,6 +221,8 @@
 		7C50F9311E12A7DC00D3AF09 /* BankCardExpiryDateTextInputSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardExpiryDateTextInputSerializer.swift; sourceTree = "<group>"; };
 		7C50F9321E12A7DC00D3AF09 /* BankCardExpiryDateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardExpiryDateUtils.swift; sourceTree = "<group>"; };
 		7C50F9331E12A7DC00D3AF09 /* TextInputFormats+BankCardExpiryDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextInputFormats+BankCardExpiryDate.swift"; sourceTree = "<group>"; };
+		7C50F9471E1BD73F00D3AF09 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		7C50F9491E1BD74900D3AF09 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = "<group>"; };
 		7C7250351E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardExpiryDateTextInputFormatterTests.swift; sourceTree = "<group>"; };
 		7C7250451E09B33D00F916ED /* FormatterObjectValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterObjectValue.swift; sourceTree = "<group>"; };
 		7CE6912E1DE81500003F32D2 /* MutableBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutableBox.swift; sourceTree = "<group>"; };
@@ -268,6 +299,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C50F94A1E1BD74900D3AF09 /* Nimble.framework in Frameworks */,
 				7CE691D01DEC0B17003F32D2 /* TextInputKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +308,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C50F9481E1BD73F00D3AF09 /* Nimble.framework in Frameworks */,
 				7CE691DF1DEC0E1F003F32D2 /* TextInputKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +355,15 @@
 			path = BankCardHolderName;
 			sourceTree = "<group>";
 		};
+		7C50F9461E1BD73F00D3AF09 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7C50F9491E1BD74900D3AF09 /* Nimble.framework */,
+				7C50F9471E1BD73F00D3AF09 /* Nimble.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7C7250381E09B30400F916ED /* BankCardExpiryDate */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +384,7 @@
 				7C7AEB521DDFD128004861BD /* TextInputKit */,
 				7CE691BB1DEACFF7003F32D2 /* Tests */,
 				7C7AEB511DDFD128004861BD /* Products */,
+				7C50F9461E1BD73F00D3AF09 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -562,6 +605,7 @@
 				7CE691C71DEC0B17003F32D2 /* Sources */,
 				7CE691C81DEC0B17003F32D2 /* Frameworks */,
 				7CE691C91DEC0B17003F32D2 /* Resources */,
+				7C50F94D1E1BD91000D3AF09 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -580,6 +624,7 @@
 				7CE691D61DEC0E1F003F32D2 /* Sources */,
 				7CE691D71DEC0E1F003F32D2 /* Frameworks */,
 				7CE691D81DEC0E1F003F32D2 /* Resources */,
+				7C50F94B1E1BD8E900D3AF09 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1041,6 +1086,10 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "text-formatter.Tests-macOS";
@@ -1054,6 +1103,10 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "text-formatter.Tests-macOS";
@@ -1066,6 +1119,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "text-formatter.Tests-iOS";
@@ -1078,6 +1135,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "text-formatter.Tests-iOS";
