@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Nimble
 @testable import TextInputKit
 
 class TextInputSimulator {
@@ -106,12 +107,30 @@ extension TextInputSimulator {
 
 extension TextInputSimulator {
 
-    func expect(text: String, selectedRange: Range<String.Index>) {
-        XCTAssertEqual(self.text, text)
-        XCTAssertEqual(self.selectedRange, selectedRange)
+    func expect(
+        text expectedText: String,
+        selectedRange expectedSelectedRange: Range<String.Index>,
+        file: FileString = #file,
+        line: UInt = #line) {
+
+        Nimble.expect(self.text, file: file, line: line)
+            .to(equal(expectedText),
+                description: "Invalid text in a `TextInputSimulator`.")
+
+        let selectedIntRange = text.distance(from: text.startIndex, to: selectedRange.lowerBound) ..< text.distance(from: text.startIndex, to: selectedRange.upperBound)
+        let expectedSelectedIntRange = expectedText.distance(from: expectedText.startIndex, to: expectedSelectedRange.lowerBound) ..< expectedText.distance(from: expectedText.startIndex, to: expectedSelectedRange.upperBound)
+        Nimble.expect(selectedIntRange, file: file, line: line)
+            .to(equal(expectedSelectedIntRange),
+                description: "Invalid selected range in a `TextInputSimulator`.")
     }
 
-    func expect(_ textBeforeSelection: String, _ selectedText: String, _ textAfterSelection: String) {
+    func expect(
+        _ textBeforeSelection: String,
+        _ selectedText: String,
+        _ textAfterSelection: String,
+        file: FileString = #file,
+        line: UInt = #line) {
+
         let text = "\(textBeforeSelection)\(selectedText)\(textAfterSelection)"
         let selectionLowerBound = text.index(
             text.startIndex,
@@ -120,7 +139,11 @@ extension TextInputSimulator {
             text.startIndex,
             offsetBy: textBeforeSelection.characters.count + selectedText.characters.count)
 
-        expect(text: text, selectedRange: selectionLowerBound..<selectionUpperBound)
+        expect(
+            text: text,
+            selectedRange: selectionLowerBound..<selectionUpperBound,
+            file: file,
+            line: line)
     }
 
 }
