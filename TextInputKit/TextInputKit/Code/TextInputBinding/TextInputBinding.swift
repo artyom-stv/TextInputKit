@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class TextInputBinding<Value> : TextInputBindingType {
+open class TextInputBinding<Value> : TextInputBindingType {
 
     public let format: TextInputFormat<Value>
 
@@ -20,7 +20,7 @@ public class TextInputBinding<Value> : TextInputBindingType {
         unbind()
     }
 
-    public var value: Value? {
+    open var value: Value? {
         get {
             abstractMethod()
         }
@@ -29,7 +29,7 @@ public class TextInputBinding<Value> : TextInputBindingType {
         }
     }
 
-    public func unbind() {
+    open func unbind() {
         abstractMethod()
     }
 
