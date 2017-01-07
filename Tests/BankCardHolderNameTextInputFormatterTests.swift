@@ -11,126 +11,153 @@ import XCTest
 
 final class BankCardHolderNameTextInputFormatterTests : XCTestCase {
 
-    let textInputFormatter = BankCardHolderNameTextInputFormatter(.options())
+    let textInputFormat = TextInputFormats.bankCardHolderName()
 
     var textInput: TextInputSimulator!
+
+    var textInputBinding: TextInputBinding<String>!
 
     override func setUp() {
         super.setUp()
 
-        textInput = TextInputSimulator(textInputFormatter)
+        textInput = TextInputSimulator()
+        textInputBinding = textInputFormat.bind(to: textInput)
     }
 
     func testThatUppercaseLatinLettersAndSpacesAreAccepted() {
-        textInput.insert("A")
-        textInput.expect("A", "", "")
-        textInput.insert("B")
-        textInput.expect("AB", "", "")
-        textInput.insert(" ")
-        textInput.expect("AB ", "", "")
-        textInput.insert("C")
-        textInput.expect("AB C", "", "")
-        textInput.insert("D")
-        textInput.expect("AB CD", "", "")
+        textInput.edit { editor in
+            editor.insert("A")
+            textInput.expect("A", "", "")
+            editor.insert("B")
+            textInput.expect("AB", "", "")
+            editor.insert(" ")
+            textInput.expect("AB ", "", "")
+            editor.insert("C")
+            textInput.expect("AB C", "", "")
+            editor.insert("D")
+            textInput.expect("AB CD", "", "")
+        }
     }
 
     func testThatLatinLettersAreUppercased() {
-        textInput.insert("a")
-        textInput.expect("A", "", "")
-        textInput.insert("b")
-        textInput.expect("AB", "", "")
+        textInput.edit { editor in
+            editor.insert("a")
+            textInput.expect("A", "", "")
+            editor.insert("b")
+            textInput.expect("AB", "", "")
+        }
     }
 
     func testThatDotsAndHyphensAreAcceptedWhenRequired() {
-        textInput.insert("A")
-        textInput.expect("A", "", "")
-        textInput.insert(".")
-        textInput.expect("A.", "", "")
-        textInput.insert(" ")
-        textInput.expect("A. ", "", "")
-        textInput.insert("B")
-        textInput.expect("A. B", "", "")
-        textInput.insert("-")
-        textInput.expect("A. B-", "", "")
-        textInput.insert("C")
-        textInput.expect("A. B-C", "", "")
+        textInput.edit { editor in
+            editor.insert("A")
+            textInput.expect("A", "", "")
+            editor.insert(".")
+            textInput.expect("A.", "", "")
+            editor.insert(" ")
+            textInput.expect("A. ", "", "")
+            editor.insert("B")
+            textInput.expect("A. B", "", "")
+            editor.insert("-")
+            textInput.expect("A. B-", "", "")
+            editor.insert("C")
+            textInput.expect("A. B-C", "", "")
+        }
     }
 
     func testThatDotsAndHyphensAreNotAcceptedAtTheBeginningOfWords() {
-        textInput.insert(".")
-        textInput.expect("", "", "")
-        textInput.insert("-")
-        textInput.expect("", "", "")
-        textInput.insert("A")
-        textInput.expect("A", "", "")
-        textInput.insert(" ")
-        textInput.expect("A ", "", "")
-        textInput.insert(".")
-        textInput.expect("A ", "", "")
-        textInput.insert("-")
-        textInput.expect("A ", "", "")
+        textInput.edit { editor in
+            editor.insert(".")
+            textInput.expect("", "", "")
+            editor.insert("-")
+            textInput.expect("", "", "")
+            editor.insert("A")
+            textInput.expect("A", "", "")
+            editor.insert(" ")
+            textInput.expect("A ", "", "")
+            editor.insert(".")
+            textInput.expect("A ", "", "")
+            editor.insert("-")
+            textInput.expect("A ", "", "")
+        }
     }
 
     func testThatSpacesAreRemovedWhenRequired() {
-        textInput.insert("A B")
-        textInput.expect("A B", "", "")
+        textInput.edit { editor in
+            editor.insert("A B")
+            textInput.expect("A B", "", "")
+        }
 
-        textInput.select(1..<1)
-        textInput.backspace()
-        textInput.expect("", "", "B")
+        textInput.edit { editor in
+            editor.select(1..<1)
+            editor.backspace()
+            textInput.expect("", "", "B")
+        }
     }
 
     func testThatDotsAndSpacesAreRemovedWhenRequired() {
-        textInput.insert("A. B. C.")
-        textInput.expect("A. B. C.", "", "")
+        textInput.edit { editor in
+            editor.insert("A. B. C.")
+            textInput.expect("A. B. C.", "", "")
+        }
 
-        textInput.select(7..<7)
-        textInput.backspace()
-        textInput.expect("A. B. ", "", "")
+        textInput.edit { editor in
+            editor.select(7..<7)
+            editor.backspace()
+            textInput.expect("A. B. ", "", "")
 
-        textInput.select(1..<1)
-        textInput.backspace()
-        textInput.expect("", "", "B. ")
+            editor.select(1..<1)
+            editor.backspace()
+            textInput.expect("", "", "B. ")
 
-        textInput.selectAll()
-        textInput.insert("A. B. C.")
-        textInput.expect("A. B. C.", "", "")
+            editor.selectAll()
+            editor.insert("A. B. C.")
+            textInput.expect("A. B. C.", "", "")
 
-        textInput.select(4..<4)
-        textInput.backspace()
-        textInput.expect("A. ", "", "C.")
+            editor.select(4..<4)
+            editor.backspace()
+            textInput.expect("A. ", "", "C.")
+        }
     }
 
     func testThatHyphensAndSpacesAreRemovedWhenRequired() {
-        textInput.insert("A-B D-E-F")
-        textInput.expect("A-B D-E-F", "", "")
+        textInput.edit { editor in
+            editor.insert("A-B D-E-F")
+            textInput.expect("A-B D-E-F", "", "")
+        }
 
-        textInput.select(1..<1)
-        textInput.backspace()
-        textInput.expect("", "", "B D-E-F")
+        textInput.edit { editor in
+            editor.select(1..<1)
+            editor.backspace()
+            textInput.expect("", "", "B D-E-F")
 
-        textInput.select(5..<5)
-        textInput.backspace()
-        textInput.expect("B D-", "", "F")
+            editor.select(5..<5)
+            editor.backspace()
+            textInput.expect("B D-", "", "F")
 
-        textInput.select(3..<3)
-        textInput.backspace()
-        textInput.expect("B ", "", "F")
+            editor.select(3..<3)
+            editor.backspace()
+            textInput.expect("B ", "", "F")
+        }
     }
 
     func testThatDigitsAreNotAccepted() {
-        for digitScalar in UnicodeScalar("0").value...UnicodeScalar("9").value {
-            let digitString = String(UnicodeScalar(digitScalar)!)
-            textInput.insert(digitString)
-            textInput.expect("", "", "")
+        textInput.edit { editor in
+            for digitScalar in UnicodeScalar("0").value...UnicodeScalar("9").value {
+                let digitString = String(UnicodeScalar(digitScalar)!)
+                editor.insert(digitString)
+                textInput.expect("", "", "")
+            }
         }
     }
 
     func testThatDiacriticsIsNotAccepted() {
         let lettersWithDiacritics = "ÁÀÂÄǍĂĀÃÅǺĆĊĈČĎÉÈĖÊËĚĔĒÍÌİÎÏǏĬĪĨŃN̈ŇÑÓÒÔÖǑŎŌÕŐáàâäǎăāãåǻćċĉčéèėêëěĕēíìîïǐĭīĩńn̈ňñóòôöǒŏōõő"
-        for letterWithDiacritics in lettersWithDiacritics.characters {
-            textInput.insert(String(letterWithDiacritics))
-            textInput.expect("", "", "")
+        textInput.edit { editor in
+            for letterWithDiacritics in lettersWithDiacritics.characters {
+                editor.insert(String(letterWithDiacritics))
+                textInput.expect("", "", "")
+            }
         }
     }
 

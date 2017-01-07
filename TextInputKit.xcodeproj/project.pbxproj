@@ -50,6 +50,12 @@
 		7C50F94A1E1BD74900D3AF09 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C50F9491E1BD74900D3AF09 /* Nimble.framework */; };
 		7C50F94F1E1BD92500D3AF09 /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7C50F9471E1BD73F00D3AF09 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7C50F9501E1BD92B00D3AF09 /* Nimble.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7C50F9491E1BD74900D3AF09 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7C50F9521E1DB42C00D3AF09 /* TextInputSimulator+TextInputFormatBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50F9511E1DB42C00D3AF09 /* TextInputSimulator+TextInputFormatBindable.swift */; };
+		7C50F9531E1DB42C00D3AF09 /* TextInputSimulator+TextInputFormatBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50F9511E1DB42C00D3AF09 /* TextInputSimulator+TextInputFormatBindable.swift */; };
+		7C50F9551E1E49E200D3AF09 /* TextInputSimulatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50F9541E1E49E200D3AF09 /* TextInputSimulatorDelegate.swift */; };
+		7C50F9561E1E49E200D3AF09 /* TextInputSimulatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50F9541E1E49E200D3AF09 /* TextInputSimulatorDelegate.swift */; };
+		7C50F9581E1E57EC00D3AF09 /* TextInputSimulatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50F9571E1E57EC00D3AF09 /* TextInputSimulatorTests.swift */; };
+		7C50F9591E1E57EC00D3AF09 /* TextInputSimulatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C50F9571E1E57EC00D3AF09 /* TextInputSimulatorTests.swift */; };
 		7C7250361E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7250351E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift */; };
 		7C7250371E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7250351E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift */; };
 		7C7250461E09B33D00F916ED /* FormatterObjectValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7250451E09B33D00F916ED /* FormatterObjectValue.swift */; };
@@ -223,6 +229,9 @@
 		7C50F9331E12A7DC00D3AF09 /* TextInputFormats+BankCardExpiryDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextInputFormats+BankCardExpiryDate.swift"; sourceTree = "<group>"; };
 		7C50F9471E1BD73F00D3AF09 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		7C50F9491E1BD74900D3AF09 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = "<group>"; };
+		7C50F9511E1DB42C00D3AF09 /* TextInputSimulator+TextInputFormatBindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextInputSimulator+TextInputFormatBindable.swift"; sourceTree = "<group>"; };
+		7C50F9541E1E49E200D3AF09 /* TextInputSimulatorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputSimulatorDelegate.swift; sourceTree = "<group>"; };
+		7C50F9571E1E57EC00D3AF09 /* TextInputSimulatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputSimulatorTests.swift; sourceTree = "<group>"; };
 		7C7250351E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardExpiryDateTextInputFormatterTests.swift; sourceTree = "<group>"; };
 		7C7250451E09B33D00F916ED /* FormatterObjectValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterObjectValue.swift; sourceTree = "<group>"; };
 		7CE6912E1DE81500003F32D2 /* MutableBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutableBox.swift; sourceTree = "<group>"; };
@@ -527,8 +536,8 @@
 		7CE691BB1DEACFF7003F32D2 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				7C32AA591E0834E4004669A8 /* BankCardHolderNameTextInputFormatterTests.swift */,
 				7C7250351E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift */,
+				7C32AA591E0834E4004669A8 /* BankCardHolderNameTextInputFormatterTests.swift */,
 				7C0578BD1DFC52150071DA47 /* BankCardNumberTestDataSet.swift */,
 				7C0578BE1DFC52150071DA47 /* BankCardNumberTests.swift */,
 				7CE692201DF44794003F32D2 /* BankCardNumberTextInputFormatterTests.swift */,
@@ -537,6 +546,9 @@
 				7CE691C51DEAD08D003F32D2 /* MutableBoxTests.swift */,
 				7CE691E91DEC6BCA003F32D2 /* TextInputFormatterTests.swift */,
 				7CE692211DF44794003F32D2 /* TextInputSimulator.swift */,
+				7C50F9511E1DB42C00D3AF09 /* TextInputSimulator+TextInputFormatBindable.swift */,
+				7C50F9541E1E49E200D3AF09 /* TextInputSimulatorDelegate.swift */,
+				7C50F9571E1E57EC00D3AF09 /* TextInputSimulatorTests.swift */,
 				7CE691EF1DEC6F30003F32D2 /* XCTestCase+Tests.swift */,
 			);
 			path = Tests;
@@ -856,13 +868,16 @@
 			files = (
 				7C0578C81DFC522C0071DA47 /* BankCardNumberTextInputSerializerTests.swift in Sources */,
 				7CE692281DF44862003F32D2 /* TextInputSimulator.swift in Sources */,
+				7C50F9591E1E57EC00D3AF09 /* TextInputSimulatorTests.swift in Sources */,
 				7C32AA5D1E0835E1004669A8 /* BankCardHolderNameTextInputFormatterTests.swift in Sources */,
 				7CE691E81DEC0E37003F32D2 /* MutableBoxTests.swift in Sources */,
 				7CE6922A1DF44868003F32D2 /* BankCardNumberTextInputFormatterTests.swift in Sources */,
 				7C0578C41DFC52220071DA47 /* BankCardNumberTestDataSet.swift in Sources */,
 				7C7250371E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift in Sources */,
+				7C50F9531E1DB42C00D3AF09 /* TextInputSimulator+TextInputFormatBindable.swift in Sources */,
 				7CE691EB1DEC6BCA003F32D2 /* TextInputFormatterTests.swift in Sources */,
 				7C0578C61DFC52270071DA47 /* BankCardNumberTests.swift in Sources */,
+				7C50F9561E1E49E200D3AF09 /* TextInputSimulatorDelegate.swift in Sources */,
 				7CE691F11DEC6F30003F32D2 /* XCTestCase+Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -873,13 +888,16 @@
 			files = (
 				7C0578C71DFC522C0071DA47 /* BankCardNumberTextInputSerializerTests.swift in Sources */,
 				7CE692271DF44862003F32D2 /* TextInputSimulator.swift in Sources */,
+				7C50F9581E1E57EC00D3AF09 /* TextInputSimulatorTests.swift in Sources */,
 				7C32AA5C1E0835E1004669A8 /* BankCardHolderNameTextInputFormatterTests.swift in Sources */,
 				7CE691E61DEC0E37003F32D2 /* MutableBoxTests.swift in Sources */,
 				7CE692291DF44867003F32D2 /* BankCardNumberTextInputFormatterTests.swift in Sources */,
 				7C0578C31DFC52220071DA47 /* BankCardNumberTestDataSet.swift in Sources */,
 				7C7250361E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift in Sources */,
+				7C50F9521E1DB42C00D3AF09 /* TextInputSimulator+TextInputFormatBindable.swift in Sources */,
 				7CE691EA1DEC6BCA003F32D2 /* TextInputFormatterTests.swift in Sources */,
 				7C0578C51DFC52270071DA47 /* BankCardNumberTests.swift in Sources */,
+				7C50F9551E1E49E200D3AF09 /* TextInputSimulatorDelegate.swift in Sources */,
 				7CE691F01DEC6F30003F32D2 /* XCTestCase+Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
