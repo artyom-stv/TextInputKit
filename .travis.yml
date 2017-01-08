@@ -17,5 +17,10 @@ env:
     - DESTINATION="OS=8.1,name=iPhone 4S"   SDK="$IOS_SDK"    FRAMEWORK_SCHEME="$IOS_FRAMEWORK_SCHEME"    FRAMEWORK_RUN_TESTS="YES" EXAMPLE_SCHEME="$IOS_EXAMPLE_SCHEME"
 
     - DESTINATION="arch=x86_64"             SDK="$MACOS_SDK"  FRAMEWORK_SCHEME="$MACOS_FRAMEWORK_SCHEME"  FRAMEWORK_RUN_TESTS="YES" EXAMPLE_SCHEME="$MACOS_EXAMPLE_SCHEME"
+before_install:
+  - brew update
+  - brew outdated carthage || brew upgrade carthage
+before_script:
+  - carthage bootstrap
 script:
   - scripts/travis_script.sh

@@ -11,39 +11,48 @@ import XCTest
 
 final class BankCardExpiryDateTextInputFormatterTests : XCTestCase {
 
-    let textInputFormatter = BankCardExpiryDateTextInputFormatter(.options())
+    let textInputFormat = TextInputFormats.bankCardExpiryDate()
 
     var textInput: TextInputSimulator!
+
+    var textInputBinding: TextInputBinding<BankCardExpiryDate>!
 
     override func setUp() {
         super.setUp()
 
-        textInput = TextInputSimulator(textInputFormatter)
+        textInput = TextInputSimulator()
+        textInputBinding = textInputFormat.bind(to: textInput)
     }
 
     func testThatTypingIsFormattedCorrectly() {
-        textInput.insert("1")
-        textInput.expect("1", "", "")
-        textInput.insert("2")
-        textInput.expect("12/", "", "")
-        textInput.insert("3")
-        textInput.expect("12/3", "", "")
-        textInput.insert("4")
-        textInput.expect("12/34", "", "")
+        textInput.edit { editor in
+            editor.insert("1")
+            textInput.expect("1", "", "")
+            editor.insert("2")
+            textInput.expect("12/", "", "")
+            editor.insert("3")
+            textInput.expect("12/3", "", "")
+            editor.insert("4")
+            textInput.expect("12/34", "", "")
+        }
     }
 
     func testThatPressingBackspaceIsFormattedCorrectly() {
-        textInput.insert("12/34")
-        textInput.expect("12/34", "", "")
+        textInput.edit { editor in
+            editor.insert("12/34")
+            textInput.expect("12/34", "", "")
+        }
 
-        textInput.backspace()
-        textInput.expect("12/3", "", "")
-        textInput.backspace()
-        textInput.expect("12/", "", "")
-        textInput.backspace()
-        textInput.expect("1", "", "")
-        textInput.backspace()
-        textInput.expect("", "", "")
+        textInput.edit { editor in
+            editor.backspace()
+            textInput.expect("12/3", "", "")
+            editor.backspace()
+            textInput.expect("12/", "", "")
+            editor.backspace()
+            textInput.expect("1", "", "")
+            editor.backspace()
+            textInput.expect("", "", "")
+        }
     }
 
     func testThatEditingMonthIsFormattedCorrectly() {
@@ -52,39 +61,46 @@ final class BankCardExpiryDateTextInputFormatterTests : XCTestCase {
             3..<3
         ]
         for initialSelection in initialSelectionCases {
-            textInput.selectAll()
-            textInput.insert("12/34")
-            textInput.expect("12/34", "", "")
+            textInput.edit { editor in
+                editor.insert("12/34")
+                textInput.expect("12/34", "", "")
+            }
 
-            textInput.select(initialSelection)
-            textInput.backspace()
-            textInput.expect("1", "", "/34")
-            textInput.backspace()
-            textInput.expect("", "", "/34")
+            textInput.edit { editor in
+                editor.select(initialSelection)
+                editor.backspace()
+                textInput.expect("1", "", "/34")
+                editor.backspace()
+                textInput.expect("", "", "/34")
 
-            textInput.insert("1")
-            textInput.expect("1", "", "/34")
-            textInput.insert("2")
-            textInput.expect("12", "", "/34")
+                editor.insert("1")
+                textInput.expect("1", "", "/34")
+                editor.insert("2")
+                textInput.expect("12", "", "/34")
 
-            textInput.select(1..<1)
-            textInput.backspace()
-            textInput.expect("", "", "2/34")
-            textInput.insert("1")
-            textInput.expect("1", "", "2/34")
+                editor.select(1..<1)
+                editor.backspace()
+                textInput.expect("", "", "2/34")
+                editor.insert("1")
+                textInput.expect("1", "", "2/34")
+            }
         }
     }
 
     func testThatEditingYearIsFormattedCorrectly() {
-        textInput.insert("12/34")
-        textInput.expect("12/34", "", "")
+        textInput.edit { editor in
+            editor.insert("12/34")
+            textInput.expect("12/34", "", "")
+        }
 
-        textInput.select(4..<4)
-        textInput.expect("12/3", "", "4")
-        textInput.backspace()
-        textInput.expect("12/", "", "4")
-        textInput.insert("3")
-        textInput.expect("12/3", "", "4")
+        textInput.edit { editor in
+            editor.select(4..<4)
+            textInput.expect("12/3", "", "4")
+            editor.backspace()
+            textInput.expect("12/", "", "4")
+            editor.insert("3")
+            textInput.expect("12/3", "", "4")
+        }
     }
 
     func testThatEditingMonthWithIncompleteYearIsFormattedCorrectly() {
@@ -93,26 +109,29 @@ final class BankCardExpiryDateTextInputFormatterTests : XCTestCase {
             3..<3
         ]
         for initialSelection in initialSelectionCases {
-            textInput.selectAll()
-            textInput.insert("12/4")
-            textInput.expect("12/4", "", "")
+            textInput.edit { editor in
+                editor.insert("12/4")
+                textInput.expect("12/4", "", "")
+            }
 
-            textInput.select(initialSelection)
-            textInput.backspace()
-            textInput.expect("1", "", "/4")
-            textInput.backspace()
-            textInput.expect("", "", "/4")
+            textInput.edit { editor in
+                editor.select(initialSelection)
+                editor.backspace()
+                textInput.expect("1", "", "/4")
+                editor.backspace()
+                textInput.expect("", "", "/4")
 
-            textInput.insert("1")
-            textInput.expect("1", "", "/4")
-            textInput.insert("2")
-            textInput.expect("12", "", "/4")
+                editor.insert("1")
+                textInput.expect("1", "", "/4")
+                editor.insert("2")
+                textInput.expect("12", "", "/4")
 
-            textInput.select(1..<1)
-            textInput.backspace()
-            textInput.expect("", "", "2/4")
-            textInput.insert("1")
-            textInput.expect("1", "", "2/4")
+                editor.select(1..<1)
+                editor.backspace()
+                textInput.expect("", "", "2/4")
+                editor.insert("1")
+                textInput.expect("1", "", "2/4")
+            }
         }
     }
 
@@ -122,21 +141,25 @@ final class BankCardExpiryDateTextInputFormatterTests : XCTestCase {
             "4"
         ]
         for year in yearCases {
-            textInput.selectAll()
-            textInput.insert("12/\(year)")
-            textInput.expect("12/\(year)", "", "")
+            textInput.edit { editor in
+                editor.selectAll()
+                editor.insert("12/\(year)")
+                textInput.expect("12/\(year)", "", "")
+            }
 
-            textInput.select(0..<0)
-            textInput.insert("0")
-            textInput.expect("", "", "12/\(year)")
+            textInput.edit { editor in
+                editor.select(0..<0)
+                editor.insert("0")
+                textInput.expect("", "", "12/\(year)")
 
-            textInput.select(1..<1)
-            textInput.insert("0")
-            textInput.expect("1", "", "2/\(year)")
+                editor.select(1..<1)
+                editor.insert("0")
+                textInput.expect("1", "", "2/\(year)")
 
-            textInput.select(2..<2)
-            textInput.insert("0")
-            textInput.expect("12", "", "/\(year)")
+                editor.select(2..<2)
+                editor.insert("0")
+                textInput.expect("12", "", "/\(year)")
+            }
         }
     }
 
@@ -146,62 +169,74 @@ final class BankCardExpiryDateTextInputFormatterTests : XCTestCase {
             "1"
         ]
         for month in monthCases {
-            textInput.selectAll()
-            textInput.insert("\(month)/34")
-            textInput.expect("\(month)/34", "", "")
+            textInput.edit { editor in
+                editor.selectAll()
+                editor.insert("\(month)/34")
+                textInput.expect("\(month)/34", "", "")
+            }
 
-            var i = month.characters.count + 1
-            textInput.select(i..<i)
-            textInput.insert("0")
-            textInput.expect("\(month)/", "", "34")
+            textInput.edit { editor in
+                var i = month.characters.count + 1
+                editor.select(i..<i)
+                editor.insert("0")
+                textInput.expect("\(month)/", "", "34")
 
-            i = i + 1
-            textInput.select(i..<i)
-            textInput.insert("0")
-            textInput.expect("\(month)/3", "", "4")
+                i = i + 1
+                editor.select(i..<i)
+                editor.insert("0")
+                textInput.expect("\(month)/3", "", "4")
 
-            i = i + 1
-            textInput.select(i..<i)
-            textInput.insert("0")
-            textInput.expect("\(month)/34", "", "")
+                i = i + 1
+                editor.select(i..<i)
+                editor.insert("0")
+                textInput.expect("\(month)/34", "", "")
+            }
         }
     }
 
     func testThatEditingOneDigitSelectionIsFormattedCorrectly() {
-        textInput.insert("12/34")
-        textInput.expect("12/34", "", "")
+        textInput.edit { editor in
+            editor.insert("12/34")
+            textInput.expect("12/34", "", "")
+        }
 
-        textInput.select(0..<1)
-        textInput.insert("5")
-        textInput.expect("5", "", "2/34")
+        textInput.edit { editor in
+            editor.select(0..<1)
+            editor.insert("5")
+            textInput.expect("5", "", "2/34")
 
-        textInput.select(1..<2)
-        textInput.insert("6")
-        textInput.expect("56", "", "/34")
+            editor.select(1..<2)
+            editor.insert("6")
+            textInput.expect("56", "", "/34")
 
-        textInput.select(3..<4)
-        textInput.insert("7")
-        textInput.expect("56/7", "", "4")
+            editor.select(3..<4)
+            editor.insert("7")
+            textInput.expect("56/7", "", "4")
 
-        textInput.select(4..<5)
-        textInput.insert("8")
-        textInput.expect("56/78", "", "")
+            editor.select(4..<5)
+            editor.insert("8")
+            textInput.expect("56/78", "", "")
+        }
     }
 
     func testThatEditingSelectedSlashIsFormattedCorrectly() {
-        textInput.insert("12/")
-        textInput.expect("12/", "", "")
+        textInput.edit { editor in
+            editor.insert("12/")
+            textInput.expect("12/", "", "")
+        }
 
-        textInput.select(2..<3)
-        textInput.insert("0")
-        textInput.expect("12", "/", "")
+        textInput.edit { editor in
+            editor.select(2..<3)
+            editor.insert("0")
+            textInput.expect("12", "/", "")
 
-        textInput.select(3..<3)
-        textInput.insert("3")
-        textInput.expect("12/3", "", "")
-        textInput.select(2..<3)
-        textInput.insert("0")
-        textInput.expect("12", "/", "3")
+            editor.select(3..<3)
+            editor.insert("3")
+            textInput.expect("12/3", "", "")
+            editor.select(2..<3)
+            editor.insert("0")
+            textInput.expect("12", "/", "3")
+        }
     }
 
 }

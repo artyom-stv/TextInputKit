@@ -7,86 +7,132 @@
 //
 
 import XCTest
+import Nimble
 @testable import TextInputKit
 
 class TextInputSimulator {
 
-    let formatter: TextInputFormatter
+    weak var delegate: TextInputSimulatorDelegate?
 
-    private(set) var text: String
+    var text: String
 
-    private(set) var selectedRange: Range<String.Index>
+    fileprivate(set) var selectedRange: Range<String.Index>?
 
-    init(_ formatter: TextInputFormatter) {
-        self.formatter = formatter
+    init() {
         self.text = ""
-        self.selectedRange = text.endIndex..<text.endIndex
+        self.selectedRange = nil
     }
 
-    func insert(_ insertionString: String) {
-        replace(insertionString, selectedRange)
-    }
-
-    func backspace() {
-        if selectedRange.isEmpty {
-            if selectedRange.lowerBound != text.startIndex {
-                let replacementRange = text.index(before: selectedRange.lowerBound) ..< selectedRange.lowerBound
-                replace("", replacementRange)
-            }
-        }
-        else {
-            replace("", selectedRange)
-        }
-    }
-
-    func clear() {
-        text = ""
-        selectedRange = text.endIndex..<text.endIndex
-    }
-
-    func select(_ range: Range<String.Index>) {
-        guard range.lowerBound >= text.startIndex && range.upperBound <= text.endIndex else {
-            Swift.fatalError("Proposed selected range doesn't fit text.")
-        }
-
-        selectedRange = range
-    }
-
-    private func replace(_ replacementString: String, _ replacementRange: Range<String.Index>) {
-        let validationResult = formatter.validate(
-            editing: text,
-            withSelection: selectedRange,
-            replacing: replacementString,
-            at: replacementRange)
-
-        switch validationResult {
-        case .accepted:
-            let resultingText = text.replacingCharacters(in: replacementRange, with: replacementString)
-
-            let replacementLowerBoundInResultingText = (replacementRange.lowerBound == text.startIndex)
-                ? resultingText.startIndex
-                : resultingText.index(after: text.index(before: replacementRange.lowerBound))
-
-            let resultingSelectedRange: Range<String.Index> = {
-                let index = resultingText.index(replacementLowerBoundInResultingText, offsetBy: replacementString.characters.count)
-                return index..<index
-            }()
-
-            text = resultingText
-            selectedRange = resultingSelectedRange
-
-        case .changed(let newResultingText, let newResultingSelectedRange):
-            text = newResultingText
-            selectedRange = newResultingSelectedRange
-
-        case .rejected:
-            break
-        }
-    }
-    
 }
 
 extension TextInputSimulator {
+
+    class Editor {
+
+        func insert(_ insertionString: String) {
+            replace(insertionString, selectedRange)
+        }
+
+        func backspace() {
+            if selectedRange.isEmpty {
+                if selectedRange.lowerBound != text.startIndex {
+                    let replacementRange = text.index(before: selectedRange.lowerBound) ..< selectedRange.lowerBound
+                    replace("", replacementRange)
+                }
+            }
+            else {
+                replace("", selectedRange)
+            }
+        }
+
+        func clear() {
+            text = ""
+            selectedRange = text.endIndex..<text.endIndex
+
+            textInput.delegate?.editingChanged()
+        }
+
+        func select(_ range: Range<String.Index>) {
+            guard range.lowerBound >= text.startIndex && range.upperBound <= text.endIndex else {
+                Swift.fatalError("Proposed selected range doesn't fit text.")
+            }
+
+            selectedRange = range
+        }
+
+        fileprivate var text: String {
+            get {
+                return textInput.text
+            }
+            set(newText) {
+                textInput.text = newText
+            }
+        }
+
+        fileprivate var selectedRange: Range<String.Index> {
+            get {
+                return textInput.selectedRange!
+            }
+            set(newSelectedRange) {
+                textInput.selectedRange = newSelectedRange
+            }
+        }
+
+        fileprivate init(_ textInput: TextInputSimulator) {
+            self.textInput = textInput
+        }
+
+        private let textInput: TextInputSimulator
+
+        private func replace(_ replacementString: String, _ replacementRange: Range<String.Index>) {
+            let validationResult: TextInputValidationResult = textInput.delegate?.validate(
+                editing: text,
+                withSelection: selectedRange,
+                replacing: replacementString,
+                at: replacementRange) ?? .accepted
+
+            switch validationResult {
+            case .accepted:
+                let resultingText = text.replacingCharacters(in: replacementRange, with: replacementString)
+
+                let replacementLowerBoundInResultingText = (replacementRange.lowerBound == text.startIndex)
+                    ? resultingText.startIndex
+                    : resultingText.index(after: text.index(before: replacementRange.lowerBound))
+
+                let resultingSelectedRange: Range<String.Index> = {
+                    let index = resultingText.index(replacementLowerBoundInResultingText, offsetBy: replacementString.characters.count)
+                    return index..<index
+                }()
+
+                text = resultingText
+                selectedRange = resultingSelectedRange
+
+                textInput.delegate?.editingChanged()
+
+            case .changed(let newResultingText, let newResultingSelectedRange):
+                text = newResultingText
+                selectedRange = newResultingSelectedRange
+
+                textInput.delegate?.editingChanged()
+
+            case .rejected:
+                break
+            }
+        }
+
+    }
+
+    func edit(_ actions: (Editor) -> ()) {
+        selectedRange = text.endIndex..<text.endIndex
+        delegate?.editingDidBegin()
+        actions(Editor(self))
+        delegate?.editingDidEnd()
+        selectedRange = nil
+    }
+
+}
+
+extension TextInputSimulator.Editor {
 
     func select(_ range: Range<Int>) {
         guard
@@ -106,12 +152,51 @@ extension TextInputSimulator {
 
 extension TextInputSimulator {
 
-    func expect(text: String, selectedRange: Range<String.Index>) {
-        XCTAssertEqual(self.text, text)
-        XCTAssertEqual(self.selectedRange, selectedRange)
+    func expect(
+        text expectedText: String,
+        selectedRange expectedSelectedRange: Range<String.Index>? = nil,
+        file: FileString = #file,
+        line: UInt = #line) {
+
+        Nimble.expect(self.text, file: file, line: line)
+            .to(equal(expectedText),
+                description: "Invalid text in a `TextInputSimulator`.")
+
+        let selectedIntRange: Range<Int>?
+        if let selectedRange = selectedRange {
+            selectedIntRange = text.distance(from: text.startIndex, to: selectedRange.lowerBound) ..< text.distance(from: text.startIndex, to: selectedRange.upperBound)
+        }
+        else {
+            selectedIntRange = nil
+        }
+
+        let expectedSelectedIntRange: Range<Int>?
+        if let expectedSelectedRange = expectedSelectedRange {
+            expectedSelectedIntRange = expectedText.distance(from: expectedText.startIndex, to: expectedSelectedRange.lowerBound) ..< expectedText.distance(from: expectedText.startIndex, to: expectedSelectedRange.upperBound)
+        }
+        else {
+            expectedSelectedIntRange = nil
+        }
+
+        if let expectedSelectedIntRange = expectedSelectedIntRange {
+            Nimble.expect(selectedIntRange, file: file, line: line)
+                .to(equal(expectedSelectedIntRange),
+                    description: "Invalid selected range in a `TextInputSimulator`.")
+        }
+        else {
+            Nimble.expect(selectedIntRange, file: file, line: line)
+                .to(beNil(),
+                    description: "Invalid selected range in a `TextInputSimulator`.")
+        }
     }
 
-    func expect(_ textBeforeSelection: String, _ selectedText: String, _ textAfterSelection: String) {
+    func expect(
+        _ textBeforeSelection: String,
+        _ selectedText: String,
+        _ textAfterSelection: String,
+        file: FileString = #file,
+        line: UInt = #line) {
+
         let text = "\(textBeforeSelection)\(selectedText)\(textAfterSelection)"
         let selectionLowerBound = text.index(
             text.startIndex,
@@ -120,7 +205,11 @@ extension TextInputSimulator {
             text.startIndex,
             offsetBy: textBeforeSelection.characters.count + selectedText.characters.count)
 
-        expect(text: text, selectedRange: selectionLowerBound..<selectionUpperBound)
+        expect(
+            text: text,
+            selectedRange: selectionLowerBound..<selectionUpperBound,
+            file: file,
+            line: line)
     }
 
 }

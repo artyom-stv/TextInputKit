@@ -10,7 +10,7 @@ import Foundation
 
 open class TextInputFormatter : TextInputFormatterType {
 
-    public func validate(
+    open func validate(
         editing originalString: String,
         withSelection originalSelectedRange: Range<String.Index>,
         replacing replacementString: String,
