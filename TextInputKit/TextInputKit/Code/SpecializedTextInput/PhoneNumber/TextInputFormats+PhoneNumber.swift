@@ -24,7 +24,7 @@ public extension TextInputFormats {
 
         let formatter = PhoneNumberTextInputFormatter(options)
 
-        return TextInputFormat<String>.from(serializer, formatter)
+        return TextInputFormat<PhoneNumber>.from(serializer, formatter)
     }
 
 }

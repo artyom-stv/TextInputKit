@@ -9,95 +9,191 @@
 import Foundation
 import UIKit
 
-final class BindingForUITextField<Value> : TextInputBinding<Value> {
+final class BindingForUITextField<Value: Equatable> : TextInputBinding<Value> {
 
-    public override var value: Value? {
+    // MARK: TextInputBinding<Value> Overrides
+
+    override var text: String {
         get {
-            return valueBox.value
-        }
-        set {
-            valueBox.value = newValue
-
-            if let textField = boundTextField {
-                textField.text = {
-                    if let newValue = newValue {
-                        return format.serializer.string(for: newValue)
-                    }
-                    return nil
-                }()
+            guard let textField = boundTextField else {
+                fatalError("The bound `UITextField` was deallocated.")
             }
+
+            return textField.text ?? ""
+        }
+        set(newText) {
+            guard let textField = boundTextField else {
+                fatalError("The bound `UITextField` was deallocated.")
+            }
+
+            textField.text = newText
+
+            payload.value = try? payload.format.serializer.value(for: newText)
         }
     }
+
+    override var selectedRange: Range<String.Index>? {
+        get {
+            guard let textField = boundTextField else {
+                fatalError("The bound `UITextField` was deallocated.")
+            }
+
+            return textField.textInputKit_selectedRange
+        }
+        set(newSelectedRange) {
+            guard let textField = boundTextField else {
+                fatalError("The bound `UITextField` was deallocated.")
+            }
+
+            textField.textInputKit_selectedRange = newSelectedRange
+        }
+    }
+
+    override var value: Value? {
+        get {
+            return payload.value
+        }
+        set {
+            guard let textField = boundTextField else {
+                fatalError("The bound `UITextField` was deallocated.")
+            }
+
+            payload.value = newValue
+
+            textField.text = {
+                if let newValue = newValue {
+                    return format.serializer.string(for: newValue)
+                }
+                return nil
+            }()
+        }
+    }
+
+    override var eventHandler: EventHandler? {
+        get {
+            return payload.eventNotifier.eventHandler
+        }
+        set(newEventHandler) {
+            payload.eventNotifier.eventHandler = newEventHandler
+        }
+    }
+
+    override func unbind() {
+        if let textField = boundTextField {
+            textField.delegate = nil
+            textField.removeTarget(
+                responder,
+                action: nil,
+                for: .editingChanged)
+
+            boundTextField = nil
+        }
+    }
+
+    // MARK: Initializers
 
     init(
         _ format: TextInputFormat<Value>,
         _ textField: UITextField) {
 
         self.boundTextField = textField
-        self.valueBox = MutableBox<Value?>(nil)
-        self.textFieldDelegate = TextFieldDelegate(format, valueBox: valueBox)
+        self.payload = Payload(format)
+        self.responder = Responder(payload)
 
         super.init(format)
 
-        textField.text = nil
-        textField.delegate = textFieldDelegate
+        bind(textField)
     }
 
-    public override func unbind() {
-        if let textField = boundTextField {
-            textField.delegate = nil
-
-            boundTextField = nil
-        }
-    }
+    // MARK: Private Properties
 
     private weak var boundTextField: UITextField?
 
-    private let valueBox: MutableBox<Value?>
+    private let payload: Payload<Value>
 
-    private let textFieldDelegate: TextFieldDelegate<Value>
+    private let responder: Responder<Value>
+
+    // MARK: Private Methods
+
+    private func bind(_ textField: UITextField) {
+        textField.text = nil
+        textField.delegate = responder
+        textField.addTarget(
+            responder,
+            action: #selector(Responder<Value>.actionForEditingChanged(_:)),
+            for: .editingChanged)
+    }
 
 }
 
-private final class TextFieldDelegate<Value> : NSObject, UITextFieldDelegate {
+private class Payload<Value: Equatable> {
 
-    init(_ format: TextInputFormat<Value>, valueBox: MutableBox<Value?>) {
+    let format: TextInputFormat<Value>
+
+    var value: Value? = nil
+
+    var eventNotifier = TextInputEventNotifier<Value>()
+
+    init(_ format: TextInputFormat<Value>) {
         self.format = format
-        self.valueBox = valueBox
     }
 
-    public func textField(
+}
+
+private final class Responder<Value: Equatable> : NSObject, UITextFieldDelegate {
+
+    // MARK: Initializers
+
+    init(_ payload: Payload<Value>) {
+        self.payload = payload
+    }
+
+    // MARK: UITextFieldDelegate Protocol Implementation
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        payload.eventNotifier.on(.editingDidBegin)
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        payload.eventNotifier.on(.editingDidEnd)
+    }
+
+    func textField(
         _ textField: UITextField,
         shouldChangeCharactersIn editedNSRange: NSRange,
         replacementString: String) -> Bool {
 
-        let originalString = textField.text ?? ""
-
-        let originalSelectedRange = textField.textInputKit_selectedRange!
+        let originalState = currentEditingState(of: textField)
 
         let editedRange: Range<String.Index> = editedNSRange.toRange()!
-            .sameRange(in: originalString.utf16)
-            .sameRange(in: originalString)
+            .sameRange(in: originalState.text.utf16)
+            .sameRange(in: originalState.text)
 
-        let validationResult = format.formatter.validate(
-            editing: originalString,
-            withSelection: originalSelectedRange,
+        let validationResult = payload.format.formatter.validate(
+            editing: originalState.text,
+            withSelection: originalState.selectedRange,
             replacing: replacementString,
             at: editedRange)
 
         switch validationResult {
         case .accepted:
-            let editedString = originalString.replacingCharacters(in: editedRange, with: replacementString)
+            pendingEditingChangedEventOriginalState = originalState
 
-            setValue(for: editedString)
+            // The work is continued in `actionForEditingChanged(_:)`
 
             return true
 
-        case .changed(let newEditedString, let newSelectedRange):
-            textField.text = newEditedString
+        case .changed(let newText, let newSelectedRange):
+            textField.text = newText
             textField.textInputKit_selectedRange = newSelectedRange
 
-            setValue(for: newEditedString)
+            payload.value = value(for: newText)
+
+            let newState = TextInputEditingState(
+                text: newText,
+                selectedRange: newSelectedRange,
+                value: payload.value)
+            payload.eventNotifier.onEditingChanged(from: originalState, to: newState)
 
             return false
             
@@ -105,13 +201,52 @@ private final class TextFieldDelegate<Value> : NSObject, UITextFieldDelegate {
             return false
         }
     }
-    
-    private let format: TextInputFormat<Value>
-    
-    private var valueBox: MutableBox<Value?>
 
-    private func setValue(for string: String) {
-        valueBox.value = try? format.serializer.value(for: string)
+    // MARK: Event Actions
+
+    /// The action for `UIControlEvents.editingChanged` event of a `UITextField`.
+    ///
+    /// - Parameter textField: The `UITextField`.
+    func actionForEditingChanged(_ textField: UITextField) {
+        guard let originalState = pendingEditingChangedEventOriginalState else {
+            fatalError("`\(#function)` should be called after `textField(_:shouldChangeCharactersIn:replacementString:)` returns `true`. In that case, `pendingEditingChangedEventOriginalState` should be non-nil.")
+        }
+
+        payload.value = value(for: textField.text ?? "")
+
+        let newState = currentEditingState(of: textField)
+        payload.eventNotifier.onEditingChanged(from: originalState, to: newState)
+
+        pendingEditingChangedEventOriginalState = nil
     }
-    
+
+    // MARK: Private Properties
+
+    private var payload: Payload<Value>
+
+    /// Stores the editing state between returning `true` from
+    /// `textField(_:shouldChangeCharactersIn:replacementString:)` and receiving `UIControlEvents.editingChanged` event.
+    private var pendingEditingChangedEventOriginalState: TextInputEditingState<Value>?
+
+    // MARK: Private Methods
+
+    @nonobjc
+    private func currentEditingState(of textField: UITextField) -> TextInputEditingState<Value> {
+        assert(textField.isEditing)
+
+        guard let selectedRange = textField.textInputKit_selectedRange else {
+            fatalError("The selected range in a `UITextField` should be non-nil while editing.")
+        }
+
+        return TextInputEditingState(
+            text: textField.text ?? "",
+            selectedRange: selectedRange,
+            value: payload.value)
+    }
+
+    @nonobjc
+    private func value(for string: String) -> Value? {
+        return try? payload.format.serializer.value(for: string)
+    }
+
 }

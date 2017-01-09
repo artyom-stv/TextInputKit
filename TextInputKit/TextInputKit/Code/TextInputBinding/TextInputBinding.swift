@@ -8,16 +8,24 @@
 
 import Foundation
 
-open class TextInputBinding<Value> : TextInputBindingType {
+open class TextInputBinding<Value: Equatable> : TextInputBindingType {
 
-    public let format: TextInputFormat<Value>
-
-    public init(_ format: TextInputFormat<Value>) {
-        self.format = format
+    open var text: String {
+        get {
+            abstractMethod()
+        }
+        set {
+            abstractMethod()
+        }
     }
 
-    deinit {
-        unbind()
+    open var selectedRange: Range<String.Index>? {
+        get {
+            abstractMethod()
+        }
+        set {
+            abstractMethod()
+        }
     }
 
     open var value: Value? {
@@ -29,8 +37,29 @@ open class TextInputBinding<Value> : TextInputBindingType {
         }
     }
 
+    open var eventHandler: EventHandler? {
+        get {
+            abstractMethod()
+        }
+        set {
+            abstractMethod()
+        }
+    }
+
     open func unbind() {
         abstractMethod()
+    }
+
+    public typealias EventHandler = (TextInputEvent<Value>) -> ()
+
+    public let format: TextInputFormat<Value>
+
+    public init(_ format: TextInputFormat<Value>) {
+        self.format = format
+    }
+
+    deinit {
+        unbind()
     }
 
 }

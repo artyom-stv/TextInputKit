@@ -17,7 +17,7 @@ extension TextInputSimulator : TextInputFormatBindable {
 
 }
 
-private class Binding<Value> : TextInputBinding<Value> {
+private class Binding<Value: Equatable> : TextInputBinding<Value> {
 
     public override var value: Value? {
         get {

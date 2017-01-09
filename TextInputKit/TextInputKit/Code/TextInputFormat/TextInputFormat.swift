@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct TextInputFormat<Value> {
+public struct TextInputFormat<Value: Equatable> {
 
     public init(_ serializer: TextInputSerializer<Value>, _ formatter: TextInputFormatter) {
         self.serializer = serializer
