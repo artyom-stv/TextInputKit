@@ -84,6 +84,7 @@ final class BindingForNSTextField<Value: Equatable> : TextInputBinding<Value> {
     public override func unbind() {
         if let textField = payload.boundTextField {
             textField.formatter = nil
+            textField.delegate = nil
 
             payload.boundTextField = nil
         }
@@ -129,8 +130,6 @@ private class Payload<Value: Equatable> {
 
     weak var boundTextField: NSTextField?
 
-    var value: Value? = nil
-
     var eventNotifier = TextInputEventNotifier<Value>()
 
     init(_ format: TextInputFormat<Value>, _ boundTextField: NSTextField) {
@@ -144,7 +143,7 @@ extension Payload {
 
     func withTextField(_ closure: (NSTextField) -> ()) {
         guard let textField = boundTextField else {
-            fatalError("The bound `NSTextField` was deallocated.")
+            fatalError("The `NSTextField` was unbound or deallocated.")
         }
         closure(textField)
     }
@@ -182,6 +181,8 @@ private final class Responder<Value: Equatable> : NSObject, NSTextFieldDelegate 
     }
 
     override func controlTextDidEndEditing(_ notification: Notification) {
+        latestEditingState = nil
+
         payload.eventNotifier.on(.editingDidEnd)
     }
 
@@ -191,8 +192,8 @@ private final class Responder<Value: Equatable> : NSObject, NSTextFieldDelegate 
         assert(textField.currentEditor()! === notification.userInfo!["NSFieldEditor"] as! NSText)
 
         let newEditingState = currentEditingState(of: textField)
-
         payload.eventNotifier.onEditingChanged(from: latestEditingState!, to: newEditingState)
+        latestEditingState = newEditingState
     }
 
     // MARK: Private Properties

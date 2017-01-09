@@ -17,6 +17,10 @@ class TextInputEventNotifier<Value: Equatable> {
     }
 
     func onEditingChanged(from oldState: TextInputEditingState<Value>, to newState: TextInputEditingState<Value>) {
+        guard let eventHandler = eventHandler else {
+            return
+        }
+
         let changes: TextInputEditingChanges = {
             var changes: TextInputEditingChanges = []
             if oldState.text != newState.text {
@@ -31,7 +35,7 @@ class TextInputEventNotifier<Value: Equatable> {
             return changes
         }()
 
-        on(.editingChanged(newState, changes))
+        eventHandler(.editingChanged(newState, changes))
     }
 
 }

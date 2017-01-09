@@ -15,18 +15,16 @@ final class BindingForUITextField<Value: Equatable> : TextInputBinding<Value> {
 
     override var text: String {
         get {
-            guard let textField = boundTextField else {
-                fatalError("The bound `UITextField` was deallocated.")
+            var text: String = ""
+            withTextField { textField in
+                text = textField.text ?? ""
             }
-
-            return textField.text ?? ""
+            return text
         }
         set(newText) {
-            guard let textField = boundTextField else {
-                fatalError("The bound `UITextField` was deallocated.")
+            withTextField { textField in
+                textField.text = newText
             }
-
-            textField.text = newText
 
             payload.value = try? payload.format.serializer.value(for: newText)
         }
@@ -34,18 +32,16 @@ final class BindingForUITextField<Value: Equatable> : TextInputBinding<Value> {
 
     override var selectedRange: Range<String.Index>? {
         get {
-            guard let textField = boundTextField else {
-                fatalError("The bound `UITextField` was deallocated.")
+            var selectedRange: Range<String.Index>? = nil
+            withTextField { textField in
+                selectedRange = textField.textInputKit_selectedRange
             }
-
-            return textField.textInputKit_selectedRange
+            return selectedRange
         }
         set(newSelectedRange) {
-            guard let textField = boundTextField else {
-                fatalError("The bound `UITextField` was deallocated.")
+            withTextField { textField in
+                textField.textInputKit_selectedRange = newSelectedRange
             }
-
-            textField.textInputKit_selectedRange = newSelectedRange
         }
     }
 
@@ -54,18 +50,16 @@ final class BindingForUITextField<Value: Equatable> : TextInputBinding<Value> {
             return payload.value
         }
         set {
-            guard let textField = boundTextField else {
-                fatalError("The bound `UITextField` was deallocated.")
-            }
-
             payload.value = newValue
 
-            textField.text = {
-                if let newValue = newValue {
-                    return format.serializer.string(for: newValue)
-                }
-                return nil
-            }()
+            withTextField { textField in
+                textField.text = {
+                    if let newValue = newValue {
+                        return format.serializer.string(for: newValue)
+                    }
+                    return nil
+                }()
+            }
         }
     }
 
@@ -122,6 +116,13 @@ final class BindingForUITextField<Value: Equatable> : TextInputBinding<Value> {
             responder,
             action: #selector(Responder<Value>.actionForEditingChanged(_:)),
             for: .editingChanged)
+    }
+
+    func withTextField(_ closure: (UITextField) -> ()) {
+        guard let textField = boundTextField else {
+            fatalError("The `UITextField` was unbound and deallocated.")
+        }
+        closure(textField)
     }
 
 }
