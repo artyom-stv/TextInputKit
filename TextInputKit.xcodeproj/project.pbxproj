@@ -65,7 +65,6 @@
 		7CE691531DE81500003F32D2 /* Range+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691301DE81500003F32D2 /* Range+TextInputKit.swift */; };
 		7CE691541DE81500003F32D2 /* Range+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691301DE81500003F32D2 /* Range+TextInputKit.swift */; };
 		7CE691581DE81500003F32D2 /* BindingForNSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691331DE81500003F32D2 /* BindingForNSTextField.swift */; };
-		7CE6915A1DE81500003F32D2 /* BindingForNSTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691341DE81500003F32D2 /* BindingForNSTextFieldCell.swift */; };
 		7CE6915B1DE81500003F32D2 /* BindingForUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691351DE81500003F32D2 /* BindingForUITextField.swift */; };
 		7CE6915D1DE81500003F32D2 /* TextInputBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691361DE81500003F32D2 /* TextInputBinding.swift */; };
 		7CE6915E1DE81500003F32D2 /* TextInputBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691361DE81500003F32D2 /* TextInputBinding.swift */; };
@@ -209,7 +208,6 @@
 		7C0578BF1DFC52150071DA47 /* BankCardNumberTextInputSerializerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardNumberTextInputSerializerTests.swift; sourceTree = "<group>"; };
 		7C0578CE1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextInputValidationResult+OptimizeChanges.swift"; sourceTree = "<group>"; };
 		7C19F1FD1E048CBF00D2A68F /* NSTextField+TextInputKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextField+TextInputKit.swift"; sourceTree = "<group>"; };
-		7C19F1FF1E048CC800D2A68F /* NSTextFieldCell+TextInputKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextFieldCell+TextInputKit.swift"; sourceTree = "<group>"; };
 		7C2BD0371DE2C3A900A7A6C0 /* TextInputKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TextInputKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2BD0441DE2C40800A7A6C0 /* TextInputKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TextInputKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2BD04C1DE2C44C00A7A6C0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -237,7 +235,6 @@
 		7CE6912E1DE81500003F32D2 /* MutableBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutableBox.swift; sourceTree = "<group>"; };
 		7CE691301DE81500003F32D2 /* Range+TextInputKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Range+TextInputKit.swift"; sourceTree = "<group>"; };
 		7CE691331DE81500003F32D2 /* BindingForNSTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingForNSTextField.swift; sourceTree = "<group>"; };
-		7CE691341DE81500003F32D2 /* BindingForNSTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingForNSTextFieldCell.swift; sourceTree = "<group>"; };
 		7CE691351DE81500003F32D2 /* BindingForUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingForUITextField.swift; sourceTree = "<group>"; };
 		7CE691361DE81500003F32D2 /* TextInputBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputBinding.swift; sourceTree = "<group>"; };
 		7CE691371DE81500003F32D2 /* TextInputBindingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputBindingType.swift; sourceTree = "<group>"; };
@@ -330,7 +327,6 @@
 			children = (
 				7C32AA321E07B70B004669A8 /* NSText+TextInputKit.swift */,
 				7C19F1FD1E048CBF00D2A68F /* NSTextField+TextInputKit.swift */,
-				7C19F1FF1E048CC800D2A68F /* NSTextFieldCell+TextInputKit.swift */,
 				7C32AA3C1E0822E7004669A8 /* NSWindow+TextInputKit.swift */,
 			);
 			path = AppKitExtensions;
@@ -432,7 +428,6 @@
 			isa = PBXGroup;
 			children = (
 				7CE691331DE81500003F32D2 /* BindingForNSTextField.swift */,
-				7CE691341DE81500003F32D2 /* BindingForNSTextFieldCell.swift */,
 				7CE691351DE81500003F32D2 /* BindingForUITextField.swift */,
 				7CE691361DE81500003F32D2 /* TextInputBinding.swift */,
 				7CE691371DE81500003F32D2 /* TextInputBindingType.swift */,
@@ -856,6 +851,7 @@
 				7CE691AF1DE9EEBC003F32D2 /* TextInputAccessoryFormatter.swift in Sources */,
 				7CE691961DE8165F003F32D2 /* PhoneNumberTextInputOptions.swift in Sources */,
 				7CE6915A1DE81500003F32D2 /* BindingForNSTextFieldCell.swift in Sources */,
+				7C7250591E0E50AF00F916ED /* PhoneNumber+Hashable.swift in Sources */,
 				7CE6916E1DE81500003F32D2 /* TextInputFormat.swift in Sources */,
 				7CE6922E1DF44A56003F32D2 /* BankCardBrand.swift in Sources */,
 				7CE691601DE81500003F32D2 /* TextInputBindingType.swift in Sources */,
