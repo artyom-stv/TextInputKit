@@ -20,3 +20,21 @@ public struct PhoneNumber {
     }
 
 }
+
+extension PhoneNumber : Equatable {
+
+    public static func ==(lhs: PhoneNumber, rhs: PhoneNumber) -> Bool {
+        // TODO: Implement.
+        return lhs.formattedString == rhs.formattedString
+    }
+
+}
+
+extension PhoneNumber : Hashable {
+
+    public var hashValue: Int {
+        // TODO: Implement.
+        return formattedString.hashValue
+    }
+    
+}

@@ -10,9 +10,17 @@ import Foundation
 
 public protocol TextInputBindingType : class {
 
-    associatedtype Value
+    associatedtype Value: Equatable
+
+    typealias EventHandler = (TextInputEvent<Value>) -> ()
+
+    var text: String { get set }
+
+    var selectedRange: Range<String.Index>? { get set }
 
     var value: Value? { get set }
+
+    var eventHandler: EventHandler? { get set }
 
     func unbind()
     

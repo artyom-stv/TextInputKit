@@ -11,164 +11,189 @@ import XCTest
 
 class BankCardNumberTextInputFormatterTests: XCTestCase {
 
-    let textInputFormatter = BankCardNumberTextInputFormatter(.options())
+    let textInputFormat = TextInputFormats.bankCardNumber()
 
     var textInput: TextInputSimulator!
+
+    var textInputBinding: TextInputBinding<BankCardNumber>!
 
     override func setUp() {
         super.setUp()
 
-        textInput = TextInputSimulator(textInputFormatter)
+        textInput = TextInputSimulator()
+        textInputBinding = textInputFormat.bind(to: textInput)
     }
 
     func testThatUatpCardIsFormattedCorrectly() {
-        textInput.insert("122000000000003")
-        textInput.expect("1220 00000 000003", "", "")
+        textInput.edit { editor in
+            editor.insert("122000000000003")
+            textInput.expect("1220 00000 000003", "", "")
+        }
     }
 
     func testThatAmexCardIsFormattedCorrectly() {
-        textInput.insert("378282246310005")
-        textInput.expect("3782 822463 10005", "", "")
+        textInput.edit { editor in
+            editor.insert("378282246310005")
+            textInput.expect("3782 822463 10005", "", "")
+        }
     }
 
     func testThatVisaCardIsFormattedCorrectly() {
-        textInput.insert("4111111111111111")
-        textInput.expect("4111 1111 1111 1111", "", "")
+        textInput.edit { editor in
+            editor.insert("4111111111111111")
+            textInput.expect("4111 1111 1111 1111", "", "")
+        }
     }
 
     func testThatMasterCardCardIsFormattedCorrectly() {
-        textInput.insert("5454545454545454")
-        textInput.expect("5454 5454 5454 5454", "", "")
+        textInput.edit { editor in
+            editor.insert("5454545454545454")
+            textInput.expect("5454 5454 5454 5454", "", "")
+        }
     }
 
     func testThatTypingIsFormattedCorrectly() {
-        textInput.insert("3")
-        textInput.expect("3", "", "")
-        textInput.insert("7")
-        textInput.expect("37", "", "")
-        textInput.insert("8")
-        textInput.expect("378", "", "")
-        textInput.insert("2")
-        textInput.expect("3782", "", "")
-        textInput.insert("8")
-        textInput.expect("3782 8", "", "")
-        textInput.insert("2")
-        textInput.expect("3782 82", "", "")
-        textInput.insert("2")
-        textInput.expect("3782 822", "", "")
-        textInput.insert("4")
-        textInput.expect("3782 8224", "", "")
-        textInput.insert("6")
-        textInput.expect("3782 82246", "", "")
-        textInput.insert("3")
-        textInput.expect("3782 822463", "", "")
-        textInput.insert("1")
-        textInput.expect("3782 822463 1", "", "")
-        textInput.insert("0")
-        textInput.expect("3782 822463 10", "", "")
-        textInput.insert("0")
-        textInput.expect("3782 822463 100", "", "")
-        textInput.insert("0")
-        textInput.expect("3782 822463 1000", "", "")
-        textInput.insert("5")
-        textInput.expect("3782 822463 10005", "", "")
+        textInput.edit { editor in
+            editor.insert("3")
+            textInput.expect("3", "", "")
+            editor.insert("7")
+            textInput.expect("37", "", "")
+            editor.insert("8")
+            textInput.expect("378", "", "")
+            editor.insert("2")
+            textInput.expect("3782", "", "")
+            editor.insert("8")
+            textInput.expect("3782 8", "", "")
+            editor.insert("2")
+            textInput.expect("3782 82", "", "")
+            editor.insert("2")
+            textInput.expect("3782 822", "", "")
+            editor.insert("4")
+            textInput.expect("3782 8224", "", "")
+            editor.insert("6")
+            textInput.expect("3782 82246", "", "")
+            editor.insert("3")
+            textInput.expect("3782 822463", "", "")
+            editor.insert("1")
+            textInput.expect("3782 822463 1", "", "")
+            editor.insert("0")
+            textInput.expect("3782 822463 10", "", "")
+            editor.insert("0")
+            textInput.expect("3782 822463 100", "", "")
+            editor.insert("0")
+            textInput.expect("3782 822463 1000", "", "")
+            editor.insert("5")
+            textInput.expect("3782 822463 10005", "", "")
+        }
     }
 
     func testThatPressingBackspaceIsFormattedCorrectly() {
-        textInput.insert("378282246310005")
-        textInput.expect("3782 822463 10005", "", "")
+        textInput.edit { editor in
+            editor.insert("378282246310005")
+            textInput.expect("3782 822463 10005", "", "")
+        }
 
-        textInput.backspace()
-        textInput.expect("3782 822463 1000", "", "")
-        textInput.backspace()
-        textInput.expect("3782 822463 100", "", "")
-        textInput.backspace()
-        textInput.expect("3782 822463 10", "", "")
-        textInput.backspace()
-        textInput.expect("3782 822463 1", "", "")
-        textInput.backspace()
-        textInput.expect("3782 822463", "", "")
-        textInput.backspace()
-        textInput.expect("3782 82246", "", "")
-        textInput.backspace()
-        textInput.expect("3782 8224", "", "")
-        textInput.backspace()
-        textInput.expect("3782 822", "", "")
-        textInput.backspace()
-        textInput.expect("3782 82", "", "")
-        textInput.backspace()
-        textInput.expect("3782 8", "", "")
-        textInput.backspace()
-        textInput.expect("3782", "", "")
-        textInput.backspace()
-        textInput.expect("378", "", "")
-        textInput.backspace()
-        textInput.expect("37", "", "")
-        textInput.backspace()
-        textInput.expect("3", "", "")
-        textInput.backspace()
-        textInput.expect("", "", "")
+        textInput.edit { editor in
+            editor.backspace()
+            textInput.expect("3782 822463 1000", "", "")
+            editor.backspace()
+            textInput.expect("3782 822463 100", "", "")
+            editor.backspace()
+            textInput.expect("3782 822463 10", "", "")
+            editor.backspace()
+            textInput.expect("3782 822463 1", "", "")
+            editor.backspace()
+            textInput.expect("3782 822463", "", "")
+            editor.backspace()
+            textInput.expect("3782 82246", "", "")
+            editor.backspace()
+            textInput.expect("3782 8224", "", "")
+            editor.backspace()
+            textInput.expect("3782 822", "", "")
+            editor.backspace()
+            textInput.expect("3782 82", "", "")
+            editor.backspace()
+            textInput.expect("3782 8", "", "")
+            editor.backspace()
+            textInput.expect("3782", "", "")
+            editor.backspace()
+            textInput.expect("378", "", "")
+            editor.backspace()
+            textInput.expect("37", "", "")
+            editor.backspace()
+            textInput.expect("3", "", "")
+            editor.backspace()
+            textInput.expect("", "", "")
+        }
     }
 
     func testThatChangesWithSelectionAreFormattedCorrectly() {
-        func test(_ actions: (TextInputSimulator) -> ()) {
-            textInput.selectAll()
-            textInput.insert("378282246310005")
-            textInput.expect("3782 822463 10005", "", "")
+        func test(_ actions: (TextInputSimulator, TextInputSimulator.Editor) -> ()) {
+            textInput.edit { editor in
+                editor.selectAll()
+                editor.insert("378282246310005")
+                textInput.expect("3782 822463 10005", "", "")
+            }
 
-            actions(textInput)
+            textInput.edit { editor in
+                actions(textInput, editor)
+            }
         }
 
-        test { textInput in
-            textInput.select(4..<5)
+        test { textInput, editor in
+            editor.select(4..<5)
             textInput.expect("3782", " ", "822463 10005")
-            textInput.backspace()
+            editor.backspace()
             textInput.expect("3782", "", " 822463 10005")
         }
 
-        test { textInput in
-            textInput.select(11..<12)
+        test { textInput, editor in
+            editor.select(11..<12)
             textInput.expect("3782 822463", " ", "10005")
-            textInput.backspace()
+            editor.backspace()
             textInput.expect("3782 822463", "", " 10005")
         }
 
-        test { textInput in
-            textInput.select(3..<5)
+        test { textInput, editor in
+            editor.select(3..<5)
             textInput.expect("378", "2 ", "822463 10005")
-            textInput.insert("2")
+            editor.insert("2")
             textInput.expect("3782", "", " 822463 10005")
         }
 
-        test { textInput in
-            textInput.select(4..<6)
+        test { textInput, editor in
+            editor.select(4..<6)
             textInput.expect("3782", " 8", "22463 10005")
-            textInput.insert("8")
+            editor.insert("8")
             textInput.expect("3782 8", "", "22463 10005")
         }
 
-        test { textInput in
-            textInput.select(10..<12)
+        test { textInput, editor in
+            editor.select(10..<12)
             textInput.expect("3782 82246", "3 ", "10005")
-            textInput.insert("3")
+            editor.insert("3")
             textInput.expect("3782 822463", "", " 10005")
         }
 
-        test { textInput in
-            textInput.select(11..<13)
+        test { textInput, editor in
+            editor.select(11..<13)
             textInput.expect("3782 822463", " 1", "0005")
-            textInput.insert("1")
+            editor.insert("1")
             textInput.expect("3782 822463 1", "", "0005")
         }
     }
 
     func testThatVisaIsReformattedToAmexAfterInsertingFirstDigit() {
-        textInput.insert("41111111111111")
-        textInput.expect("4111 1111 1111 11", "", "")
+        textInput.edit { editor in
+            editor.insert("41111111111111")
+            textInput.expect("4111 1111 1111 11", "", "")
+        }
 
-        textInput.select(0..<0)
-        textInput.insert("3")
-        textInput.expect("3", "", "411 111111 11111")
+        textInput.edit { editor in
+            editor.select(0..<0)
+            editor.insert("3")
+            textInput.expect("3", "", "411 111111 11111")
+        }
     }
 
     func testThatFormatterAcceptsAppendingTextWhenPossible() {
@@ -194,7 +219,7 @@ class BankCardNumberTextInputFormatterTests: XCTestCase {
             let replacementString = testData.appending
             let selectedRange = string.endIndex..<string.endIndex
 
-            let validationResult = textInputFormatter.validate(
+            let validationResult = textInputFormat.formatter.validate(
                 editing: string,
                 withSelection: selectedRange,
                 replacing: replacementString,
@@ -228,7 +253,7 @@ class BankCardNumberTextInputFormatterTests: XCTestCase {
                 return index..<index
             }()
 
-            let validationResult = textInputFormatter.validate(
+            let validationResult = textInputFormat.formatter.validate(
                 editing: string,
                 withSelection: selectedRange,
                 replacing: replacementString,

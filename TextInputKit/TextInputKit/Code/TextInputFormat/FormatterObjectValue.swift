@@ -6,14 +6,22 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
-/// The wrapper type, which is used in a `Formatter` created by the `toFormatter()` method of `TextInputFormat`.
+/// The type which is used in a `Formatter` created by `toFormatter()` method of `TextInputFormat`.
 ///
-/// - value: The `Value`. This case is used when a value is present.
-/// - string: The text in the text input. This case is used when there is no `Value` representing the text.
-public enum FormatterObjectValue<Value> {
+/// After finishing editing an `NSTextField`, if the `objectValue` is nil, the `stringValue` of an `NSTextField`
+/// is reset. To eliminate such behavior, if the `objectValue` is nil, the text is stored in the `objectValue`
+/// (in a `FormatterObjectValue`) and then returned from `Formatter.string(for:)`.
+public class FormatterObjectValue<Value> {
 
-    case value(Value)
+    /// The `Value` or nil.
+    public let value: Value?
 
-    case string(String)
+    /// The text in the text input.
+    public let text: String
+
+    public init(value: Value? = nil, text: String = "") {
+        self.value = value
+        self.text = text
+    }
     
 }

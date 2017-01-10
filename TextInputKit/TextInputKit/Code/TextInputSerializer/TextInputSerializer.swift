@@ -13,11 +13,11 @@ open class TextInputSerializer<Value> : TextInputSerializerType {
     init() {
     }
 
-    public func string(for value: Value) -> String {
+    open func string(for value: Value) -> String {
         abstractMethod()
     }
 
-    public func value(for string: String) throws -> Value {
+    open func value(for string: String) throws -> Value {
         abstractMethod()
     }
 

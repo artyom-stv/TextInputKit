@@ -12,13 +12,23 @@ public extension TextInputValidationResult {
         forEditing originalString: String,
         replacing replacementString: String,
         at editedRange: Range<String.Index>,
+        withSelection originalSelectedRange: Range<String.Index>,
         resulting resultingString: String,
         withSelection resultingSelectedRange: Range<String.Index>) -> TextInputValidationResult {
 
-        let shouldAccept: Bool = {
+        let hasChangesAgainstOriginalInput: Bool = {
+            return (originalSelectedRange != resultingSelectedRange)
+                || (originalString != resultingString)
+        }()
+
+        if !hasChangesAgainstOriginalInput {
+            return .rejected
+        }
+
+        let hasChangesAgainstProposedResult: Bool = {
             let proposedResultingString = originalString.replacingCharacters(in: editedRange, with: replacementString)
             if resultingString != proposedResultingString {
-                return false
+                return true
             }
 
             let proposedResultingSelectedRange: Range<String.Index> = {
@@ -28,13 +38,14 @@ public extension TextInputValidationResult {
                 index = proposedResultingString.index(index, offsetBy: replacementString.characters.count)
                 return index..<index
             }()
-            return resultingSelectedRange == proposedResultingSelectedRange
+            return resultingSelectedRange != proposedResultingSelectedRange
         }()
 
-        return shouldAccept
-            ? .accepted
-            : .changed(resultingString, selectedRange: resultingSelectedRange)
+        if !hasChangesAgainstProposedResult {
+            return .accepted
+        }
 
+        return .changed(resultingString, selectedRange: resultingSelectedRange)
     }
 
 }

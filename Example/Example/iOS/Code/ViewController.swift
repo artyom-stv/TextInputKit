@@ -9,18 +9,14 @@
 import UIKit
 import TextInputKit
 
-class ViewController: UIViewController {
+class TestFormatterViewController: UIViewController {
 
     @IBOutlet var textField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let maxLength = 6
-
         textInputBinding = TextInputFormats.plain
-            .filter(by: CharacterSet.decimalDigits)
-            .filter(constrainingCharactersCount: maxLength)
             .bind(to: textField)
     }
 
