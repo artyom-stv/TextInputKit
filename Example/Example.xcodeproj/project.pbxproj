@@ -11,12 +11,10 @@
 		7C22E7961DE15E8F007758E2 /* TestStandardFormattersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C22E7951DE15E8F007758E2 /* TestStandardFormattersViewController.swift */; };
 		7C22E7981DE15F16007758E2 /* TestFormattersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C22E7971DE15F16007758E2 /* TestFormattersViewController.swift */; };
 		7C22E79A1DE167BD007758E2 /* NSStoryboard+Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C22E7991DE167BD007758E2 /* NSStoryboard+Example.swift */; };
-		7C50F9211E0FFBAB00D3AF09 /* libPhoneNumberiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C50F9201E0FFBAB00D3AF09 /* libPhoneNumberiOS.framework */; };
-		7C50F9221E0FFBAB00D3AF09 /* libPhoneNumberiOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7C50F9201E0FFBAB00D3AF09 /* libPhoneNumberiOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7C50F9241E0FFBC600D3AF09 /* libPhoneNumbermacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C50F9231E0FFBC600D3AF09 /* libPhoneNumbermacOS.framework */; };
-		7C50F9251E0FFBC600D3AF09 /* libPhoneNumbermacOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7C50F9231E0FFBC600D3AF09 /* libPhoneNumbermacOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7C50F9291E0FFC3000D3AF09 /* libPhoneNumbermacOS.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C50F9281E0FFC3000D3AF09 /* libPhoneNumbermacOS.framework.dSYM */; };
-		7C50F92C1E0FFC5300D3AF09 /* libPhoneNumberiOS.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7C50F92B1E0FFC5300D3AF09 /* libPhoneNumberiOS.framework.dSYM */; };
+		7C2D58CC1E25277000A0D7F4 /* PhoneNumberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2D58CB1E25277000A0D7F4 /* PhoneNumberKit.framework */; };
+		7C2D58CD1E25277000A0D7F4 /* PhoneNumberKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2D58CB1E25277000A0D7F4 /* PhoneNumberKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7C2D58CF1E25277F00A0D7F4 /* PhoneNumberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2D58CE1E25277F00A0D7F4 /* PhoneNumberKit.framework */; };
+		7C2D58D01E25277F00A0D7F4 /* PhoneNumberKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7C2D58CE1E25277F00A0D7F4 /* PhoneNumberKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7C32AA3B1E07D623004669A8 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4951E0424C10094CE4D /* Types.swift */; };
 		7C3FE4881E03351E0094CE4D /* BankCardTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4851E03351E0094CE4D /* BankCardTextField.swift */; };
 		7C3FE4891E03351E0094CE4D /* BankCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3FE4861E03351E0094CE4D /* BankCardView.swift */; };
@@ -43,34 +41,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7C50F9271E0FFBF800D3AF09 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 16;
-			files = (
-				7C50F9291E0FFC3000D3AF09 /* libPhoneNumbermacOS.framework.dSYM in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7C50F92A1E0FFC4200D3AF09 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 16;
-			files = (
-				7C50F92C1E0FFC5300D3AF09 /* libPhoneNumberiOS.framework.dSYM in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7CE691291DE75EA3003F32D2 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7C50F9221E0FFBAB00D3AF09 /* libPhoneNumberiOS.framework in Embed Frameworks */,
 				7CE691281DE75EA2003F32D2 /* TextInputKit.framework in Embed Frameworks */,
+				7C2D58CD1E25277000A0D7F4 /* PhoneNumberKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,8 +59,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7C50F9251E0FFBC600D3AF09 /* libPhoneNumbermacOS.framework in Embed Frameworks */,
 				7CE6912C1DE75EAA003F32D2 /* TextInputKit.framework in Embed Frameworks */,
+				7C2D58D01E25277F00A0D7F4 /* PhoneNumberKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,10 +72,8 @@
 		7C22E7951DE15E8F007758E2 /* TestStandardFormattersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestStandardFormattersViewController.swift; sourceTree = "<group>"; };
 		7C22E7971DE15F16007758E2 /* TestFormattersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFormattersViewController.swift; sourceTree = "<group>"; };
 		7C22E7991DE167BD007758E2 /* NSStoryboard+Example.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSStoryboard+Example.swift"; sourceTree = "<group>"; };
-		7C50F9201E0FFBAB00D3AF09 /* libPhoneNumberiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libPhoneNumberiOS.framework; path = ../Carthage/Build/iOS/libPhoneNumberiOS.framework; sourceTree = "<group>"; };
-		7C50F9231E0FFBC600D3AF09 /* libPhoneNumbermacOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libPhoneNumbermacOS.framework; path = ../Carthage/Build/Mac/libPhoneNumbermacOS.framework; sourceTree = "<group>"; };
-		7C50F9281E0FFC3000D3AF09 /* libPhoneNumbermacOS.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = libPhoneNumbermacOS.framework.dSYM; path = ../Carthage/Build/Mac/libPhoneNumbermacOS.framework.dSYM; sourceTree = "<group>"; };
-		7C50F92B1E0FFC5300D3AF09 /* libPhoneNumberiOS.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = libPhoneNumberiOS.framework.dSYM; path = ../Carthage/Build/iOS/libPhoneNumberiOS.framework.dSYM; sourceTree = "<group>"; };
+		7C2D58CB1E25277000A0D7F4 /* PhoneNumberKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhoneNumberKit.framework; path = ../Carthage/Build/iOS/PhoneNumberKit.framework; sourceTree = "<group>"; };
+		7C2D58CE1E25277F00A0D7F4 /* PhoneNumberKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhoneNumberKit.framework; path = ../Carthage/Build/Mac/PhoneNumberKit.framework; sourceTree = "<group>"; };
 		7C3FE4851E03351E0094CE4D /* BankCardTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardTextField.swift; sourceTree = "<group>"; };
 		7C3FE4861E03351E0094CE4D /* BankCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardView.swift; sourceTree = "<group>"; };
 		7C3FE48F1E0416A30094CE4D /* BankCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardViewController.swift; sourceTree = "<group>"; };
@@ -127,8 +103,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C50F9211E0FFBAB00D3AF09 /* libPhoneNumberiOS.framework in Frameworks */,
 				7CE691271DE75EA2003F32D2 /* TextInputKit.framework in Frameworks */,
+				7C2D58CC1E25277000A0D7F4 /* PhoneNumberKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,15 +112,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C50F9241E0FFBC600D3AF09 /* libPhoneNumbermacOS.framework in Frameworks */,
 				7CE6912B1DE75EAA003F32D2 /* TextInputKit.framework in Frameworks */,
+				7C2D58CF1E25277F00A0D7F4 /* PhoneNumberKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7C50F9261E0FFBCB00D3AF09 /* Frameworks */ = {
+		7C2D58CA1E25274D00A0D7F4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7C2D58CE1E25277F00A0D7F4 /* PhoneNumberKit.framework */,
+				7C2D58CB1E25277000A0D7F4 /* PhoneNumberKit.framework */,
+				7CE6912A1DE75EAA003F32D2 /* TextInputKit.framework */,
+				7CE691261DE75EA2003F32D2 /* TextInputKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7C3FE4841E03351E0094CE4D /* BankCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,22 +171,9 @@
 		7C7AEB5B1DDFD871004861BD = {
 			isa = PBXGroup;
 			children = (
-				7C50F9201E0FFBAB00D3AF09 /* libPhoneNumberiOS.framework */,
-				7C50F92B1E0FFC5300D3AF09 /* libPhoneNumberiOS.framework.dSYM */,
-				7C50F9231E0FFBC600D3AF09 /* libPhoneNumbermacOS.framework */,
-				7C50F9281E0FFC3000D3AF09 /* libPhoneNumbermacOS.framework.dSYM */,
-				7CE6912A1DE75EAA003F32D2 /* TextInputKit.framework */,
-				7CE691261DE75EA2003F32D2 /* TextInputKit.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7C7AEB5B1DDFD871004861BD = {
-			isa = PBXGroup;
-			children = (
 				7C7AEBA21DDFDB6F004861BD /* Example */,
 				7C7AEB651DDFD871004861BD /* Products */,
-				7C50F9261E0FFBCB00D3AF09 /* Frameworks */,
+				7C2D58CA1E25274D00A0D7F4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -296,7 +269,6 @@
 				7C7AEB7A1DDFD8BF004861BD /* Frameworks */,
 				7C7AEB7B1DDFD8BF004861BD /* Resources */,
 				7CE691291DE75EA3003F32D2 /* Embed Frameworks */,
-				7C50F92A1E0FFC4200D3AF09 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -315,7 +287,6 @@
 				7C7AEB901DDFD8FE004861BD /* Frameworks */,
 				7C7AEB911DDFD8FE004861BD /* Resources */,
 				7CE6912D1DE75EAA003F32D2 /* Embed Frameworks */,
-				7C50F9271E0FFBF800D3AF09 /* CopyFiles */,
 			);
 			buildRules = (
 			);

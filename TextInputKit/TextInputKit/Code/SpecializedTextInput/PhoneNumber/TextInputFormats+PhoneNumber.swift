@@ -7,12 +7,18 @@
 //
 
 import Foundation
+import PhoneNumberKit
 
 public extension TextInputFormats {
 
-    static func phoneNumber(_ options: PhoneNumberTextInputOptions) -> TextInputFormat<PhoneNumber> {
+    static func phoneNumber(_ options: PhoneNumberTextInputOptions = .options()) throws -> TextInputFormat<PhoneNumber> {
         // TODO: Remove when phone number text input formatting is supported.
         print("TextInputFormats.\(#function) isn't supported yet.")
+
+        let isPhoneNumberKitFrameworkLoaded = (NSClassFromString("PhoneNumberKit.PhoneNumberKit") != nil)
+        if !isPhoneNumberKitFrameworkLoaded {
+            throw TextInputKitError.missingFramework("PhoneNumberKit")
+        }
 
         let serializer = TextInputSerializer.identical.map(
             direct: {
