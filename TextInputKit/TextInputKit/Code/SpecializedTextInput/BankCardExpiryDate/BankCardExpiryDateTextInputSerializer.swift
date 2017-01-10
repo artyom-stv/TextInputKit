@@ -16,7 +16,7 @@ final class BankCardExpiryDateTextInputSerializer : TextInputSerializer<BankCard
 
     override func string(for value: BankCardExpiryDate) -> String {
         let lastTwoDigitsOfYear = value.year % 100
-        return "\(value.month) / \(lastTwoDigitsOfYear)"
+        return "\(String(format: "%02d", value.month))/\(lastTwoDigitsOfYear)"
     }
 
     override func value(for string: String) throws -> BankCardExpiryDate {
