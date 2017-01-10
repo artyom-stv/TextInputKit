@@ -90,3 +90,19 @@ extension BankCardExpiryDate {
     }
 
 }
+
+extension BankCardExpiryDate : Equatable {
+
+    public static func ==(lhs: BankCardExpiryDate, rhs: BankCardExpiryDate) -> Bool {
+        return (lhs.year == rhs.year) && (lhs.month == rhs.month)
+    }
+
+}
+
+extension BankCardExpiryDate : Hashable {
+
+    public var hashValue: Int {
+        return (year << 4) | month
+    }
+    
+}

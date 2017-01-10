@@ -54,7 +54,7 @@ extension TextInputFormat {
 
 }
 
-private final class FormatterAdapter<Value> : Formatter {
+private final class FormatterAdapter<Value: Equatable> : Formatter {
 
     init(_ format: TextInputFormat<Value>, _ options: FormatterOptions) {
         self.format = format
@@ -76,11 +76,11 @@ private final class FormatterAdapter<Value> : Formatter {
             fatalError("Unexpected type of an object passed to Formatter.string(for:) (expected: \(String(describing: FormatterObjectValue<Value>.self)), actual: \(String(describing: type(of: object))))")
         }
 
-        switch objectValue {
-        case .value(let value):
+        if let value = objectValue.value {
             return format.serializer.string(for: value)
-        case .string(let string):
-            return string
+        }
+        else {
+            return objectValue.text
         }
     }
 
@@ -92,10 +92,10 @@ private final class FormatterAdapter<Value> : Formatter {
         let objectValue: FormatterObjectValue<Value>
         do {
             let value = try format.serializer.value(for: string)
-            objectValue = .value(value)
+            objectValue = .init(value: value, text: string)
         }
         catch let error {
-            objectValue = .string(string)
+            objectValue = .init(value: nil, text: string)
 
             if let error = error as? CustomStringConvertible, let errorDescriptionPtr = errorDescriptionPtr {
                 errorDescriptionPtr.pointee = error.description as NSString
