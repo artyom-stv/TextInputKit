@@ -16,9 +16,9 @@ import TextInputKit
 
 struct BankCard {
 
-    var cardNumber: BankCardNumber? = nil
+    var cardNumber: BankCardNumber?
 
-    var expiryDate: BankCardExpiryDate? = nil
+    var expiryDate: BankCardExpiryDate?
 
     var cardHolderName: String = ""
 
