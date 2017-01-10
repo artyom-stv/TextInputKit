@@ -31,17 +31,18 @@ extension BankCard {
     var prettyDescription: String {
         let cardNumberDescription: String = {
             if let cardNumber = cardNumber {
-                var description = "digitsString: \"\(cardNumber.digitsString)\""
+                var description = "{ digitsString: \"\(cardNumber.digitsString)\""
                 if let cardBrand = cardNumber.cardBrand {
                     description += ", cardBrand: \(cardBrand)"
                 }
+                description += " }"
                 return description
             }
             return "nil"
         }()
         let expiryDateDescription: String = {
             if let expiryDate = expiryDate {
-                return "month: \(expiryDate.month), year: \(expiryDate.year)"
+                return "{ month: \(expiryDate.month), year: \(expiryDate.year) }"
             }
             return "nil"
         }()
@@ -67,7 +68,11 @@ final class BankCardViewController : ViewController {
 
     @IBOutlet var cardSecurityCodeTextField: TextField!
 
-    @IBOutlet var descriptionLabel: Label!
+    #if os(macOS)
+    @IBOutlet var descriptionLabel: NSTextField!
+    #else
+    @IBOutlet var descriptionLabel: UILabel!
+    #endif
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -176,7 +181,11 @@ private extension BankCardViewController {
 private extension BankCardViewController {
 
     func updateDescriptionText() {
+        #if os(macOS)
+        descriptionLabel.stringValue = bankCard.prettyDescription
+        #else
         descriptionLabel.text = bankCard.prettyDescription
+        #endif
     }
 
 }

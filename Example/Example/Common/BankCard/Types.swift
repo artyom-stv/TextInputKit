@@ -16,10 +16,8 @@
     typealias Color = NSColor
     typealias ViewController = NSViewController
     typealias TextField = NSTextField
-    typealias Label = NSTextField
 #else
     typealias Color = UIColor
     typealias ViewController = UIViewController
     typealias TextField = UITextField
-    typealias Label = UILabel
 #endif

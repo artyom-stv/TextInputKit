@@ -707,10 +707,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="313.5" height="362"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="X5s-4p-umM">
-                                        <rect key="frame" x="0.0" y="25" width="313.5" height="337"/>
+                                        <rect key="frame" x="0.0" y="66" width="313.5" height="296"/>
                                         <subviews>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Sdi-7c-OyQ" userLabel="Cards View">
-                                                <rect key="frame" x="12" y="60" width="289.5" height="265"/>
+                                                <rect key="frame" x="12" y="19" width="289.5" height="265"/>
                                                 <subviews>
                                                     <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="Hn8-MQ-ToW" userLabel="Card Back Box" customClass="BankCardBox" customModule="Example_macOS" customModuleProvider="target">
                                                         <rect key="frame" x="16" y="0.0" width="273.5" height="173"/>
@@ -719,10 +719,10 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="b7j-c4-8tR">
-                                                                    <rect key="frame" x="24" y="16" width="223.5" height="90.5"/>
+                                                                    <rect key="frame" x="24" y="16" width="223.5" height="91"/>
                                                                     <subviews>
                                                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="OW4-I9-Ebt" userLabel="Security Code Form">
-                                                                            <rect key="frame" x="134" y="25.5" width="89" height="41"/>
+                                                                            <rect key="frame" x="134" y="26" width="89" height="41"/>
                                                                             <subviews>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iyF-Oc-8uG">
                                                                                     <rect key="frame" x="6" y="25" width="85" height="16"/>
@@ -758,7 +758,7 @@
                                                                     </constraints>
                                                                 </customView>
                                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="xmS-wT-1wF">
-                                                                    <rect key="frame" x="0.0" y="106.5" width="271.5" height="43"/>
+                                                                    <rect key="frame" x="0.0" y="107" width="271.5" height="42.5"/>
                                                                 </customView>
                                                             </subviews>
                                                             <constraints>
@@ -778,7 +778,7 @@
                                                         <color key="fillColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </box>
                                                     <box boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="5DO-7u-2dj" userLabel="Card Front Box" customClass="BankCardBox" customModule="Example_macOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="91.5" width="273.5" height="173"/>
+                                                        <rect key="frame" x="0.0" y="92" width="273.5" height="173"/>
                                                         <view key="contentView" id="Z3c-a1-HDL">
                                                             <rect key="frame" x="1" y="1" width="271.5" height="171"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -927,28 +927,39 @@
                                         </constraints>
                                     </customView>
                                     <customView verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5xi-YA-0nm">
-                                        <rect key="frame" x="0.0" y="0.0" width="313.5" height="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="313.5" height="58"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Se6-z7-DDh">
-                                                <rect key="frame" x="-2" y="0.0" width="317.5" height="17"/>
-                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Label" id="ZCh-fA-URC">
+                                                <rect key="frame" x="10" y="33" width="293.5" height="17"/>
+                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Bank Card:" id="ZCh-fA-URC">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBn-j2-ffz">
+                                                <rect key="frame" x="10" y="12" width="293.5" height="17"/>
+                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="{}" id="v2v-MD-dA8">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
                                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="zp3-0b-GS0">
-                                                <rect key="frame" x="0.0" y="14" width="313.5" height="5"/>
+                                                <rect key="frame" x="0.0" y="55" width="313.5" height="5"/>
                                             </box>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="oBn-j2-ffz" firstAttribute="leading" secondItem="5xi-YA-0nm" secondAttribute="leading" constant="12" id="3WC-ou-6vb"/>
                                             <constraint firstItem="zp3-0b-GS0" firstAttribute="leading" secondItem="5xi-YA-0nm" secondAttribute="leading" id="Fmf-9U-IrQ"/>
-                                            <constraint firstItem="Se6-z7-DDh" firstAttribute="leading" secondItem="5xi-YA-0nm" secondAttribute="leading" id="NTW-zB-19l"/>
-                                            <constraint firstAttribute="trailing" secondItem="Se6-z7-DDh" secondAttribute="trailing" id="S1A-8C-PuG"/>
-                                            <constraint firstAttribute="bottom" secondItem="Se6-z7-DDh" secondAttribute="bottom" id="Uf3-vE-0tY"/>
+                                            <constraint firstAttribute="trailing" secondItem="oBn-j2-ffz" secondAttribute="trailing" constant="12" id="HSg-ku-5SB"/>
+                                            <constraint firstItem="Se6-z7-DDh" firstAttribute="leading" secondItem="5xi-YA-0nm" secondAttribute="leading" constant="12" id="NTW-zB-19l"/>
+                                            <constraint firstAttribute="trailing" secondItem="Se6-z7-DDh" secondAttribute="trailing" constant="12" id="S1A-8C-PuG"/>
                                             <constraint firstItem="zp3-0b-GS0" firstAttribute="top" secondItem="5xi-YA-0nm" secondAttribute="top" id="WlG-pX-ELr"/>
-                                            <constraint firstItem="Se6-z7-DDh" firstAttribute="top" secondItem="5xi-YA-0nm" secondAttribute="top" id="cvR-e0-CRW"/>
+                                            <constraint firstItem="Se6-z7-DDh" firstAttribute="top" secondItem="5xi-YA-0nm" secondAttribute="top" constant="8" id="cvR-e0-CRW"/>
                                             <constraint firstAttribute="trailing" secondItem="zp3-0b-GS0" secondAttribute="trailing" id="laz-iN-LP2"/>
+                                            <constraint firstItem="oBn-j2-ffz" firstAttribute="top" secondItem="Se6-z7-DDh" secondAttribute="bottom" constant="4" id="nZ5-Sf-Eec"/>
+                                            <constraint firstAttribute="bottom" secondItem="oBn-j2-ffz" secondAttribute="bottom" constant="12" id="obW-IM-Y0K"/>
                                         </constraints>
                                     </customView>
                                 </subviews>
@@ -978,6 +989,7 @@
                         <outlet property="cardHolderNameTextField" destination="pOW-rl-0Ip" id="1L1-ck-oW0"/>
                         <outlet property="cardNumberTextField" destination="lO7-YA-9fz" id="26S-Re-nqb"/>
                         <outlet property="cardSecurityCodeTextField" destination="Ky6-n7-K8g" id="dDC-SE-wHB"/>
+                        <outlet property="descriptionLabel" destination="oBn-j2-ffz" id="cp9-CS-B3e"/>
                     </connections>
                 </viewController>
                 <customObject id="AvT-4V-7tF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
