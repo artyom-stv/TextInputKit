@@ -16,7 +16,8 @@ final class CachedPhoneNumberKit {
 
     // MARK: Properties
 
-    var phoneNumberKit: PhoneNumberKit {
+    /// Returns a `PhoneNumberKit`.
+    var instance: PhoneNumberKit {
         return stateMutex.fastsync {
             switch state {
             case .loaded(let phoneNumberKit):

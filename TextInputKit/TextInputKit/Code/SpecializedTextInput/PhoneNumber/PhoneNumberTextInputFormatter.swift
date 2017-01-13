@@ -56,7 +56,7 @@ final class PhoneNumberTextInputFormatter : TextInputFormatter {
     fileprivate typealias Utils = PhoneNumberUtils
 
     fileprivate lazy var partialFormatter: PartialFormatter = {
-        return PartialFormatter(phoneNumberKit: self.cachedPhoneNumberKit.phoneNumberKit)
+        return PartialFormatter(phoneNumberKit: self.cachedPhoneNumberKit.instance)
     }()
 
     private let options: PhoneNumberTextInputOptions

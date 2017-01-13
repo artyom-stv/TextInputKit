@@ -22,7 +22,7 @@ public extension TextInputFormats {
         let serializer = TextInputSerializer.identical.map(
             direct: { text -> PhoneNumber in
                 do {
-                    let phoneNumberKit = cachedPhoneNumberKit.phoneNumberKit
+                    let phoneNumberKit = cachedPhoneNumberKit.instance
                     return PhoneNumber(try phoneNumberKit.parse(text))
                 } catch {
                     // TODO: Throw the proper error.
@@ -30,7 +30,7 @@ public extension TextInputFormats {
                 }
         },
             reverse: { phoneNumber -> String in
-                let phoneNumberKit = cachedPhoneNumberKit.phoneNumberKit
+                let phoneNumberKit = cachedPhoneNumberKit.instance
                 return phoneNumberKit.format(phoneNumber.pnkPhoneNumber, toType: options.format.pnkFormat)
         })
 
