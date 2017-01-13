@@ -6,16 +6,12 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
-import Foundation
 import PhoneNumberKit
 
 public extension TextInputFormats {
 
     static func phoneNumber(_ options: PhoneNumberTextInputOptions = .options()) throws -> TextInputFormat<PhoneNumber> {
-        let isPhoneNumberKitFrameworkLoaded = (NSClassFromString("PhoneNumberKit.PhoneNumberKit") != nil)
-        if !isPhoneNumberKitFrameworkLoaded {
-            throw TextInputKitError.missingFramework("PhoneNumberKit")
-        }
+        try PhoneNumberKit.checkThatFrameworkIsLoaded()
 
         let cachedPhoneNumberKit = PhoneNumberKit.cached
 
@@ -24,9 +20,8 @@ public extension TextInputFormats {
                 do {
                     let phoneNumberKit = cachedPhoneNumberKit.instance
                     return PhoneNumber(try phoneNumberKit.parse(text))
-                } catch {
-                    // TODO: Throw the proper error.
-                    throw TextInputKitError.unknown
+                } catch let error as PhoneNumberError {
+                    throw PhoneNumberTextInputError.from(error)
                 }
         },
             reverse: { phoneNumber -> String in

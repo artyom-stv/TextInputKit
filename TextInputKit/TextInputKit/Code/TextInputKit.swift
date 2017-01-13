@@ -8,14 +8,6 @@
 
 import Foundation
 
-public enum TextInputKitError : Error {
-
-    case unknown
-
-    case missingFramework(String)
-
-}
-
 func abstractMethod() -> Never {
     fatalError("Abstract method.")
 }

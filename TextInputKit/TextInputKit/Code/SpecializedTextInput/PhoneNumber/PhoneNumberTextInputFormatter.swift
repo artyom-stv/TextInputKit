@@ -67,12 +67,17 @@ final class PhoneNumberTextInputFormatter : TextInputFormatter {
 
 private extension PhoneNumberTextInputFormatter {
 
+    enum ValidationError : Error {
+
+        case invalidPhoneNumber
+
+    }
+
     func formattedString(_ string: String) throws -> String {
         let formattedString = partialFormatter.formatPartial(string)
 
         if !Utils.isValidPhoneNumber(formattedString) {
-            // TODO: Throw the proper error.
-            throw TextInputKitError.unknown
+            throw ValidationError.invalidPhoneNumber
         }
 
         return formattedString
