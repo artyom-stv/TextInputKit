@@ -12,25 +12,44 @@ import PhoneNumberKit
 public extension TextInputFormats {
 
     static func phoneNumber(_ options: PhoneNumberTextInputOptions = .options()) throws -> TextInputFormat<PhoneNumber> {
-        // TODO: Remove when phone number text input formatting is supported.
-        print("TextInputFormats.\(#function) isn't supported yet.")
-
         let isPhoneNumberKitFrameworkLoaded = (NSClassFromString("PhoneNumberKit.PhoneNumberKit") != nil)
         if !isPhoneNumberKitFrameworkLoaded {
             throw TextInputKitError.missingFramework("PhoneNumberKit")
         }
 
+        let cachedPhoneNumberKit = PhoneNumberKit.cached
+
         let serializer = TextInputSerializer.identical.map(
-            direct: {
-                return PhoneNumber(formattedString: $0, number: $0)
+            direct: { text -> PhoneNumber in
+                do {
+                    let phoneNumberKit = cachedPhoneNumberKit.phoneNumberKit
+                    return PhoneNumber(try phoneNumberKit.parse(text))
+                } catch {
+                    // TODO: Throw the proper error.
+                    throw TextInputKitError.unknown
+                }
         },
-            reverse: {
-                return $0.formattedString
+            reverse: { phoneNumber -> String in
+                let phoneNumberKit = cachedPhoneNumberKit.phoneNumberKit
+                return phoneNumberKit.format(phoneNumber.pnkPhoneNumber, toType: options.format.pnkFormat)
         })
 
-        let formatter = PhoneNumberTextInputFormatter(options)
+        let formatter = PhoneNumberTextInputFormatter(options, cachedPhoneNumberKit)
 
         return TextInputFormat<PhoneNumber>.from(serializer, formatter)
+    }
+
+}
+
+private extension PhoneNumberFormat {
+
+    var pnkFormat: PNKPhoneNumberFormat {
+        switch self {
+        case .e164:
+            return .e164
+        case .international:
+            return .international
+        }
     }
 
 }

@@ -10,22 +10,18 @@ import Foundation
 
 public struct PhoneNumber {
 
-    public let formattedString: String
-
-    public let number: String
-
-    init(formattedString: String, number: String) {
-        self.formattedString = formattedString
-        self.number = number
+    init(_ pnkPhoneNumber: PNKPhoneNumber) {
+        self.pnkPhoneNumber = pnkPhoneNumber
     }
+
+    let pnkPhoneNumber: PNKPhoneNumber
 
 }
 
 extension PhoneNumber : Equatable {
 
     public static func ==(lhs: PhoneNumber, rhs: PhoneNumber) -> Bool {
-        // TODO: Implement.
-        return lhs.formattedString == rhs.formattedString
+        return lhs.pnkPhoneNumber == rhs.pnkPhoneNumber
     }
 
 }
@@ -33,8 +29,7 @@ extension PhoneNumber : Equatable {
 extension PhoneNumber : Hashable {
 
     public var hashValue: Int {
-        // TODO: Implement.
-        return formattedString.hashValue
+        return pnkPhoneNumber.hashValue
     }
-    
+
 }

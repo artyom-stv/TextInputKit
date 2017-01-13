@@ -64,7 +64,7 @@ private extension BankCardNumberTextInputFormatter {
     struct OriginalValidationInput {
         let stringView: String.UnicodeScalarView
         let selectedRange: Range<String.UnicodeScalarIndex>
-        let replacementStringView:String.UnicodeScalarView
+        let replacementStringView: String.UnicodeScalarView
         let editedRange: Range<String.UnicodeScalarIndex>
     }
 

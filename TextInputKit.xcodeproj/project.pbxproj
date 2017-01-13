@@ -26,6 +26,28 @@
 		7C0578CF1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578CE1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift */; };
 		7C0578D01DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578CE1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift */; };
 		7C19F1FE1E048CBF00D2A68F /* NSTextField+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C19F1FD1E048CBF00D2A68F /* NSTextField+TextInputKit.swift */; };
+		7C2BC0F61E2642B100C731E3 /* PhoneNumberUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC0F51E2642B100C731E3 /* PhoneNumberUtils.swift */; };
+		7C2BC0F71E2642B100C731E3 /* PhoneNumberUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC0F51E2642B100C731E3 /* PhoneNumberUtils.swift */; };
+		7C2BC1031E2820D900C731E3 /* PhoneNumberTextInputFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC1021E2820D900C731E3 /* PhoneNumberTextInputFormatterTests.swift */; };
+		7C2BC1041E2820D900C731E3 /* PhoneNumberTextInputFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC1021E2820D900C731E3 /* PhoneNumberTextInputFormatterTests.swift */; };
+		7C2BC1051E2825E900C731E3 /* PhoneNumberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C02BA1E1E251F880023AC7E /* PhoneNumberKit.framework */; };
+		7C2BC1061E2825ED00C731E3 /* PhoneNumberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C02BA201E251F930023AC7E /* PhoneNumberKit.framework */; };
+		7C2BC1071E2825F400C731E3 /* PhoneNumberKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7C02BA201E251F930023AC7E /* PhoneNumberKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7C2BC1081E2825F700C731E3 /* PhoneNumberKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7C02BA1E1E251F880023AC7E /* PhoneNumberKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7C2BC10A1E282A3200C731E3 /* PhoneNumberKitTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC1091E282A3200C731E3 /* PhoneNumberKitTypes.swift */; };
+		7C2BC10B1E282A3200C731E3 /* PhoneNumberKitTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC1091E282A3200C731E3 /* PhoneNumberKitTypes.swift */; };
+		7C2BC10D1E28B3C700C731E3 /* PhoneNumberKitLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC10C1E28B3C700C731E3 /* PhoneNumberKitLoader.swift */; };
+		7C2BC10E1E28B3C700C731E3 /* PhoneNumberKitLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC10C1E28B3C700C731E3 /* PhoneNumberKitLoader.swift */; };
+		7C2BC1581E2929BD00C731E3 /* CwlMutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC1551E2929BD00C731E3 /* CwlMutex.swift */; };
+		7C2BC1591E2929BD00C731E3 /* CwlMutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC1551E2929BD00C731E3 /* CwlMutex.swift */; };
+		7C2BC15A1E2929BD00C731E3 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC1561E2929BD00C731E3 /* MutableBox.swift */; };
+		7C2BC15B1E2929BD00C731E3 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC1561E2929BD00C731E3 /* MutableBox.swift */; };
+		7C2BC15C1E2929BD00C731E3 /* ObjectCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC1571E2929BD00C731E3 /* ObjectCache.swift */; };
+		7C2BC15D1E2929BD00C731E3 /* ObjectCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC1571E2929BD00C731E3 /* ObjectCache.swift */; };
+		7C2BC15F1E29300300C731E3 /* PhoneNumberKit+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC15E1E29300300C731E3 /* PhoneNumberKit+Cache.swift */; };
+		7C2BC1601E29300300C731E3 /* PhoneNumberKit+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC15E1E29300300C731E3 /* PhoneNumberKit+Cache.swift */; };
+		7C2BC1621E29315800C731E3 /* CachedPhoneNumberKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC1611E29315800C731E3 /* CachedPhoneNumberKit.swift */; };
+		7C2BC1631E29315800C731E3 /* CachedPhoneNumberKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2BC1611E29315800C731E3 /* CachedPhoneNumberKit.swift */; };
 		7C32AA331E07B70B004669A8 /* NSText+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C32AA321E07B70B004669A8 /* NSText+TextInputKit.swift */; };
 		7C32AA3D1E0822E7004669A8 /* NSWindow+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C32AA3C1E0822E7004669A8 /* NSWindow+TextInputKit.swift */; };
 		7C32AA5C1E0835E1004669A8 /* BankCardHolderNameTextInputFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C32AA591E0834E4004669A8 /* BankCardHolderNameTextInputFormatterTests.swift */; };
@@ -66,8 +88,6 @@
 		7C7250371E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7250351E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift */; };
 		7C7250461E09B33D00F916ED /* FormatterObjectValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7250451E09B33D00F916ED /* FormatterObjectValue.swift */; };
 		7C72504D1E09B36800F916ED /* FormatterObjectValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7250451E09B33D00F916ED /* FormatterObjectValue.swift */; };
-		7CE691511DE81500003F32D2 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6912E1DE81500003F32D2 /* MutableBox.swift */; };
-		7CE691521DE81500003F32D2 /* MutableBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6912E1DE81500003F32D2 /* MutableBox.swift */; };
 		7CE691531DE81500003F32D2 /* Range+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691301DE81500003F32D2 /* Range+TextInputKit.swift */; };
 		7CE691541DE81500003F32D2 /* Range+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691301DE81500003F32D2 /* Range+TextInputKit.swift */; };
 		7CE691581DE81500003F32D2 /* BindingForNSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE691331DE81500003F32D2 /* BindingForNSTextField.swift */; };
@@ -189,6 +209,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				7C50F94F1E1BD92500D3AF09 /* Nimble.framework in Copy Frameworks */,
+				7C2BC1081E2825F700C731E3 /* PhoneNumberKit.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,6 +221,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				7C50F9501E1BD92B00D3AF09 /* Nimble.framework in Copy Frameworks */,
+				7C2BC1071E2825F400C731E3 /* PhoneNumberKit.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +240,15 @@
 		7C0578BF1DFC52150071DA47 /* BankCardNumberTextInputSerializerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardNumberTextInputSerializerTests.swift; sourceTree = "<group>"; };
 		7C0578CE1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TextInputValidationResult+OptimizeChanges.swift"; sourceTree = "<group>"; };
 		7C19F1FD1E048CBF00D2A68F /* NSTextField+TextInputKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextField+TextInputKit.swift"; sourceTree = "<group>"; };
+		7C2BC0F51E2642B100C731E3 /* PhoneNumberUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberUtils.swift; sourceTree = "<group>"; };
+		7C2BC1021E2820D900C731E3 /* PhoneNumberTextInputFormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberTextInputFormatterTests.swift; sourceTree = "<group>"; };
+		7C2BC1091E282A3200C731E3 /* PhoneNumberKitTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberKitTypes.swift; sourceTree = "<group>"; };
+		7C2BC10C1E28B3C700C731E3 /* PhoneNumberKitLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberKitLoader.swift; sourceTree = "<group>"; };
+		7C2BC1551E2929BD00C731E3 /* CwlMutex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CwlMutex.swift; sourceTree = "<group>"; };
+		7C2BC1561E2929BD00C731E3 /* MutableBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutableBox.swift; sourceTree = "<group>"; };
+		7C2BC1571E2929BD00C731E3 /* ObjectCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectCache.swift; sourceTree = "<group>"; };
+		7C2BC15E1E29300300C731E3 /* PhoneNumberKit+Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhoneNumberKit+Cache.swift"; sourceTree = "<group>"; };
+		7C2BC1611E29315800C731E3 /* CachedPhoneNumberKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedPhoneNumberKit.swift; sourceTree = "<group>"; };
 		7C2BD0371DE2C3A900A7A6C0 /* TextInputKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TextInputKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2BD0441DE2C40800A7A6C0 /* TextInputKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TextInputKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C2BD04C1DE2C44C00A7A6C0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -242,7 +273,6 @@
 		7C50F9571E1E57EC00D3AF09 /* TextInputSimulatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputSimulatorTests.swift; sourceTree = "<group>"; };
 		7C7250351E0968B600F916ED /* BankCardExpiryDateTextInputFormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardExpiryDateTextInputFormatterTests.swift; sourceTree = "<group>"; };
 		7C7250451E09B33D00F916ED /* FormatterObjectValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterObjectValue.swift; sourceTree = "<group>"; };
-		7CE6912E1DE81500003F32D2 /* MutableBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutableBox.swift; sourceTree = "<group>"; };
 		7CE691301DE81500003F32D2 /* Range+TextInputKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Range+TextInputKit.swift"; sourceTree = "<group>"; };
 		7CE691331DE81500003F32D2 /* BindingForNSTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingForNSTextField.swift; sourceTree = "<group>"; };
 		7CE691351DE81500003F32D2 /* BindingForUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindingForUITextField.swift; sourceTree = "<group>"; };
@@ -319,6 +349,7 @@
 			files = (
 				7C50F94A1E1BD74900D3AF09 /* Nimble.framework in Frameworks */,
 				7CE691D01DEC0B17003F32D2 /* TextInputKit.framework in Frameworks */,
+				7C2BC1061E2825ED00C731E3 /* PhoneNumberKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +359,7 @@
 			files = (
 				7C50F9481E1BD73F00D3AF09 /* Nimble.framework in Frameworks */,
 				7CE691DF1DEC0E1F003F32D2 /* TextInputKit.framework in Frameworks */,
+				7C2BC1051E2825E900C731E3 /* PhoneNumberKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,17 +376,27 @@
 			path = AppKitExtensions;
 			sourceTree = "<group>";
 		};
+		7C2BC1541E2929BD00C731E3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7C2BC1551E2929BD00C731E3 /* CwlMutex.swift */,
+				7C2BC1561E2929BD00C731E3 /* MutableBox.swift */,
+				7C2BC1571E2929BD00C731E3 /* ObjectCache.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		7C2BD04E1DE2C46500A7A6C0 /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				7CE6912E1DE81500003F32D2 /* MutableBox.swift */,
-				7CE691471DE81500003F32D2 /* TextInputKit.swift */,
 				7C19F1FC1E048C8600D2A68F /* AppKitExtensions */,
+				7C2BC1541E2929BD00C731E3 /* Common */,
 				7CE6918B1DE815FD003F32D2 /* SpecializedTextInput */,
 				7CE6912F1DE81500003F32D2 /* SwiftExtensions */,
 				7CE691321DE81500003F32D2 /* TextInputDriver */,
 				7CE691381DE81500003F32D2 /* TextInputFormat */,
 				7CE691401DE81500003F32D2 /* TextInputFormatter */,
+				7CE691471DE81500003F32D2 /* TextInputKit.swift */,
 				7CE691481DE81500003F32D2 /* TextInputSerializer */,
 				7CE6914E1DE81500003F32D2 /* UIKitExtensions */,
 			);
@@ -536,9 +578,14 @@
 		7CE6918D1DE815FD003F32D2 /* PhoneNumber */ = {
 			isa = PBXGroup;
 			children = (
+				7C2BC1611E29315800C731E3 /* CachedPhoneNumberKit.swift */,
 				7CE691A31DE89D5A003F32D2 /* PhoneNumber.swift */,
+				7C2BC15E1E29300300C731E3 /* PhoneNumberKit+Cache.swift */,
+				7C2BC10C1E28B3C700C731E3 /* PhoneNumberKitLoader.swift */,
+				7C2BC1091E282A3200C731E3 /* PhoneNumberKitTypes.swift */,
 				7CE691B31DEAC595003F32D2 /* PhoneNumberTextInputFormatter.swift */,
 				7CE691941DE8165F003F32D2 /* PhoneNumberTextInputOptions.swift */,
+				7C2BC0F51E2642B100C731E3 /* PhoneNumberUtils.swift */,
 				7CE691911DE8162F003F32D2 /* TextInputFormats+PhoneNumber.swift */,
 			);
 			path = PhoneNumber;
@@ -555,6 +602,7 @@
 				7C0578BF1DFC52150071DA47 /* BankCardNumberTextInputSerializerTests.swift */,
 				7CE691BE1DEACFF7003F32D2 /* Info.plist */,
 				7CE691C51DEAD08D003F32D2 /* MutableBoxTests.swift */,
+				7C2BC1021E2820D900C731E3 /* PhoneNumberTextInputFormatterTests.swift */,
 				7CE691E91DEC6BCA003F32D2 /* TextInputFormatterTests.swift */,
 				7CE692211DF44794003F32D2 /* TextInputSimulator.swift */,
 				7C50F9511E1DB42C00D3AF09 /* TextInputSimulator+TextInputFormatBindable.swift */,
@@ -753,6 +801,7 @@
 				7CE691651DE81500003F32D2 /* TextInputFormat+Formatter.swift in Sources */,
 				7CE6916B1DE81500003F32D2 /* TextInputFormats+Plain.swift in Sources */,
 				7CE691731DE81500003F32D2 /* TextInputFormatterType+Map.swift in Sources */,
+				7C2BC1621E29315800C731E3 /* CachedPhoneNumberKit.swift in Sources */,
 				7CE691691DE81500003F32D2 /* TextInputFormat+Map.swift in Sources */,
 				7C0578CF1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift in Sources */,
 				7C3FE44B1E032E9C0094CE4D /* BankCardHolderNameTextInputOptions.swift in Sources */,
@@ -767,25 +816,32 @@
 				7CE6917D1DE81500003F32D2 /* TextInputSerializer+Identical.swift in Sources */,
 				7CE692251DF4484E003F32D2 /* BankCardNumberTextInputFormatter.swift in Sources */,
 				7CE691891DE81500003F32D2 /* UITextInput+TextInputKit.swift in Sources */,
+				7C2BC10A1E282A3200C731E3 /* PhoneNumberKitTypes.swift in Sources */,
 				7CE6918F1DE81625003F32D2 /* TextInputFormats+BankCardNumber.swift in Sources */,
 				7CE691531DE81500003F32D2 /* Range+TextInputKit.swift in Sources */,
 				7C50F9401E12A7DC00D3AF09 /* TextInputFormats+BankCardExpiryDate.swift in Sources */,
 				7CE6919E1DE89178003F32D2 /* BankCardNumber.swift in Sources */,
+				7C2BC10D1E28B3C700C731E3 /* PhoneNumberKitLoader.swift in Sources */,
 				7CE6917B1DE81500003F32D2 /* TextInputKit.swift in Sources */,
 				7CE691631DE81500003F32D2 /* TextInputFormat+Filter.swift in Sources */,
+				7C2BC15A1E2929BD00C731E3 /* MutableBox.swift in Sources */,
 				7CE6922F1DF44A56003F32D2 /* BankCardNumberUtils.swift in Sources */,
 				7C50F93E1E12A7DC00D3AF09 /* BankCardExpiryDateUtils.swift in Sources */,
 				7CE6917F1DE81500003F32D2 /* TextInputSerializer.swift in Sources */,
 				7C7250461E09B33D00F916ED /* FormatterObjectValue.swift in Sources */,
+				7C2BC1581E2929BD00C731E3 /* CwlMutex.swift in Sources */,
 				7C50F9341E12A7DC00D3AF09 /* BankCardExpiryDate.swift in Sources */,
 				7CE691AB1DE9E2A3003F32D2 /* TextInputAccessoryFormatterType.swift in Sources */,
 				7CE691711DE81500003F32D2 /* TextInputFormatterType+Filter.swift in Sources */,
 				7CE691B41DEAC595003F32D2 /* PhoneNumberTextInputFormatter.swift in Sources */,
 				7CE691981DE8167B003F32D2 /* BankCardNumberTextInputOptions.swift in Sources */,
 				7CE691611DE81500003F32D2 /* TextInputFormat+Bind.swift in Sources */,
+				7C2BC0F61E2642B100C731E3 /* PhoneNumberUtils.swift in Sources */,
 				7CE691811DE81500003F32D2 /* TextInputSerializerType+Formatter.swift in Sources */,
 				7CE6915B1DE81500003F32D2 /* BindingForUITextField.swift in Sources */,
+				7C2BC15C1E2929BD00C731E3 /* ObjectCache.swift in Sources */,
 				7CE691671DE81500003F32D2 /* TextInputFormat+From.swift in Sources */,
+				7C2BC15F1E29300300C731E3 /* PhoneNumberKit+Cache.swift in Sources */,
 				7CE6922D1DF44A56003F32D2 /* BankCardBrand.swift in Sources */,
 				7CE6919B1DE8173C003F32D2 /* TextInputFormats.swift in Sources */,
 				7C50F9381E12A7DC00D3AF09 /* BankCardExpiryDateTextInputFormatter.swift in Sources */,
@@ -795,7 +851,6 @@
 				7CE692171DF4468C003F32D2 /* TextInputValidationResult+Equatable.swift in Sources */,
 				7CE6915D1DE81500003F32D2 /* TextInputBinding.swift in Sources */,
 				7CE691AE1DE9EEBC003F32D2 /* TextInputAccessoryFormatter.swift in Sources */,
-				7CE691511DE81500003F32D2 /* MutableBox.swift in Sources */,
 				7CE691791DE81500003F32D2 /* TextInputFormatterType.swift in Sources */,
 				7CE691851DE81500003F32D2 /* TextInputSerializerType.swift in Sources */,
 				7CE6916F1DE81500003F32D2 /* TextInputFormatter.swift in Sources */,
@@ -813,6 +868,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CE691661DE81500003F32D2 /* TextInputFormat+Formatter.swift in Sources */,
+				7C2BC10B1E282A3200C731E3 /* PhoneNumberKitTypes.swift in Sources */,
+				7C2BC15B1E2929BD00C731E3 /* MutableBox.swift in Sources */,
 				7C19F1FE1E048CBF00D2A68F /* NSTextField+TextInputKit.swift in Sources */,
 				7CE6916C1DE81500003F32D2 /* TextInputFormats+Plain.swift in Sources */,
 				7CE691A21DE89695003F32D2 /* TextInputSerializerType+Map.swift in Sources */,
@@ -834,6 +891,7 @@
 				7CE691A51DE89D5A003F32D2 /* PhoneNumber.swift in Sources */,
 				7CE691541DE81500003F32D2 /* Range+TextInputKit.swift in Sources */,
 				7CE6917C1DE81500003F32D2 /* TextInputKit.swift in Sources */,
+				7C2BC10E1E28B3C700C731E3 /* PhoneNumberKitLoader.swift in Sources */,
 				7C50F9371E12A7DC00D3AF09 /* BankCardExpiryDateTextInputError.swift in Sources */,
 				7C02BA1B1E23ED560023AC7E /* TextInputEventNotifier.swift in Sources */,
 				7CE691B51DEAC595003F32D2 /* PhoneNumberTextInputFormatter.swift in Sources */,
@@ -844,15 +902,17 @@
 				7C72504D1E09B36800F916ED /* FormatterObjectValue.swift in Sources */,
 				7CE691931DE8162F003F32D2 /* TextInputFormats+PhoneNumber.swift in Sources */,
 				7CE692161DF4468B003F32D2 /* TextInputValidationResult+Equatable.swift in Sources */,
+				7C2BC1591E2929BD00C731E3 /* CwlMutex.swift in Sources */,
 				7CE691721DE81500003F32D2 /* TextInputFormatterType+Filter.swift in Sources */,
 				7CE691621DE81500003F32D2 /* TextInputFormat+Bind.swift in Sources */,
+				7C2BC1601E29300300C731E3 /* PhoneNumberKit+Cache.swift in Sources */,
 				7CE691821DE81500003F32D2 /* TextInputSerializerType+Formatter.swift in Sources */,
 				7C02BA191E23ED560023AC7E /* TextInputEvent.swift in Sources */,
 				7CE691681DE81500003F32D2 /* TextInputFormat+From.swift in Sources */,
 				7C3FE4501E032E9C0094CE4D /* TextInputFormats+BankCardHolderName.swift in Sources */,
 				7CE6915E1DE81500003F32D2 /* TextInputBinding.swift in Sources */,
-				7CE691521DE81500003F32D2 /* MutableBox.swift in Sources */,
 				7C50F9391E12A7DC00D3AF09 /* BankCardExpiryDateTextInputFormatter.swift in Sources */,
+				7C2BC0F71E2642B100C731E3 /* PhoneNumberUtils.swift in Sources */,
 				7C0578CB1DFC523C0071DA47 /* BankCardNumber+Hashable.swift in Sources */,
 				7CE6917A1DE81500003F32D2 /* TextInputFormatterType.swift in Sources */,
 				7C3FE44E1E032E9C0094CE4D /* BankCardHolderNameUtils.swift in Sources */,
@@ -871,8 +931,10 @@
 				7CE691AF1DE9EEBC003F32D2 /* TextInputAccessoryFormatter.swift in Sources */,
 				7CE691961DE8165F003F32D2 /* PhoneNumberTextInputOptions.swift in Sources */,
 				7CE6916E1DE81500003F32D2 /* TextInputFormat.swift in Sources */,
+				7C2BC1631E29315800C731E3 /* CachedPhoneNumberKit.swift in Sources */,
 				7CE6922E1DF44A56003F32D2 /* BankCardBrand.swift in Sources */,
 				7CE691601DE81500003F32D2 /* TextInputBindingType.swift in Sources */,
+				7C2BC15D1E2929BD00C731E3 /* ObjectCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -884,6 +946,7 @@
 				7CE692281DF44862003F32D2 /* TextInputSimulator.swift in Sources */,
 				7C50F9591E1E57EC00D3AF09 /* TextInputSimulatorTests.swift in Sources */,
 				7C32AA5D1E0835E1004669A8 /* BankCardHolderNameTextInputFormatterTests.swift in Sources */,
+				7C2BC1041E2820D900C731E3 /* PhoneNumberTextInputFormatterTests.swift in Sources */,
 				7CE691E81DEC0E37003F32D2 /* MutableBoxTests.swift in Sources */,
 				7CE6922A1DF44868003F32D2 /* BankCardNumberTextInputFormatterTests.swift in Sources */,
 				7C0578C41DFC52220071DA47 /* BankCardNumberTestDataSet.swift in Sources */,
@@ -904,6 +967,7 @@
 				7CE692271DF44862003F32D2 /* TextInputSimulator.swift in Sources */,
 				7C50F9581E1E57EC00D3AF09 /* TextInputSimulatorTests.swift in Sources */,
 				7C32AA5C1E0835E1004669A8 /* BankCardHolderNameTextInputFormatterTests.swift in Sources */,
+				7C2BC1031E2820D900C731E3 /* PhoneNumberTextInputFormatterTests.swift in Sources */,
 				7CE691E61DEC0E37003F32D2 /* MutableBoxTests.swift in Sources */,
 				7CE692291DF44867003F32D2 /* BankCardNumberTextInputFormatterTests.swift in Sources */,
 				7C0578C31DFC52220071DA47 /* BankCardNumberTestDataSet.swift in Sources */,

@@ -12,20 +12,34 @@ struct StringUtils {
 
     private init() {}
 
-    static let slashCharacters = CharacterSet(charactersIn: "/／")
-
 }
 
 extension StringUtils {
 
+    static let spaceCharacters = CharacterSet(charactersIn: " \u{3000}\u{00a0}\u{00ad}\u{200b}\u{2060}")
+
+    static let plusCharacters = CharacterSet(charactersIn: "+\u{ff0b}")
+
+    static let slashCharacters = CharacterSet(charactersIn: "/\u{ff0f}")
+
+    static let dashCharacters = CharacterSet(charactersIn: "-\u{2010}\u{2011}\u{2012}\u{2013}\u{2014}\u{2015}\u{2212}\u{30fc}\u{ff0d}")
+
+    static let bracketCharacters = CharacterSet(charactersIn: "[]\u{ff3b}\u{ff3d}")
+
+    static let paranthesisCharacters = CharacterSet(charactersIn: "()\u{ff08}\u{ff09}")
+
+    static let pointCharacters = CharacterSet(charactersIn: ".\u{ff0e}")
+
     static func isSpace(_ unicodeScalar: UnicodeScalar) -> Bool {
-        let fullwidthSpace = UnicodeScalar("\u{3000}")
-        return (unicodeScalar == UnicodeScalar(" "))
-            || (unicodeScalar == fullwidthSpace)
+        return spaceCharacters.contains(unicodeScalar)
     }
 
     static func isDigit(_ unicodeScalar: UnicodeScalar) -> Bool {
         return CharacterSet.decimalDigits.contains(unicodeScalar)
+    }
+
+    static func isPlus(_ unicodeScalar: UnicodeScalar) -> Bool {
+        return plusCharacters.contains(unicodeScalar)
     }
 
 }
