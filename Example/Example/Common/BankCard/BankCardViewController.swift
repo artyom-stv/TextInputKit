@@ -14,6 +14,50 @@
 
 import TextInputKit
 
+struct BankCard {
+
+    var cardNumber: BankCardNumber?
+
+    var expiryDate: BankCardExpiryDate?
+
+    var cardHolderName: String = ""
+
+    var securityCode: String = ""
+
+}
+
+extension BankCard {
+
+    var prettyDescription: String {
+        let cardNumberDescription: String = {
+            if let cardNumber = cardNumber {
+                var description = "{ digitsString: \"\(cardNumber.digitsString)\""
+                if let cardBrand = cardNumber.cardBrand {
+                    description += ", cardBrand: \(cardBrand)"
+                }
+                description += " }"
+                return description
+            }
+            return "nil"
+        }()
+        let expiryDateDescription: String = {
+            if let expiryDate = expiryDate {
+                return "{ month: \(expiryDate.month), year: \(expiryDate.year) }"
+            }
+            return "nil"
+        }()
+
+        return ""
+            + "{\n"
+            + "  cardNumber: \(cardNumberDescription),\n"
+            + "  expiryDate: \(expiryDateDescription),\n"
+            + "  cardHolderName: \"\(cardHolderName)\",\n"
+            + "  securityCode: \"\(securityCode)\"\n"
+            + "}"
+    }
+
+}
+
 final class BankCardViewController : ViewController {
 
     @IBOutlet var cardNumberTextField: TextField!
@@ -24,12 +68,22 @@ final class BankCardViewController : ViewController {
 
     @IBOutlet var cardSecurityCodeTextField: TextField!
 
+    #if os(macOS)
+    @IBOutlet var descriptionLabel: NSTextField!
+    #else
+    @IBOutlet var descriptionLabel: UILabel!
+    #endif
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bindTextInputFormats()
-        bindTextInputChangesHandler()
+        bindTextInputEventHandlers()
+
+        updateDescriptionText()
     }
+
+    fileprivate var bankCard = BankCard()
 
     fileprivate var cardNumberTextInputBinding: TextInputBinding<BankCardNumber>!
 
@@ -75,8 +129,63 @@ private extension BankCardViewController {
 
 private extension BankCardViewController {
 
-    func bindTextInputChangesHandler() {
-        // TODO: Implement.
+    func bindTextInputEventHandlers() {
+        cardNumberTextInputBinding.eventHandler = { [unowned self] event in
+            switch event {
+            case let .editingChanged(state, changes):
+                if changes.contains(.value) {
+                    self.bankCard.cardNumber = state.value
+                    self.updateDescriptionText()
+                }
+            default:
+                break
+            }
+        }
+        cardExpiryDateTextInputBinding.eventHandler = { [unowned self] event in
+            switch event {
+            case let .editingChanged(state, changes):
+                if changes.contains(.value) {
+                    self.bankCard.expiryDate = state.value
+                    self.updateDescriptionText()
+                }
+            default:
+                break
+            }
+        }
+        cardHolderNameTextInputBinding.eventHandler = { [unowned self] event in
+            switch event {
+            case let .editingChanged(state, changes):
+                if changes.contains(.value) {
+                    self.bankCard.cardHolderName = state.value ?? ""
+                    self.updateDescriptionText()
+                }
+            default:
+                break
+            }
+        }
+        cardSecurityCodeTextInputBinding.eventHandler = { [unowned self] event in
+            switch event {
+            case let .editingChanged(state, changes):
+                if changes.contains(.value) {
+                    self.bankCard.securityCode = state.value ?? ""
+                    self.updateDescriptionText()
+                }
+            default:
+                break
+            }
+        }
+    }
+
+}
+
+private extension BankCardViewController {
+
+    func updateDescriptionText() {
+        #if os(macOS)
+        descriptionLabel.stringValue = bankCard.prettyDescription
+        #else
+        descriptionLabel.text = bankCard.prettyDescription
+        #endif
     }
 
 }

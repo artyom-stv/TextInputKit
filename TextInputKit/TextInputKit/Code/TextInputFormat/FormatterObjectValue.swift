@@ -11,7 +11,7 @@
 /// After finishing editing an `NSTextField`, if the `objectValue` is nil, the `stringValue` of an `NSTextField`
 /// is reset. To eliminate such behavior, if the `objectValue` is nil, the text is stored in the `objectValue`
 /// (in a `FormatterObjectValue`) and then returned from `Formatter.string(for:)`.
-public class FormatterObjectValue<Value> {
+public struct FormatterObjectValue<Value> {
 
     /// The `Value` or nil.
     public let value: Value?
