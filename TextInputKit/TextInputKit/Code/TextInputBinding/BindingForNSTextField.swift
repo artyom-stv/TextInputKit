@@ -15,11 +15,9 @@ final class BindingForNSTextField<Value: Equatable> : TextInputBinding<Value> {
 
     override var text: String {
         get {
-            var text: String = ""
-            payload.withTextField { textField in
-                text = textField.stringValue
+            return payload.withTextField { textField in
+                return textField.stringValue
             }
-            return text
         }
         set(newText) {
             payload.withTextField { textField in
@@ -30,11 +28,9 @@ final class BindingForNSTextField<Value: Equatable> : TextInputBinding<Value> {
 
     override var selectedRange: Range<String.Index>? {
         get {
-            var selectedRange: Range<String.Index>? = nil
-            payload.withTextField { textField in
-                selectedRange = textField.currentEditor()?.textInputKit_selectedRange
+            return payload.withTextField { textField in
+                return textField.currentEditor()?.textInputKit_selectedRange
             }
-            return selectedRange
         }
         set(newSelectedRange) {
             payload.withTextField { textField in
@@ -49,11 +45,9 @@ final class BindingForNSTextField<Value: Equatable> : TextInputBinding<Value> {
 
     override var value: Value? {
         get {
-            var value: Value? = nil
-            payload.withTextField { textField in
-                value = payload.objectValue(in: textField).value
+            return payload.withTextField { textField in
+                return payload.objectValue(in: textField).value
             }
-            return value
         }
         set {
             payload.withTextField { textField in
@@ -141,11 +135,11 @@ private class Payload<Value: Equatable> {
 
 extension Payload {
 
-    func withTextField(_ closure: (NSTextField) -> ()) {
+    func withTextField<R>(_ closure: (NSTextField) -> R) -> R {
         guard let textField = boundTextField else {
             fatalError("The `NSTextField` was unbound or deallocated.")
         }
-        closure(textField)
+        return closure(textField)
     }
 
     func objectValue(in textField: NSTextField) -> FormatterObjectValue<Value> {

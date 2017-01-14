@@ -15,11 +15,9 @@ final class BindingForUITextField<Value: Equatable> : TextInputBinding<Value> {
 
     override var text: String {
         get {
-            var text: String = ""
-            withTextField { textField in
-                text = textField.text ?? ""
+            return withTextField { textField in
+                return textField.text ?? ""
             }
-            return text
         }
         set(newText) {
             withTextField { textField in
@@ -32,11 +30,9 @@ final class BindingForUITextField<Value: Equatable> : TextInputBinding<Value> {
 
     override var selectedRange: Range<String.Index>? {
         get {
-            var selectedRange: Range<String.Index>? = nil
-            withTextField { textField in
-                selectedRange = textField.textInputKit_selectedRange
+            return withTextField { textField in
+                return textField.textInputKit_selectedRange
             }
-            return selectedRange
         }
         set(newSelectedRange) {
             withTextField { textField in
@@ -118,11 +114,11 @@ final class BindingForUITextField<Value: Equatable> : TextInputBinding<Value> {
             for: .editingChanged)
     }
 
-    func withTextField(_ closure: (UITextField) -> ()) {
+    private func withTextField<R>(_ closure: (UITextField) -> R) -> R {
         guard let textField = boundTextField else {
-            fatalError("The `UITextField` was unbound and deallocated.")
+            fatalError("The `UITextField` was unbound or deallocated.")
         }
-        closure(textField)
+        return closure(textField)
     }
 
 }
