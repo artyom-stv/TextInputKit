@@ -54,7 +54,7 @@ final class BankCardHolderNameTextInputFormatter : TextInputFormatter {
                 withSelection: resultingCursorIndex..<resultingCursorIndex)
         }
         catch let error {
-            precondition(error is ValidationError)
+            assert(error is ValidationError)
 
             return .rejected
         }

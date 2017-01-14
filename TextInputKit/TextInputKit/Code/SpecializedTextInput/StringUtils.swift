@@ -73,8 +73,8 @@ extension StringUtils {
         ignoringCharacters: CharacterSet
         ) -> (String.UnicodeScalarView, Range<String.UnicodeScalarIndex>)? {
 
-        precondition((originalRange.lowerBound == originalStringView.endIndex) || originalStringView.indices.contains(originalRange.lowerBound))
-        precondition((originalRange.upperBound == originalStringView.endIndex) || originalStringView.indices.contains(originalRange.upperBound))
+        assert((originalRange.lowerBound == originalStringView.endIndex) || originalStringView.indices.contains(originalRange.lowerBound))
+        assert((originalRange.upperBound == originalStringView.endIndex) || originalStringView.indices.contains(originalRange.upperBound))
 
         var resultStringView = "".unicodeScalars
 

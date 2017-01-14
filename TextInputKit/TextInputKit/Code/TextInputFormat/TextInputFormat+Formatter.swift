@@ -150,12 +150,12 @@ private final class FormatterAdapter<Value: Equatable> : Formatter {
             return editedString.endIndex..<editedString.endIndex
         }()
 
-        precondition(resultingSelectedRange.isEmpty,
-                     "The proposed selected range after editing text should be empty (a blinking cursor).")
-        precondition(originalString.substring(to: editedRange.lowerBound) == editedString.substring(to: editedRange.lowerBound),
-                     "The strings before and after editing should have common prefix.")
-        precondition(originalString.substring(from: editedRange.upperBound) == editedString.substring(from: resultingSelectedRange.lowerBound),
-                     "The strings before and after editing should have common suffix.")
+        assert(resultingSelectedRange.isEmpty,
+               "The proposed selected range after editing text should be empty (a blinking cursor).")
+        assert(originalString.substring(to: editedRange.lowerBound) == editedString.substring(to: editedRange.lowerBound),
+               "The strings before and after the editing should have a common prefix.")
+        assert(originalString.substring(from: editedRange.upperBound) == editedString.substring(from: resultingSelectedRange.lowerBound),
+               "The strings before and after the editing should have a common suffix.")
 
         let replacementString: String = editedString.substring(with: editedRange.lowerBound..<resultingSelectedRange.lowerBound)
 

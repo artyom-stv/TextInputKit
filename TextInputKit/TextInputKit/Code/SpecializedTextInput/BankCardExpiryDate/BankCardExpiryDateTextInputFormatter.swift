@@ -56,7 +56,7 @@ final class BankCardExpiryDateTextInputFormatter : TextInputFormatter {
                 withSelection: resultingCursorIndex..<resultingCursorIndex)
         }
         catch let error {
-            precondition(error is ValidationError)
+            assert(error is ValidationError)
 
             return .rejected
         }
@@ -93,8 +93,8 @@ private extension BankCardExpiryDateTextInputFormatter {
 
         let wasPressedBackspaceOrDeleteWithEmptySelection = input.selectedRange.isEmpty && !input.editedRange.isEmpty
         if wasPressedBackspaceOrDeleteWithEmptySelection {
-            precondition(input.stringView.distance(from: input.editedRange.lowerBound, to: input.editedRange.upperBound) == 1,
-                         "Edited range can be non-empty while selected range is empty only when user presses 'backspace' or 'delete' key.")
+            assert(input.stringView.distance(from: input.editedRange.lowerBound, to: input.editedRange.upperBound) == 1,
+                   "Edited range can be non-empty while selected range is empty only when user presses 'backspace' or 'delete' key.")
 
             let isDeletingSlashCharacter = input.stringView[input.editedRange.lowerBound] == UnicodeScalar("/")
             if isDeletingSlashCharacter {

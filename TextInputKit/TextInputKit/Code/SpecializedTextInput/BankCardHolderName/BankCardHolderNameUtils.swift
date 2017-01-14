@@ -57,8 +57,8 @@ extension BankCardHolderNameUtils {
         }
 
         mutating func filter() {
-            precondition(index == originalStringView.startIndex)
-            precondition((originalIndex >= originalStringView.startIndex) && (originalIndex <= originalStringView.endIndex))
+            assert(index == originalStringView.startIndex)
+            assert((originalIndex >= originalStringView.startIndex) && (originalIndex <= originalStringView.endIndex))
 
             if index == originalStringView.endIndex {
                 return
@@ -93,7 +93,7 @@ extension BankCardHolderNameUtils {
         private var resultingIndexOffset: Int?
 
         private mutating func skipAnyNonLetterCharacters() {
-            precondition(index != originalStringView.endIndex)
+            assert(index != originalStringView.endIndex)
 
             while (index != originalStringView.endIndex) && !Utils.isLetter(originalStringView[index]) {
                 index = originalStringView.index(after: index)
@@ -105,8 +105,8 @@ extension BankCardHolderNameUtils {
         }
 
         private mutating func appendLetterCharacters() {
-            precondition(index != originalStringView.endIndex)
-            precondition(Utils.isLetter(originalStringView[index]))
+            assert(index != originalStringView.endIndex)
+            assert(Utils.isLetter(originalStringView[index]))
 
             repeat {
                 appendCharacter()
@@ -118,8 +118,8 @@ extension BankCardHolderNameUtils {
         }
 
         private mutating func appendAllowedNonLetterCharacterSequence() {
-            precondition(index != originalStringView.endIndex)
-            precondition(!Utils.isLetter(originalStringView[index]))
+            assert(index != originalStringView.endIndex)
+            assert(!Utils.isLetter(originalStringView[index]))
 
             // Copy " ", ". ", "- ".
             let firstNonLetterCharacter = originalStringView[index]
@@ -138,7 +138,7 @@ extension BankCardHolderNameUtils {
         }
 
         private mutating func appendCharacter() {
-            precondition(index != originalStringView.endIndex)
+            assert(index != originalStringView.endIndex)
 
             resultingStringView.append(originalStringView[index])
             index = originalStringView.index(after: index)

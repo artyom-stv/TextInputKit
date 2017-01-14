@@ -51,9 +51,9 @@ extension BankCardNumberUtils {
 
         // TODO: Optimize the implementation.
 
-        precondition(String(digitsStringView).rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil)
-        precondition(digitsStringView.count == digitsStringViewLength)
-        precondition(sortedSpacesPositions.sorted() == sortedSpacesPositions)
+        assert(String(digitsStringView).rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil)
+        assert(digitsStringView.count == digitsStringViewLength)
+        assert(sortedSpacesPositions.sorted() == sortedSpacesPositions)
 
         var cardNumberStringView = "".unicodeScalars
         cardNumberStringView.reserveCapacity(digitsStringViewLength + sortedSpacesPositions.count)
@@ -78,10 +78,10 @@ extension BankCardNumberUtils {
         index digitsStringViewIndex: String.UnicodeScalarIndex,
         sortedSpacesPositions: [Int]) -> (String.UnicodeScalarView, String.UnicodeScalarIndex) {
 
-        precondition(String(digitsStringView).rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil)
-        precondition(digitsStringView.count == digitsStringViewLength)
-        precondition(digitsStringViewIndex >= digitsStringView.startIndex && digitsStringViewIndex <= digitsStringView.endIndex)
-        precondition(sortedSpacesPositions.sorted() == sortedSpacesPositions)
+        assert(String(digitsStringView).rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil)
+        assert(digitsStringView.count == digitsStringViewLength)
+        assert(digitsStringViewIndex >= digitsStringView.startIndex && digitsStringViewIndex <= digitsStringView.endIndex)
+        assert(sortedSpacesPositions.sorted() == sortedSpacesPositions)
 
         var cardNumberStringView = "".unicodeScalars
         cardNumberStringView.reserveCapacity(digitsStringViewLength + sortedSpacesPositions.count)
@@ -147,8 +147,8 @@ extension BankCardNumberUtils {
         fromDigitsString digitsString: String,
         withLength digitsStringLength: Int) -> Range<Int> {
 
-        precondition(digitsString.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil)
-        precondition(digitsString.characters.count == digitsStringLength)
+        assert(digitsString.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil)
+        assert(digitsString.characters.count == digitsStringLength)
 
         let iinRangeStart: Int = {
             let iinString = digitsStringLength == iinLength

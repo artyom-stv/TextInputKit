@@ -151,13 +151,13 @@ private extension BankCardNumberTextInputFormatter {
 
         let wasPressedBackspaceOrDeleteWithEmptySelection = originalInput.selectedRange.isEmpty && !originalInput.editedRange.isEmpty
         if wasPressedBackspaceOrDeleteWithEmptySelection {
-            precondition(originalInput.stringView.distance(from: originalInput.editedRange.lowerBound, to: originalInput.editedRange.upperBound) == 1,
-                         "Edited range can be non-empty while selected range is empty only when user presses 'backspace' or 'delete' key.")
+            assert(originalInput.stringView.distance(from: originalInput.editedRange.lowerBound, to: originalInput.editedRange.upperBound) == 1,
+                   "Edited range can be non-empty while selected range is empty only when user presses 'backspace' or 'delete' key.")
 
             let isDeletingSpaceCharacter = digitsEditedRange.isEmpty
             if isDeletingSpaceCharacter {
-                precondition(originalInput.stringView[originalInput.editedRange.lowerBound] == " ",
-                             "When user pressed 'Backspace' or 'Delete', edited range in digits string can be empty only if edited character in original string is a 'Space' character.")
+                assert(originalInput.stringView[originalInput.editedRange.lowerBound] == " ",
+                       "When user pressed 'Backspace' or 'Delete', edited range in digits string can be empty only if edited character in original string is a 'Space' character.")
 
                 let wasPressedBackspace = originalInput.selectedRange.lowerBound == originalInput.editedRange.upperBound
                 if wasPressedBackspace {

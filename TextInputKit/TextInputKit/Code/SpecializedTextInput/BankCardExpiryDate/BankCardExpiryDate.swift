@@ -93,7 +93,7 @@ extension BankCardExpiryDate.InitializationError : CustomStringConvertible {
 private extension BankCardExpiryDate {
 
     static func year(fromTwoDigits lastTwoDigitsOfYear: Int) -> Int {
-        precondition(lastTwoDigitsOfYear >= 0 && lastTwoDigitsOfYear <= 99)
+        assert(lastTwoDigitsOfYear >= 0 && lastTwoDigitsOfYear <= 99)
 
         // TODO: Find the rule and implement correctly.
         // The reason to use a magic number 67: the first bank card was issued in 1967.

@@ -73,7 +73,7 @@ extension PhoneNumberUtils {
         let wasPressedBackspaceOrDeleteWithEmptySelection = originalSelectedRange.isEmpty && !editedRange.isEmpty
         if wasPressedBackspaceOrDeleteWithEmptySelection {
             assert(originalString.distance(from: editedRange.lowerBound, to: editedRange.upperBound) == 1,
-                         "Edited range can be non-empty while selected range is empty only when user presses 'backspace' or 'delete' key.")
+                   "Edited range can be non-empty while selected range is empty only when user presses 'backspace' or 'delete' key.")
 
             let originalStringView = originalString.unicodeScalars
             let wasPressedBackspace = (originalSelectedRange.lowerBound == editedRange.upperBound)
