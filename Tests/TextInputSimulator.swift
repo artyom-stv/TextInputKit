@@ -14,13 +14,15 @@ class TextInputSimulator {
 
     weak var delegate: TextInputSimulatorDelegate?
 
-    var text: String
+    var text: String = ""
 
-    fileprivate(set) var selectedRange: Range<String.Index>?
-
-    init() {
-        self.text = ""
-        self.selectedRange = nil
+    var selectedRange: Range<String.Index>? {
+        didSet {
+            if let range = selectedRange {
+                precondition(text.isValidIndex(range.lowerBound))
+                precondition(text.isValidIndex(range.upperBound))
+            }
+        }
     }
 
 }

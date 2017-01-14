@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import TextInputKit
+@testable import TextInputKit
 
 extension TextInputSimulator : TextInputFormatBindable {
 
@@ -19,7 +19,33 @@ extension TextInputSimulator : TextInputFormatBindable {
 
 private class Binding<Value: Equatable> : TextInputBinding<Value> {
 
-    public override var value: Value? {
+    override var text: String {
+        get {
+            return withTextInput { textInput in
+                return textInput.text
+            }
+        }
+        set(newText) {
+            return withTextInput { textInput in
+                textInput.text = newText
+            }
+        }
+    }
+
+    override var selectedRange: Range<String.Index>? {
+        get {
+            return withTextInput { textInput in
+                return textInput.selectedRange
+            }
+        }
+        set(newSelectedRange) {
+            return withTextInput { textInput in
+                textInput.selectedRange = newSelectedRange
+            }
+        }
+    }
+
+    override var value: Value? {
         get {
             return valueStore
         }
@@ -34,6 +60,15 @@ private class Binding<Value: Equatable> : TextInputBinding<Value> {
                     return ""
                 }()
             }
+        }
+    }
+
+    override var eventHandler: EventHandler? {
+        get {
+            return eventNotifier.eventHandler
+        }
+        set(newEventHandler) {
+            eventNotifier.eventHandler = newEventHandler
         }
     }
 
@@ -61,22 +96,41 @@ private class Binding<Value: Equatable> : TextInputBinding<Value> {
 
     fileprivate var valueStore: Value? = nil
 
+    fileprivate let eventNotifier = TextInputEventNotifier<Value>()
+
+    fileprivate var latestEditingState: TextInputEditingState<Value>?
+
+    private func withTextInput<R>(_ closure: (TextInputSimulator) -> R) -> R {
+        guard let textInput = boundTextInput else {
+            Swift.fatalError("The `TextInputSimulator` was unbound or deallocated.")
+        }
+        return closure(textInput)
+    }
+
 }
 
 extension Binding : TextInputSimulatorDelegate {
 
     func editingDidBegin() {
-        // TODO: When event handling in bindings is ready, notify event.
+        latestEditingState = currentEditingState
+
+        eventNotifier.on(.editingDidBegin)
     }
 
     func editingChanged() {
         if let textInput = boundTextInput {
             valueStore = try? format.serializer.value(for: textInput.text)
         }
+
+        let newEditingState = currentEditingState
+        eventNotifier.onEditingChanged(from: latestEditingState!, to: newEditingState)
+        latestEditingState = newEditingState
     }
 
     func editingDidEnd() {
-        // TODO: When event handling in bindings is ready, notify event.
+        latestEditingState = nil
+
+        eventNotifier.on(.editingDidEnd)
     }
 
     func validate(
@@ -90,6 +144,19 @@ extension Binding : TextInputSimulatorDelegate {
             withSelection: originalSelectedRange,
             replacing: replacementString,
             at: editedRange)
+    }
+
+    private var currentEditingState: TextInputEditingState<Value> {
+        let textInput = boundTextInput!
+
+        guard let selectedRange = textInput.selectedRange else {
+            Swift.fatalError("The selected range in a `TextInputSimulator` should be non-nil while editing.")
+        }
+
+        return TextInputEditingState(
+            text: textInput.text,
+            selectedRange: selectedRange,
+            value: valueStore)
     }
 
 }
