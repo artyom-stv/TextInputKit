@@ -13,7 +13,7 @@ class BankCardNumberTests: XCTestCase {
 
     func testThatPublicInitializerWorksCorrectly() {
         for sampleCardNumber in BankCardNumberTestDataSet.cardNumbers {
-            XCTAssertTrue(BankCardNumber(digitsString: sampleCardNumber.digitsString) == sampleCardNumber)
+            XCTAssertTrue(try! BankCardNumber(digitsString: sampleCardNumber.digitsString) == sampleCardNumber)
         }
     }
 
