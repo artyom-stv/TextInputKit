@@ -404,7 +404,7 @@
 				7C2BC1541E2929BD00C731E3 /* Common */,
 				7CE6918B1DE815FD003F32D2 /* SpecializedTextInput */,
 				7CE6912F1DE81500003F32D2 /* SwiftExtensions */,
-				7CE691321DE81500003F32D2 /* TextInputDriver */,
+				7CE691321DE81500003F32D2 /* TextInputBinding */,
 				7CE691381DE81500003F32D2 /* TextInputFormat */,
 				7CE691401DE81500003F32D2 /* TextInputFormatter */,
 				7CE691481DE81500003F32D2 /* TextInputSerializer */,
@@ -490,7 +490,7 @@
 			path = SwiftExtensions;
 			sourceTree = "<group>";
 		};
-		7CE691321DE81500003F32D2 /* TextInputDriver */ = {
+		7CE691321DE81500003F32D2 /* TextInputBinding */ = {
 			isa = PBXGroup;
 			children = (
 				7CE691331DE81500003F32D2 /* BindingForNSTextField.swift */,
@@ -500,7 +500,6 @@
 				7C02BA161E23ED560023AC7E /* TextInputEvent.swift */,
 				7C02BA171E23ED560023AC7E /* TextInputEventNotifier.swift */,
 			);
-			name = TextInputDriver;
 			path = TextInputBinding;
 			sourceTree = "<group>";
 		};
@@ -565,13 +564,13 @@
 				7C0578B71DFC4FC10071DA47 /* StringUtils.swift */,
 				7C7250381E09B30400F916ED /* BankCardExpiryDate */,
 				7C3FE4441E032E9C0094CE4D /* BankCardHolderName */,
-				7CE6918C1DE815FD003F32D2 /* CardNumber */,
+				7CE6918C1DE815FD003F32D2 /* BankCardNumber */,
 				7CE6918D1DE815FD003F32D2 /* PhoneNumber */,
 			);
 			path = SpecializedTextInput;
 			sourceTree = "<group>";
 		};
-		7CE6918C1DE815FD003F32D2 /* CardNumber */ = {
+		7CE6918C1DE815FD003F32D2 /* BankCardNumber */ = {
 			isa = PBXGroup;
 			children = (
 				7CE6922B1DF44A56003F32D2 /* BankCardBrand.swift */,
@@ -582,7 +581,7 @@
 				7CE6922C1DF44A56003F32D2 /* BankCardNumberUtils.swift */,
 				7CE6918E1DE81625003F32D2 /* TextInputFormats+BankCardNumber.swift */,
 			);
-			path = CardNumber;
+			path = BankCardNumber;
 			sourceTree = "<group>";
 		};
 		7CE6918D1DE815FD003F32D2 /* PhoneNumber */ = {
