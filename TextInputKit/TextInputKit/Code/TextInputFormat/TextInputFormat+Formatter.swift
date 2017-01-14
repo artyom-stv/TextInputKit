@@ -124,14 +124,14 @@ private final class FormatterAdapter<Value: Equatable> : Formatter {
         originalSelectedRange editedNSRange: NSRange,
         errorDescription errorDescriptionPtr: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
 
-        let editedRange = editedNSRange.toRange()!
+        let editedRange: Range<String.Index> = editedNSRange.toRange()!
             .sameRange(in: originalString.utf16)
             .sameRange(in: originalString)
 
         let originalSelectedRange: Range<String.Index> = {
             #if os(macOS)
             if options.tracksCurrentEditorSelection {
-                if let editor = NSApplication.shared().keyWindow?.textInputKit_currentEditor {
+                if let editor: NSText = NSApplication.shared().keyWindow?.textInputKit_currentEditor {
                     return editor.textInputKit_selectedRange!
                 }
             }

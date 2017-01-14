@@ -59,9 +59,9 @@ extension BankCardNumberUtils {
         cardNumberStringView.reserveCapacity(digitsStringViewLength + sortedSpacesPositions.count)
 
         var spacesPositionsIterator = sortedSpacesPositions.makeIterator()
-        var nextSpacePosition = spacesPositionsIterator.next()
+        var nextSpacePosition: Int? = spacesPositionsIterator.next()
         for (position, character) in digitsStringView.enumerated() {
-            if let spacePosition = nextSpacePosition, spacePosition == position {
+            if let spacePosition: Int = nextSpacePosition, spacePosition == position {
                 cardNumberStringView.append(UnicodeScalar(" "))
                 nextSpacePosition = spacesPositionsIterator.next()
             }

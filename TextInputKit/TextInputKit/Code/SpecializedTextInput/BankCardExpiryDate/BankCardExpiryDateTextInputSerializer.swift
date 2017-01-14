@@ -44,7 +44,7 @@ private extension BankCardExpiryDateTextInputSerializer {
     typealias ParsedIntComponents = (month: Int, lastTwoDigitsOfYear: Int)
 
     func stringComponents(from string: String) throws -> ParsedStringComponents {
-        let components = string.components(separatedBy: StringUtils.slashCharacters)
+        let components: [String] = string.components(separatedBy: StringUtils.slashCharacters)
 
         guard components.count <= 2 else {
             fatalError("`BankCardExpiryDateTextInputFormatter` shouldn't have formed a string with more than one 'slash' character.")

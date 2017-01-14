@@ -15,12 +15,12 @@ final class BindingForNSTextField<Value: Equatable> : TextInputBinding<Value> {
 
     override var text: String {
         get {
-            return payload.withTextField { textField in
+            return withTextField { textField in
                 return textField.stringValue
             }
         }
         set(newText) {
-            payload.withTextField { textField in
+            withTextField { textField in
                 textField.stringValue = newText
             }
         }
@@ -28,12 +28,12 @@ final class BindingForNSTextField<Value: Equatable> : TextInputBinding<Value> {
 
     override var selectedRange: Range<String.Index>? {
         get {
-            return payload.withTextField { textField in
+            return withTextField { textField in
                 return textField.currentEditor()?.textInputKit_selectedRange
             }
         }
         set(newSelectedRange) {
-            payload.withTextField { textField in
+            withTextField { textField in
                 guard let editor = textField.currentEditor() else {
                     fatalError("Can't set the selected range while the bound `NSTextField` isn't editing.")
                 }
@@ -45,12 +45,12 @@ final class BindingForNSTextField<Value: Equatable> : TextInputBinding<Value> {
 
     override var value: Value? {
         get {
-            return payload.withTextField { textField in
+            return withTextField { textField in
                 return payload.objectValue(in: textField).value
             }
         }
         set {
-            payload.withTextField { textField in
+            withTextField { textField in
                 let text: String
                 if let newValue = newValue {
                     text = format.serializer.string(for: newValue)
@@ -116,6 +116,13 @@ final class BindingForNSTextField<Value: Equatable> : TextInputBinding<Value> {
         textField.delegate = responder
     }
 
+    func withTextField<R>(_ closure: (NSTextField) -> R) -> R {
+        guard let textField = payload.boundTextField else {
+            fatalError("The `NSTextField` was unbound or deallocated.")
+        }
+        return closure(textField)
+    }
+
 }
 
 private class Payload<Value: Equatable> {
@@ -134,13 +141,6 @@ private class Payload<Value: Equatable> {
 }
 
 extension Payload {
-
-    func withTextField<R>(_ closure: (NSTextField) -> R) -> R {
-        guard let textField = boundTextField else {
-            fatalError("The `NSTextField` was unbound or deallocated.")
-        }
-        return closure(textField)
-    }
 
     func objectValue(in textField: NSTextField) -> FormatterObjectValue<Value> {
         guard let untypedObjectValue = textField.objectValue else {
