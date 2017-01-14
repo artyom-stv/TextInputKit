@@ -11,6 +11,9 @@ import PhoneNumberKit
 
 extension PhoneNumberKit {
 
+    /// Checks if PhoneNumberKit framework is loaded.
+    ///
+    /// - Throws: `TextInputKitError.missingFramework` if the framework isn't loaded.
     static func checkThatFrameworkIsLoaded() throws {
         let isPhoneNumberKitFrameworkLoaded = (NSClassFromString("PhoneNumberKit.PhoneNumberKit") != nil)
         if !isPhoneNumberKitFrameworkLoaded {

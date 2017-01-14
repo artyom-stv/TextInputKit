@@ -10,6 +10,14 @@ import PhoneNumberKit
 
 public extension TextInputFormats {
 
+    /// Creates a `TextInputFormat` with `PhoneNumber` value type.
+    /// The created `TextInputFormat` implements formatting of phone number text input and convertion of text input
+    /// to `PhoneNumber`.
+    ///
+    /// - Parameters:
+    ///   - options:  The text input options.
+    /// - Returns: The created `TextInputFormat`.
+    /// - Throws: `TextInputKitError.missingFramework` if PhoneNumberKit framework isn't loaded.
     static func phoneNumber(_ options: PhoneNumberTextInputOptions = .options()) throws -> TextInputFormat<PhoneNumber> {
         try PhoneNumberKit.checkThatFrameworkIsLoaded()
 

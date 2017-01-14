@@ -8,25 +8,30 @@
 
 import PhoneNumberKit
 
+/// An error thrown while converting a string to a `PhoneNumber`: the string doesn't represent a valid phone number,
+/// or the represented phone number isn't supported by TextInputKit.
+///
+/// - unknown: Unknown error.
+/// - invalidCountryCode: The string contains a phone number with the invalid country code.
+/// - tooShort: The string contains a phone number which is too short.
+/// - tooLong: The string contains a phone number which is too short.
+/// - nationalNumbersAreNotSupported: The string contains a national phone number,
+///   but TextInputKit currently supports only international numbers (starting with \"+\").
+/// - numberExtensionAreNotSupported: The string contains a phone number with extension,
+///   but TextInputKit currently doesn't supports number extensions.
 public enum PhoneNumberTextInputError : Error {
 
-    public enum InvalidInputDetails {
+    case unknown
 
-        case unknown
+    case invalidCountryCode
 
-        case invalidCountryCode
+    case tooShort
 
-        case tooShort
+    case tooLong
 
-        case tooLong
+    case nationalNumbersAreNotSupported
 
-        case nationalNumbersAreNotSupported
-
-        case numberExtensionAreNotSupported
-
-    }
-
-    case invalidInput(InvalidInputDetails)
+    case numberExtensionAreNotSupported
 
 }
 
@@ -34,30 +39,23 @@ extension PhoneNumberTextInputError : CustomStringConvertible {
 
     public var description: String {
         switch self {
-        case .invalidInput(let details):
-            var description = "The string isn't representing a valid phone number."
+        case .unknown:
+            return "The string doesn't represent a valid phone number."
 
-            switch details {
-            case .invalidCountryCode:
-                description += " The country code is invalid."
+        case .invalidCountryCode:
+            return "The string doesn't represent a valid phone number: the country code is invalid."
 
-            case .tooShort:
-                description += " The number is too short."
+        case .tooShort:
+            return "The string doesn't represent a valid phone number: the number is too short."
 
-            case .tooLong:
-                description += " The number is too long."
+        case .tooLong:
+            return "The string doesn't represent a valid phone number: the number is too long."
 
-            case .nationalNumbersAreNotSupported:
-                description += " Only international numbers (starting with \"+\") are supported."
+        case .nationalNumbersAreNotSupported:
+            return "National phone numbers (not starting with \"+\") aren't supported."
 
-            case .numberExtensionAreNotSupported:
-                description += " Number extensions aren't supported."
-
-            default:
-                break
-            }
-
-            return description
+        case .numberExtensionAreNotSupported:
+            return "Phone number extensions aren't supported."
         }
     }
 
@@ -65,19 +63,24 @@ extension PhoneNumberTextInputError : CustomStringConvertible {
 
 extension PhoneNumberTextInputError {
 
+    /// Creates a `PhoneNumberTextInputError` corresponding to a `PhoneNumberKit.PhoneNumberError`.
+    ///
+    /// - Parameters:
+    ///   - error: The `PhoneNumberKit.PhoneNumberError`.
+    /// - Returns: The created `PhoneNumberTextInputError`.
     static func from(_ error: PhoneNumberError) -> PhoneNumberTextInputError {
         switch error {
         case .invalidCountryCode:
-            return .invalidInput(.invalidCountryCode)
+            return .invalidCountryCode
 
         case .tooShort:
-            return .invalidInput(.tooShort)
+            return .tooShort
 
         case .tooLong:
-            return .invalidInput(.tooLong)
+            return .tooLong
 
         default:
-            return .invalidInput(.unknown)
+            return .unknown
         }
     }
 

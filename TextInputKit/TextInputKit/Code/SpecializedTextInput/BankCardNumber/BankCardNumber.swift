@@ -10,31 +10,29 @@ import Foundation
 
 public struct BankCardNumber {
 
+    /// An error thrown by `BankCardNumber` initializers.
+    ///
+    /// - unexpectedCharacters: The provided string contains unexpected characters.
+    public enum InitializationError : Error {
+
+        case unexpectedCharacters
+
+    }
+
     public let digitsString: String
 
     public let formattedString: String
 
     public let cardBrand: BankCardBrand?
 
-    fileprivate typealias Utils = BankCardNumberUtils
-
-    fileprivate init(
-        digitsString: String,
-        formattedString: String,
-        cardBrand: BankCardBrand?) {
-
-        self.digitsString = digitsString
-        self.formattedString = formattedString
-        self.cardBrand = cardBrand
-    }
-
-}
-
-public extension BankCardNumber {
-
-    public init(digitsString: String) {
+    /// Creates a `BankCardNumber` by string representation.
+    ///
+    /// - Parameters:
+    ///   - digitsString: The string of digits which represents a bank card number.
+    /// - Throws: `InitializationError.unexpectedCharacters` if the provided string contains non-digit characters.
+    public init(digitsString: String) throws {
         guard digitsString.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil else {
-            fatalError("Bank card number should contain only decimal digits.")
+            throw InitializationError.unexpectedCharacters
         }
 
         let digitsStringView = digitsString.unicodeScalars
@@ -57,10 +55,29 @@ public extension BankCardNumber {
             cardBrand: iinRangeInfo?.cardBrand)
     }
 
+    fileprivate typealias Utils = BankCardNumberUtils
+
+    /// The memberwise initializer with reduced access level.
+    fileprivate init(
+        digitsString: String,
+        formattedString: String,
+        cardBrand: BankCardBrand?) {
+
+        self.digitsString = digitsString
+        self.formattedString = formattedString
+        self.cardBrand = cardBrand
+    }
+
 }
 
 extension BankCardNumber {
 
+    /// Creates a `BankCardNumber` by a formatted string which represents a bank card number.
+    ///
+    /// - Note: Used internally only.
+    ///
+    /// - Parameters:
+    ///   - formattedString: The formatted string which represents a bank card number.
     init(formattedString: String) {
         guard let digitsStringView = Utils.cardNumberDigitsStringView(from: formattedString.unicodeScalars) else {
             fatalError("Unexpected characters in `formattedString` argument.")

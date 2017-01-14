@@ -10,11 +10,13 @@ import Foundation
 
 public extension TextInputFormats {
 
-    /// Creates a `TextInputFormat` with `DateComponents` value type.
-    /// The created `TextInputFormat` implements formatting of bank card expiry date text input and convertion of text input to `DateComponents` struct.
+    /// Creates a `TextInputFormat` with `BankCardExpiryDate` value type.
+    /// The created `TextInputFormat` implements formatting of bank card expiry date text input and convertion
+    /// of text input to `BankCardExpiryDate`.
     ///
-    /// - Parameter options: The text input options.
-    /// - Returns: Text input format for bank expiry date.
+    /// - Parameters:
+    ///   - options: The text input options.
+    /// - Returns: The created `TextInputFormat`.
     static func bankCardExpiryDate(_ options: BankCardExpiryDateTextInputOptions = .options()) -> TextInputFormat<BankCardExpiryDate> {
         let serializer = BankCardExpiryDateTextInputSerializer(options)
         let formatter = BankCardExpiryDateTextInputFormatter(options)

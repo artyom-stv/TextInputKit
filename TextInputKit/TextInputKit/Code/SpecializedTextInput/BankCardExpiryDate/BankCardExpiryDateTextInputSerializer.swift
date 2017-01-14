@@ -20,15 +20,17 @@ final class BankCardExpiryDateTextInputSerializer : TextInputSerializer<BankCard
     }
 
     override func value(for string: String) throws -> BankCardExpiryDate {
-        guard let stringComponents = self.stringComponents(from: string) else {
-            throw BankCardExpiryDateTextInputError.incompleteTextInput
-        }
+        let stringComponents = try self.stringComponents(from: string)
 
         let intComponents = self.intComponents(from: stringComponents)
 
-        return try BankCardExpiryDate(
-            month: intComponents.month,
-            lastTwoDigitsOfYear: intComponents.lastTwoDigitsOfYear)
+        do {
+            return try BankCardExpiryDate(
+                month: intComponents.month,
+                lastTwoDigitsOfYear: intComponents.lastTwoDigitsOfYear)
+        } catch {
+            throw BankCardExpiryDateTextInputError.invalidMonth
+        }
     }
 
     private let options: BankCardExpiryDateTextInputOptions
@@ -41,7 +43,7 @@ private extension BankCardExpiryDateTextInputSerializer {
 
     typealias ParsedIntComponents = (month: Int, lastTwoDigitsOfYear: Int)
 
-    func stringComponents(from string: String) -> ParsedStringComponents? {
+    func stringComponents(from string: String) throws -> ParsedStringComponents {
         let components = string.components(separatedBy: StringUtils.slashCharacters)
 
         guard components.count <= 2 else {
@@ -49,7 +51,7 @@ private extension BankCardExpiryDateTextInputSerializer {
         }
 
         guard components.count == 2 else {
-            return nil
+            throw BankCardExpiryDateTextInputError.incompleteInput
         }
 
         // Currently, `BankCardExpiryDateTextInputSerializer` supports only bank card expiry dates with two digits
@@ -59,11 +61,11 @@ private extension BankCardExpiryDateTextInputSerializer {
 
         // A month component can be one character long to accept text input like "1/17".
         guard (1...2).contains(parsedComponents.month.unicodeScalars.count) else {
-            return nil
+            throw BankCardExpiryDateTextInputError.incompleteInput
         }
 
         guard parsedComponents.lastTwoDigitsOfYear.unicodeScalars.count == 2 else {
-            return nil
+            throw BankCardExpiryDateTextInputError.incompleteInput
         }
 
         return parsedComponents

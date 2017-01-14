@@ -24,8 +24,7 @@ extension UITextField {
             textInputKit_selectedUtf16IntRange = {
                 if let range = newValue {
                     guard let text = self.text else {
-                        // TODO: Write message.
-                        fatalError("")
+                        fatalError("Cannot set the selected range of a `UITextField` while the text field isn't editing.")
                     }
 
                     return range.sameRange(in: text.utf16).sameIntRange(in: text.utf16)

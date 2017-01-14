@@ -49,7 +49,7 @@ extension BankCardNumberUtils {
         withLength digitsStringViewLength: Int,
         sortedSpacesPositions: [Int]) -> String.UnicodeScalarView {
 
-        // TODO: Optimize implementation.
+        // TODO: Optimize the implementation.
 
         precondition(String(digitsStringView).rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil)
         precondition(digitsStringView.count == digitsStringViewLength)

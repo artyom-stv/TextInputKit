@@ -10,6 +10,12 @@ import PhoneNumberKit
 
 public struct PhoneNumber {
 
+    /// Creates a `PhoneNumber` by a `PhoneNumberKit.PhoneNumber`.
+    ///
+    /// - Note: Used internally only.
+    ///
+    /// - Parameters:
+    ///   - pnkPhoneNumber: The `PhoneNumberKit.PhoneNumber`.
     init(_ pnkPhoneNumber: PNKPhoneNumber) {
         self.pnkPhoneNumber = pnkPhoneNumber
     }
@@ -20,9 +26,9 @@ public struct PhoneNumber {
 
 extension PhoneNumber {
 
-    /// Creates a `PhoneNumber` by a phone number string.
+    /// Creates a `PhoneNumber` by string representation.
     ///
-    /// - Note: Only phone numbers starting with "+" are supported.
+    /// - Note: Only international phone numbers (starting with "+") are supported.
     ///
     /// - Parameters:
     ///   - phoneNumberString: A string representing a phone number.
@@ -33,7 +39,7 @@ extension PhoneNumber {
         try PhoneNumberKit.checkThatFrameworkIsLoaded()
 
         if let firstUnicodeScalar = phoneNumberString.unicodeScalars.first, !StringUtils.isPlus(firstUnicodeScalar) {
-            throw PhoneNumberTextInputError.invalidInput(.nationalNumbersAreNotSupported)
+            throw PhoneNumberTextInputError.nationalNumbersAreNotSupported
         }
 
         let pnkPhoneNumber: PNKPhoneNumber
@@ -45,7 +51,7 @@ extension PhoneNumber {
         }
 
         if pnkPhoneNumber.numberExtension != nil {
-            throw PhoneNumberTextInputError.invalidInput(.numberExtensionAreNotSupported)
+            throw PhoneNumberTextInputError.numberExtensionAreNotSupported
         }
 
         self.init(pnkPhoneNumber)

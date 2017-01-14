@@ -30,7 +30,6 @@ final class TextInputSerializerFromFormatter<Value> : TextInputSerializer<Value>
         var optionalObject: AnyObject?
         var errorDescription: NSString?
         guard formatter.getObjectValue(&optionalObject, for: string, errorDescription: &errorDescription) else {
-            // TODO: Throw proper error.
             throw TextInputKitError.unknown
         }
 
