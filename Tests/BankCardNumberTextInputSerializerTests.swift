@@ -15,7 +15,7 @@ class BankCardNumberTextInputSerializerTests: XCTestCase {
 
     func testThatSerializerWorksCorrectly() {
         for sampleCardNumber in BankCardNumberTestDataSet.cardNumbers {
-            let bankCardNumber = BankCardNumber(digitsString: sampleCardNumber.digitsString)
+            let bankCardNumber = try! BankCardNumber(digitsString: sampleCardNumber.digitsString)
             XCTAssertEqual(serializer.string(for: bankCardNumber), sampleCardNumber.formattedString)
             XCTAssertEqual(try? serializer.value(for: sampleCardNumber.formattedString), bankCardNumber)
         }
