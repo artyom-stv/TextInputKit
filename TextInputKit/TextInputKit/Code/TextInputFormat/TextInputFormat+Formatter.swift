@@ -147,7 +147,11 @@ private final class FormatterAdapter<Value: Equatable> : Formatter {
                     .sameRange(in: editedString.utf16)
                     .sameRange(in: editedString)
             }
-            return editedString.endIndex..<editedString.endIndex
+            let resultingCursorIndex: String.Index = {
+                let numberOfCharactersAfterEditedRange: Int = originalString.distance(from: editedRange.upperBound, to: originalString.endIndex)
+                return editedString.index(editedString.endIndex, offsetBy: -numberOfCharactersAfterEditedRange)
+            }()
+            return resultingCursorIndex..<resultingCursorIndex
         }()
 
         assert(resultingSelectedRange.isEmpty,
@@ -157,7 +161,12 @@ private final class FormatterAdapter<Value: Equatable> : Formatter {
         assert(originalString.substring(from: editedRange.upperBound) == editedString.substring(from: resultingSelectedRange.lowerBound),
                "The strings before and after the editing should have a common suffix.")
 
-        let replacementString: String = editedString.substring(with: editedRange.lowerBound..<resultingSelectedRange.lowerBound)
+        let replacementString: String = {
+            let editedRangeLowerBoundInEditedString = (editedRange.lowerBound == originalString.startIndex)
+                ? editedString.startIndex
+                : editedString.index(after: originalString.index(before: editedRange.lowerBound))
+            return editedString.substring(with: editedRangeLowerBoundInEditedString..<resultingSelectedRange.lowerBound)
+        }()
 
         let validationResult = format.formatter.validate(
             editing: originalString,
