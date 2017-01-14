@@ -14,7 +14,6 @@
 		7C02BA1F1E251F880023AC7E /* PhoneNumberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C02BA1E1E251F880023AC7E /* PhoneNumberKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7C02BA211E251F930023AC7E /* PhoneNumberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C02BA201E251F930023AC7E /* PhoneNumberKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7C0578B81DFC4FC10071DA47 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578B71DFC4FC10071DA47 /* StringUtils.swift */; };
-		7C0578BC1DFC50B00071DA47 /* BankCardNumber+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BA1DFC50B00071DA47 /* BankCardNumber+Hashable.swift */; };
 		7C0578C31DFC52220071DA47 /* BankCardNumberTestDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BD1DFC52150071DA47 /* BankCardNumberTestDataSet.swift */; };
 		7C0578C41DFC52220071DA47 /* BankCardNumberTestDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BD1DFC52150071DA47 /* BankCardNumberTestDataSet.swift */; };
 		7C0578C51DFC52270071DA47 /* BankCardNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BE1DFC52150071DA47 /* BankCardNumberTests.swift */; };
@@ -22,7 +21,6 @@
 		7C0578C71DFC522C0071DA47 /* BankCardNumberTextInputSerializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BF1DFC52150071DA47 /* BankCardNumberTextInputSerializerTests.swift */; };
 		7C0578C81DFC522C0071DA47 /* BankCardNumberTextInputSerializerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BF1DFC52150071DA47 /* BankCardNumberTextInputSerializerTests.swift */; };
 		7C0578C91DFC52340071DA47 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578B71DFC4FC10071DA47 /* StringUtils.swift */; };
-		7C0578CB1DFC523C0071DA47 /* BankCardNumber+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578BA1DFC50B00071DA47 /* BankCardNumber+Hashable.swift */; };
 		7C0578CF1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578CE1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift */; };
 		7C0578D01DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0578CE1DFC69230071DA47 /* TextInputValidationResult+OptimizeChanges.swift */; };
 		7C19F1FE1E048CBF00D2A68F /* NSTextField+TextInputKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C19F1FD1E048CBF00D2A68F /* NSTextField+TextInputKit.swift */; };
@@ -240,7 +238,6 @@
 		7C02BA1E1E251F880023AC7E /* PhoneNumberKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhoneNumberKit.framework; path = Carthage/Build/iOS/PhoneNumberKit.framework; sourceTree = "<group>"; };
 		7C02BA201E251F930023AC7E /* PhoneNumberKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhoneNumberKit.framework; path = Carthage/Build/Mac/PhoneNumberKit.framework; sourceTree = "<group>"; };
 		7C0578B71DFC4FC10071DA47 /* StringUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
-		7C0578BA1DFC50B00071DA47 /* BankCardNumber+Hashable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BankCardNumber+Hashable.swift"; sourceTree = "<group>"; };
 		7C0578BD1DFC52150071DA47 /* BankCardNumberTestDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardNumberTestDataSet.swift; sourceTree = "<group>"; };
 		7C0578BE1DFC52150071DA47 /* BankCardNumberTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardNumberTests.swift; sourceTree = "<group>"; };
 		7C0578BF1DFC52150071DA47 /* BankCardNumberTextInputSerializerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardNumberTextInputSerializerTests.swift; sourceTree = "<group>"; };
@@ -575,7 +572,6 @@
 			children = (
 				7CE6922B1DF44A56003F32D2 /* BankCardBrand.swift */,
 				7CE6919D1DE89178003F32D2 /* BankCardNumber.swift */,
-				7C0578BA1DFC50B00071DA47 /* BankCardNumber+Hashable.swift */,
 				7CE692241DF4484E003F32D2 /* BankCardNumberTextInputFormatter.swift */,
 				7CE691971DE8167B003F32D2 /* BankCardNumberTextInputOptions.swift */,
 				7CE6922C1DF44A56003F32D2 /* BankCardNumberUtils.swift */,
@@ -804,7 +800,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C0578BC1DFC50B00071DA47 /* BankCardNumber+Hashable.swift in Sources */,
 				7CE691921DE8162F003F32D2 /* TextInputFormats+PhoneNumber.swift in Sources */,
 				7C50F93A1E12A7DC00D3AF09 /* BankCardExpiryDateTextInputOptions.swift in Sources */,
 				7CE692351DF44A62003F32D2 /* String+TextInputKit.swift in Sources */,
@@ -930,7 +925,6 @@
 				7CE6915E1DE81500003F32D2 /* TextInputBinding.swift in Sources */,
 				7C50F9391E12A7DC00D3AF09 /* BankCardExpiryDateTextInputFormatter.swift in Sources */,
 				7C2BC0F71E2642B100C731E3 /* PhoneNumberUtils.swift in Sources */,
-				7C0578CB1DFC523C0071DA47 /* BankCardNumber+Hashable.swift in Sources */,
 				7CE6917A1DE81500003F32D2 /* TextInputFormatterType.swift in Sources */,
 				7C3FE44E1E032E9C0094CE4D /* BankCardHolderNameUtils.swift in Sources */,
 				7CE691AC1DE9E2A3003F32D2 /* TextInputAccessoryFormatterType.swift in Sources */,
