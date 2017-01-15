@@ -15,19 +15,21 @@ import AppKit
 public struct FormatterOptions {
 
     #if os(macOS)
-    /// On macOS, the `tracksCurrentEditorSelection` option enables a better text input formatting quality for a `Formatter`
-    /// being binded to an `NSTextField` or an `NSTextFieldCell`.
+    /// On macOS, the `tracksCurrentEditorSelection` option enables a better quality of text input formatting for
+    /// a `Formatter` being binded to an `NSTextField`.
     /// (the same quality as it is provided by `TextInputFormat.bind(to:)` on iOS by default).
     ///
     /// On iOS and tvOS, a `Formatter` isn't used to format text input in a `UITextField`.
-    /// On macOS, to format textinput in an `NSTextField` or an `NSTextFieldCell`, a `Formatter` is created.
-    /// `Formatter` API doesn't allow us to distinguish deleting a selected character from pressing "Backspace"/"Delete" key
-    /// without any selection. For example, it doesn't allow to distinguish the following cases for "1234 5678":
-    /// - pressing a "Backspace" key when the cursor is standing before the character "5";
-    /// - pressing a "Backspace" key when the character " " is selected.
+    /// On macOS, to format text input in an `NSTextField`, a `Formatter` is created.
+    /// `Formatter` API doesn't allow us to distinguish the deleting of a selected character from pressing
+    /// "Backspace"/"Delete" key without any selection.
+    /// For example, it doesn't allow to distinguish the following two cases for "1234 5678" text:
+    /// 1. Pressing a "Backspace" key when the cursor is standing before the character "5";
+    /// 2. Pressing a "Backspace" key when the character " " is selected.
     ///
-    /// If the `tracksCurrentEditorSelection` option is `true`, then a `Formatter` created by `TextInputFormat.toFormatter(_:)`
-    /// finds the current editor (an instance of `NSTextView`) and extracts the `selectedRange` from it.
+    /// If the `tracksCurrentEditorSelection` option is `true`, a `Formatter` created by
+    /// `TextInputFormat.toFormatter(_:)` finds the current editor (an instance of `NSTextView`) and extracts
+    /// the `selectedRange` from it.
     var tracksCurrentEditorSelection: Bool = false
     #endif
 
@@ -41,11 +43,19 @@ public extension TextInputFormat {
 
     /// Creates a `Formatter` with the object type `FormatterObjectValue<Value>`.
     ///
-    /// The `FormatterObjectValue<Value>` is used to wrap a `Value` if present, or a string if no value is deserizlied from that string.
-    /// The reason to use a `FormatterObjectValue<Value>` wrapper is the following `Formatter` and `NSTextField` standard behavior:
-    /// - If we return `false` from the `getObjectValue(_:for:errorDescription:)` method then the `""` value is set to the text field.
-    /// - If we set the `objectPtr` to `nil` and return `true` from the `getObjectValue(_:for:errorDescription:)` method then the text in the text input is reset.
-    /// Both variants conflict with the desired behavior of the corresponding `TextInputBinding`. So, we have to set the `objectPtr` to a non-nil value and return `true` from the `getObjectValue(_:for:errorDescription:)` method, even when there is no `Value` representing the text in the text input.
+    /// The `FormatterObjectValue<Value>` is used to wrap a `Value` (if it's present) or a string (if no value is
+    /// deserialized from that string).
+    ///
+    /// The reason to use a `FormatterObjectValue<Value>` wrapper is the following `Formatter` and `NSTextField`
+    /// standard behavior:
+    /// - if we return `false` from the `getObjectValue(_:for:errorDescription:)` method, the `""` value is set to
+    ///   the text field;
+    /// - if we set the `objectPtr` to `nil` and return `true` from the `getObjectValue(_:for:errorDescription:)`
+    ///   method, the text in the text input is reset.
+    ///
+    /// Both variants conflict with the desired behavior of the corresponding `TextInputBinding`. So, we have to set
+    /// the `objectPtr` to a non-nil value and return `true` from the `getObjectValue(_:for:errorDescription:)` method,
+    /// even if there is no `Value` representing the text in the text input.
     ///
     /// - Returns: The created `Formatter`.
     func toFormatter(_ options: FormatterOptions = .options()) -> Formatter {

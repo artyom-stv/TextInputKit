@@ -8,11 +8,11 @@
 
 import Foundation
 
-/// A class representing a text input component (e.g., UITextField) should implement the `TextInputFormatBindable`
-/// protocol to be able to be bound to a text input format using the `TextInputFormat.bind(to:)` API.
+/// A class which represents a text input component (e.g., `UITextField`) should implement `TextInputFormatBindable`
+/// protocol to be able to be bound to a text input format using the `TextInputFormat.bind(to:)` method.
 public protocol TextInputFormatBindable {
 
-    /// Binds the text input format to `self`.
+    /// Binds a text input format to `self`.
     ///
     /// - Parameters:
     ///   - format: The text input format.
@@ -23,13 +23,13 @@ public protocol TextInputFormatBindable {
 
 public extension TextInputFormat {
 
-    /// Binds the text input format to a text field, which conforms to the `TextInputFormatBindable` protocol.
+    /// Binds the text input format to a text field, which conforms to `TextInputFormatBindable` protocol.
     ///
     /// - Note:
     ///   This method only delegates the work to the `TextInputFormatBindable` protocol implementation.
     ///
     /// - Parameters:
-    ///   - textField: The text field conforming to the `TextInputFormatBindable` protocol.
+    ///   - textField: The text field conforming to `TextInputFormatBindable` protocol.
     /// - Returns: The created `TextInputBinding`.
     func bind<TextField: TextInputFormatBindable>(to textField: TextField) -> TextInputBinding<Value> {
         return textField.bind(format: self)

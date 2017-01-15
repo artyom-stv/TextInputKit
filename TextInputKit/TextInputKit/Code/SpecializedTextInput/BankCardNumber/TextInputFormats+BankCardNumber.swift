@@ -9,10 +9,12 @@
 public extension TextInputFormats {
 
     /// Creates a `TextInputFormat` with `BankCardNumber` value type.
-    /// The created `TextInputFormat` implements formatting of bank card number text input and convertion of text input to `BankCardNumber` struct.
+    /// The created `TextInputFormat` implements formatting of bank card number text input and convertion of
+    /// the inputted text to `BankCardNumber`.
     ///
-    /// - Parameter options: The text input options.
-    /// - Returns: Text input format for bank card numbers
+    /// - Parameters:
+    ///   - options: The text input options.
+    /// - Returns: The created `TextInputFormat` for bank card numbers.
     static func bankCardNumber(_ options: BankCardNumberTextInputOptions = .options()) -> TextInputFormat<BankCardNumber> {
         let serializer = TextInputSerializer.identical.map(
             direct: { BankCardNumber(formattedString: $0) },

@@ -142,7 +142,8 @@ private extension BankCardNumberTextInputFormatter {
 
     private typealias Utils = BankCardNumberUtils
 
-    /// Adjusts edited range in `originalDigitsString` taking into account the case when user presses 'backspace' or 'delete' key with empty selection.
+    /// Adjusts the edited range in `originalDigitsString`. The edited range can be extended if the user
+    /// presses 'backspace' or 'delete' key while having an empty selection.
     private func adjustedDigitsEditedRange(
         forOriginalInput originalInput: OriginalValidationInput,
         digitsStringView: String.UnicodeScalarView,

@@ -10,9 +10,13 @@
 ///
 /// - Note:
 ///   Currently, there are no properties in `BankCardExpiryDateTextInputOptions`.
-///   This struct is left for future text input customizations, which won't break the API.
+///   `BankCardExpiryDateTextInputOptions` is left to customize text input formatting in future without breaking
+///   the API backward compatibility.
 public struct BankCardExpiryDateTextInputOptions {
 
+    /// Creates `BankCardExpiryDateTextInputOptions`.
+    ///
+    /// - Returns: The created `BankCardExpiryDateTextInputOptions`.
     public static func options() -> BankCardExpiryDateTextInputOptions {
         return self.init()
     }
