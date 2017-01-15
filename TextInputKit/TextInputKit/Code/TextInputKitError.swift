@@ -8,6 +8,10 @@
 
 import Foundation
 
+/// General purpose errors thrown by TextInputKit.
+///
+/// - unknown: Unknown error.
+/// - missingFramework: The framework isn't loaded
 public enum TextInputKitError : Error {
 
     case unknown

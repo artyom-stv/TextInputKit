@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// An immutable structure containing instructions for text input formatting and value serialization/deserialization.
+/// An immutable structure containing the instructions for text input formatting and value serialization/deserialization.
 public struct TextInputFormat<Value: Equatable> {
 
     public init(_ serializer: TextInputSerializer<Value>, _ formatter: TextInputFormatter) {

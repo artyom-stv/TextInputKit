@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// `TextInputFormats` structure aggregates static factory methods for creating `TextInputFormat` instances.
 public struct TextInputFormats {
 
     private init() {}

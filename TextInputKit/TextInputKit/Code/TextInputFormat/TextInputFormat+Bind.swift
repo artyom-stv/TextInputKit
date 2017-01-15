@@ -8,8 +8,8 @@
 
 import Foundation
 
-/// A class representing a text input component (e.g. UITextField) should implement the `TextInputFormatBindable` protocol
-/// to be able to be bound to a text input format using the `TextInputFormat.bind(to:)` API.
+/// A class representing a text input component (e.g., UITextField) should implement the `TextInputFormatBindable`
+/// protocol to be able to be bound to a text input format using the `TextInputFormat.bind(to:)` API.
 public protocol TextInputFormatBindable {
 
     /// Binds the text input format to `self`.

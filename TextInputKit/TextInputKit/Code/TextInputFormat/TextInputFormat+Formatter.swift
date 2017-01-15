@@ -37,7 +37,7 @@ public struct FormatterOptions {
 
 }
 
-extension TextInputFormat {
+public extension TextInputFormat {
 
     /// Creates a `Formatter` with the object type `FormatterObjectValue<Value>`.
     ///
@@ -48,7 +48,7 @@ extension TextInputFormat {
     /// Both variants conflict with the desired behavior of the corresponding `TextInputBinding`. So, we have to set the `objectPtr` to a non-nil value and return `true` from the `getObjectValue(_:for:errorDescription:)` method, even when there is no `Value` representing the text in the text input.
     ///
     /// - Returns: The created `Formatter`.
-    public func toFormatter(_ options: FormatterOptions = .options()) -> Formatter {
+    func toFormatter(_ options: FormatterOptions = .options()) -> Formatter {
         return FormatterAdapter(self, options)
     }
 

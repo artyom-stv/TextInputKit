@@ -15,6 +15,12 @@ public extension TextInputFormat {
 
     public typealias FilterPredicate = (String) -> Bool
 
+    /// Creates a `TextInputFormat` which filters the output of the source formatter
+    /// (the formatter of the callee format).
+    ///
+    /// - Parameters:
+    ///   - predicate: The predicate which is used to filter the output of the source formatter.
+    /// - Returns: The created `TextInputFormat`.
     func filter(_ predicate: @escaping FilterPredicate) -> TextInputFormat<Value> {
         return TextInputFormat.from(
             self.serializer,
@@ -25,6 +31,12 @@ public extension TextInputFormat {
 
 public extension TextInputFormat {
 
+    /// Creates a `TextInputFormat` with a formatter which rejects the output of the source formatter
+    /// (the formatter of the callee format) if the output contains characters out of the `characterSet`.
+    ///
+    /// - Parameters:
+    ///   - characterSet: The character set which is used to filter the output of the source formatter.
+    /// - Returns: The created `TextInputFormat`.
     func filter(by characterSet: CharacterSet) -> TextInputFormat<Value> {
         let invertedCharacterSet = characterSet.inverted
         return filter {
@@ -34,6 +46,12 @@ public extension TextInputFormat {
         }
     }
 
+    /// Creates a `TextInputFormat` with a formatter which rejects the output of the source formatter
+    /// (the formatter of the callee format) if the output exceeds the `maxCharactersCount` limit.
+    ///
+    /// - Parameters:
+    ///   - maxCharactersCount: The maximum characters count which is used to filter the output of the source formatter.
+    /// - Returns: The created `TextInputFormat`.
     func filter(constrainingCharactersCount maxCharactersCount: Int) -> TextInputFormat<Value> {
         return filter {
             string in
