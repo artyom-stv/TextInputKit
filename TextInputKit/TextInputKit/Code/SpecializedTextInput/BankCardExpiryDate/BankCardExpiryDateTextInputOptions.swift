@@ -6,11 +6,11 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
-/// Options for text input of bank card numbers.
+/// The options for text input of bank card expiry dates.
 ///
 /// - Note:
-///   Currently, there are no properties in `BankCardExpiryDateTextInputOptions` struct.
-///   It is left for future text input customizations not breaking the API.
+///   Currently, there are no properties in `BankCardExpiryDateTextInputOptions`.
+///   This struct is left for future text input customizations, which won't break the API.
 public struct BankCardExpiryDateTextInputOptions {
 
     public static func options() -> BankCardExpiryDateTextInputOptions {

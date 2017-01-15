@@ -18,6 +18,7 @@ public enum PhoneNumberFormat {
 
 }
 
+/// The options for text input of phone numbers.
 public struct PhoneNumberTextInputOptions {
 
     /// Creates a `PhoneNumberTextInputOptions`.

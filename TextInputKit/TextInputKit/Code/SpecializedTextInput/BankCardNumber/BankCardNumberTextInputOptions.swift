@@ -6,7 +6,7 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
-/// Options for text input of bank card numbers.
+/// The options for text input of bank card numbers.
 public struct BankCardNumberTextInputOptions {
 
     /// Creates a `BankCardNumberTextInputOptions`.

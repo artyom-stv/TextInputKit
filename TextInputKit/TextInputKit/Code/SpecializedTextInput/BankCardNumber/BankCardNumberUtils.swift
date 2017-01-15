@@ -132,13 +132,13 @@ extension BankCardNumberUtils {
         
     }
 
-    /// Determines a range of IINs which may correspond to a partial of full bank card number.
+    /// Determines a range of IINs which may correspond to a partial or full bank card number.
     ///
     /// - Parameters:
     ///   - digitsString: A string of digits representing a bank card number.
     ///   - digitsStringLength: Length of `digitsString`. Passed here for an optimization purpose (not to recalculate the length several times).
     /// - Returns:
-    ///   Range of IINs which may correspond to a partial of full bank card number represented by a string of digits.
+    ///   Range of IINs which may correspond to a partial or full bank card number represented by a string of digits.
     ///   In a special case when `digitsStringLength` is greater or equal to 6, the returned range contains only one IIN.
     ///
     /// - SeeAlso:

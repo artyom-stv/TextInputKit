@@ -6,10 +6,8 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
-/// Options for text input of bank card numbers.
+/// The options for text input of bank card holder names.
 public struct BankCardHolderNameTextInputOptions {
-
-    let maxLength: Int
 
     /// Creates a `BankCardHolderNameTextInputOptions` for `TextInputFormats.bankCardHolderName(_:)`.
     ///
@@ -24,5 +22,7 @@ public struct BankCardHolderNameTextInputOptions {
             maxLength: maxLength
         )
     }
+
+    let maxLength: Int
 
 }
