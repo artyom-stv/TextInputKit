@@ -74,7 +74,7 @@ extension BankCardNumber {
 
     /// Creates a `BankCardNumber` by a formatted string which represents a bank card number.
     ///
-    /// - Note: Used internally only.
+    /// - Note: For the internal use only.
     ///
     /// - Parameters:
     ///   - formattedString: The formatted string which represents a bank card number.

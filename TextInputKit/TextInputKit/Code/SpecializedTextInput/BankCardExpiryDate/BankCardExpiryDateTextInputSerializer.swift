@@ -76,7 +76,7 @@ private extension BankCardExpiryDateTextInputSerializer {
             let monthComponent = Int(stringComponents.month),
             let yearComponent = Int(stringComponents.lastTwoDigitsOfYear)
             else {
-                fatalError("`BankCardExpiryDateTextInputFormatter` should have formed a string with only digit characters in date components.")
+                fatalError("`BankCardExpiryDateTextInputFormatter` should have formed a string only with digit characters in date components.")
         }
 
         return (month: monthComponent, lastTwoDigitsOfYear: yearComponent)

@@ -94,7 +94,7 @@ private extension BankCardExpiryDateTextInputFormatter {
         let wasPressedBackspaceOrDeleteWithEmptySelection = input.selectedRange.isEmpty && !input.editedRange.isEmpty
         if wasPressedBackspaceOrDeleteWithEmptySelection {
             assert(input.stringView.distance(from: input.editedRange.lowerBound, to: input.editedRange.upperBound) == 1,
-                   "Edited range can be non-empty while selected range is empty only when user presses 'backspace' or 'delete' key.")
+                   "Only when a user presses 'backspace' or 'delete' key, the edited range can be non-empty while the selected range is empty.")
 
             let isDeletingSlashCharacter = input.stringView[input.editedRange.lowerBound] == UnicodeScalar("/")
             if isDeletingSlashCharacter {

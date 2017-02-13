@@ -12,7 +12,7 @@ public struct PhoneNumber {
 
     /// Creates a `PhoneNumber` by a `PhoneNumberKit.PhoneNumber`.
     ///
-    /// - Note: Used internally only.
+    /// - Note: For the internally use only.
     ///
     /// - Parameters:
     ///   - pnkPhoneNumber: The `PhoneNumberKit.PhoneNumber`.

@@ -10,8 +10,8 @@
 ///
 /// - Note:
 ///   Currently, there are no properties in `BankCardExpiryDateTextInputOptions`.
-///   `BankCardExpiryDateTextInputOptions` is left to customize text input formatting in future without breaking
-///   the API backward compatibility.
+///   For the future purpose, `BankCardExpiryDateTextInputOptions` is left to customize text input formatting without
+///   breaking the API backward compatibility.
 public struct BankCardExpiryDateTextInputOptions {
 
     /// Creates `BankCardExpiryDateTextInputOptions`.

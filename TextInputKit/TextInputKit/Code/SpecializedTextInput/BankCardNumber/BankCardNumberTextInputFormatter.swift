@@ -153,7 +153,7 @@ private extension BankCardNumberTextInputFormatter {
         let wasPressedBackspaceOrDeleteWithEmptySelection = originalInput.selectedRange.isEmpty && !originalInput.editedRange.isEmpty
         if wasPressedBackspaceOrDeleteWithEmptySelection {
             assert(originalInput.stringView.distance(from: originalInput.editedRange.lowerBound, to: originalInput.editedRange.upperBound) == 1,
-                   "Edited range can be non-empty while selected range is empty only when user presses 'backspace' or 'delete' key.")
+                   "Only when a user presses 'backspace' or 'delete' key, the edited range can be non-empty while the selected range is empty.")
 
             let isDeletingSpaceCharacter = digitsEditedRange.isEmpty
             if isDeletingSpaceCharacter {
