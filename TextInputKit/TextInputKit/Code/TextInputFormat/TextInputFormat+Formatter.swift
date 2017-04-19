@@ -107,8 +107,8 @@ private final class FormatterAdapter<Value: Equatable> : Formatter {
         catch let error {
             objectValue = .init(value: nil, text: string)
 
-            if let error = error as? CustomStringConvertible, let errorDescriptionPtr = errorDescriptionPtr {
-                errorDescriptionPtr.pointee = error.description as NSString
+            if let errorDescriptionPtr = errorDescriptionPtr {
+                errorDescriptionPtr.pointee = (error as CustomStringConvertible).description as NSString
             }
         }
 
