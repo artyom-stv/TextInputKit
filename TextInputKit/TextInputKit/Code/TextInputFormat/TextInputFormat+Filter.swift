@@ -13,7 +13,7 @@ public extension TextInputFormat {
     // The commented code crashes the compiler.
 //    public typealias FilterPredicate = TextInputFormatterType.FilterPredicate
 
-    public typealias FilterPredicate = (String) -> Bool
+    typealias FilterPredicate = (String) -> Bool
 
     /// Creates a `TextInputFormat` which filters the output of the source formatter
     /// (the formatter of the callee format).
@@ -56,7 +56,7 @@ public extension TextInputFormat {
         return filter {
             string in
 
-            return (string.characters.count <= maxCharactersCount)
+            return (string.count <= maxCharactersCount)
         }
     }
 

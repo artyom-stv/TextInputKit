@@ -10,14 +10,6 @@ import Foundation
 
 extension CountableClosedRange {
 
-    func contains(_ range: CountableRange<Bound>) -> Bool {
-        return (lowerBound <= range.lowerBound) && (upperBound.advanced(by: 1) >= range.upperBound)
-    }
-
-    func contains(_ range: CountableClosedRange<Bound>) -> Bool {
-        return (lowerBound <= range.lowerBound) && (upperBound >= range.upperBound)
-    }
-
     func contains(_ range: Range<Bound>) -> Bool {
         return (lowerBound <= range.lowerBound) && (upperBound.advanced(by: 1) >= range.upperBound)
     }

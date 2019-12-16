@@ -20,9 +20,9 @@ final class BankCardNumberTextInputFormatter : TextInputFormatter {
 
         let originalInput = OriginalValidationInput(
             stringView: originalString.unicodeScalars,
-            selectedRange: originalSelectedRange.sameRange(in: originalString.unicodeScalars),
+            selectedRange: originalSelectedRange.sameRange(in: originalString.unicodeScalars)!,
             replacementStringView: replacementString.unicodeScalars,
-            editedRange: editedRange.sameRange(in: originalString.unicodeScalars))
+            editedRange: editedRange.sameRange(in: originalString.unicodeScalars)!)
 
         do {
             let digitsInput = try self.digitsInput(from: originalInput)

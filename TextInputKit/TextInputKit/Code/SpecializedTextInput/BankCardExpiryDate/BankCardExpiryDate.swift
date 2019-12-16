@@ -190,8 +190,9 @@ extension BankCardExpiryDate : Equatable {
 
 extension BankCardExpiryDate : Hashable {
 
-    public var hashValue: Int {
-        return (year << 4) | month
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(year)
+        hasher.combine(month)
     }
     
 }

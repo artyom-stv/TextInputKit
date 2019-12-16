@@ -76,7 +76,7 @@ private class MemoryWarningResponder {
     init(queue: DispatchQueue) {
         self.queue = queue
 
-        NotificationCenter.default.addObserver(self, selector: #selector(MemoryWarningResponder.didReceiveMemoryWarning(_:)), name: .UIApplicationDidReceiveMemoryWarning, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MemoryWarningResponder.didReceiveMemoryWarning(_:)), name: UIApplication.didReceiveMemoryWarningNotification, object: nil)
     }
 
     deinit {

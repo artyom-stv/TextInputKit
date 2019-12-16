@@ -10,8 +10,8 @@ import Foundation
 
 public extension TextInputSerializerType {
 
-    public typealias MapDirectTransform<Result> = (Value) throws -> Result
-    public typealias MapReverseTransform<Result> = (Result) -> Value
+    typealias MapDirectTransform<Result> = (Value) throws -> Result
+    typealias MapReverseTransform<Result> = (Result) -> Value
 
     func map<Result>(
         direct directTransform: @escaping MapDirectTransform<Result>,

@@ -27,7 +27,7 @@ extension UITextField {
                         fatalError("Cannot set the selected range of a `UITextField` while the text field isn't editing.")
                     }
 
-                    return range.sameRange(in: text.utf16).sameIntRange(in: text.utf16)
+                    return range.sameRange(in: text.utf16)!.sameIntRange(in: text.utf16)
                 }
                 return nil
             }()

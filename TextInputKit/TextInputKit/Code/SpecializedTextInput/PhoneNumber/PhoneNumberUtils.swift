@@ -28,7 +28,7 @@ extension PhoneNumberUtils {
         ) -> CursorPositionInvariant {
 
         let stringView = string.unicodeScalars
-        let cursorIndex = cursorIndex.samePosition(in: stringView)
+        let cursorIndex = cursorIndex.samePosition(in: stringView)!
 
         let numberOfDigitsAfterCursor = stringView.suffix(from: cursorIndex).reduce(0) { (result, unicodeScalar) in
             return StringUtils.isDigit(unicodeScalar) ? result + 1 : result
@@ -79,7 +79,7 @@ extension PhoneNumberUtils {
             let wasPressedBackspace = (originalSelectedRange.lowerBound == editedRange.upperBound)
             if wasPressedBackspace {
                 // Backspace
-                var adjustedLowerBound = editedRange.lowerBound.samePosition(in: originalStringView)
+                var adjustedLowerBound = editedRange.lowerBound.samePosition(in: originalStringView)!
                 while adjustedLowerBound != originalStringView.startIndex {
                     if StringUtils.isDigit(originalStringView[adjustedLowerBound]) {
                         break
@@ -90,7 +90,7 @@ extension PhoneNumberUtils {
             }
             else {
                 // Delete
-                var adjustedUpperBound = editedRange.upperBound.samePosition(in: originalStringView)
+                var adjustedUpperBound = editedRange.upperBound.samePosition(in: originalStringView)!
                 while adjustedUpperBound != originalStringView.endIndex {
                     if StringUtils.isDigit(originalStringView[adjustedUpperBound]) {
                         break

@@ -13,7 +13,7 @@ public extension TextInputFormat {
     // The commented code crashes the compiler.
 //    public typealias MapTransform = TextInputFormatterType.MapTransform
 
-    public typealias MapTransform = (String, Range<String.Index>) -> (String, Range<String.Index>)
+    typealias MapTransform = (String, Range<String.Index>) -> (String, Range<String.Index>)
 
     /// Creates a `TextInputFormat` which transforms the output of the source formatter
     /// (the formatter of the callee format).
@@ -43,7 +43,7 @@ public extension TextInputFormat {
 
             let resultEndIndex = string.index(string.startIndex, offsetBy: maxCharactersCount, limitedBy: string.endIndex)
             if let resultEndIndex = resultEndIndex, resultEndIndex != string.endIndex {
-                let newString = string.substring(to: resultEndIndex)
+                let newString = String(string[..<resultEndIndex])
                 let newSelectedRange = selectedRange.clamped(to: string.startIndex..<resultEndIndex)
 
                 return (newString, newSelectedRange)

@@ -149,7 +149,7 @@ extension BankCardNumberUtils {
         withLength digitsStringLength: Int) -> Range<Int> {
 
         assert(digitsString.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil)
-        assert(digitsString.characters.count == digitsStringLength)
+        assert(digitsString.count == digitsStringLength)
 
         let iinRangeStart: Int = {
             let iinString = digitsStringLength == iinLength
@@ -173,7 +173,7 @@ extension BankCardNumberUtils {
 
     static func info(forIinRange iinRange: Range<Int>) -> IinRangeInfo? {
         let iinRange = ClosedRange(iinRange)
-        guard let index = iinRangesInfo.index(where: { $0.range.contains(iinRange) }) else {
+        guard let index = iinRangesInfo.firstIndex(where: { $0.range.contains(iinRange) }) else {
             return nil
         }
         return iinRangesInfo[index]

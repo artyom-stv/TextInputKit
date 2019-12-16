@@ -33,7 +33,7 @@ public struct FormatterOptions {
     var tracksCurrentEditorSelection: Bool = false
     #endif
 
-    static func options() -> FormatterOptions {
+    public static func `default`() -> FormatterOptions {
         return .init()
     }
 
@@ -58,7 +58,7 @@ public extension TextInputFormat {
     /// even if there is no `Value` representing the text in the text input.
     ///
     /// - Returns: The created `Formatter`.
-    func toFormatter(_ options: FormatterOptions = .options()) -> Formatter {
+    func toFormatter(_ options: FormatterOptions = .default()) -> Formatter {
         return FormatterAdapter(self, options)
     }
 
@@ -134,14 +134,14 @@ private final class FormatterAdapter<Value: Equatable> : Formatter {
         originalSelectedRange editedNSRange: NSRange,
         errorDescription errorDescriptionPtr: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
 
-        let editedRange: Range<String.Index> = editedNSRange.toRange()!
+        let editedRange: Range<String.Index> = Range(editedNSRange)!
             .sameRange(in: originalString.utf16)
             .sameRange(in: originalString)
 
         let originalSelectedRange: Range<String.Index> = {
             #if os(macOS)
             if options.tracksCurrentEditorSelection {
-                if let editor: NSText = NSApplication.shared().keyWindow?.textInputKit_currentEditor {
+                if let editor: NSText = NSApplication.shared.keyWindow?.textInputKit_currentEditor {
                     return editor.textInputKit_selectedRange!
                 }
             }
@@ -153,7 +153,7 @@ private final class FormatterAdapter<Value: Equatable> : Formatter {
 
         let resultingSelectedRange: Range<String.Index> = {
             if let proposedSelectedNSRangePtr = proposedSelectedNSRangePtr {
-                return proposedSelectedNSRangePtr.pointee.toRange()!
+                return Range(proposedSelectedNSRangePtr.pointee)!
                     .sameRange(in: editedString.utf16)
                     .sameRange(in: editedString)
             }
@@ -166,16 +166,16 @@ private final class FormatterAdapter<Value: Equatable> : Formatter {
 
         assert(resultingSelectedRange.isEmpty,
                "The proposed selected range after editing text should be empty (a blinking cursor).")
-        assert(originalString.substring(to: editedRange.lowerBound) == editedString.substring(to: editedRange.lowerBound),
+        assert(originalString[..<editedRange.lowerBound] == editedString[..<editedRange.lowerBound],
                "The strings before and after the editing should have a common prefix.")
-        assert(originalString.substring(from: editedRange.upperBound) == editedString.substring(from: resultingSelectedRange.lowerBound),
+        assert(originalString[editedRange.upperBound...] == editedString[resultingSelectedRange.lowerBound...],
                "The strings before and after the editing should have a common suffix.")
 
         let replacementString: String = {
             let editedRangeLowerBoundInEditedString = (editedRange.lowerBound == originalString.startIndex)
                 ? editedString.startIndex
                 : editedString.index(after: originalString.index(before: editedRange.lowerBound))
-            return editedString.substring(with: editedRangeLowerBoundInEditedString..<resultingSelectedRange.lowerBound)
+            return String(editedString[editedRangeLowerBoundInEditedString..<resultingSelectedRange.lowerBound])
         }()
 
         let validationResult = format.formatter.validate(
@@ -191,7 +191,7 @@ private final class FormatterAdapter<Value: Equatable> : Formatter {
         case .changed(let newEditedString, let newSelectedRange):
             partialStringPtr.pointee = newEditedString as NSString
             proposedSelectedNSRangePtr?.pointee = NSRange(newSelectedRange
-                .sameRange(in: newEditedString.utf16)
+                .sameRange(in: newEditedString.utf16)!
                 .sameIntRange(in: newEditedString.utf16))
 
             return false

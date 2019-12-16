@@ -69,8 +69,8 @@ extension PhoneNumber : Equatable {
 
 extension PhoneNumber : Hashable {
 
-    public var hashValue: Int {
-        return pnkPhoneNumber.hashValue
+    public func hash(into hasher: inout Hasher) {
+        return pnkPhoneNumber.hash(into: &hasher)
     }
 
 }

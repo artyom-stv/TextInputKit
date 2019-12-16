@@ -109,7 +109,7 @@ final class BindingForNSTextField<Value: Equatable> : TextInputBinding<Value> {
     private func bind(_ textField: NSTextField) {
         textField.objectValue = FormatterObjectValue<Value>()
         textField.formatter = {
-            var options = FormatterOptions.options()
+            var options = FormatterOptions.default()
             options.tracksCurrentEditorSelection = true
             return format.toFormatter(options)
         }()
@@ -164,7 +164,7 @@ private final class Responder<Value: Equatable> : NSObject, NSTextFieldDelegate 
 
     // MARK: Control Events
 
-    override func controlTextDidBeginEditing(_ notification: Notification) {
+    func controlTextDidBeginEditing(_ notification: Notification) {
         let textField = payload.boundTextField!
 
         assert(textField.currentEditor()! === notification.userInfo!["NSFieldEditor"] as! NSText)
@@ -174,13 +174,13 @@ private final class Responder<Value: Equatable> : NSObject, NSTextFieldDelegate 
         payload.eventNotifier.on(.editingDidBegin)
     }
 
-    override func controlTextDidEndEditing(_ notification: Notification) {
+    func controlTextDidEndEditing(_ notification: Notification) {
         latestEditingState = nil
 
         payload.eventNotifier.on(.editingDidEnd)
     }
 
-    override func controlTextDidChange(_ notification: Notification) {
+    func controlTextDidChange(_ notification: Notification) {
         let textField = payload.boundTextField!
 
         assert(textField.currentEditor()! === notification.userInfo!["NSFieldEditor"] as! NSText)

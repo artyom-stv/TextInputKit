@@ -10,8 +10,8 @@ import Foundation
 
 public extension TextInputFormat {
 
-    public typealias DirectValueTransform<Result> = (Value) throws -> Result
-    public typealias ReverseValueTransform<Result> = (Result) -> Value
+    typealias DirectValueTransform<Result> = (Value) throws -> Result
+    typealias ReverseValueTransform<Result> = (Result) -> Value
 
     /// Creates a `TextInputFormat` which transforms the values produced by the source serializer
     /// (the serializer of the callee format).
@@ -33,7 +33,7 @@ public extension TextInputFormat {
 
 public extension TextInputFormat {
 
-    public typealias NonThrowingDirectValueTransform<Result> = (Value) -> Result?
+    typealias NonThrowingDirectValueTransform<Result> = (Value) -> Result?
 
     /// Creates a `TextInputFormat` which transforms the values produced by the source serializer
     /// (the serializer of the callee format).

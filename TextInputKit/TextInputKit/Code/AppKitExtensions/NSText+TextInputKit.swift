@@ -12,7 +12,7 @@ extension NSText {
 
     var textInputKit_selectedUtf16IntRange: Range<Int>? {
         get {
-            return self.selectedRange.toRange()
+            return Range(self.selectedRange)
         }
         set {
             self.selectedRange = {
@@ -28,8 +28,7 @@ extension NSText {
     var textInputKit_selectedRange: Range<String.Index>? {
         get {
             if let utf16IntRange = textInputKit_selectedUtf16IntRange {
-                // self.string is not nil when self.selectedRange is not { NSNotFound, 0 }
-                let string = self.string!
+                let string = self.string
                 return utf16IntRange.sameRange(in: string.utf16).sameRange(in: string)
             }
             return nil
@@ -37,12 +36,8 @@ extension NSText {
         set {
             textInputKit_selectedUtf16IntRange = {
                 if let range = newValue {
-                    guard let string = self.string else {
-                        // TODO: Write message.
-                        fatalError("")
-                    }
-
-                    return range.sameRange(in: string.utf16).sameIntRange(in: string.utf16)
+                    let string = self.string
+                    return range.sameRange(in: string.utf16)!.sameIntRange(in: string.utf16)
                 }
                 return nil
             }()

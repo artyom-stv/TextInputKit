@@ -249,7 +249,7 @@ class BankCardNumberTextInputFormatterTests: XCTestCase {
             let string = testData.stringPrefix.appending(testData.stringSuffix)
             let replacementString = testData.inserting
             let selectedRange: Range<String.Index> = {
-                let index = string.index(string.startIndex, offsetBy: testData.stringPrefix.characters.count)
+                let index = string.index(string.startIndex, offsetBy: testData.stringPrefix.count)
                 return index..<index
             }()
 

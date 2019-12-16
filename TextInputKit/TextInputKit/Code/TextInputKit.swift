@@ -13,5 +13,5 @@ func abstractMethod() -> Never {
 }
 
 func fatalError(_ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) -> Never {
-    Swift.fatalError(message, file: file, line: line)
+    Swift.fatalError(message(), file: file, line: line)
 }

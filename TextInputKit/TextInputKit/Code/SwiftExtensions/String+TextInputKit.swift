@@ -27,4 +27,8 @@ extension String.UnicodeScalarView {
         return (newView, newRange)
     }
 
+    public func asSubstringView() -> Substring.UnicodeScalarView {
+        return suffix(from: startIndex)
+    }
+
 }

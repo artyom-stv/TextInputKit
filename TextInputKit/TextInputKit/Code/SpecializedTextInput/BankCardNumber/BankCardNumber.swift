@@ -110,8 +110,8 @@ extension BankCardNumber : Equatable {
 
 extension BankCardNumber : Hashable {
 
-    public var hashValue: Int {
-        return digitsString.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(digitsString)
     }
     
 }

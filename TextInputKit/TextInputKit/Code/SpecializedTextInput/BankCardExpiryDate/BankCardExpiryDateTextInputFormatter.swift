@@ -23,9 +23,9 @@ final class BankCardExpiryDateTextInputFormatter : TextInputFormatter {
         do {
             let input = ValidationInput(
                 stringView: originalString.unicodeScalars,
-                selectedRange: originalSelectedRange.sameRange(in: originalString.unicodeScalars),
+                selectedRange: originalSelectedRange.sameRange(in: originalString.unicodeScalars)!,
                 replacementStringView: replacementString.unicodeScalars,
-                editedRange: editedRange.sameRange(in: originalString.unicodeScalars))
+                editedRange: editedRange.sameRange(in: originalString.unicodeScalars)!)
 
             let adjustedInput = self.adjustedInput(for: input)
 
@@ -146,7 +146,7 @@ private extension BankCardExpiryDateTextInputFormatter {
     }
 
     func slashIndex(in stringView: String.UnicodeScalarView) -> String.UnicodeScalarIndex? {
-        return stringView.index(where: { StringUtils.slashCharacters.contains($0) })
+        return stringView.firstIndex(where: { StringUtils.slashCharacters.contains($0) })
     }
 
     func validateResult(_ result: ValidationResult, slashIndex: String.UnicodeScalarIndex?) throws {
@@ -161,7 +161,9 @@ private extension BankCardExpiryDateTextInputFormatter {
 
     private static let maxAllowedDigitsSequenceLength = 2
 
-    private func validateDigitsSequence(_ stringView: String.UnicodeScalarView) throws {
+    private func validateDigitsSequence<StringView>(_ stringView: StringView) throws
+        where StringView: Collection, StringView.Element == UnicodeScalar
+    {
         if stringView.contains(where: { !CharacterSet.decimalDigits.contains($0) }) {
             throw ValidationError.invalidCharacter
         }

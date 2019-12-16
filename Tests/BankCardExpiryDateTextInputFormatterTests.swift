@@ -176,7 +176,7 @@ final class BankCardExpiryDateTextInputFormatterTests : XCTestCase {
             }
 
             textInput.edit { editor in
-                var i = month.characters.count + 1
+                var i = month.count + 1
                 editor.select(i..<i)
                 editor.insert("0")
                 textInput.expect("\(month)/", "", "34")

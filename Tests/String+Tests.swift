@@ -24,10 +24,10 @@ extension String {
         if index == endIndex {
             return true
             // To eliminate the false-positive result, we could have written the following code. But it may crash.
-            // return self.characters[index...index].isEmpty
+            // return self[index...index].isEmpty
         }
 
-        if self.characters[index...index].count != 1 {
+        if self[index...index].count != 1 {
             return false
         }
 

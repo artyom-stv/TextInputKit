@@ -154,7 +154,7 @@ final class BankCardHolderNameTextInputFormatterTests : XCTestCase {
     func testThatDiacriticsIsNotAccepted() {
         let lettersWithDiacritics = "ÁÀÂÄǍĂĀÃÅǺĆĊĈČĎÉÈĖÊËĚĔĒÍÌİÎÏǏĬĪĨŃN̈ŇÑÓÒÔÖǑŎŌÕŐáàâäǎăāãåǻćċĉčéèėêëěĕēíìîïǐĭīĩńn̈ňñóòôöǒŏōõő"
         textInput.edit { editor in
-            for letterWithDiacritics in lettersWithDiacritics.characters {
+            for letterWithDiacritics in lettersWithDiacritics {
                 editor.insert(String(letterWithDiacritics))
                 textInput.expect("", "", "")
             }

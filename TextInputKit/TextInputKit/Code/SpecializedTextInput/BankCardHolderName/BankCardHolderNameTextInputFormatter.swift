@@ -25,9 +25,9 @@ final class BankCardHolderNameTextInputFormatter : TextInputFormatter {
 
             let input = ValidationInput(
                 stringView: originalString.unicodeScalars,
-                selectedRange: originalSelectedRange.sameRange(in: originalString.unicodeScalars),
+                selectedRange: originalSelectedRange.sameRange(in: originalString.unicodeScalars)!,
                 replacementStringView: adjustedReplacementString.unicodeScalars,
-                editedRange: editedRange.sameRange(in: originalString.unicodeScalars))
+                editedRange: editedRange.sameRange(in: originalString.unicodeScalars)!)
 
             var result: ValidationResult = {
                 let (resultingStringView, editedRangeInResultingStringView) = {

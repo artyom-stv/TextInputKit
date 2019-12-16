@@ -32,8 +32,13 @@ final class BankCardTextField : NSTextField {
 
     // MARK: - Override NSControl
 
-    override class func cellClass() -> Swift.AnyClass? {
-        return BankCardTextFieldCell.self
+    override class var cellClass: Swift.AnyClass? {
+        get {
+            return BankCardTextFieldCell.self
+        }
+        set {
+            fatalError()
+        }
     }
 
     // MARK: - Private Types

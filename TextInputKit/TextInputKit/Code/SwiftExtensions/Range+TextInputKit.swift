@@ -59,15 +59,25 @@ extension RangeType where Bound == String.UTF16View.Index {
 
 extension RangeType where Bound == String.Index {
 
-    func sameRange(in view: String.UTF16View) -> Range<String.UTF16View.Index> {
-        let resultLowerBound = lowerBound.samePosition(in: view)
-        let resultUpperBound = upperBound.samePosition(in: view)
+    func sameRange(in view: String.UTF16View) -> Range<String.UTF16View.Index>? {
+        guard
+            let resultLowerBound = lowerBound.samePosition(in: view),
+            let resultUpperBound = upperBound.samePosition(in: view) else
+        {
+            return nil
+        }
+
         return resultLowerBound..<resultUpperBound
     }
 
-    func sameRange(in view: String.UnicodeScalarView) -> Range<String.UnicodeScalarView.Index> {
-        let resultLowerBound = lowerBound.samePosition(in: view)
-        let resultUpperBound = upperBound.samePosition(in: view)
+    func sameRange(in view: String.UnicodeScalarView) -> Range<String.UnicodeScalarView.Index>? {
+        guard
+            let resultLowerBound = lowerBound.samePosition(in: view),
+            let resultUpperBound = upperBound.samePosition(in: view) else
+        {
+            return nil
+        }
+
         return resultLowerBound..<resultUpperBound
     }
 

@@ -62,7 +62,7 @@ extension TestFormatterViewController {
 
 extension TestFormatterViewController {
 
-    override func controlTextDidChange(_ notification: Notification) {
+    func controlTextDidChange(_ notification: Notification) {
         let control = notification.object as! NSControl
         if control === textField {
             updateStringValue()

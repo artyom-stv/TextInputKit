@@ -162,7 +162,7 @@ private final class Responder<Value: Equatable> : NSObject, UITextFieldDelegate 
 
         let originalState = currentEditingState(of: textField)
 
-        let editedRange: Range<String.Index> = editedNSRange.toRange()!
+        let editedRange: Range<String.Index> = Range(editedNSRange)!
             .sameRange(in: originalState.text.utf16)
             .sameRange(in: originalState.text)
 
@@ -204,6 +204,7 @@ private final class Responder<Value: Equatable> : NSObject, UITextFieldDelegate 
     /// The action for `UIControlEvents.editingChanged` event of a `UITextField`.
     ///
     /// - Parameter textField: The `UITextField`.
+    @objc
     func actionForEditingChanged(_ textField: UITextField) {
         guard let originalState = pendingEditingChangedEventOriginalState else {
             fatalError("`\(#function)` should be called after `textField(_:shouldChangeCharactersIn:replacementString:)` returns `true`. In that case, `pendingEditingChangedEventOriginalState` should be non-nil.")

@@ -102,7 +102,7 @@ extension TextInputSimulator {
                     : resultingText.index(after: text.index(before: replacementRange.lowerBound))
 
                 let resultingSelectedRange: Range<String.Index> = {
-                    let index = resultingText.index(replacementLowerBoundInResultingText, offsetBy: replacementString.characters.count)
+                    let index = resultingText.index(replacementLowerBoundInResultingText, offsetBy: replacementString.count)
                     return index..<index
                 }()
 
@@ -202,10 +202,10 @@ extension TextInputSimulator {
         let text = "\(textBeforeSelection)\(selectedText)\(textAfterSelection)"
         let selectionLowerBound = text.index(
             text.startIndex,
-            offsetBy: textBeforeSelection.characters.count)
+            offsetBy: textBeforeSelection.count)
         let selectionUpperBound = text.index(
             text.startIndex,
-            offsetBy: textBeforeSelection.characters.count + selectedText.characters.count)
+            offsetBy: textBeforeSelection.count + selectedText.count)
 
         expect(
             text: text,

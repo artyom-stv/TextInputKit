@@ -35,7 +35,7 @@ public extension TextInputValidationResult {
                 var index = (editedRange.lowerBound == originalString.startIndex)
                     ? proposedResultingString.startIndex
                     : proposedResultingString.index(after: originalString.index(before: editedRange.lowerBound))
-                index = proposedResultingString.index(index, offsetBy: replacementString.characters.count)
+                index = proposedResultingString.index(index, offsetBy: replacementString.count)
                 return index..<index
             }()
             return resultingSelectedRange != proposedResultingSelectedRange

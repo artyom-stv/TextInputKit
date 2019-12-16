@@ -48,7 +48,7 @@ private final class Succeed : TextInputFormatter {
                 var index = (editedRange.lowerBound == originalString.startIndex)
                     ? editedString.startIndex
                     : editedString.index(after: originalString.index(before: editedRange.lowerBound))
-                index = editedString.index(index, offsetBy: replacementString.characters.count)
+                index = editedString.index(index, offsetBy: replacementString.count)
                 return index..<index
             }()
 

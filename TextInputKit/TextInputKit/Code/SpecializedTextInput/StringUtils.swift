@@ -54,7 +54,7 @@ extension StringUtils {
 
         do {
             var resultStringView = "".unicodeScalars
-            try scan(stringView,
+            try scan(String(stringView),
                      preservingCharacters: preservingCharacters,
                      ignoringCharacters: ignoringCharacters,
                      appending: &resultStringView)
@@ -81,10 +81,10 @@ extension StringUtils {
         do {
             if originalRange.lowerBound != originalStringView.startIndex {
                 let leftSubstringView = (originalRange.lowerBound == originalStringView.endIndex)
-                    ? originalStringView
+                    ? originalStringView.asSubstringView()
                     : originalStringView.prefix(upTo: originalRange.lowerBound)
                 try scan(
-                    leftSubstringView,
+                    String(leftSubstringView),
                     preservingCharacters: preservingCharacters,
                     ignoringCharacters: ignoringCharacters,
                     appending: &resultStringView)
@@ -94,10 +94,10 @@ extension StringUtils {
 
             if !originalRange.isEmpty {
                 let middleSubstringView = (originalRange.lowerBound == originalStringView.startIndex) && (originalRange.upperBound == originalStringView.endIndex)
-                    ? originalStringView
+                    ? originalStringView.asSubstringView()
                     : originalStringView[originalRange]
                 try scan(
-                    middleSubstringView,
+                    String(middleSubstringView),
                     preservingCharacters: preservingCharacters,
                     ignoringCharacters: ignoringCharacters,
                     appending: &resultStringView)
@@ -107,10 +107,10 @@ extension StringUtils {
 
             if originalRange.upperBound != originalStringView.endIndex {
                 let rightSubstringView = (originalRange.upperBound == originalStringView.startIndex)
-                    ? originalStringView
+                    ? originalStringView.asSubstringView()
                     : originalStringView.suffix(from: originalRange.upperBound)
                 try scan(
-                    rightSubstringView,
+                    String(rightSubstringView),
                     preservingCharacters: preservingCharacters,
                     ignoringCharacters: ignoringCharacters,
                     appending: &resultStringView)
@@ -130,12 +130,12 @@ extension StringUtils {
     }
 
     private static func scan(
-        _ stringView: String.UnicodeScalarView,
+        _ string: String,
         preservingCharacters: CharacterSet,
         ignoringCharacters: CharacterSet,
         appending resultStringView: inout String.UnicodeScalarView) throws {
 
-        let scanner = Scanner(string: String(stringView))
+        let scanner = Scanner(string: string)
         scanner.charactersToBeSkipped = ignoringCharacters
         while !scanner.isAtEnd {
             var partialNSString: NSString?
