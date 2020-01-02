@@ -18,7 +18,7 @@ protocol RangeType {
 
 }
 
-extension Range : RangeType {
+extension Range: RangeType {
     
 }
 

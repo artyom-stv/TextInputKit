@@ -8,7 +8,7 @@
 
 import AppKit
 
-extension NSTextField : TextInputFormatBindable {
+extension NSTextField: TextInputFormatBindable {
 
     public func bind<Value>(format: TextInputFormat<Value>) -> TextInputBinding<Value> {
         return BindingForNSTextField<Value>(format, self)

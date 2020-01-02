@@ -59,7 +59,7 @@ extension PhoneNumber {
 
 }
 
-extension PhoneNumber : Equatable {
+extension PhoneNumber: Equatable {
 
     public static func ==(lhs: PhoneNumber, rhs: PhoneNumber) -> Bool {
         return lhs.pnkPhoneNumber == rhs.pnkPhoneNumber
@@ -67,7 +67,7 @@ extension PhoneNumber : Equatable {
 
 }
 
-extension PhoneNumber : Hashable {
+extension PhoneNumber: Hashable {
 
     public func hash(into hasher: inout Hasher) {
         return pnkPhoneNumber.hash(into: &hasher)

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol TextInputSerializerType : class {
+public protocol TextInputSerializerType: class {
 
     associatedtype Value
 

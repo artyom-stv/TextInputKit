@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class TextInputFormatter : TextInputFormatterType {
+open class TextInputFormatter: TextInputFormatterType {
 
     open func validate(
         editing originalString: String,

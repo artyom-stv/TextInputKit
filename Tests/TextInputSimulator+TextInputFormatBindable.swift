@@ -9,7 +9,7 @@
 import Foundation
 @testable import TextInputKit
 
-extension TextInputSimulator : TextInputFormatBindable {
+extension TextInputSimulator: TextInputFormatBindable {
 
     func bind<Value>(format: TextInputFormat<Value>) -> TextInputBinding<Value> {
         return Binding(format, self)
@@ -109,7 +109,7 @@ private class Binding<Value: Equatable> : TextInputBinding<Value> {
 
 }
 
-extension Binding : TextInputSimulatorDelegate {
+extension Binding: TextInputSimulatorDelegate {
 
     func editingDidBegin() {
         latestEditingState = currentEditingState

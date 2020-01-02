@@ -9,7 +9,7 @@
 import Foundation
 import PhoneNumberKit
 
-final class PhoneNumberTextInputFormatter : TextInputFormatter {
+final class PhoneNumberTextInputFormatter: TextInputFormatter {
 
     init(_ options: PhoneNumberTextInputOptions, _ cachedPhoneNumberKit: CachedPhoneNumberKit) {
         self.options = options

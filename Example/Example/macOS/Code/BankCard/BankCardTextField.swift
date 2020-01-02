@@ -8,7 +8,7 @@
 
 import Cocoa
 
-final class BankCardTextField : NSTextField {
+final class BankCardTextField: NSTextField {
 
     // MARK: - Override NSObject
 
@@ -36,6 +36,7 @@ final class BankCardTextField : NSTextField {
         get {
             return BankCardTextFieldCell.self
         }
+        // swiftlint:disable:next unused_setter_value
         set {
             fatalError()
         }

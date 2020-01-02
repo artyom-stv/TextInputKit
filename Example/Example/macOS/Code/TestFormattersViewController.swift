@@ -6,10 +6,10 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
-import Foundation
 import Cocoa
+import Foundation
 
-class TestFormattersViewController : NSSplitViewController {
+class TestFormattersViewController: NSSplitViewController {
 
     typealias Item = (
         title: String,

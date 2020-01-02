@@ -20,7 +20,7 @@ public enum TextInputKitError : Error {
     
 }
 
-extension TextInputKitError : CustomStringConvertible {
+extension TextInputKitError: CustomStringConvertible {
 
     public var description: String {
         switch self {

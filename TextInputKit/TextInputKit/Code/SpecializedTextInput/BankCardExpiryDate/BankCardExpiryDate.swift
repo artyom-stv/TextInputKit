@@ -180,7 +180,7 @@ extension BankCardExpiryDate.FactoryMethodError : CustomStringConvertible {
     
 }
 
-extension BankCardExpiryDate : Equatable {
+extension BankCardExpiryDate: Equatable {
 
     public static func ==(lhs: BankCardExpiryDate, rhs: BankCardExpiryDate) -> Bool {
         return (lhs.year == rhs.year) && (lhs.month == rhs.month)
@@ -188,7 +188,7 @@ extension BankCardExpiryDate : Equatable {
 
 }
 
-extension BankCardExpiryDate : Hashable {
+extension BankCardExpiryDate: Hashable {
 
     public func hash(into hasher: inout Hasher) {
         hasher.combine(year)

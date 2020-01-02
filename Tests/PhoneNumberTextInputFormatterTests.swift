@@ -9,7 +9,7 @@
 import XCTest
 @testable import TextInputKit
 
-final class PhoneNumberTextInputFormatterTests : XCTestCase {
+final class PhoneNumberTextInputFormatterTests: XCTestCase {
 
     let textInputFormat = try! TextInputFormats.phoneNumber()
 

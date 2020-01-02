@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol TextInputAccessoryFormatterType : class {
+public protocol TextInputAccessoryFormatterType: class {
 
     /// Usage:
     /// formatter.validate(editingResult: newText, withSelection: newSelectedRange)

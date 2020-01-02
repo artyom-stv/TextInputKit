@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class BankCardExpiryDateTextInputSerializer : TextInputSerializer<BankCardExpiryDate> {
+final class BankCardExpiryDateTextInputSerializer: TextInputSerializer<BankCardExpiryDate> {
 
     init(_ options: BankCardExpiryDateTextInputOptions) {
         self.options = options

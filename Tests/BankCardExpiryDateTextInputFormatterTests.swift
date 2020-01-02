@@ -9,7 +9,7 @@
 import XCTest
 @testable import TextInputKit
 
-final class BankCardExpiryDateTextInputFormatterTests : XCTestCase {
+final class BankCardExpiryDateTextInputFormatterTests: XCTestCase {
 
     let textInputFormat = TextInputFormats.bankCardExpiryDate()
 

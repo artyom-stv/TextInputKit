@@ -18,7 +18,7 @@ public enum TextInputValidationResult {
     
 }
 
-public protocol TextInputFormatterType : class {
+public protocol TextInputFormatterType: class {
 
     /// Usage:
     /// formatter.validate(editing: text, withSelection: selectedRange, replacing: replacementString, at: editedRange)

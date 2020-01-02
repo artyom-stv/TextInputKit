@@ -35,7 +35,7 @@ public enum PhoneNumberTextInputError : Error {
 
 }
 
-extension PhoneNumberTextInputError : CustomStringConvertible {
+extension PhoneNumberTextInputError: CustomStringConvertible {
 
     public var description: String {
         switch self {

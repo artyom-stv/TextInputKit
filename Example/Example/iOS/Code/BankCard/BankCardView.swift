@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class BankCardView : UIView {
+final class BankCardView: UIView {
 
     // MARK: - Override NSObject
 
@@ -32,7 +32,7 @@ final class BankCardView : UIView {
     // MARK: - Constants
 
     private static let borderWidth: CGFloat = 1.0
-    private static let borderColor = UIColor(white: CGFloat(0.0), alpha: CGFloat(0.2))
+    private static let borderColor: UIColor = UIColor(white: CGFloat(0.0), alpha: CGFloat(0.2))
     private static let cornerRadius: CGFloat = 10.0
 
 }

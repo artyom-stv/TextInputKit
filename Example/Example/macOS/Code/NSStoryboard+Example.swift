@@ -6,8 +6,8 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
-import Foundation
 import Cocoa
+import Foundation
 
 extension NSStoryboard {
 

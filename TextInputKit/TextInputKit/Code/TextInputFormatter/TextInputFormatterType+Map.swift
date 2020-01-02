@@ -18,7 +18,7 @@ public extension TextInputFormatterType {
 
 }
 
-private final class Map : TextInputAccessoryFormatter {
+private final class Map: TextInputAccessoryFormatter {
 
     typealias Transform = TextInputFormatterType.MapTransform
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class BankCardHolderNameTextInputFormatter : TextInputFormatter {
+final class BankCardHolderNameTextInputFormatter: TextInputFormatter {
 
     init(_ options: BankCardHolderNameTextInputOptions) {
         self.options = options

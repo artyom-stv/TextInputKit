@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension TextInputValidationResult : Equatable {
+extension TextInputValidationResult: Equatable {
 
     public static func ==(lhs: TextInputValidationResult, rhs: TextInputValidationResult) -> Bool {
         switch (lhs, rhs) {

@@ -8,7 +8,7 @@
 
 import AppKit
 
-final class BankCardTextFieldCell : NSTextFieldCell {
+final class BankCardTextFieldCell: NSTextFieldCell {
 
     // MARK: - Override NSView
 

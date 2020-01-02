@@ -16,7 +16,7 @@ public extension TextInputFormatterType {
 
 }
 
-private final class PlainTextInputFormatter : TextInputFormatter {
+private final class PlainTextInputFormatter: TextInputFormatter {
 
     override func validate(
         editing originalString: String,

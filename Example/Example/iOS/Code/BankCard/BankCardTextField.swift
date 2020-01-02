@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class BankCardTextField : UITextField {
+final class BankCardTextField: UITextField {
 
     // MARK: - Override NSObject
 
@@ -57,5 +57,5 @@ final class BankCardTextField : UITextField {
     // MARK: - Private Constants
 
     private static let inset: CGSize = CGSize(width: CGFloat(8.0), height: CGFloat(3.0))
-    
+
 }

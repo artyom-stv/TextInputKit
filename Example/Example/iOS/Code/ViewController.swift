@@ -6,12 +6,12 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
-import UIKit
 import TextInputKit
+import UIKit
 
 class TestFormatterViewController: UIViewController {
 
-    @IBOutlet var textField: UITextField!
+    @IBOutlet private var textField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()

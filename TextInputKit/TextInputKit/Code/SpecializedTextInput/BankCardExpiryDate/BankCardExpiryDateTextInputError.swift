@@ -19,7 +19,7 @@ public enum BankCardExpiryDateTextInputError : Error {
 
 }
 
-extension BankCardExpiryDateTextInputError : CustomStringConvertible {
+extension BankCardExpiryDateTextInputError: CustomStringConvertible {
 
     public var description: String {
         switch self {

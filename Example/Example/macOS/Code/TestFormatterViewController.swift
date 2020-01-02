@@ -6,10 +6,10 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
-import Foundation
 import Cocoa
+import Foundation
 
-final class TestFormatterViewController : NSViewController {
+final class TestFormatterViewController: NSViewController {
 
     struct Configuration {
 
@@ -19,11 +19,11 @@ final class TestFormatterViewController : NSViewController {
 
     }
 
-    @IBOutlet var titleLabel: NSTextField!
+    @IBOutlet private var titleLabel: NSTextField!
 
-    @IBOutlet var textField: NSTextField!
+    @IBOutlet private var textField: NSTextField!
 
-    @IBOutlet var valueLabel: NSTextField!
+    @IBOutlet private var valueLabel: NSTextField!
 
     func configure(_ config: Configuration) {
         self.config = config
@@ -71,7 +71,7 @@ extension TestFormatterViewController {
 
 }
 
-extension TestFormatterViewController : NSTextFieldDelegate {
+extension TestFormatterViewController: NSTextFieldDelegate {
 
     func control(_ control: NSControl, didFailToFormatString string: String, errorDescription error: String?) -> Bool {
         if control === textField {
@@ -92,10 +92,10 @@ private extension TestFormatterViewController {
 
     func updateStringValue() {
         let stringValue: String
+
         if let string = config.formatter.string(for: textField.objectValue) {
             stringValue = string
-        }
-        else {
+        } else {
             stringValue = ""
         }
 

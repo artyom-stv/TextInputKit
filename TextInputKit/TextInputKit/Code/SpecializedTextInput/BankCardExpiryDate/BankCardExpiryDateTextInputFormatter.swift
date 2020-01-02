@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class BankCardExpiryDateTextInputFormatter : TextInputFormatter {
+final class BankCardExpiryDateTextInputFormatter: TextInputFormatter {
 
     init(_ options: BankCardExpiryDateTextInputOptions) {
         self.options = options

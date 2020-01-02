@@ -19,7 +19,7 @@ private func sampleString(characterSet: CharacterSet, unicodeScalarsRange: Count
     return string
 }
 
-class TextInputFormatterTests : XCTestCase {
+class TextInputFormatterTests: XCTestCase {
 
     // TODO: Implement.
 //    func testThatBaseClassIsAbstract() {

@@ -9,7 +9,7 @@
 import XCTest
 @testable import TextInputKit
 
-final class BankCardHolderNameTextInputFormatterTests : XCTestCase {
+final class BankCardHolderNameTextInputFormatterTests: XCTestCase {
 
     let textInputFormat = TextInputFormats.bankCardHolderName()
 

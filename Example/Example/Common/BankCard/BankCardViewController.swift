@@ -58,20 +58,20 @@ extension BankCard {
 
 }
 
-final class BankCardViewController : ViewController {
+final class BankCardViewController: ViewController {
 
-    @IBOutlet var cardNumberTextField: TextField!
+    @IBOutlet private var cardNumberTextField: TextField!
 
-    @IBOutlet var cardExpiryDateTextField: TextField!
+    @IBOutlet private var cardExpiryDateTextField: TextField!
 
-    @IBOutlet var cardHolderNameTextField: TextField!
+    @IBOutlet private var cardHolderNameTextField: TextField!
 
-    @IBOutlet var cardSecurityCodeTextField: TextField!
+    @IBOutlet private var cardSecurityCodeTextField: TextField!
 
     #if os(macOS)
-    @IBOutlet var descriptionLabel: NSTextField!
+    @IBOutlet private var descriptionLabel: NSTextField!
     #else
-    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet private var descriptionLabel: UILabel!
     #endif
 
     override func viewDidLoad() {
@@ -83,7 +83,7 @@ final class BankCardViewController : ViewController {
         updateDescriptionText()
     }
 
-    fileprivate var bankCard = BankCard()
+    fileprivate var bankCard: BankCard = BankCard()
 
     fileprivate var cardNumberTextInputBinding: TextInputBinding<BankCardNumber>!
 

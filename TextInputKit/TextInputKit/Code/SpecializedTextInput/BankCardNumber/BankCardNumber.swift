@@ -100,7 +100,7 @@ extension BankCardNumber {
     
 }
 
-extension BankCardNumber : Equatable {
+extension BankCardNumber: Equatable {
 
     public static func ==(lhs: BankCardNumber, rhs: BankCardNumber) -> Bool {
         return lhs.digitsString == rhs.digitsString
@@ -108,7 +108,7 @@ extension BankCardNumber : Equatable {
 
 }
 
-extension BankCardNumber : Hashable {
+extension BankCardNumber: Hashable {
 
     public func hash(into hasher: inout Hasher) {
         hasher.combine(digitsString)

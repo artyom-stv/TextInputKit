@@ -6,7 +6,7 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
-final class BankCardNumberTextInputFormatter : TextInputFormatter {
+final class BankCardNumberTextInputFormatter: TextInputFormatter {
 
     init(_ options: BankCardNumberTextInputOptions) {
         self.options = options

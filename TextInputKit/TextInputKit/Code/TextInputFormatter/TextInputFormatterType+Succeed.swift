@@ -19,7 +19,7 @@ public extension TextInputFormatterType {
 
 }
 
-private final class Succeed : TextInputFormatter {
+private final class Succeed: TextInputFormatter {
 
     init(
         source sourceFormatter: TextInputFormatterType,

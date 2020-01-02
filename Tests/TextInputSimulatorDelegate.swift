@@ -9,7 +9,7 @@
 import Foundation
 import TextInputKit
 
-protocol TextInputSimulatorDelegate : class {
+protocol TextInputSimulatorDelegate: class {
 
     func editingDidBegin()
 

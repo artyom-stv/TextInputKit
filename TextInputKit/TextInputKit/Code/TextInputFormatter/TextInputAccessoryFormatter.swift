@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class TextInputAccessoryFormatter : TextInputAccessoryFormatterType {
+open class TextInputAccessoryFormatter: TextInputAccessoryFormatterType {
 
     public func validate(
         editingResult editedString: String,

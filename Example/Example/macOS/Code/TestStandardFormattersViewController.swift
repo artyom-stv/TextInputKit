@@ -6,10 +6,10 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
-import Foundation
 import Cocoa
+import Foundation
 
-final class TestStandardFormattersViewController : TestFormattersViewController {
+final class TestStandardFormattersViewController: TestFormattersViewController {
 
 }
 

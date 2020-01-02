@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 import TextInputKit
 
-class TextInputSimulatorTests : XCTestCase {
+class TextInputSimulatorTests: XCTestCase {
 
     let sampleFormat: TextInputFormat<Int> = {
         enum FormatError : Error {

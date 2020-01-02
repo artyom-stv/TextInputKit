@@ -18,7 +18,7 @@ public extension TextInputFormatterType {
 
 }
 
-private final class Filter : TextInputAccessoryFormatter {
+private final class Filter: TextInputAccessoryFormatter {
 
     typealias Predicate = TextInputFormatterType.FilterPredicate
 

@@ -8,6 +8,5 @@
 
 import Cocoa
 
-final class BankCardBox : NSBox {
-
+final class BankCardBox: NSBox {
 }

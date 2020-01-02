@@ -16,7 +16,7 @@ public extension TextInputSerializerType where Value == String {
 
 }
 
-public final class IdenticalTextInputSerializer : TextInputSerializer<String> {
+public final class IdenticalTextInputSerializer: TextInputSerializer<String> {
 
     public override func string(for value: String) -> String {
         return value

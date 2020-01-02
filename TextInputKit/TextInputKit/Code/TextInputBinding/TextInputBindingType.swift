@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol TextInputBindingType : class {
+public protocol TextInputBindingType: class {
 
     associatedtype Value: Equatable
 
