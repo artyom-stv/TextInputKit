@@ -652,6 +652,7 @@
 				7C2BD0331DE2C3A900A7A6C0 /* Frameworks */,
 				7C2BD0341DE2C3A900A7A6C0 /* Headers */,
 				7C2BD0351DE2C3A900A7A6C0 /* Resources */,
+				7C69D34E23BD33A8009C8A37 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -670,6 +671,7 @@
 				7C2BD0401DE2C40800A7A6C0 /* Frameworks */,
 				7C2BD0411DE2C40800A7A6C0 /* Headers */,
 				7C2BD0421DE2C40800A7A6C0 /* Resources */,
+				7C69D34F23BD3554009C8A37 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -750,10 +752,9 @@
 			};
 			buildConfigurationList = 7C7AEB4A1DDFD128004861BD /* Build configuration list for PBXProject "TextInputKit" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 			);
 			mainGroup = 7C7AEB461DDFD128004861BD;
@@ -799,6 +800,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7C69D34E23BD33A8009C8A37 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7C69D34F23BD3554009C8A37 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7C2BD0321DE2C3A900A7A6C0 /* Sources */ = {

@@ -1,0 +1,107 @@
+included:
+  - Example/Example
+
+disabled_rules:
+  - force_cast
+  - opening_brace
+  - trailing_comma
+  # - unused_closure_parameter
+
+opt_in_rules:
+  - anyobject_protocol
+  - array_init
+  - closure_body_length
+  - closure_end_indentation
+  - closure_spacing
+  - conditional_returns_on_newline
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - contains_over_first_not_nil
+  - contains_over_range_nil_comparison
+  - empty_collection_literal
+  - empty_count
+  - empty_string
+  - empty_xctest_method
+  - explicit_type_interface
+  - extension_access_modifier
+  - first_where
+  - flatmap_over_map_reduce
+  - identical_operands
+  - last_where
+  - legacy_random
+  - literal_expression_end_indentation
+  - lower_acl_than_parent
+  - modifier_order
+  - multiline_arguments
+  - multiline_function_chains
+  - multiline_literal_brackets
+  - multiline_parameters
+  - operator_usage_whitespace
+  - overridden_super_call
+  - private_action
+  - private_outlet
+  - private_over_fileprivate
+  - prohibited_super_call
+  - reduce_into
+  - redundant_nil_coalescing
+  - sorted_first_last
+  - sorted_imports
+  - static_operator
+  - toggle_bool
+  - unavailable_function
+  - unneeded_parentheses_in_closure_argument
+  - unused_import
+  - vertical_parameter_alignment_on_call
+  - xct_specific_matcher
+  - yoda_condition
+  # - attributes
+  # - collection_alignment
+  # - explicit_init
+  # - redundant_type_annotation
+  # - single_test_class
+  # - type_contents_order
+  # - vertical_whitespace_closing_braces
+  # - vertical_whitespace_opening_braces
+
+large_tuple:
+  warning: 4
+  error: 4
+
+conditional_returns_on_newline:
+  if_only: true
+
+cyclomatic_complexity: 15
+
+explicit_type_interface:
+  severity: "warning"
+  excluded: ["local"]
+
+closure_body_length:
+  warning: 20
+  error: 60
+
+function_body_length:
+  warning: 40
+  error: 60
+
+line_length:
+  warning: 140
+  error: 160
+
+type_body_length:
+  warning: 300
+  error: 400
+
+file_length:
+  warning: 500
+  error: 1200
+
+identifier_name:
+  min_length:
+    warning: 4
+  excluded:
+    - id
+    - lhs
+    - rhs
+
+reporter: "xcode"
