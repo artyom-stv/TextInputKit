@@ -9,7 +9,6 @@
 import AppKit
 
 final class BankCardTextFieldCell: NSTextFieldCell {
-
     // MARK: - Override NSView
 
     override func drawingRect(forBounds rect: NSRect) -> NSRect {
@@ -23,5 +22,4 @@ final class BankCardTextFieldCell: NSTextFieldCell {
             dx: BankCardTextField.inset.width,
             dy: BankCardTextField.inset.height)
     }
-
 }

@@ -10,9 +10,7 @@ import Cocoa
 import Foundation
 
 extension NSStoryboard {
-
     func instantiateController<ViewController>(_ type: ViewController.Type) -> ViewController {
         return instantiateController(withIdentifier: String(describing: type)) as! ViewController
     }
-
 }

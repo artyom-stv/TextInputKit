@@ -10,16 +10,13 @@ import Cocoa
 import Foundation
 
 class TestFormattersViewController: NSSplitViewController {
-
     typealias Item = (
         title: String,
         formatter: Formatter
     )
 
     struct Configuration {
-
         let items: [Item]
-
     }
 
     func configure(_ config: Configuration) {
@@ -27,11 +24,9 @@ class TestFormattersViewController: NSSplitViewController {
     }
 
     fileprivate var config: Configuration!
-
 }
 
 extension TestFormattersViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,5 +36,4 @@ extension TestFormattersViewController {
             return NSSplitViewItem(viewController: viewController)
         }
     }
-
 }

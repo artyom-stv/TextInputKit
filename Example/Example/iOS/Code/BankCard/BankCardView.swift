@@ -9,7 +9,6 @@
 import UIKit
 
 final class BankCardView: UIView {
-
     // MARK: - Override NSObject
 
     override func awakeFromNib() {
@@ -34,5 +33,4 @@ final class BankCardView: UIView {
     private static let borderWidth: CGFloat = 1.0
     private static let borderColor: UIColor = UIColor(white: CGFloat(0.0), alpha: CGFloat(0.2))
     private static let cornerRadius: CGFloat = 10.0
-
 }

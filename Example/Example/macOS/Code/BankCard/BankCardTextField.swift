@@ -9,7 +9,6 @@
 import Cocoa
 
 final class BankCardTextField: NSTextField {
-
     // MARK: - Override NSObject
 
     override func awakeFromNib() {
@@ -54,5 +53,4 @@ final class BankCardTextField: NSTextField {
     // MARK: - Private Constants
 
     static let inset: CGSize = CGSize(width: CGFloat(8.0), height: CGFloat(3.0))
-
 }

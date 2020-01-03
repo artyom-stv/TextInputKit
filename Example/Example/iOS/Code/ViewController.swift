@@ -10,7 +10,6 @@ import TextInputKit
 import UIKit
 
 class TestFormatterViewController: UIViewController {
-
     @IBOutlet private var textField: UITextField!
 
     override func viewDidLoad() {
@@ -21,5 +20,4 @@ class TestFormatterViewController: UIViewController {
     }
 
     private var textInputBinding: TextInputBinding<String>!
-
 }

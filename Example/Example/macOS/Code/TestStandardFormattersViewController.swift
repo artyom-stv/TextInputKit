@@ -10,21 +10,17 @@ import Cocoa
 import Foundation
 
 final class TestStandardFormattersViewController: TestFormattersViewController {
-
 }
 
 extension TestStandardFormattersViewController {
-
     override func viewDidLoad() {
         configure()
 
         super.viewDidLoad()
     }
-
 }
 
 private extension TestStandardFormattersViewController {
-
     func configure() {
         let items: [TestFormattersViewController.Item] = {
             func item<F: Formatter>(_ formatter: F, comment: String? = nil) -> TestFormattersViewController.Item {
@@ -49,11 +45,9 @@ private extension TestStandardFormattersViewController {
         }()
         configure(TestFormattersViewController.Configuration(items: items))
     }
-
 }
 
 private extension TestStandardFormattersViewController {
-
     static func setupNumberFormatter() -> NumberFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -95,5 +89,4 @@ private extension TestStandardFormattersViewController {
         let formatter = MassFormatter()
         return formatter
     }
-
 }

@@ -13,9 +13,7 @@
 #endif
 
 struct BankCardTextFieldStyle {
-
     static let borderWidth: CGFloat = 1.0
     static let borderColor: Color = Color(white: CGFloat(0.0), alpha: CGFloat(0.2))
     static let cornerRadius: CGFloat = 3.0
-
 }

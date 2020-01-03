@@ -10,7 +10,6 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
 
     func application(
@@ -19,5 +18,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         return true
     }
-
 }

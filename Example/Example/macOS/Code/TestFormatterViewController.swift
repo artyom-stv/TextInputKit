@@ -10,13 +10,10 @@ import Cocoa
 import Foundation
 
 final class TestFormatterViewController: NSViewController {
-
     struct Configuration {
-
         let title: String
 
         let formatter: Formatter
-
     }
 
     @IBOutlet private var titleLabel: NSTextField!
@@ -30,11 +27,9 @@ final class TestFormatterViewController: NSViewController {
     }
 
     fileprivate var config: Configuration!
-
 }
 
 extension TestFormatterViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,22 +52,18 @@ extension TestFormatterViewController {
             textField?.objectValue = newValue
         }
     }
-
 }
 
 extension TestFormatterViewController {
-
     func controlTextDidChange(_ notification: Notification) {
         let control = notification.object as! NSControl
         if control === textField {
             updateStringValue()
         }
     }
-
 }
 
 extension TestFormatterViewController: NSTextFieldDelegate {
-
     func control(_ control: NSControl, didFailToFormatString string: String, errorDescription error: String?) -> Bool {
         if control === textField {
             // TODO: Implement.
@@ -85,11 +76,9 @@ extension TestFormatterViewController: NSTextFieldDelegate {
             // TODO: Implement.
         }
     }
-
 }
 
 private extension TestFormatterViewController {
-
     func updateStringValue() {
         let stringValue: String
 
@@ -101,5 +90,4 @@ private extension TestFormatterViewController {
 
         valueLabel.stringValue = stringValue
     }
-
 }

@@ -15,7 +15,6 @@
 import TextInputKit
 
 struct BankCard {
-
     var cardNumber: BankCardNumber?
 
     var expiryDate: BankCardExpiryDate?
@@ -23,11 +22,9 @@ struct BankCard {
     var cardHolderName: String = ""
 
     var securityCode: String = ""
-
 }
 
 extension BankCard {
-
     var prettyDescription: String {
         let cardNumberDescription: String = {
             if let cardNumber = cardNumber {
@@ -55,11 +52,9 @@ extension BankCard {
             + "  securityCode: \"\(securityCode)\"\n"
             + "}"
     }
-
 }
 
 final class BankCardViewController: ViewController {
-
     @IBOutlet private var cardNumberTextField: TextField!
 
     @IBOutlet private var cardExpiryDateTextField: TextField!
@@ -92,11 +87,9 @@ final class BankCardViewController: ViewController {
     fileprivate var cardHolderNameTextInputBinding: TextInputBinding<String>!
 
     fileprivate var cardSecurityCodeTextInputBinding: TextInputBinding<String>!
-
 }
 
 private extension BankCardViewController {
-
     func bindTextInputFormats() {
         cardNumberTextInputBinding = cardNumberTextInputFormat.bind(to: cardNumberTextField)
         cardExpiryDateTextInputBinding = cardExpiryDateTextInputFormat.bind(to: cardExpiryDateTextField)
@@ -124,11 +117,9 @@ private extension BankCardViewController {
             .filter(by: allowedCharacters)
             .filter(constrainingCharactersCount: maxLength)
     }
-
 }
 
 private extension BankCardViewController {
-
     func bindTextInputEventHandlers() {
         cardNumberTextInputBinding.eventHandler = { [unowned self] event in
             switch event {
@@ -175,11 +166,9 @@ private extension BankCardViewController {
             }
         }
     }
-
 }
 
 private extension BankCardViewController {
-
     func updateDescriptionText() {
         #if os(macOS)
         descriptionLabel.stringValue = bankCard.prettyDescription
@@ -187,5 +176,4 @@ private extension BankCardViewController {
         descriptionLabel.text = bankCard.prettyDescription
         #endif
     }
-
 }
