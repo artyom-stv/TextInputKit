@@ -15,9 +15,9 @@ extension UITextField {
 
     var selectedRange: Range<String.Index>? {
         get {
-            if let utf16IntRange = selectedUtf16IntRange {
+            if let utf16IntRange = selectedUTF16IntRange {
                 guard let text = self.text else {
-                    fatalError("`text` should be non-nil when `selectedUtf16IntRange` is non-nil.")
+                    fatalError("`text` should be non-nil when `selectedUTF16IntRange` is non-nil.")
                 }
 
                 return utf16IntRange.sameRange(in: text.utf16).sameRange(in: text)
@@ -25,7 +25,7 @@ extension UITextField {
             return nil
         }
         set {
-            selectedUtf16IntRange = {
+            selectedUTF16IntRange = {
                 if let range = newValue {
                     guard let text = self.text else {
                         fatalError("Cannot set the selected range of a `UITextField` while the text field isn't editing.")

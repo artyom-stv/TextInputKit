@@ -12,7 +12,7 @@ import AppKit
 
 extension NSText {
 
-    var selectedUtf16IntRange: Range<Int>? {
+    var selectedUTF16IntRange: Range<Int>? {
         get {
             return Range(selectedRange)
         }
@@ -29,14 +29,14 @@ extension NSText {
 
     var selectedIndexRange: Range<String.Index>? {
         get {
-            if let utf16IntRange = selectedUtf16IntRange {
+            if let utf16IntRange = selectedUTF16IntRange {
                 let string = self.string
                 return utf16IntRange.sameRange(in: string.utf16).sameRange(in: string)
             }
             return nil
         }
         set {
-            selectedUtf16IntRange = {
+            selectedUTF16IntRange = {
                 if let range = newValue {
                     let string = self.string
                     return range.sameRange(in: string.utf16)!.sameIntRange(in: string.utf16)

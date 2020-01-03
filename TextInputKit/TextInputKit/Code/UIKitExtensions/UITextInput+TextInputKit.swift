@@ -13,7 +13,7 @@ import UIKit
 
 extension UITextInput {
 
-    var selectedUtf16IntRange: Range<Int>? {
+    var selectedUTF16IntRange: Range<Int>? {
         get {
             if let selectedTextRange = selectedTextRange {
                 return Range<Int>(uncheckedBounds: (
