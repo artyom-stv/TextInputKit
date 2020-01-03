@@ -10,10 +10,7 @@ import Foundation
 
 public extension TextInputFormat {
 
-    // The commented code crashes the compiler.
-//    public typealias MapTransform = TextInputFormatterType.MapTransform
-
-    typealias MapTransform = (String, Range<String.Index>) -> (String, Range<String.Index>)
+    typealias MapTransform = TextInputFormatterType.MapTransform
 
     /// Creates a `TextInputFormat` which transforms the output of the source formatter
     /// (the formatter of the callee format).

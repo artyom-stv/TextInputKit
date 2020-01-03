@@ -10,10 +10,7 @@ import Foundation
 
 public extension TextInputFormat {
 
-    // The commented code crashes the compiler.
-//    public typealias FilterPredicate = TextInputFormatterType.FilterPredicate
-
-    typealias FilterPredicate = (String) -> Bool
+    typealias FilterPredicate = TextInputFormatterType.FilterPredicate
 
     /// Creates a `TextInputFormat` which filters the output of the source formatter
     /// (the formatter of the callee format).
