@@ -6,6 +6,8 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
+#if os(macOS)
+
 import AppKit
 
 extension NSTextField: TextInputFormatBindable {
@@ -15,3 +17,5 @@ extension NSTextField: TextInputFormatBindable {
     }
     
 }
+
+#endif

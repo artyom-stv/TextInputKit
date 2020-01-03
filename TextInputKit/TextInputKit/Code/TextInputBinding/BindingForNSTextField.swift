@@ -6,6 +6,8 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
+#if os(macOS)
+
 import Foundation
 import Cocoa
 
@@ -213,3 +215,5 @@ private final class Responder<Value: Equatable> : NSObject, NSTextFieldDelegate 
     }
 
 }
+
+#endif

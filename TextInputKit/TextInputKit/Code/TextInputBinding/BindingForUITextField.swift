@@ -6,6 +6,8 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
+#if os(iOS) || os(tvOS)
+
 import Foundation
 import UIKit
 
@@ -248,3 +250,5 @@ private final class Responder<Value: Equatable> : NSObject, UITextFieldDelegate 
     }
 
 }
+
+#endif

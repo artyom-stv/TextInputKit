@@ -6,6 +6,8 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
+#if os(macOS)
+
 import AppKit
 
 extension NSWindow {
@@ -18,3 +20,5 @@ extension NSWindow {
     }
 
 }
+
+#endif

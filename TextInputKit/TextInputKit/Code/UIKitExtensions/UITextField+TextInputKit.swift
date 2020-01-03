@@ -6,6 +6,8 @@
 //  Copyright © 2016 Artem Starosvetskiy. All rights reserved.
 //
 
+#if os(iOS) || os(tvOS)
+
 import Foundation
 import UIKit
 
@@ -43,3 +45,5 @@ extension UITextField: TextInputFormatBindable {
     }
 
 }
+
+#endif

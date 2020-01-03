@@ -1,0 +1,13 @@
+project 'Example'
+
+target 'Example-iOS' do
+  platform :ios, '8.0'
+  
+  pod 'TextInputKit', :path => '..'
+end
+
+target 'Example-macOS' do
+  platform :osx, '10.10'
+  
+  pod 'TextInputKit', :path => '..'
+end
