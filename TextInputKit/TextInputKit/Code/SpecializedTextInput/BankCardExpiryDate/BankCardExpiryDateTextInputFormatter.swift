@@ -54,8 +54,7 @@ final class BankCardExpiryDateTextInputFormatter: TextInputFormatter {
                 withSelection: originalSelectedRange,
                 resulting: resultingString,
                 withSelection: resultingCursorIndex..<resultingCursorIndex)
-        }
-        catch let error {
+        } catch let error {
             assert(error is ValidationError)
 
             return .rejected

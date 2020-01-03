@@ -36,7 +36,7 @@ public struct PhoneNumberTextInputOptions {
             fatalError("The provided value (\(maxLength)) of `maxLength` argument is out of the allowed bounds (\(maxLengthAllowedRange.lowerBound)...\(maxLengthAllowedRange.upperBound)).")
         }
 
-        return self.init(
+        return PhoneNumberTextInputOptions(
             format: format,
             maxLength: maxLength
         )

@@ -60,8 +60,7 @@ extension StringUtils {
                      appending: &resultStringView)
 
             return resultStringView
-        }
-        catch {
+        } catch {
             return nil
         }
     }
@@ -117,8 +116,7 @@ extension StringUtils {
             }
 
             return (resultStringView, resultRangeLowerBound..<resultRangeUpperBound)
-        }
-        catch {
+        } catch {
             return nil
         }
     }

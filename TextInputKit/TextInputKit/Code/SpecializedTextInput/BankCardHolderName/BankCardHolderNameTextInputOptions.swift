@@ -18,7 +18,7 @@ public struct BankCardHolderNameTextInputOptions {
         maxLength: Int = 26
         ) -> BankCardHolderNameTextInputOptions {
 
-        return self.init(
+        return BankCardHolderNameTextInputOptions(
             maxLength: maxLength
         )
     }

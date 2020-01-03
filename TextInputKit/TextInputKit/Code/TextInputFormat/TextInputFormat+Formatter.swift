@@ -103,8 +103,7 @@ private final class FormatterAdapter<Value: Equatable> : Formatter {
         do {
             let value = try format.serializer.value(for: string)
             objectValue = .init(value: value, text: string)
-        }
-        catch let error {
+        } catch let error {
             objectValue = .init(value: nil, text: string)
 
             if let errorDescriptionPtr = errorDescriptionPtr {

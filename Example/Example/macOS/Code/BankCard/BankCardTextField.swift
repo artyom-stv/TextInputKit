@@ -15,10 +15,15 @@ final class BankCardTextField: NSTextField {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        self.wantsLayer = true
-        layer!.borderColor = Style.borderColor.cgColor
-        layer!.cornerRadius = Style.cornerRadius
-        layer!.borderWidth = Style.borderWidth
+        wantsLayer = true
+
+        guard let layer = self.layer else {
+            fatalError("A layer should be attached because `wantsLayer` is set to `true`.")
+        }
+
+        layer.borderColor = Style.borderColor.cgColor
+        layer.cornerRadius = Style.cornerRadius
+        layer.borderWidth = Style.borderWidth
     }
 
     // MARK: - Override NSView

@@ -47,8 +47,8 @@ final class ObjectCache<Object: AnyObject> {
     ///   - queue: A dispatch queue on which notifications from `NotificationCenter` are observed.
     init(queue: DispatchQueue = .main) {
         #if !os(macOS)
-            self.memoryWarningResponder = MemoryWarningResponder(queue: queue)
-            self.memoryWarningResponder.action = { [unowned self] in
+            memoryWarningResponder = MemoryWarningResponder(queue: queue)
+            memoryWarningResponder.action = { [unowned self] in
                 self.nsCache.removeAllObjects()
             }
         #endif

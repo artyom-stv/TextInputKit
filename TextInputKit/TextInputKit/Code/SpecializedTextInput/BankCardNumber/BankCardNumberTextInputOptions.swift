@@ -24,7 +24,7 @@ public struct BankCardNumberTextInputOptions {
             fatalError("The provided value (\(maxLength)) of `maxLength` argument is out of the allowed bounds (\(maxLengthAllowedRange.lowerBound)...\(maxLengthAllowedRange.upperBound)).")
         }
 
-        return self.init(
+        return BankCardNumberTextInputOptions(
             maxLength: maxLength
         )
     }

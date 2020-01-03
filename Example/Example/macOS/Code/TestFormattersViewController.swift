@@ -35,7 +35,7 @@ extension TestFormattersViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.splitViewItems = config.items.map {
+        splitViewItems = config.items.map {
             let viewController = storyboard!.instantiateController(TestFormatterViewController.self)
             viewController.configure(TestFormatterViewController.Configuration(title: $0.title, formatter: $0.formatter))
             return NSSplitViewItem(viewController: viewController)

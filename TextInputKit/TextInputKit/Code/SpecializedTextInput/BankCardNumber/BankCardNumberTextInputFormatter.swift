@@ -29,7 +29,7 @@ final class BankCardNumberTextInputFormatter: TextInputFormatter {
 
             let digitsResult = self.digitsResult(from: digitsInput)
 
-            let result = try self.cardNumberResult(from: digitsResult)
+            let result = try cardNumberResult(from: digitsResult)
 
             let resultingString = String(result.stringView)
             let resultingCursorIndex = result.cursorIndex.samePosition(in: resultingString)!
@@ -41,8 +41,7 @@ final class BankCardNumberTextInputFormatter: TextInputFormatter {
                 withSelection: originalSelectedRange,
                 resulting: resultingString,
                 withSelection: resultingCursorIndex..<resultingCursorIndex)
-        }
-        catch {
+        } catch {
             return .rejected
         }
     }

@@ -16,8 +16,10 @@ extension UITextField {
     var selectedRange: Range<String.Index>? {
         get {
             if let utf16IntRange = selectedUtf16IntRange {
-                // self.text is not nil when self.selectedTextRange is not nil
-                let text = self.text!
+                guard let text = self.text else {
+                    fatalError("`text` should be non-nil when `selectedUtf16IntRange` is non-nil.")
+                }
+
                 return utf16IntRange.sameRange(in: text.utf16).sameRange(in: text)
             }
             return nil

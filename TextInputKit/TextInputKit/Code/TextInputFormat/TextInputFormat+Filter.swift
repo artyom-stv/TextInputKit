@@ -23,8 +23,8 @@ public extension TextInputFormat {
     /// - Returns: The created `TextInputFormat`.
     func filter(_ predicate: @escaping FilterPredicate) -> TextInputFormat<Value> {
         return TextInputFormat.from(
-            self.serializer,
-            self.formatter.filter(predicate))
+            serializer,
+            formatter.filter(predicate))
     }
     
 }

@@ -18,7 +18,7 @@ public struct BankCardExpiryDateTextInputOptions {
     ///
     /// - Returns: The created `BankCardExpiryDateTextInputOptions`.
     public static func options() -> BankCardExpiryDateTextInputOptions {
-        return self.init()
+        return BankCardExpiryDateTextInputOptions()
     }
 
 }

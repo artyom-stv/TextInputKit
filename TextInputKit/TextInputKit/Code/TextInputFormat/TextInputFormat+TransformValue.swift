@@ -25,8 +25,8 @@ public extension TextInputFormat {
         reverse reverseTransform: @escaping ReverseValueTransform<Result>) -> TextInputFormat<Result> {
 
         return TextInputFormat.from(
-            self.serializer.map(direct: directTransform, reverse: reverseTransform),
-            self.formatter)
+            serializer.map(direct: directTransform, reverse: reverseTransform),
+            formatter)
     }
 
 }
@@ -54,8 +54,8 @@ public extension TextInputFormat {
         }
 
         return TextInputFormat.from(
-            self.serializer.map(direct: directTransform, reverse: reverseTransform),
-            self.formatter)
+            serializer.map(direct: directTransform, reverse: reverseTransform),
+            formatter)
     }
 
 }

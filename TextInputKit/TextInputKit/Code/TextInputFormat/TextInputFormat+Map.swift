@@ -23,8 +23,8 @@ public extension TextInputFormat {
     /// - Returns: The created `TextInputFormatter`.
     func map(_ transform: @escaping MapTransform) -> TextInputFormat<Value> {
         return TextInputFormat.from(
-            self.serializer,
-            self.formatter.map(transform))
+            serializer,
+            formatter.map(transform))
     }
 
 }

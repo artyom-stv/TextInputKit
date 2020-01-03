@@ -51,9 +51,9 @@ extension BankCardHolderNameUtils {
             self.originalIndex = index
             self.index = stringView.startIndex
             self.resultingStringView = "".unicodeScalars
-            self.resultingIndex = self.resultingStringView.endIndex
+            self.resultingIndex = resultingStringView.endIndex
 
-            self.resultingStringView.reserveCapacity(stringView.count)
+            resultingStringView.reserveCapacity(stringView.count)
         }
 
         mutating func filter() {

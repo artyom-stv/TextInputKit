@@ -18,9 +18,9 @@ extension String.UnicodeScalarView {
         var newView = self
         newView.replaceSubrange(range, with: replacementStringView)
 
-        let newLowerBound = (range.lowerBound == self.startIndex)
+        let newLowerBound = (range.lowerBound == startIndex)
             ? newView.startIndex
-            : newView.index(after: self.index(before: range.lowerBound))
+            : newView.index(after: index(before: range.lowerBound))
 
         let newRange = newLowerBound ..< newView.index(newLowerBound, offsetBy: replacementStringView.count)
 
