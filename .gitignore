@@ -1,4 +1,18 @@
-Carthage/
+# Xcode
+
 **/xcuserdata/
 **/*.xcodeproj/project.xcworkspace/
+**/IDEWorkspaceChecks.plist
+
+# AppCode
+
 .idea/
+
+# Carthage
+
+Carthage/
+
+# CocoaPods
+
+**/Podfile.lock
+**/Pods/
