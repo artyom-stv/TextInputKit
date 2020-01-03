@@ -33,12 +33,12 @@ final class BindingForUITextField<Value: Equatable> : TextInputBinding<Value> {
     override var selectedRange: Range<String.Index>? {
         get {
             return withTextField { textField in
-                return textField.textInputKit_selectedRange
+                return textField.selectedRange
             }
         }
         set(newSelectedRange) {
             withTextField { textField in
-                textField.textInputKit_selectedRange = newSelectedRange
+                textField.selectedRange = newSelectedRange
             }
         }
     }
@@ -184,7 +184,7 @@ private final class Responder<Value: Equatable> : NSObject, UITextFieldDelegate 
 
         case .changed(let newText, let newSelectedRange):
             textField.text = newText
-            textField.textInputKit_selectedRange = newSelectedRange
+            textField.selectedRange = newSelectedRange
 
             payload.value = value(for: newText)
 
@@ -234,7 +234,7 @@ private final class Responder<Value: Equatable> : NSObject, UITextFieldDelegate 
     private func currentEditingState(of textField: UITextField) -> TextInputEditingState<Value> {
         assert(textField.isEditing)
 
-        guard let selectedRange = textField.textInputKit_selectedRange else {
+        guard let selectedRange = textField.selectedRange else {
             fatalError("The selected range in a `UITextField` should be non-nil while editing.")
         }
 

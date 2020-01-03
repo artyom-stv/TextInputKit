@@ -31,7 +31,7 @@ final class BindingForNSTextField<Value: Equatable> : TextInputBinding<Value> {
     override var selectedRange: Range<String.Index>? {
         get {
             return withTextField { textField in
-                return textField.currentEditor()?.textInputKit_selectedRange
+                return textField.currentEditor()?.selectedIndexRange
             }
         }
         set(newSelectedRange) {
@@ -40,7 +40,7 @@ final class BindingForNSTextField<Value: Equatable> : TextInputBinding<Value> {
                     fatalError("Can't set the selected range while the bound `NSTextField` isn't editing.")
                 }
 
-                editor.textInputKit_selectedRange = newSelectedRange
+                editor.selectedIndexRange = newSelectedRange
             }
         }
     }
@@ -202,7 +202,7 @@ private final class Responder<Value: Equatable> : NSObject, NSTextFieldDelegate 
 
     @nonobjc
     private func currentEditingState(of textField: NSTextField) -> TextInputEditingState<Value> {
-        guard let selectedRange = textField.currentEditor()!.textInputKit_selectedRange else {
+        guard let selectedRange = textField.currentEditor()!.selectedIndexRange else {
             fatalError("The selected range in a `UITextField` should be non-nil while editing.")
         }
 

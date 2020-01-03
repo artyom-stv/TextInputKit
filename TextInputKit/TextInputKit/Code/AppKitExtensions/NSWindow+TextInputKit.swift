@@ -12,7 +12,7 @@ import AppKit
 
 extension NSWindow {
 
-    var textInputKit_currentEditor: NSText? {
+    var currentEditor: NSText? {
         if let editor = fieldEditor(false, for: nil), firstResponder == editor {
             return editor
         }

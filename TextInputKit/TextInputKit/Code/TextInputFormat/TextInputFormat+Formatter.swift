@@ -141,8 +141,8 @@ private final class FormatterAdapter<Value: Equatable> : Formatter {
         let originalSelectedRange: Range<String.Index> = {
             #if os(macOS)
             if options.tracksCurrentEditorSelection {
-                if let editor: NSText = NSApplication.shared.keyWindow?.textInputKit_currentEditor {
-                    return editor.textInputKit_selectedRange!
+                if let editor: NSText = NSApplication.shared.keyWindow?.currentEditor {
+                    return editor.selectedIndexRange!
                 }
             }
             #endif
